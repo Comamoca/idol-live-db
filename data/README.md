@@ -91,7 +91,7 @@ master.sqlite → CloudKit に一括反映します（直接 CloudKit に書く�
 ```
 - 髪型の列: `hair_color` `hair_color_secondary` `hair_length` `styles[]` `bangs` `accessories[]`
   (値は facets.json の語彙)。**main の付け替え**は `{"set_main": [{"idol_id": "…", "label": "覚醒後"}]}`。
-- `idol_facets` の `facet` は facets.json の `store: "idol_facets"` の項目だけ。年齢帯・出身地方・色名など
+- `idol_facets` の `facet` は facets.json の `store: "idol_facets"` の項目だけ。誕生月・出身地方・色名など
   自動で決まるもの (`computed`) と髪 (`idol_hairstyles`) は書けない。`origin` は `official`(既定) か
   `promoted` (タグの票から昇格した値)。単一値の項目は 1 人 1 行で、直すなら `data/fixes/`
   (`{"table": "idol_facets", "id": "<行 id>", "fields": {"value": "…"}}`。行 id は

@@ -121,7 +121,7 @@ dump を作り直してコミットする (cron はデータのみ更新し、�
 公開データ API (`imas-data-api/`、[`ARCHITECTURE-data-api.md`](ARCHITECTURE-data-api.md)) は
 **CloudKit の最新の、FK 検査を通った書き出し**を毎日、専用の D1 `imas-master-db` に**全置き換え**で反映する。
 入力は develop の `db/master.sql` ではない (develop へはオーナーの PR で入るまで古いまま)。
-yesno など API の利用者が読むのはこの経路の結果。
+API の利用者が読むのはこの経路の結果。
 
 ### 自動 (毎日 03:00 JST と手動実行)
 
