@@ -15,13 +15,17 @@
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
    "https://dic.nicovideo.jp/a/倉本千奈",
-   "https://ja.wikipedia.org/wiki/学園アイドルマスター"
+   "https://ja.wikipedia.org/wiki/学園アイドルマスター",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
   "idol_id": "gakuen_十王星南",
   "name": "十王星南",
-  "first_person": "私",
+  "first_person": [
+   "私",
+   "わたし"
+  ],
   "producer_call": "プロデューサー",
   "politeness": null,
   "endings": [],
@@ -30,7 +34,8 @@
   "sources": [
    "https://game8.jp/gakuen-idolmaster/793144",
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
-   "https://milacle39.com/2026/05/04/gakumasucall/"
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
@@ -46,7 +51,8 @@
    "https://game8.jp/gakuen-idolmaster/793144",
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
-   "https://dic.nicovideo.jp/a/姫崎莉波"
+   "https://dic.nicovideo.jp/a/姫崎莉波",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
@@ -62,13 +68,17 @@
    "https://game8.jp/gakuen-idolmaster/793144",
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
-   "https://dic.nicovideo.jp/a/月村手毬"
+   "https://dic.nicovideo.jp/a/月村手毬",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
   "idol_id": "gakuen_有村麻央",
   "name": "有村麻央",
-  "first_person": "ボク",
+  "first_person": [
+   "ボク",
+   "僕"
+  ],
   "producer_call": "プロデューサー",
   "politeness": "丁寧語に「よ」を添える",
   "endings": [],
@@ -78,7 +88,8 @@
    "https://game8.jp/gakuen-idolmaster/793144",
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
-   "https://dic.nicovideo.jp/a/有村麻央"
+   "https://dic.nicovideo.jp/a/有村麻央",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
@@ -94,13 +105,17 @@
    "https://game8.jp/gakuen-idolmaster/793144",
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
-   "https://dic.nicovideo.jp/a/秦谷美鈴"
+   "https://dic.nicovideo.jp/a/秦谷美鈴",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
   "idol_id": "gakuen_篠澤広",
   "name": "篠澤広",
-  "first_person": "わたし",
+  "first_person": [
+   "わたし",
+   "私"
+  ],
   "producer_call": "プロデューサー",
   "politeness": null,
   "endings": [],
@@ -110,7 +125,8 @@
    "https://game8.jp/gakuen-idolmaster/793144",
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
-   "https://dic.nicovideo.jp/a/篠澤広"
+   "https://dic.nicovideo.jp/a/篠澤広",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
@@ -127,7 +143,8 @@
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
    "https://dic.nicovideo.jp/a/紫雲清夏",
-   "https://ja.wikipedia.org/wiki/学園アイドルマスター"
+   "https://ja.wikipedia.org/wiki/学園アイドルマスター",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
@@ -143,7 +160,8 @@
    "https://game8.jp/gakuen-idolmaster/793144",
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
-   "https://dic.nicovideo.jp/a/花海佑芽"
+   "https://dic.nicovideo.jp/a/花海佑芽",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
@@ -159,7 +177,8 @@
    "https://game8.jp/gakuen-idolmaster/793144",
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
-   "https://dic.nicovideo.jp/a/花海咲季"
+   "https://dic.nicovideo.jp/a/花海咲季",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
@@ -175,7 +194,8 @@
    "https://game8.jp/gakuen-idolmaster/793144",
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
-   "https://dic.nicovideo.jp/a/葛城リーリヤ"
+   "https://dic.nicovideo.jp/a/葛城リーリヤ",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
@@ -191,7 +211,8 @@
    "https://game8.jp/gakuen-idolmaster/793144",
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
-   "https://dic.nicovideo.jp/a/藤田ことね"
+   "https://dic.nicovideo.jp/a/藤田ことね",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  },
  {
@@ -213,7 +234,10 @@
   "idol_id": "gakuen_雨夜燕",
   "name": "雨夜燕",
   "first_person": "私",
-  "producer_call": null,
+  "producer_call": [
+   "プロデューサー",
+   "貴様"
+  ],
   "politeness": "高慢で尊大な口調",
   "endings": [],
   "catchphrases": [],
@@ -222,7 +246,8 @@
    "https://game8.jp/gakuen-idolmaster/793144",
    "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
    "https://milacle39.com/2026/05/04/gakumasucall/",
-   "https://dic.nicovideo.jp/a/雨夜燕"
+   "https://dic.nicovideo.jp/a/雨夜燕",
+   "https://dic.nicovideo.jp/t/a/学園アイドルマスター%3A呼称表"
   ]
  }
 ]
