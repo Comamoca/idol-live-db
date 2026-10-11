@@ -788,7 +788,8 @@ pub fn build_idol_facts(snap: &Snapshot, idol_id: &str, persona: &PersonaInput, 
         c.push(cand("grade", grade));
         if brand_id == Some("gakuen") {
             // 初星学園は高等部。学年が分かっていれば推定ではなく確定。
-            c.push(cand("school_stage", "高校生").derived());
+            // `derived` を立てない: `derived` かつ `auto: estimate` は「推定」と読まれる (人が読む文面は「（推定）」を付ける)。
+            c.push(cand("school_stage", "高校生"));
         }
     }
 
@@ -1653,5 +1654,27 @@ mod tests {
         assert_eq!(a, facet_row_key("i", "dialect", "博多弁", false));
         assert_ne!(facet_row_key("i", "favorite_foods", "A", true), facet_row_key("i", "favorite_foods", "B", true));
         assert_ne!(hairstyle_row_key("i", "基本"), hairstyle_row_key("i", "覚醒後"));
+    }
+
+    /// 初星学園で学年が分かっていれば高校生は確定 (`derived` を立てない = 「（推定）」と読まれない)。年齢からの推定は推定のまま。
+    #[test]
+    fn gakuen_grade_makes_high_school_a_fact_not_an_estimate() {
+        let snap = bundle_snapshot();
+        let graded = snap
+            .idols
+            .iter()
+            .find(|i| i.brand_id.as_deref() == Some("gakuen") && i.attribute.as_deref().is_some_and(|a| a.ends_with('年')))
+            .expect("学年つきの学マスのアイドル");
+        let d = build_idol_facts(snap, &graded.id, &PersonaInput::default(), &[]).unwrap();
+        let e = &d["categories"]["profile"]["school_stage"];
+        assert_eq!(e["value"], "高校生");
+        assert!(e.get("derived").is_none(), "{e}");
+        let by_age = snap
+            .idols
+            .iter()
+            .find(|i| i.brand_id.as_deref() != Some("gakuen") && i.age.is_some_and(|a| (13..=15).contains(&a)))
+            .expect("年齢だけの中学生");
+        let d = build_idol_facts(snap, &by_age.id, &PersonaInput::default(), &[]).unwrap();
+        assert_eq!(d["categories"]["profile"]["school_stage"]["derived"], true);
     }
 }
