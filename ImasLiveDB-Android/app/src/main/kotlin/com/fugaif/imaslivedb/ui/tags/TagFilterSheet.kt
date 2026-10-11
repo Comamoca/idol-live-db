@@ -1,5 +1,10 @@
 package com.fugaif.imaslivedb.ui.tags
 
+import uniffi.imas_core.songTagCategoryGroups
+import com.fugaif.imaslivedb.ui.designsystem.ImasSectionHeaderStyle
+import com.fugaif.imaslivedb.ui.designsystem.ImasSectionHeader
+import com.fugaif.imaslivedb.ui.designsystem.ImasTabs
+import com.fugaif.imaslivedb.ui.components.rememberSearchFiltered
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -62,14 +67,18 @@ fun TagFilterSheet(
     var tags by remember { mutableStateOf<List<CommunityApi.CommunityTag>>(emptyList()) }
     var selected by remember { mutableStateOf(initialSelection) }
     var isLoading by remember { mutableStateOf(true) }
+    val trimmedQuery = query.trim()
+    // 検索していないときの並べ方 (人気順の一覧 / カテゴリ別)。
+    var layout by remember { mutableStateOf(TagListLayout.FLAT) }
 
-    LaunchedEffect(query) {
-        isLoading = true
-        if (query.trim().isNotEmpty()) kotlinx.coroutines.delay(200)
+    // 全件を 1 回だけ取り、検索欄は手元で絞る (照合はコア)。打鍵ごとに取り直すと、古い語の応答が
+    // 後から届いて消した後の一覧を上書きしていた (取り消された取得が空の一覧を書くこともあった)。
+    LaunchedEffect(Unit) {
         val api = AppModule.from(context).communityApi
-        tags = runCatching { api.tags(search = query.trim(), sort = "popular") }.getOrDefault(emptyList())
+        tags = runCatching { api.tags(sort = "popular") }.getOrDefault(emptyList())
         isLoading = false
     }
+    val candidates = rememberSearchFiltered(tags, trimmedQuery) { listOf(it.name, it.description) }
 
     fun toggle(tag: CommunityApi.CommunityTag) {
         selected = if (selected.any { it.id == tag.id }) selected.filterNot { it.id == tag.id } else selected + tag
@@ -96,9 +105,17 @@ fun TagFilterSheet(
                     }
                 }
             }
+            if (trimmedQuery.isEmpty()) {
+                ImasTabs(
+                    labels = TagListLayout.entries.map { it.label },
+                    selection = layout.ordinal,
+                    onSelect = { layout = TagListLayout.entries[it] },
+                    modifier = Modifier.padding(horizontal = DS.Space.screen)
+                )
+            }
             val state = when {
                 isLoading -> ImasContentState.Loading
-                tags.isEmpty() -> ImasContentState.Empty
+                candidates.isEmpty() -> ImasContentState.Empty
                 else -> ImasContentState.Loaded
             }
             ImasStateContainer(
@@ -108,16 +125,37 @@ fun TagFilterSheet(
                 empty = { ImasEmptyState(ImasEmptyStateKind.EMPTY, title = "タグがありません") }
             ) {
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    itemsIndexed(tags, key = { _, tag -> tag.id }) { idx, tag ->
-                        val rank = if (query.isEmpty()) idx + 1 else null
-                        Column(Modifier.fillMaxWidth()) {
-                            TagFilterRow(
-                                tag = tag,
-                                rank = rank,
-                                isSelected = selected.any { it.id == tag.id },
-                                onClick = { toggle(tag) }
-                            )
-                            if (idx < tags.lastIndex) ImasRowDivider(inset = DS.Space.rowH)
+                    if (trimmedQuery.isEmpty() && layout == TagListLayout.BY_CATEGORY) {
+                        // カテゴリ (ムード・シーン …) ごとに見出しを分ける。中は人気順。まとめ方はコア。
+                        candidates.groupedByCategory(::songTagCategoryGroups).forEach { group ->
+                            item(key = "header-${group.category}") {
+                                ImasSectionHeader(group.label, count = "${group.tags.size}", style = ImasSectionHeaderStyle.SMALL)
+                            }
+                            itemsIndexed(group.tags, key = { _, tag -> tag.id }) { idx, tag ->
+                                Column(Modifier.fillMaxWidth()) {
+                                    TagFilterRow(
+                                        tag = tag,
+                                        rank = null,
+                                        isSelected = selected.any { it.id == tag.id },
+                                        onClick = { toggle(tag) }
+                                    )
+                                    if (idx < group.tags.lastIndex) ImasRowDivider(inset = DS.Space.rowH)
+                                }
+                            }
+                        }
+                    } else {
+                        itemsIndexed(candidates, key = { _, tag -> tag.id }) { idx, tag ->
+                            // 検索していない時は人気順そのものなので順位の札を出す。
+                            val rank = if (trimmedQuery.isEmpty()) idx + 1 else null
+                            Column(Modifier.fillMaxWidth()) {
+                                TagFilterRow(
+                                    tag = tag,
+                                    rank = rank,
+                                    isSelected = selected.any { it.id == tag.id },
+                                    onClick = { toggle(tag) }
+                                )
+                                if (idx < candidates.lastIndex) ImasRowDivider(inset = DS.Space.rowH)
+                            }
                         }
                     }
                 }
@@ -126,7 +164,7 @@ fun TagFilterSheet(
     }
 }
 
-/** タグ候補 1 行。検索していない時は人気順そのものなので順位の札を出す。 */
+/** タグ候補 1 行。[rank] があれば順位の札を出す。 */
 @Composable
 private fun TagFilterRow(tag: CommunityApi.CommunityTag, rank: Int?, isSelected: Boolean, onClick: () -> Unit) {
     Row(

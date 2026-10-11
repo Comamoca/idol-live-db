@@ -1,5 +1,7 @@
 package com.fugaif.imaslivedb.ui.tags
 
+import uniffi.imas_core.songTagCategoryGroups
+import com.fugaif.imaslivedb.ui.components.rememberSearchFiltered
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -67,13 +69,14 @@ fun SongTagPickerSheet(
     val trimmedQuery = query.trim()
     val exactMatchExists = tags.any { it.name == trimmedQuery }
 
-    LaunchedEffect(query) {
-        isLoading = true
-        if (trimmedQuery.isNotEmpty()) kotlinx.coroutines.delay(200)
+    // 全件を 1 回だけ取り、検索欄は手元で絞る (照合はコア)。打鍵ごとに取り直すと、古い語の応答が
+    // 後から届いて消した後の一覧を上書きしていた (取り消された取得が空の一覧を書くこともあった)。
+    LaunchedEffect(Unit) {
         val api = AppModule.from(context).communityApi
-        tags = runCatching { api.tags(search = trimmedQuery, sort = "popular") }.getOrDefault(emptyList())
+        tags = runCatching { api.tags(sort = "popular") }.getOrDefault(emptyList())
         isLoading = false
     }
+    val candidates = rememberSearchFiltered(tags, trimmedQuery) { listOf(it.name, it.description) }
 
     fun submit() {
         errorMessage = null
@@ -125,23 +128,36 @@ fun SongTagPickerSheet(
                     }
                 }
 
-                Column(verticalArrangement = Arrangement.spacedBy(DS.Space.header)) {
-                    ImasSectionHeader(title = if (trimmedQuery.isEmpty()) "よく使われるタグ" else "候補", style = ImasSectionHeaderStyle.SMALL)
-                    when {
-                        isLoading -> ImasInlineLoading()
-                        tags.isEmpty() -> ImasNote("タグが見つかりません")
-                        else -> ImasChipFlow {
-                            tags.forEach { tag ->
-                                val applied2 = alreadyAppliedTagIds.contains(tag.id)
-                                TagSelectChip(
-                                    tag = tag,
-                                    isApplied = applied2,
-                                    isSelected = selected.contains(tag.id),
-                                    onClick = {
-                                        selected = if (selected.contains(tag.id)) selected - tag.id else selected + tag.id
-                                    }
-                                )
+                @Composable
+                fun chips(list: List<CommunityApi.CommunityTag>) = ImasChipFlow {
+                    list.forEach { tag ->
+                        TagSelectChip(
+                            tag = tag,
+                            isApplied = alreadyAppliedTagIds.contains(tag.id),
+                            isSelected = selected.contains(tag.id),
+                            onClick = {
+                                selected = if (selected.contains(tag.id)) selected - tag.id else selected + tag.id
                             }
+                        )
+                    }
+                }
+
+                if (trimmedQuery.isEmpty() && !isLoading && tags.isNotEmpty()) {
+                    // 検索していないときはカテゴリ (ムード・シーン …) ごとに見出しを分ける。中はよく使われる順。まとめ方はコア。
+                    val groups = remember(tags) { tags.groupedByCategory(::songTagCategoryGroups) }
+                    groups.forEach { group ->
+                        Column(verticalArrangement = Arrangement.spacedBy(DS.Space.header)) {
+                            ImasSectionHeader(title = group.label, style = ImasSectionHeaderStyle.SMALL)
+                            chips(group.tags)
+                        }
+                    }
+                } else {
+                    Column(verticalArrangement = Arrangement.spacedBy(DS.Space.header)) {
+                        ImasSectionHeader(title = if (trimmedQuery.isEmpty()) "よく使われるタグ" else "候補", style = ImasSectionHeaderStyle.SMALL)
+                        when {
+                            isLoading -> ImasInlineLoading()
+                            candidates.isEmpty() -> ImasNote("タグが見つかりません")
+                            else -> chips(candidates)
                         }
                     }
                 }

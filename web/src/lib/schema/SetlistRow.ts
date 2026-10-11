@@ -23,7 +23,7 @@ number: number, notes: string | null,
  */
 unitLabel: string | null, song: Ref, 
 /**
- * 歌唱メンバー。`display_name` は**コアが現任 CV で解決済み**。
+ * 歌唱メンバー。演者名は**コアがその公演の演者で解決済み**。
  */
 performers: Array<PerformerRef>, 
 /**
@@ -49,6 +49,11 @@ costumes: Array<SetlistCostume>,
  * この披露がその曲の初披露 (この DB に載っている範囲で最古) なら「初披露」。
  */
 firstPerformanceLabel: string | null, 
+/**
+ * 新しい演者で初めて歌った人ごとの札 (`希水しおで初披露`)。「初披露」の札の隣に並べる。
+ * 規則は `domain::performance_gap::new_performer_debuts` (アプリと同じ)。
+ */
+newPerformerDebutLabels: Array<string>, 
 /**
  * 詳細表示で行に添える**披露の履歴** (`披露  4 回目  2 年 6 か月ぶり`)。
  * カバーなどで通算が膨らんだ行には、オリメンにとっての回数 (`歌唱  オリメン 3 回目`) が続く。

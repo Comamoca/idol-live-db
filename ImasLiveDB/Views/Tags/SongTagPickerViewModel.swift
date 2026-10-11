@@ -3,14 +3,15 @@ import Observation
 
 /// SongTagPicker のデータ取得・付与担当 (Presentation)。
 ///
-/// タグ検索の debounce・付与済み判定・付与実行・付与完了シェアの組み立てを持つ。
+/// タグ候補 (全件を 1 回取り、検索は手元で絞る)・付与済み判定・付与実行・付与完了シェアの組み立てを持つ。
 /// 曲/ブランドの解決は `SongReading` / `BrandReading` ポート越し (AppDatabase 直叩きを排除)。
 @MainActor
 @Observable
 final class SongTagPickerViewModel {
     let songId: String
 
-    private(set) var tags: [CommunityTag] = []
+    /// 候補の全件 (人気順)。検索欄の絞り込みは `pool.matching` で手元で行う。
+    private(set) var pool = TagSearchPool()
     private(set) var myTagIds: Set<String> = []
     private(set) var isLoading = false
     private(set) var isApplying = false
@@ -20,9 +21,6 @@ final class SongTagPickerViewModel {
     private let tagWriting: any CommunityTagWriting
     private let songReading: any SongReading
     private let brandReading: any BrandReading
-    /// 検索デバウンス用の世代 ID (古い Task の結果が新しい入力を上書きしないためのガード)。
-    private var loadToken = 0
-
     /// View の init (nonisolated) から生成できるよう init も nonisolated にする。
     nonisolated init(
         songId: String,
@@ -43,32 +41,20 @@ final class SongTagPickerViewModel {
         defer { isLoading = false }
         async let tagResult = tagReading.tags(search: "", category: "", sort: "popular")
         async let songTagResult = tagReading.songTags(songId: songId)
-        tags = (try? await tagResult) ?? []
+        pool.replace((try? await tagResult) ?? [])
         if let result = try? await songTagResult {
             myTagIds = Set(result.myTagIds)
         }
     }
 
-    /// 入力中の連打を抑えるための簡易デバウンス + 古い結果で新しい入力を上書きしないための世代ガード
-    /// (SongSearchPickerView.scheduleLoad と同方式)。
-    func scheduleSearch(_ searchText: String) {
-        loadToken += 1
-        let token = loadToken
-        Task {
-            try? await Task.sleep(nanoseconds: 200_000_000)
-            guard token == loadToken else { return }
-            await search(searchText)
-        }
-    }
-
-    private func search(_ searchText: String) async {
-        let result = (try? await tagReading.tags(search: searchText, category: "", sort: "popular")) ?? []
-        tags = result
+    /// 検索していないときの見出し分け (ムード・シーン …)。まとめ方はコア。中はよく使われる順。
+    var categoryGroups: [TagCategorySection] {
+        pool.all.groupedByCategory { songTagCategoryGroups(tags: $0) }
     }
 
     /// 新規タグ作成直後に候補一覧の先頭へ即時反映する。
     func insertCreated(_ tag: CommunityTag) {
-        tags.insert(tag, at: 0)
+        pool.insert(tag)
     }
 
     /// 選択タグをまとめて付与する。成功時は完了シェア用のコンテキストを返す。

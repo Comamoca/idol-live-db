@@ -14,6 +14,8 @@ struct TagListView: View {
     @State private var showFilterSheet = false
     /// 一覧の名前絞り込み。タグは全件 (limit 1000) を取得済みなのでクライアント側で絞る。
     @State private var nameFilter = ""
+    /// 1 本の一覧か、カテゴリ (ムード・シーン …) ごとの見出しに分けるか。
+    @State private var layout: TagListLayout = .flat
 
     private let categories: [(value: String, label: String)] = [
         ("", "全て"), ("mood", "ムード"), ("scene", "シーン"), ("special", "特別"), ("free", "フリー")
@@ -49,6 +51,11 @@ struct TagListView: View {
                 }
                 .listRowBackground(Color.clear)
 
+                ImasTabs(options: TagListLayout.allCases, selection: $layout) { $0.label }
+                    .listRowInsets(EdgeInsets(top: 0, leading: DS.Space.screen, bottom: 0, trailing: DS.Space.screen))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+
                 if vm.isLoading {
                     ImasInlineLoading()
                         .listRowBackground(Color.clear)
@@ -59,14 +66,17 @@ struct TagListView: View {
                         message: nameFilter.isEmpty ? nil : "「\(nameFilter)」に一致するタグがありません"
                     )
                     .listRowBackground(Color.clear)
+                } else if layout == .byCategory {
+                    // カテゴリごとに見出しを分ける。中は選んだ並び順のまま。順位は一覧のときだけ。
+                    ForEach(filteredTags.groupedByCategory { songTagCategoryGroups(tags: $0) }) { group in
+                        ImasListSection(group.label, count: "\(group.tags.count)") {
+                            ForEach(group.tags) { tag in tagLink(tag, rank: nil) }
+                        }
+                    }
                 } else {
                     ForEach(Array(filteredTags.enumerated()), id: \.element.id) { idx, tag in
-                        NavigationLink(value: TagRoute.detail(id: tag.id, name: tag.name)) {
-                            // 人気ソート時は順位を出して「人気ランキング」として見せる。
-                            TagRowView(tag: tag, rank: selectedSort == "popular" ? idx + 1 : nil)
-                        }
-                        .listRowBackground(DS.surface)
-                        .listRowSeparatorTint(DS.sep)
+                        // 人気ソート時は順位を出して「人気ランキング」として見せる。
+                        tagLink(tag, rank: selectedSort == "popular" ? idx + 1 : nil)
                     }
                 }
             }
@@ -132,6 +142,14 @@ struct TagListView: View {
             .trackScreen("tag_list")
         }
     }
+
+    private func tagLink(_ tag: CommunityTag, rank: Int?) -> some View {
+        NavigationLink(value: TagRoute.detail(id: tag.id, name: tag.name)) {
+            TagRowView(tag: tag, rank: rank)
+        }
+        .listRowBackground(DS.surface)
+        .listRowSeparatorTint(DS.sep)
+    }
 }
 
 struct TagRowView: View {
@@ -153,8 +171,9 @@ struct TagRowView: View {
                 }.frame(width: 16)), width: 16),
                 trailing: .custom(AnyView(
                     HStack(spacing: DS.Space.gapTight) {
+                        // 生値 (mood 等) ではなく語彙の言葉で出す。語彙に無い値はそのまま。
                         if let cat = tag.category {
-                            ImasBadge(text: cat.rawValue, kind: .neutral)
+                            ImasBadge(text: TagCategoryOptions.label(for: cat.rawValue, in: .song), kind: .neutral)
                         }
                         if let uses = tag.totalUses, uses > 0 {
                             Text("\(uses)曲").imasText(.meta)

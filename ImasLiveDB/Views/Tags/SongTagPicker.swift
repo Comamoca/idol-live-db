@@ -25,7 +25,8 @@ struct SongTagPicker: View {
     }
 
     private var trimmedSearch: String { searchText.trimmingCharacters(in: .whitespaces) }
-    private var exactMatchExists: Bool { vm.tags.contains { $0.name == trimmedSearch } }
+    private var exactMatchExists: Bool { vm.pool.containsName(trimmedSearch) }
+    private var candidates: [CommunityTag] { vm.pool.matching(trimmedSearch) }
 
     var body: some View {
         NavigationStack {
@@ -59,15 +60,27 @@ struct SongTagPicker: View {
                     }
                 }
 
-                VStack(alignment: .leading, spacing: DS.Space.header) {
-                    ImasSectionHeader(trimmedSearch.isEmpty ? "よく使われるタグ" : "候補", style: .small)
-                    if vm.isLoading {
-                        ImasInlineLoading()
-                    } else if vm.tags.isEmpty {
-                        ImasNote("タグが見つかりません")
-                    } else {
-                        ImasChipFlow {
-                            ForEach(vm.tags) { tag in tagChip(tag) }
+                if trimmedSearch.isEmpty && !vm.isLoading && !vm.pool.all.isEmpty {
+                    // 検索していないときはカテゴリ (ムード・シーン …) ごとに見出しを分ける。中はよく使われる順。
+                    ForEach(vm.categoryGroups) { group in
+                        VStack(alignment: .leading, spacing: DS.Space.header) {
+                            ImasSectionHeader(group.label, style: .small)
+                            ImasChipFlow {
+                                ForEach(group.tags) { tag in tagChip(tag) }
+                            }
+                        }
+                    }
+                } else {
+                    VStack(alignment: .leading, spacing: DS.Space.header) {
+                        ImasSectionHeader(trimmedSearch.isEmpty ? "よく使われるタグ" : "候補", style: .small)
+                        if vm.isLoading {
+                            ImasInlineLoading()
+                        } else if candidates.isEmpty {
+                            ImasNote("タグが見つかりません")
+                        } else {
+                            ImasChipFlow {
+                                ForEach(candidates) { tag in tagChip(tag) }
+                            }
                         }
                     }
                 }
@@ -108,7 +121,6 @@ struct SongTagPicker: View {
                 Text(vm.applyError ?? "")
             }
             .task { await vm.loadData() }
-            .onChange(of: searchText) { _, new in vm.scheduleSearch(new) }
     }
 
     @ViewBuilder

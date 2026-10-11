@@ -20,6 +20,11 @@ enum TagCategoryOptions {
         terms.map { ($0.value, $0.label) }
     }
 
+    /// カテゴリの生値 → 言葉。語彙に無い値は生値のまま (消さずに出す)。
+    static func label(for value: String, in domain: TagDomain) -> String {
+        options(for: domain).first { $0.value == value }?.label ?? value
+    }
+
     static func options(for domain: TagDomain) -> [(value: String, label: String)] {
         switch domain {
         case .song: return song

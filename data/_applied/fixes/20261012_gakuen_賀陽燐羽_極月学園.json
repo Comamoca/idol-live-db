@@ -1,0 +1,16 @@
+{
+ "title": "学マス: 賀陽燐羽の紹介文を公式の極月学園アイドル紹介どおりにする",
+ "fixes": [
+  {
+   "table": "idols",
+   "id": "gakuen_賀陽燐羽",
+   "fields": {
+    "description": "中等部ナンバーワンユニット『SyngUp!』の元リーダー。初星学園の特待生として1年3組に所属していた。961プロに移籍し、極月学園のアイドルとして『NEXT IDOL AUDITION』に参加する。",
+    "family_name": "賀陽",
+    "given_name": "燐羽"
+   },
+   "note": "紹介文が「SyngUp! の元リーダー」だけで、極月学園に移ったことが抜けていた。CV は idol_voice_actors にあるので紹介文からは外す (ほかの学マスのアイドルと同じ形)",
+   "source": "https://x.com/gkmas_official/status/1867170916213625339"
+  }
+ ]
+}

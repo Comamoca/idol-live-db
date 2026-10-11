@@ -1,5 +1,9 @@
 package com.fugaif.imaslivedb.ui.tags
 
+import uniffi.imas_core.songTagCategoryGroups
+import com.fugaif.imaslivedb.ui.designsystem.ImasSectionHeaderStyle
+import com.fugaif.imaslivedb.ui.designsystem.ImasSectionHeader
+import com.fugaif.imaslivedb.ui.designsystem.ImasTabs
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -74,6 +78,8 @@ fun TagListScreen(
     var showCreateSheet by remember { mutableStateOf(false) }
     var showCategoryMenu by remember { mutableStateOf(false) }
     var showSortMenu by remember { mutableStateOf(false) }
+    // 1 本の一覧か、カテゴリ (ムード・シーン …) ごとの見出しに分けるか。
+    var layout by remember { mutableStateOf(TagListLayout.FLAT) }
 
     LaunchedEffect(Unit) { viewModel.init(context) }
 
@@ -126,6 +132,12 @@ fun TagListScreen(
                     value = uiState.nameFilter,
                     onValueChange = { viewModel.setNameFilter(it) }
                 )
+                ImasTabs(
+                    labels = TagListLayout.entries.map { it.label },
+                    selection = layout.ordinal,
+                    onSelect = { layout = TagListLayout.entries[it] },
+                    modifier = Modifier.padding(horizontal = DS.Space.screen)
+                )
                 val tags = uiState.visibleTags
                 val state = when {
                     uiState.isLoading -> ImasContentState.Loading
@@ -149,11 +161,26 @@ fun TagListScreen(
                     }
                 ) {
                     LazyColumn(modifier = Modifier.fillMaxSize()) {
-                        itemsIndexed(tags, key = { _, tag -> tag.id }) { idx, tag ->
-                            val rank = if (uiState.sort == "popular") idx + 1 else null
-                            Column(Modifier.fillMaxWidth()) {
-                                TagListRow(tag = tag, rank = rank, onClick = { onTagClick(tag.id) })
-                                if (idx < tags.lastIndex) ImasRowDivider(inset = DS.Space.rowH)
+                        if (layout == TagListLayout.BY_CATEGORY) {
+                            // カテゴリごとに見出しを分ける。中は選んだ並び順のまま。順位は一覧のときだけ。まとめ方はコア。
+                            tags.groupedByCategory(::songTagCategoryGroups).forEach { group ->
+                                item(key = "header-${group.category}") {
+                                    ImasSectionHeader(group.label, count = "${group.tags.size}", style = ImasSectionHeaderStyle.SMALL)
+                                }
+                                itemsIndexed(group.tags, key = { _, tag -> tag.id }) { idx, tag ->
+                                    Column(Modifier.fillMaxWidth()) {
+                                        TagListRow(tag = tag, rank = null, onClick = { onTagClick(tag.id) })
+                                        if (idx < group.tags.lastIndex) ImasRowDivider(inset = DS.Space.rowH)
+                                    }
+                                }
+                            }
+                        } else {
+                            itemsIndexed(tags, key = { _, tag -> tag.id }) { idx, tag ->
+                                val rank = if (uiState.sort == "popular") idx + 1 else null
+                                Column(Modifier.fillMaxWidth()) {
+                                    TagListRow(tag = tag, rank = rank, onClick = { onTagClick(tag.id) })
+                                    if (idx < tags.lastIndex) ImasRowDivider(inset = DS.Space.rowH)
+                                }
                             }
                         }
                     }

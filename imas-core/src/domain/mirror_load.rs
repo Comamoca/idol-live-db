@@ -342,6 +342,8 @@ impl MirrorLoader {
             costume_wears: Vec::new(),
             ticket_sales: Vec::new(),
             show_archives: Vec::new(),
+            // 公演ごとの演者 (舞台の俳優など) はミラーの利用者 (項目の束) が使わないので読まない
+            show_cast_performers: Vec::new(),
             idol_facets: self.idol_facets,
             idol_hairstyles: self.idol_hairstyles,
             song_artists: self.song_artists,

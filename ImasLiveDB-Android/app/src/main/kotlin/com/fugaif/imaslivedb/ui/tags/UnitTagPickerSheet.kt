@@ -1,5 +1,6 @@
 package com.fugaif.imaslivedb.ui.tags
 
+import com.fugaif.imaslivedb.ui.components.rememberSearchFiltered
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -62,13 +63,14 @@ fun UnitTagPickerSheet(
     val trimmedQuery = query.trim()
     val exactMatchExists = tags.any { it.name == trimmedQuery }
 
-    LaunchedEffect(query) {
-        isLoading = true
-        if (trimmedQuery.isNotEmpty()) kotlinx.coroutines.delay(200)
+    // 全件を 1 回だけ取り、検索欄は手元で絞る (照合はコア)。打鍵ごとに取り直すと、古い語の応答が
+    // 後から届いて消した後の一覧を上書きしていた (取り消された取得が空の一覧を書くこともあった)。
+    LaunchedEffect(Unit) {
         val api = AppModule.from(context).communityApi
-        tags = runCatching { api.unitTagCatalog(search = trimmedQuery, sort = "popular") }.getOrDefault(emptyList())
+        tags = runCatching { api.unitTagCatalog(sort = "popular") }.getOrDefault(emptyList())
         isLoading = false
     }
+    val candidates = rememberSearchFiltered(tags, trimmedQuery) { listOf(it.name, it.description) }
 
     fun submit() {
         errorMessage = null
@@ -119,9 +121,9 @@ fun UnitTagPickerSheet(
                     ImasSectionHeader(title = if (trimmedQuery.isEmpty()) "よく使われるタグ" else "候補", style = ImasSectionHeaderStyle.SMALL)
                     when {
                         isLoading -> ImasInlineLoading()
-                        tags.isEmpty() -> ImasNote("タグが見つかりません")
+                        candidates.isEmpty() -> ImasNote("タグが見つかりません")
                         else -> ImasChipFlow {
-                            tags.forEach { tag ->
+                            candidates.forEach { tag ->
                                 val applied = alreadyAppliedTagIds.contains(tag.id)
                                 TagSelectChip(
                                     tag = tag,

@@ -216,7 +216,7 @@
       "key": "school",
       "kind": "single",
       "label": "学校",
-      "note": "学マスは初星学園。ほかは公式に分かるものだけ",
+      "note": "学マスは初星学園 (極月学園の 4 人を除く)。ほかは公式に分かるものだけ",
       "store": "computed",
       "taggable": false
     },

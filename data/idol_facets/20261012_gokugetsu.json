@@ -1,0 +1,127 @@
+{
+ "_note": "極月学園の 4 人の目の色 (公式 X の紹介画像) と話し方・家族 (ゲーム内の呼び方をまとめた呼称表)。",
+ "idol_facets": [
+  {
+   "idol_id": "gakuen_賀陽燐羽",
+   "facet": "eye_color",
+   "value": "青",
+   "source": "https://x.com/gkmas_official/status/1867170916213625339"
+  },
+  {
+   "idol_id": "gakuen_藍井撫子",
+   "facet": "eye_color",
+   "value": "紫",
+   "source": "https://x.com/gkmas_official/status/1867171802780467620"
+  },
+  {
+   "idol_id": "gakuen_白草四音",
+   "facet": "eye_color",
+   "value": "赤",
+   "source": "https://x.com/gkmas_official/status/1867172254590914641"
+  },
+  {
+   "idol_id": "gakuen_白草月花",
+   "facet": "eye_color",
+   "value": "ピンク",
+   "source": "https://x.com/gkmas_official/status/1867172776953700408",
+   "source_note": "赤みの強いピンク"
+  },
+  {
+   "idol_id": "gakuen_賀陽燐羽",
+   "facet": "first_person",
+   "values": [
+    "私"
+   ],
+   "source": "https://note.com/hatokita/n/n1287d4412305"
+  },
+  {
+   "idol_id": "gakuen_賀陽燐羽",
+   "facet": "producer_call",
+   "values": [
+    "プロデューサー"
+   ],
+   "source": "https://note.com/hatokita/n/n1287d4412305"
+  },
+  {
+   "idol_id": "gakuen_賀陽燐羽",
+   "facet": "speech_notes",
+   "value": "手毬・美鈴は呼び捨て、星南は「星南先輩」と呼ぶ",
+   "source": "https://note.com/hatokita/n/n1287d4412305"
+  },
+  {
+   "idol_id": "gakuen_藍井撫子",
+   "facet": "first_person",
+   "values": [
+    "あたくし"
+   ],
+   "source": "https://note.com/hatokita/n/n1287d4412305"
+  },
+  {
+   "idol_id": "gakuen_藍井撫子",
+   "facet": "speech_notes",
+   "value": "四音を「お姉さま」「四音お姉さま」、月花を「大姉さま」と呼ぶ。勝負に負けてから手毬を「手毬お姉さま」と呼ぶ",
+   "source": [
+    "https://note.com/hatokita/n/n1287d4412305",
+    "https://x.com/gkmas_official/status/1867171802780467620"
+   ]
+  },
+  {
+   "idol_id": "gakuen_白草四音",
+   "facet": "first_person",
+   "values": [
+    "私",
+    "ボク"
+   ],
+   "source": "https://note.com/hatokita/n/n1287d4412305",
+   "source_note": "ほとんど「私」。感情が高ぶると「ボク」になり、少年のような荒い口調に変わる"
+  },
+  {
+   "idol_id": "gakuen_白草四音",
+   "facet": "producer_call",
+   "values": [
+    "プロデューサー"
+   ],
+   "source": "https://note.com/hatokita/n/n1287d4412305"
+  },
+  {
+   "idol_id": "gakuen_白草四音",
+   "facet": "speech_notes",
+   "value": "普段は物腰柔らかで丁寧だが、追い詰められると一人称が「ボク」になり口調が荒くなる。月花を「月花姉様」と呼び、ほかのアイドルはフルネームで呼ぶことが多い",
+   "source": [
+    "https://x.com/gkmas_official/status/1867172254590914641",
+    "https://note.com/hatokita/n/n1287d4412305"
+   ]
+  },
+  {
+   "idol_id": "gakuen_白草四音",
+   "facet": "family",
+   "values": [
+    "白草月花 (姉)"
+   ],
+   "source": "https://note.com/hatokita/n/n1287d4412305",
+   "source_note": "四音は月花を「月花姉様」、月花は四音を「愚妹」と呼ぶ"
+  },
+  {
+   "idol_id": "gakuen_白草月花",
+   "facet": "first_person",
+   "values": [
+    "私"
+   ],
+   "source": "https://note.com/hatokita/n/n1287d4412305"
+  },
+  {
+   "idol_id": "gakuen_白草月花",
+   "facet": "speech_notes",
+   "value": "四音を「愚妹」、才能を認めていない相手を「雛鳥」と呼ぶ",
+   "source": "https://note.com/hatokita/n/n1287d4412305"
+  },
+  {
+   "idol_id": "gakuen_白草月花",
+   "facet": "family",
+   "values": [
+    "白草四音 (妹)"
+   ],
+   "source": "https://note.com/hatokita/n/n1287d4412305"
+  }
+ ]
+}

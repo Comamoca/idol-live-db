@@ -23,7 +23,8 @@ struct IdolTagPicker: View {
     }
 
     private var trimmedSearch: String { searchText.trimmingCharacters(in: .whitespaces) }
-    private var exactMatchExists: Bool { vm.tags.contains { $0.name == trimmedSearch } }
+    private var exactMatchExists: Bool { vm.pool.containsName(trimmedSearch) }
+    private var candidates: [CommunityTag] { vm.pool.matching(trimmedSearch) }
 
     var body: some View {
         NavigationStack {
@@ -47,9 +48,9 @@ struct IdolTagPicker: View {
                     }
                 }
 
-                if trimmedSearch.isEmpty && !vm.isLoading && !vm.tags.isEmpty {
+                if trimmedSearch.isEmpty && !vm.isLoading && !vm.pool.all.isEmpty {
                     // 検索していないときはカテゴリ (性格・容姿 …) ごとに見出しを分ける。中はよく使われる順。
-                    ForEach(vm.categoryGroups, id: \.label) { group in
+                    ForEach(vm.categoryGroups) { group in
                         VStack(alignment: .leading, spacing: DS.Space.header) {
                             ImasSectionHeader(group.label, style: .small)
                             ImasChipFlow {
@@ -62,11 +63,11 @@ struct IdolTagPicker: View {
                         ImasSectionHeader(trimmedSearch.isEmpty ? "よく使われるタグ" : "候補", style: .small)
                         if vm.isLoading {
                             ImasInlineLoading()
-                        } else if vm.tags.isEmpty {
+                        } else if candidates.isEmpty {
                             ImasNote("タグが見つかりません")
                         } else {
                             ImasChipFlow {
-                                ForEach(vm.tags) { tag in tagChip(tag) }
+                                ForEach(candidates) { tag in tagChip(tag) }
                             }
                         }
                     }
@@ -104,7 +105,6 @@ struct IdolTagPicker: View {
                 Text(vm.applyError ?? "")
             }
             .task { await vm.loadData() }
-            .onChange(of: searchText) { _, new in vm.scheduleSearch(new) }
         }
     }
 
