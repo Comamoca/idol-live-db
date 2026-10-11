@@ -1,0 +1,105 @@
+{
+ "_note": "確認待ち (unconfirmed_appearance_20261010.json) の 10 人のうち、2026-10-12 に公式画像 (各ブランド公式サイトのアイドル紹介の立ち絵・カード絵) を 1 人 3 枚以上見て髪色が決まった 7 人。判定は data/research/appearance_20261010/hair_image_check_20261012.csv。",
+ "idol_hairstyles": [
+  {
+   "idol_id": "cg_岡崎泰葉",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "青",
+   "hair_length": "ボブ〜ミディアム",
+   "bangs": "ぱっつん",
+   "source": [
+    "https://cinderellagirls.idolmaster-official.jp/idol/yasuha/"
+   ],
+   "source_note": "2026-10-12 公式画像で目視: 立ち絵 (灰色の背景)・カード 2 枚とも濃紺。黒ではなく青みがはっきり見える。顎までのおかっぱ、ぱっつん前髪"
+  },
+  {
+   "idol_id": "cg_浅利七海",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "青",
+   "hair_length": "ロング",
+   "styles": [
+    "ウェーブ"
+   ],
+   "bangs": "ぱっつん",
+   "source": [
+    "https://cinderellagirls.idolmaster-official.jp/idol/nanami/"
+   ],
+   "source_note": "2026-10-12 公式画像で目視: 立ち絵・カード 2 枚とも彩度の高い青〜青紫で、パステルの水色ではない。腰までのウェーブ、ぱっつん前髪"
+  },
+  {
+   "idol_id": "cg_大石泉",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "緑",
+   "hair_length": "ロング",
+   "styles": [
+    "ストレート"
+   ],
+   "source": [
+    "https://cinderellagirls.idolmaster-official.jp/idol/izumi/"
+   ],
+   "source_note": "2026-10-12 公式画像で目視: 立ち絵 (灰色の背景) とカード 1_1 は濃い緑がはっきり。暖色光のカード 2_1 も黒ではなく緑がかる。長いストレート"
+  },
+  {
+   "idol_id": "sc_浅倉透",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "紫",
+   "hair_color_secondary": "青",
+   "hair_length": "ショート",
+   "styles": [
+    "アホ毛"
+   ],
+   "source": [
+    "https://shinycolors.idolmaster-official.jp/idol/noctchill/toru/"
+   ],
+   "source_note": "2026-10-12 公式画像で目視: 立ち絵 2 枚 (灰色の背景) とも地はくすんだ紫 (茶ではない。色相は紫〜赤紫)、毛先が淡い水色のグラデーション。カード 3 枚も同じ。ショート、アホ毛。オーナー確認: ラベンダーアッシュで毛先だけ青 (2色目を水色→青)"
+  },
+  {
+   "idol_id": "876_灯里愛夏",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "赤",
+   "hair_color_secondary": "白・銀",
+   "hair_length": "ボブ〜ミディアム",
+   "source": [
+    "https://idolmaster-official.jp/va-liv/manaka"
+   ],
+   "source_note": "2026-10-12 公式画像で目視: アイドル・トレーニー・プライベートの 3 枚とも赤。前髪の一房と毛先が白。肩につかないボブ"
+  },
+  {
+   "idol_id": "876_サラ_レトラ_オリヴェイラ_ウタガワ",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "金",
+   "hair_length": "ショート",
+   "styles": [
+    "三つ編み・編み込み"
+   ],
+   "source": [
+    "https://idolmaster-official.jp/va-liv/letora"
+   ],
+   "source_note": "2026-10-12 公式画像で目視: 3 枚とも金髪で根元が黒 (プリン)。ピンク寄りの赤と青緑のメッシュが入る (2 色あり、青緑は青/緑/水色のどれとも決めにくいので 2 色目は空)。ショート、片側に細い三つ編み"
+  },
+  {
+   "idol_id": "876_上水流宇宙",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "青",
+   "hair_color_secondary": "紫",
+   "hair_length": "ロング",
+   "styles": [
+    "ストレート"
+   ],
+   "accessories": [
+    "リボン"
+   ],
+   "source": [
+    "https://idolmaster-official.jp/va-liv/cosmo"
+   ],
+   "source_note": "2026-10-12 公式画像で目視: 3 枚とも根元〜上半分が濃い青 (色相は青)、下へ紫のグラデーション。アイドル・トレーニーの絵は下ろしたストレートのロングにリボン (プライベートの絵だけ三つ編み 1 本なので髪型は基本の絵に合わせた)"
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "source": "owner",
+ "idol_hairstyles": [
+  {
+   "idol_id": "cg_緒方智絵里",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "赤",
+   "hair_length": "ボブ〜ミディアム",
+   "styles": [
+    "ツインテール"
+   ],
+   "bangs": "ぱっつん",
+   "source": "owner",
+   "source_note": "オーナー確認: 赤茶 (語彙は赤に寄せる)。公式画像では赤〜ワインと茶で見え方が割れていた"
+  }
+ ]
+}
