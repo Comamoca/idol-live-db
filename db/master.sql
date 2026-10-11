@@ -2495,6 +2495,9 @@ INSERT INTO "idol_voice_actors" VALUES('gakuen_倉本千奈__伊藤舞音','gaku
 INSERT INTO "idol_voice_actors" VALUES('765as_音無小鳥__滝田樹里','765as_音無小鳥','滝田樹里','2005-07-26',NULL);
 INSERT INTO "idol_voice_actors" VALUES('961_奥空心白__田中あいみ','961_奥空心白','田中あいみ','2021-10-14',NULL);
 INSERT INTO "idol_voice_actors" VALUES('gakuen_賀陽燐羽__浅見香月','gakuen_賀陽燐羽','浅見香月','2024-12-12',NULL);
+INSERT INTO "idol_voice_actors" VALUES('gakuen_藍井撫子__若井友希','gakuen_藍井撫子','若井友希','2024-12-12',NULL);
+INSERT INTO "idol_voice_actors" VALUES('gakuen_白草四音__田中美海','gakuen_白草四音','田中美海','2024-12-12',NULL);
+INSERT INTO "idol_voice_actors" VALUES('gakuen_白草月花__芹澤優','gakuen_白草月花','芹澤優','2024-12-12',NULL);
 INSERT INTO "idol_voice_actors" VALUES('sidem_姫野かのん__伊能幸輝','sidem_姫野かのん','伊能幸輝','2026-08-28',NULL);
 CREATE TABLE idols (id TEXT PRIMARY KEY NOT NULL, brand_id TEXT NOT NULL, name TEXT NOT NULL, name_kana TEXT, name_romaji TEXT, color TEXT, sort_order INTEGER NOT NULL, birthday TEXT, blood_type TEXT, height REAL, weight REAL, birth_place TEXT, age INTEGER, bust REAL, waist REAL, hip REAL, constellation TEXT, hobbies TEXT, talents TEXT, description TEXT, gender TEXT, handedness TEXT, family_name TEXT, given_name TEXT, nickname TEXT, debut_date TEXT, attribute TEXT, is_external INTEGER NOT NULL DEFAULT 0, aliases TEXT);
 INSERT INTO "idols" VALUES('sidem_花園百々人','sidem','花園百々人','はなぞのももひと',NULL,'#A2D55E',6048,'--06-30','A',177.0,58.0,'東京',17,NULL,NULL,NULL,'蟹座','なし','人に愛されること❤','柔和で人懐っこい人気者だが自分のことを話したがらない男性アイドル。C.FIRSTメンバー。CV: 宮﨑雅也。','male',NULL,'花園','百々人',NULL,'2014-07-17','mental',0,NULL);
