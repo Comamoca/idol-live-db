@@ -1,0 +1,436 @@
+[
+ {
+  "idol_id": "sc_七草にちか",
+  "name": "七草にちか",
+  "first_person": "私",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_三峰結華",
+  "name": "三峰結華",
+  "first_person": [
+   {
+    "form": "三峰",
+    "scene": "普段"
+   },
+   {
+    "form": "私",
+    "scene": "真面目なとき"
+   }
+  ],
+  "producer_call": "Pたん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "他のアイドルをニックネーム(まみみん、こがたん、さくやん等)で呼ぶ。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ",
+   "https://note.com/philia_imas888/n/ne193749018cc"
+  ]
+ },
+ {
+  "idol_id": "sc_八宮めぐる",
+  "name": "八宮めぐる",
+  "first_person": "わたし",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_和泉愛依",
+  "name": "和泉愛依",
+  "first_person": "うち",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://note.com/philia_imas888/n/ne193749018cc"
+  ]
+ },
+ {
+  "idol_id": "sc_園田智代子",
+  "name": "園田智代子",
+  "first_person": "私",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_大崎甘奈",
+  "name": "大崎甘奈",
+  "first_person": [
+   {
+    "form": "甘奈",
+    "scene": "普段"
+   },
+   {
+    "form": "私",
+    "scene": "時々"
+   }
+  ],
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "姉の甜花を「甜花ちゃん」と呼ぶ。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ",
+   "https://note.com/philia_imas888/n/ne193749018cc"
+  ]
+ },
+ {
+  "idol_id": "sc_大崎甜花",
+  "name": "大崎甜花",
+  "first_person": "甜花",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "妹の甘奈を「なーちゃん」と呼ぶ。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ",
+   "https://note.com/philia_imas888/n/ne193749018cc"
+  ]
+ },
+ {
+  "idol_id": "sc_小宮果穂",
+  "name": "小宮果穂",
+  "first_person": "あたし",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://note.com/philia_imas888/n/ne193749018cc"
+  ]
+ },
+ {
+  "idol_id": "sc_市川雛菜",
+  "name": "市川雛菜",
+  "first_person": "雛菜",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_幽谷霧子",
+  "name": "幽谷霧子",
+  "first_person": "私",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "人や物に「さん」を付けて呼ぶ。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ",
+   "https://note.com/philia_imas888/n/ne193749018cc"
+  ]
+ },
+ {
+  "idol_id": "sc_斑鳩ルカ",
+  "name": "斑鳩ルカ",
+  "first_person": "私",
+  "producer_call": "プロデューサー",
+  "politeness": "他のアイドルに「オマエ」「テメェ」など荒い言葉を使うとされる",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://note.com/philia_imas888/n/ne193749018cc"
+  ]
+ },
+ {
+  "idol_id": "sc_月岡恋鐘",
+  "name": "月岡恋鐘",
+  "first_person": "うち",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "長崎弁で話す。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ"
+  ]
+ },
+ {
+  "idol_id": "sc_有栖川夏葉",
+  "name": "有栖川夏葉",
+  "first_person": "私",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_杜野凛世",
+  "name": "杜野凛世",
+  "first_person": "凛世",
+  "producer_call": "プロデューサーさま",
+  "politeness": "誰に対しても敬語で、「さん」付けで話す",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ"
+  ]
+ },
+ {
+  "idol_id": "sc_桑山千雪",
+  "name": "桑山千雪",
+  "first_person": "私",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_樋口円香",
+  "name": "樋口円香",
+  "first_person": "私",
+  "producer_call": "プロデューサー",
+  "politeness": "プロデューサーに冷たい態度を取る",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ"
+  ]
+ },
+ {
+  "idol_id": "sc_櫻木真乃",
+  "name": "櫻木真乃",
+  "first_person": "私",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [
+   "ほわ…",
+   "むんっ"
+  ],
+  "tone_notes": "丁寧でおっとりした話し方。驚いたときなどに「ほわ…」「ほわっ」と言い、気合を入れるときは「むんっ」と言う。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://dic.nicovideo.jp/a/櫻木真乃"
+  ]
+ },
+ {
+  "idol_id": "sc_浅倉透",
+  "name": "浅倉透",
+  "first_person": "私",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_田中摩美々",
+  "name": "田中摩美々",
+  "first_person": "私",
+  "producer_call": "プロデューサー",
+  "politeness": "プロデューサーには敬語を使う",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ",
+   "https://note.com/philia_imas888/n/ne193749018cc"
+  ]
+ },
+ {
+  "idol_id": "sc_白瀬咲耶",
+  "name": "白瀬咲耶",
+  "first_person": "私",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_福丸小糸",
+  "name": "福丸小糸",
+  "first_person": "わたし",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_緋田美琴",
+  "name": "緋田美琴",
+  "first_person": "私",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_芹沢あさひ",
+  "name": "芹沢あさひ",
+  "first_person": "わたし",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_西城樹里",
+  "name": "西城樹里",
+  "first_person": "アタシ",
+  "producer_call": "プロデューサー",
+  "politeness": "言葉遣いは乱暴とされる",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ"
+  ]
+ },
+ {
+  "idol_id": "sc_郁田はるき",
+  "name": "郁田はるき",
+  "first_person": "わたし",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_鈴木羽那",
+  "name": "鈴木羽那",
+  "first_person": "あたし",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518"
+  ]
+ },
+ {
+  "idol_id": "sc_風野灯織",
+  "name": "風野灯織",
+  "first_person": "私",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://note.com/philia_imas888/n/ne193749018cc"
+  ]
+ },
+ {
+  "idol_id": "sc_黛冬優子",
+  "name": "黛冬優子",
+  "first_person": "ふゆ",
+  "producer_call": "プロデューサー",
+  "politeness": "素の状態では口が悪いとされる(表では「ふゆ」を使う)",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表",
+   "https://gameo.jp/imassc/146518",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ",
+   "https://note.com/philia_imas888/n/ne193749018cc"
+  ]
+ }
+]

@@ -1,0 +1,228 @@
+[
+ {
+  "idol_id": "gakuen_倉本千奈",
+  "name": "倉本千奈",
+  "first_person": "わたくし",
+  "producer_call": "先生",
+  "politeness": "お嬢様口調で、プロデューサーを「先生」と呼ぶ",
+  "endings": [
+   "〜ですわ"
+  ],
+  "catchphrases": [],
+  "tone_notes": "お嬢様らしい丁寧な話し方で、語尾に「ですわ」を付ける。プロデューサーを先生と慕う。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/倉本千奈",
+   "https://ja.wikipedia.org/wiki/学園アイドルマスター"
+  ]
+ },
+ {
+  "idol_id": "gakuen_十王星南",
+  "name": "十王星南",
+  "first_person": "私",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "堂々とした先輩口調。Pには「プロデューサー」、場面により「先輩」とも呼ぶ。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/"
+  ]
+ },
+ {
+  "idol_id": "gakuen_姫崎莉波",
+  "name": "姫崎莉波",
+  "first_person": "私",
+  "producer_call": "プロデューサーくん",
+  "politeness": "砕けた優しい口調(幼馴染的な姉口調)",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "面倒見のよい年上の口調で、Pを「プロデューサーくん」「きみ」と呼ぶ。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/姫崎莉波"
+  ]
+ },
+ {
+  "idol_id": "gakuen_月村手毬",
+  "name": "月村手毬",
+  "first_person": "私",
+  "producer_call": "プロデューサー",
+  "politeness": "丁寧語基調に「ね」「よ」を交える",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "ツンとした丁寧語寄りの話し方で、強気な物言いも多い。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/月村手毬"
+  ]
+ },
+ {
+  "idol_id": "gakuen_有村麻央",
+  "name": "有村麻央",
+  "first_person": "ボク",
+  "producer_call": "プロデューサー",
+  "politeness": "丁寧語に「よ」を添える",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "ボクっ子で、丁寧語まじりに自信を見せる話し方。ときにPを「キミ」と呼ぶ。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/有村麻央"
+  ]
+ },
+ {
+  "idol_id": "gakuen_秦谷美鈴",
+  "name": "秦谷美鈴",
+  "first_person": "わたし",
+  "producer_call": "プロデューサー",
+  "politeness": "丁寧語が中心",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "ゆったり穏やかな丁寧語の話し方。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/秦谷美鈴"
+  ]
+ },
+ {
+  "idol_id": "gakuen_篠澤広",
+  "name": "篠澤広",
+  "first_person": "わたし",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "Pをからかったり試したりする言動が多い。ときに「鬼」「悪魔」と呼ぶ。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/篠澤広"
+  ]
+ },
+ {
+  "idol_id": "gakuen_紫雲清夏",
+  "name": "紫雲清夏",
+  "first_person": "あたし",
+  "producer_call": "Pっち",
+  "politeness": "くだけたタメ口寄り",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "ギャル系のくだけた話し方で、Pを「Pっち」と呼ぶ。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/紫雲清夏",
+   "https://ja.wikipedia.org/wiki/学園アイドルマスター"
+  ]
+ },
+ {
+  "idol_id": "gakuen_花海佑芽",
+  "name": "花海佑芽",
+  "first_person": "あたし",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "元気で感情の起伏が大きく、姉の咲季が絡むと声が大きくなる。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/花海佑芽"
+  ]
+ },
+ {
+  "idol_id": "gakuen_花海咲季",
+  "name": "花海咲季",
+  "first_person": "わたし",
+  "producer_call": "プロデューサー",
+  "politeness": "Pを呼び捨て調で呼ぶ強気な口調",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "勝ち気で負けず嫌い、感嘆符の多い強気な言い回し。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/花海咲季"
+  ]
+ },
+ {
+  "idol_id": "gakuen_葛城リーリヤ",
+  "name": "葛城リーリヤ",
+  "first_person": "わたし",
+  "producer_call": "センパイ",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "控えめな話し方で、Pを「センパイ」と呼ぶ。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/葛城リーリヤ"
+  ]
+ },
+ {
+  "idol_id": "gakuen_藤田ことね",
+  "name": "藤田ことね",
+  "first_person": "あたし",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "語尾を伸ばし甘えるように呼びかける(「プロデューサぁ〜」)。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/藤田ことね"
+  ]
+ },
+ {
+  "idol_id": "gakuen_賀陽燐羽",
+  "name": "賀陽燐羽",
+  "first_person": "私",
+  "producer_call": null,
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "そっけなく言動がきつめの話し方(ファン評)。",
+  "sources": [
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/賀陽燐羽"
+  ]
+ },
+ {
+  "idol_id": "gakuen_雨夜燕",
+  "name": "雨夜燕",
+  "first_person": "私",
+  "producer_call": null,
+  "politeness": "高慢で尊大な口調",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "高慢で強気、厳しさの裏に面倒見がある話し方。",
+  "sources": [
+   "https://game8.jp/gakuen-idolmaster/793144",
+   "https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表",
+   "https://milacle39.com/2026/05/04/gakumasucall/",
+   "https://dic.nicovideo.jp/a/雨夜燕"
+  ]
+ }
+]

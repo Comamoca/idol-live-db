@@ -306,5 +306,69 @@
    "https://starlit-season.idolmaster.jp/idol/idol.php?idol=hibiki-ganaha",
    "https://animemiru.jp/articles/15602"
   ]
+ },
+ {
+  "idol_id": "765as_亜夜",
+  "name": "亜夜",
+  "first_person": "あたし",
+  "producer_call": "プロデューサー",
+  "politeness": "先輩はさん付け",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "言い切りの強い語尾が目立つ(台詞から)。",
+  "sources": [
+   "https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物",
+   "https://dic.nicovideo.jp/a/アイドルマスター:呼称表"
+  ]
+ },
+ {
+  "idol_id": "765as_玲音",
+  "name": "玲音",
+  "first_person": "アタシ",
+  "producer_call": "プロデューサー",
+  "politeness": "フランクで快活",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "フランクで快活。765プロの面々は苗字で呼ぶ。",
+  "sources": [
+   "https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物",
+   "https://dic.nicovideo.jp/a/アイドルマスター:呼称表"
+  ]
+ },
+ {
+  "idol_id": "765as_詩花",
+  "name": "詩花",
+  "first_person": "私",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "黒井社長の口調をまねることがある。",
+  "sources": [
+   "https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物",
+   "https://dic.nicovideo.jp/a/アイドルマスター:呼称表",
+   "https://dic.nicovideo.jp/a/詩花"
+  ]
+ },
+ {
+  "idol_id": "765as_音無小鳥",
+  "name": "音無小鳥",
+  "first_person": [
+   "あたし",
+   "わたくし",
+   "私"
+  ],
+  "producer_call": "プロデューサーさん",
+  "politeness": "プロデューサーにはさん付けで呼ぶ",
+  "endings": [],
+  "catchphrases": [
+   "ピヨッ！"
+  ],
+  "tone_notes": "驚くと「ピヨッ！」と鳴く。",
+  "sources": [
+   "https://sparql.crssnky.xyz/spql/imas/query",
+   "https://dic.nicovideo.jp/a/アイドルマスター:呼称表",
+   "https://dic.nicovideo.jp/a/音無小鳥"
+  ]
  }
 ]

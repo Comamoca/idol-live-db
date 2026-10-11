@@ -17,6 +17,12 @@ use std::sync::OnceLock;
 const PERSONA_FILES: &[&str] = &[
     include_str!("../../../../data/personas/765as.json"),
     include_str!("../../../../data/personas/ml.json"),
+    include_str!("../../../../data/personas/cg.json"),
+    include_str!("../../../../data/personas/sc.json"),
+    include_str!("../../../../data/personas/gakuen.json"),
+    include_str!("../../../../data/personas/sidem.json"),
+    include_str!("../../../../data/personas/876.json"),
+    include_str!("../../../../data/personas/961.json"),
 ];
 const CALL_NAMES: &str = include_str!("../../../../data/personas/call_names.json");
 

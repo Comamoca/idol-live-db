@@ -1,0 +1,295 @@
+﻿ブランド,名前,一人称,プロデューサーの呼び方,語尾,口癖,出典,自信,確認
+cg,アナスタシア,私,プロデューサー,,,https://dic.nicovideo.jp/a/アナスタシア(アイドルマスター) https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,呼び方は台詞中の「プロデューサー」から。ニコニコ大百科のみ。一部イベントで「にゃ」付きの語尾あり。
+cg,クラリス,私,○○様 (「プロデューサー様」とも),〜ですね／〜かしら,,https://dic.nicovideo.jp/a/クラリス(アイドルマスター) https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,呼び方はニコニコ大百科のみ。「様」付けは Wikipedia でも確認。
+cg,ヘレン,私,あなた,〜わ／〜よ／〜なさい,世界レベル／証明してあげる,https://dic.nicovideo.jp/a/ヘレン(アイドルマスター) https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,プロデューサーへの呼び方は明示なし。台詞中の「あなた」から。ニコニコ大百科のみ。
+cg,一ノ瀬志希,あたし,キミ,〜だね,にゃーっはっは,https://dic.nicovideo.jp/a/一ノ瀬志希 https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,呼び方は台詞中の「キミ」から。ニコニコ大百科のみ。
+cg,上条春菜,アタシ / 私 (両方使う),プロデューサーさん,,まぁまぁ眼鏡どうぞ,https://dic.nicovideo.jp/a/上条春菜 https://sparql.crssnky.xyz/spql/imas/query,中,一人称は im@sparql もアタシ・私の両方。ニコニコ大百科も両方使うと記載、既定は不明。
+cg,丹羽仁美,アタシ,,〜よね／〜わけ,エ?／マジ,https://dic.nicovideo.jp/a/丹羽仁美 https://sparql.crssnky.xyz/spql/imas/query,中,プロデューサーの呼び方は確認できず。
+cg,二宮飛鳥,ボク,キミ,〜さ／〜かい?／〜だね,やれやれ,https://dic.nicovideo.jp/a/二宮飛鳥 https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,呼び方はニコニコ大百科の記述(プロデューサーへは「キミ」)。語尾・口癖は台詞引用からの読み取り。
+cg,仙崎恵磨,アタシ,,,,https://dic.nicovideo.jp/a/仙崎恵磨 https://sparql.crssnky.xyz/spql/imas/query,中,呼び方は台詞中で「プロデューサー」と呼びかけるのみ。呼び方の記述なし。
+cg,佐城雪美,私,,,,https://dic.nicovideo.jp/a/佐城雪美 https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,低,ニコニコ大百科は一人称を「ぼく」と記載する一方で台詞では「私」が多く、食い違い。呼び方も不確か。
+cg,兵藤レナ,私,プロデューサー (「貴方」も),〜わ／〜わね／〜かしら／〜よ,,https://dic.nicovideo.jp/a/兵藤レナ https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,北条加蓮,アタシ / 私 (初期はアタシ、後期は私が多い),プロデューサー / ○○さん,〜だよ／〜じゃん／〜だってば,,https://dic.nicovideo.jp/a/北条加蓮 https://sparql.crssnky.xyz/spql/imas/query,中,一人称は im@sparql もアタシ・私の両方。
+cg,及川雫,私,○○さん (「Pさん」「プロデューサーさん」も),〜ですー／〜ますー／〜ですよー,もぉー,https://dic.nicovideo.jp/a/及川雫 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,吉岡沙紀,アタシ,,〜っす,,https://dic.nicovideo.jp/a/吉岡沙紀 https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,プロデューサーの呼び方は確認できず。
+cg,喜多見柚,アタシ (名前の「柚」と言うことも),○○サン,〜だよ／〜じゃん／〜ちゃお,へへっ／なーんて!,https://dic.nicovideo.jp/a/喜多見柚 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,堀裕子,私 (「ユッコちゃん」と自称する例もある),○○プロデューサー,〜デース／〜ですよ,えいっ!,https://dic.nicovideo.jp/a/堀裕子 https://sparql.crssnky.xyz/spql/imas/query,中,im@sparql に「ユッコちゃん」あり。ニコニコ大百科では台詞中で私を使用。
+cg,大原みちる,あたし,○○プロデューサー / ○○さん,〜ですね／〜ですよ,あははー!,https://dic.nicovideo.jp/a/大原みちる https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,大石泉,私,○○P,〜わ,,https://dic.nicovideo.jp/a/大石泉 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。語尾は台詞中の例。
+cg,姫川友紀,あたし,プロデューサー,〜だな〜／〜ぞっ,,https://dic.nicovideo.jp/a/姫川友紀 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,小室千奈美,私,○○さん (「あなた」も),〜わね／〜わ／〜よ,,https://dic.nicovideo.jp/a/小室千奈美 https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,ニコニコ大百科のみ。
+cg,小関麗奈,アタシ / レイナサマ,アンタ,〜わ／〜わよ／〜なさい,アーッハッハッ,https://dic.nicovideo.jp/a/小関麗奈 https://sparql.crssnky.xyz/spql/imas/query,中,im@sparql はアタシ・レイナサマ。呼び方はニコニコ大百科の記述。
+cg,川島瑞樹,私,○○君 (お姉さん風),〜わよね／〜なんだから,わかるわ,https://dic.nicovideo.jp/a/川島瑞樹 https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,口癖「わかるわ」は Wikipedia・ニコニコ大百科の両方で確認。
+cg,成宮由愛,私,プロデューサーさん → 親愛が上がると ○○さん,〜ですか?／〜ください,えへへ,https://dic.nicovideo.jp/a/成宮由愛 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,日下部若葉,私,プロデューサーさん,〜ですよ〜,,https://dic.nicovideo.jp/a/日下部若葉 https://sparql.crssnky.xyz/spql/imas/query,中,一人称は im@sparql。呼び方は台詞中の用例。
+cg,月宮雅,みやび (「みやびぃ」),,,,https://dic.nicovideo.jp/a/月宮雅 https://sparql.crssnky.xyz/spql/imas/query,低,呼び方確認できず。一人称は im@sparql の「みやびぃ」。
+cg,木場真奈美,私,プロデューサー君,〜だろう／〜かい／〜よ,,https://dic.nicovideo.jp/a/木場真奈美 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,村上巴,うち,○○ (名前の呼び捨て),〜じゃ／〜じゃけん／〜けぇ,,https://dic.nicovideo.jp/a/村上巴 https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,ニコニコ大百科のみ。
+cg,松尾千鶴,私,,,,https://dic.nicovideo.jp/a/松尾千鶴 https://sparql.crssnky.xyz/spql/imas/query,低,呼び方確認できず。ニコニコ大百科の記述が散漫で信頼度低め。
+cg,柊志乃,私,,〜わよ／〜のよね,,https://dic.nicovideo.jp/a/柊志乃 https://sparql.crssnky.xyz/spql/imas/query,低,呼び方確認できず。
+cg,桃井あずき,あずき (私とも),プロデューサーさん / プロデューサー,〜よっ／〜だよ／〜ね,〜大作戦,https://dic.nicovideo.jp/a/桃井あずき https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,棟方愛海,あたし (「あつみ」と自称する例も),○○プロデューサー,〜だよ／〜だね／〜ねっ,うひひ,https://dic.nicovideo.jp/a/棟方愛海 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,榊原里美,私 (わたし),プロデューサーさん (初期は「お兄ちゃん」),〜ですよぉ／〜すぅ,ほぇぇ／ほわぁ／うふふ,https://dic.nicovideo.jp/a/榊原里美 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,櫻井桃華,わたくし,Pちゃま / プロデューサーちゃま (アナタとも),〜ですわ／〜ですの／〜ですわね,ごきげんよう,https://dic.nicovideo.jp/a/櫻井桃華 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。U149 では「ちゃま」と呼ばない記載あり。
+cg,水野翠,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/水野翠 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,浅利七海,七海,,〜れす〜／〜のれす,れす〜,https://dic.nicovideo.jp/a/浅利七海 https://sparql.crssnky.xyz/spql/imas/query,中,呼び方は確認できず。
+cg,海老原菜帆,私,○○さん / プロデューサーさん,〜ですよ〜,,https://dic.nicovideo.jp/a/海老原菜帆 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,片桐早苗,あたし (「お姉さん」と自称することも),○○君 → プロデューサー (「キミ」も),〜だぞ?／〜してね,,https://dic.nicovideo.jp/a/片桐早苗 https://sparql.crssnky.xyz/spql/imas/query,中,im@sparql はあたし・お姉さん。
+cg,的場梨沙,アタシ,アンタ,〜しなさいよ／〜だし／〜よね,ホントだし,https://dic.nicovideo.jp/a/的場梨沙 https://sparql.crssnky.xyz/spql/imas/query,中,呼び方は台詞中の用例から。
+cg,相馬夏美,私,プロデューサーさん,〜わね／〜わ,,https://dic.nicovideo.jp/a/相馬夏美 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,神崎蘭子,私,,,,https://dic.nicovideo.jp/a/神崎蘭子 https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,プロデューサーの呼び方は記載なし。
+cg,結城晴,オレ (「はるちん」と自称する例もあり),,,,https://dic.nicovideo.jp/a/結城晴 https://sparql.crssnky.xyz/spql/imas/query,中,im@sparql は「はるちん」「オレ」。ニコニコ大百科はオレ。呼び方記載なし。
+cg,若林智香,アタシ,プロデューサーさん,〜ですっ／〜ですよ,,https://dic.nicovideo.jp/a/若林智香 https://sparql.crssnky.xyz/spql/imas/query,低,im@sparql はアタシ、ニコニコ大百科の台詞引用は「私」で食い違い。
+cg,藤本里奈,アタシ,○○プロデューサー,,超ウケる／キャハハ,https://dic.nicovideo.jp/a/藤本里奈 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,西川保奈美,私,○○さん,〜してあげる／〜なさい,,https://dic.nicovideo.jp/a/西川保奈美 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,赤西瑛梨華,瑛梨華 (私的な場面ではアタシ),プロデューサーちゃん,,バッキュン☆／O・MA・KA・SE☆,https://dic.nicovideo.jp/a/赤西瑛梨華 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,遊佐こずえ,こずえ,プロデューサー (「ぷろでゅーさー」と平仮名表記),〜のー／〜よー／〜ねー,ふわぁ／えへー,https://dic.nicovideo.jp/a/遊佐こずえ https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,間中美里,私,プロデューサー / プロデューサーさん,〜ねぇ／〜でしょう?,,https://dic.nicovideo.jp/a/間中美里 https://sparql.crssnky.xyz/spql/imas/query,低,ニコニコ大百科のみ。語尾は台詞中の例。
+cg,高垣楓,私,プロデューサー (「あなた」も),〜ですよ／〜ですね／〜ましょう,,https://dic.nicovideo.jp/a/高垣楓 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,鷹富士茄子,私,,〜ですね♪／〜ですよ〜,,https://dic.nicovideo.jp/a/鷹富士茄子 https://sparql.crssnky.xyz/spql/imas/query,中,呼び方の記載なし。
+cg,龍崎薫,かおる (自分の名前),せんせぇ,〜だよ／〜だね,やっほー!,https://dic.nicovideo.jp/a/龍崎薫 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。
+cg,イム・ユジン,,,,,,低,ニコニコ大百科に話し方の記載なし。im@sparqlにも一人称なし
+cg,ケイト,私,アナタ,〜デス／〜ネ／〜ヨ,ハァイ,https://dic.nicovideo.jp/a/%E3%82%B1%E3%82%A4%E3%83%88(%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC) https://sparql.crssnky.xyz/spql/imas/query,中,プロデューサーは「プロデューサー」とも呼ぶ。ニコニコ大百科のみ
+cg,メアリー・コクラン,アタシ,ダーリン,〜ワ／〜ヨ／〜ネ／〜わよ,細かいコト気にするとモテないわよ！,https://dic.nicovideo.jp/a/%E3%83%A1%E3%82%A2%E3%83%AA%E3%83%BC%E3%83%BB%E3%82%B3%E3%82%AF%E3%83%A9%E3%83%B3 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。口癖は記事に紹介されたもの
+cg,三好紗南,あたし,プロデューサーさん,〜だよ／〜だね／〜じゃないかな,,https://dic.nicovideo.jp/a/%E4%B8%89%E5%A5%BD%E7%B4%97%E5%8D%97 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。ときどき名前の「紗南」で自称
+cg,上田鈴帆,ウチ,○○しゃん（名前+しゃん）,〜けん／〜たい／〜ばい／〜よか,,https://dic.nicovideo.jp/a/%E4%B8%8A%E7%94%B0%E9%88%B4%E5%B8%86 https://sparql.crssnky.xyz/spql/imas/query,中,Pの呼び方はプレイヤー名の伏せ字入りで、「プロデューサー」と呼ぶかは未確認。一人称の「鈴帆」自称は未確認
+cg,久川凪,凪,P,,,https://dic.nicovideo.jp/a/%E4%B9%85%E5%B7%9D%E5%87%AA,中,一人称は「凪」（im@sparqlは空）。ニコニコ大百科のみ
+cg,五十嵐響子,私,プロデューサー,,,https://dic.nicovideo.jp/a/%E4%BA%94%E5%8D%81%E5%B5%90%E9%9F%BF%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,低,一人称は確認できず。名乗りは名前+です調
+cg,伊集院惠,私,,〜かしら／〜わ,,https://dic.nicovideo.jp/a/%E4%BC%8A%E9%9B%86%E9%99%A2%E6%83%A0 https://sparql.crssnky.xyz/spql/imas/query,低,Pの呼び方は確認できず
+cg,佐藤心,はぁと,Pちゃん,〜だぞ☆／〜しちゃうぞ☆,しゅがーはぁと／いいんだぞ（二回重ねる）,https://dic.nicovideo.jp/a/%E4%BD%90%E8%97%A4%E5%BF%83(%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC) https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科(佐藤心(アイドルマスター))のみ。Pの呼び方は「アナタ」も
+cg,冴島清美,私,,〜ですよ／〜しますっ,,https://dic.nicovideo.jp/a/%E5%86%B4%E5%B3%B6%E6%B8%85%E7%BE%8E https://sparql.crssnky.xyz/spql/imas/query,中,Pの呼び方は不明（台詞に「あなた」の呼びかけ）
+cg,十時愛梨,私,プロデューサーさん,〜ですっ／〜ですよっ／〜ですね,えへへっ♪,https://dic.nicovideo.jp/a/%E5%8D%81%E6%99%82%E6%84%9B%E6%A2%A8 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,双葉杏,杏,プロデューサー,〜だよ／〜じゃないか,,https://dic.nicovideo.jp/a/%E5%8F%8C%E8%91%89%E6%9D%8F https://sparql.crssnky.xyz/spql/imas/query,低,一人称は台詞で「私」も使われ、im@sparqlの「杏」と未確認で食い違うため要確認。ニコニコ大百科のみ
+cg,向井拓海,アタシ,プロデューサー,〜ねーよ／〜だろうが,,https://dic.nicovideo.jp/a/%E5%90%91%E4%BA%95%E6%8B%93%E6%B5%B7 https://sparql.crssnky.xyz/spql/imas/query,中,Pの呼び方は台詞からの読み取り。ニコニコ大百科のみ
+cg,土屋亜子,アタシ,Pちゃん（名前+Pちゃん）,〜やね／〜わけよ,まいどまいどー！／シクヨロ！,https://dic.nicovideo.jp/a/%E5%9C%9F%E5%B1%8B%E4%BA%9C%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,塩見周子,あたし,プロデューサー,〜ねー／〜よ,〜ってやつ／〜的なやつね,https://dic.nicovideo.jp/a/%E5%A1%A9%E8%A6%8B%E5%91%A8%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,中,Pの呼び方は「○○さん」表記(伏せ字)。確認が必要
+cg,大和亜季,私,プロデューサー殿,〜ですよ／〜ましょう,,https://dic.nicovideo.jp/a/%E5%A4%A7%E5%92%8C%E4%BA%9C%E5%AD%A3 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,大西由里子,アタシ,プロデューサー,〜ねーっ,ユリユリ,https://dic.nicovideo.jp/a/%E5%A4%A7%E8%A5%BF%E7%94%B1%E9%87%8C%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,安斎都,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/%E5%AE%89%E6%96%8E%E9%83%BD https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,小日向美穂,わたし,プロデューサー,〜ですっ／〜ますっ,えへへっ,https://dic.nicovideo.jp/a/%E5%B0%8F%E6%97%A5%E5%90%91%E7%BE%8E%E7%A9%82 https://sparql.crssnky.xyz/spql/imas/query,中,Pの呼び方は「プロデューサー」「○○さん」。ニコニコ大百科のみ
+cg,岡崎泰葉,私,プロデューサー,〜なの／〜だもの,,https://dic.nicovideo.jp/a/%E5%B2%A1%E5%B4%8E%E6%B3%B0%E8%91%89 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,工藤忍,アタシ,プロデューサー,〜だよ／〜かな？,,https://dic.nicovideo.jp/a/%E5%B7%A5%E8%97%A4%E5%BF%8D https://sparql.crssnky.xyz/spql/imas/query,中,初期カードでは「私」。ニコニコ大百科のみ
+cg,持田亜里沙,ありさ先生,プロデューサーくん,〜ですよぉ♪／〜ましょうね♪,,https://dic.nicovideo.jp/a/%E6%8C%81%E7%94%B0%E4%BA%9C%E9%87%8C%E6%B2%99 https://sparql.crssnky.xyz/spql/imas/query,低,一人称・語尾は台詞からの推測を含む。ニコニコ大百科のみ
+cg,日野茜,私,,,,https://dic.nicovideo.jp/a/%E6%97%A5%E9%87%8E%E8%8C%9C https://sparql.crssnky.xyz/spql/imas/query,低,Pの呼び方は不明
+cg,有浦柑奈,私,,〜ですよ,,https://dic.nicovideo.jp/a/%E6%9C%89%E6%B5%A6%E6%9F%91%E5%A5%88 https://sparql.crssnky.xyz/spql/imas/query,低,Pの呼び方は不明
+cg,木村夏樹,アタシ,プロデューサー,〜だよね／〜じゃない？／〜ぜっ,,https://dic.nicovideo.jp/a/%E6%9C%A8%E6%9D%91%E5%A4%8F%E6%A8%B9 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,村松さくら,わたし,プロデューサーさん,〜でぇす／〜まぁす,えっへへー,https://dic.nicovideo.jp/a/%E6%9D%91%E6%9D%BE%E3%81%95%E3%81%8F%E3%82%89 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,松山久美子,私,○○P,〜わ／〜わね／〜よね,,https://dic.nicovideo.jp/a/%E6%9D%BE%E5%B1%B1%E4%B9%85%E7%BE%8E%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,中,一部カードで「アタシ」。ニコニコ大百科のみ
+cg,柳清良,私,プロデューサーさん,〜ですよ,,https://dic.nicovideo.jp/a/%E6%9F%B3%E6%B8%85%E8%89%AF https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,桐生つかさ,アタシ,,〜っしょ／〜じゃん,,https://dic.nicovideo.jp/a/%E6%A1%90%E7%94%9F%E3%81%A4%E3%81%8B%E3%81%95 https://sparql.crssnky.xyz/spql/imas/query,低,Pの呼び方は不明(台詞に「お前」)。ニコニコ大百科のみ
+cg,森久保乃々,私,プロデューサーさん,〜ですけど…,むーりぃー…,https://dic.nicovideo.jp/a/%E6%A3%AE%E4%B9%85%E4%BF%9D%E4%B9%83%E3%80%85 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,槙原志保,私,,〜でぇす／〜ですよぉ,,https://dic.nicovideo.jp/a/%E6%A7%99%E5%8E%9F%E5%BF%97%E4%BF%9D https://sparql.crssnky.xyz/spql/imas/query,低,一人称は台詞では名前で自称しており、Pの呼び方は不明
+cg,氏家むつみ,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/%E6%B0%8F%E5%AE%B6%E3%82%80%E3%81%A4%E3%81%BF https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,江上椿,私,プロデューサーさん,〜です／〜ですよ／〜ですね,,https://dic.nicovideo.jp/a/%E6%B1%9F%E4%B8%8A%E6%A4%BF https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,浅野風香,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/%E6%B5%85%E9%87%8E%E9%A2%A8%E9%A6%99 https://sparql.crssnky.xyz/spql/imas/query,中,台詞に「アタシ」も出る。ニコニコ大百科のみ
+cg,涼宮星花,わたくし,プロデューサー様,〜ですわ／〜ますわ／〜ですの,,https://dic.nicovideo.jp/a/%E6%B6%BC%E5%AE%AE%E6%98%9F%E8%8A%B1 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,白坂小梅,私,プロデューサーさん,〜の,えへへ,https://dic.nicovideo.jp/a/%E7%99%BD%E5%9D%82%E5%B0%8F%E6%A2%85 https://sparql.crssnky.xyz/spql/imas/query,中,一人称にim@sparqlは「自分」も。ニコニコ大百科のみ
+cg,相原雪乃,私,プロデューサーさん,〜ですわ／〜でしょうか,,https://dic.nicovideo.jp/a/%E7%9B%B8%E5%8E%9F%E9%9B%AA%E4%B9%83 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,真鍋いつき,私,プロデューサーさん,〜ですっ／〜ですよ,,https://dic.nicovideo.jp/a/%E7%9C%9F%E9%8D%8B%E3%81%84%E3%81%A4%E3%81%8D https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,神谷奈緒,あたし,,〜からな,ばかぁ！,https://dic.nicovideo.jp/a/%E7%A5%9E%E8%B0%B7%E5%A5%88%E7%B7%92 https://sparql.crssnky.xyz/spql/imas/query,低,Pの呼び方は不明。ニコニコ大百科のみ
+cg,綾瀬穂乃香,私,プロデューサーさん,,ぴにゃこら太ー！,https://dic.nicovideo.jp/a/%E7%B6%BE%E7%80%AC%E7%A9%82%E4%B9%83%E9%A6%99 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,荒木比奈,アタシ,プロデューサー,〜っス／〜でス,,https://dic.nicovideo.jp/a/%E8%8D%92%E6%9C%A8%E6%AF%94%E5%A5%88 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,衛藤美紗希,あたし,○○プロデューサー,〜まぁす／〜ですぅ／〜かもぉ,,https://dic.nicovideo.jp/a/%E8%A1%9B%E8%97%A4%E7%BE%8E%E7%B4%97%E5%B8%8C https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,諸星きらり,きらり,Pちゃん,〜にぃ／〜にゃ／〜ゆ,にょわー！／にゃっほーい！／きゅんきゅんぱわー☆,https://dic.nicovideo.jp/a/%E8%AB%B8%E6%98%9F%E3%81%8D%E3%82%89%E3%82%8A https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,輿水幸子,ボク,プロデューサーさん,〜ですね／〜ですよ,フフーン,https://dic.nicovideo.jp/a/%E8%BC%BF%E6%B0%B4%E5%B9%B8%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,道明寺歌鈴,わたし,Pさん,,,https://dic.nicovideo.jp/a/%E9%81%93%E6%98%8E%E5%AF%BA%E6%AD%8C%E9%88%B4 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,関裕美,私,プロデューサーさん,〜よ／〜ね／〜かな,,https://dic.nicovideo.jp/a/%E9%96%A2%E8%A3%95%E7%BE%8E https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,高峯のあ,私,貴方,〜わ／〜よ／〜ね,,https://dic.nicovideo.jp/a/%E9%AB%98%E5%B3%AF%E3%81%AE%E3%81%82 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,鷺沢文香,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/%E9%B7%BA%E6%B2%A2%E6%96%87%E9%A6%99 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,イヴ・サンタクロース,私,プロデューサー,〜すぅ,,https://dic.nicovideo.jp/a/%E3%82%A4%E3%83%B4%E3%83%BB%E3%82%B5%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%AD%E3%83%BC%E3%82%B9 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。呼び方は呼びかけ台詞からの読み取り
+cg,ジュニー,私,,,,https://dic.nicovideo.jp/a/%E3%82%B8%E3%83%A5%E3%83%8B%E3%83%BC,低,一人称は台詞例のみ。Pの呼び方は記載なし。im@sparql未取得
+cg,ライラ,わたくし,プロデューサー殿,〜ですー／〜ますです／〜でございますです,,https://dic.nicovideo.jp/a/%E3%83%A9%E3%82%A4%E3%83%A9(%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC) https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,ニコニコ大百科(ライラ(アイドルマスター))のみ。一人称は im@sparql と一致
+cg,三村かな子,私,○○さん(プレイヤー名),,,https://dic.nicovideo.jp/a/%E4%B8%89%E6%9D%91%E3%81%8B%E3%81%AA%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。呼び方は台詞中の伏せ字表記から。口癖の確かなものなし
+cg,並木芽衣子,私,プロデューサーさん,〜だよ／〜だね／〜かな？,えへへ,https://dic.nicovideo.jp/a/%E4%B8%A6%E6%9C%A8%E8%8A%BD%E8%A1%A3%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。「○○プロデューサー」とも呼ぶ記述あり
+cg,久川颯,はー／私（場をわきまえるとき）,Pちゃん,,,https://dic.nicovideo.jp/a/%E4%B9%85%E5%B7%9D%E9%A2%AF https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,ニコニコ大百科とWikipedia。im@sparql未取得
+cg,井村雪菜,私,プロデューサーさん,〜ですっ／〜ですよ,,https://dic.nicovideo.jp/a/%E4%BA%95%E6%9D%91%E9%9B%AA%E8%8F%9C https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,佐々木千枝,千枝／私,プロデューサーさん,〜ですっ／〜ねっ,,https://dic.nicovideo.jp/a/%E4%BD%90%E3%80%85%E6%9C%A8%E5%8D%83%E6%9E%9D https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。一人称は im@sparql の候補どおり
+cg,依田芳乃,わたくし,,〜でしてー,,https://dic.nicovideo.jp/a/%E4%BE%9D%E7%94%B0%E8%8A%B3%E4%B9%83 https://sparql.crssnky.xyz/spql/imas/query,低,Pの呼び方は記載なし
+cg,前川みく,みく,プロデューサーチャン,〜にゃ／〜にゃあ／〜にゃん,,https://dic.nicovideo.jp/a/%E5%89%8D%E5%B7%9D%E3%81%BF%E3%81%8F https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,南条光,アタシ,○○さん(プレイヤー名),〜だろ／〜じゃないか,,https://dic.nicovideo.jp/a/%E5%8D%97%E6%9D%A1%E5%85%89 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。Pの呼び方は総選挙台詞の例のみ
+cg,古澤頼子,私,プロデューサーさん,〜ですね,,https://dic.nicovideo.jp/a/%E5%8F%A4%E6%BE%A4%E9%A0%BC%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。「○○さん」とも呼ぶ
+cg,和久井留美,私,,〜わ／〜ね／〜かしら,,https://dic.nicovideo.jp/a/%E5%92%8C%E4%B9%85%E4%BA%95%E7%95%99%E7%BE%8E https://sparql.crssnky.xyz/spql/imas/query,低,Pの呼び方は「君」「○○さん」の台詞のみで確定できない
+cg,城ヶ崎美嘉,アタシ,プロデューサー,〜だよー／〜してよね,,https://dic.nicovideo.jp/a/%E5%9F%8E%E3%83%B6%E5%B4%8E%E7%BE%8E%E5%98%89 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,多田李衣菜,私,○○プロデューサー,〜ですよね？,ロックな〜,https://dic.nicovideo.jp/a/%E5%A4%9A%E7%94%B0%E6%9D%8E%E8%A1%A3%E8%8F%9C https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。「○○さん」とも呼ぶ
+cg,大槻唯,ゆい,Pちゃん,〜もん！／〜だよー,ちゃーっす／ヤバくないっ？,https://dic.nicovideo.jp/a/%E5%A4%A7%E6%A7%BB%E5%94%AF https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。「プロデューサーちゃん」とも呼ぶ
+cg,太田優,あたし,○○くん(プレイヤー名),〜でしょぉ／〜やぁん,ちょーカワイイ,https://dic.nicovideo.jp/a/%E5%A4%AA%E7%94%B0%E5%84%AA https://sparql.crssnky.xyz/spql/imas/query,低,Pの呼び方は台詞の1例のみ
+cg,安部菜々,ナナ,プロデューサーさん,〜ですよぉっ,キャハっ！／えへ♪,https://dic.nicovideo.jp/a/%E5%AE%89%E9%83%A8%E8%8F%9C%E3%80%85 https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,高,Wikipediaとニコニコ大百科で口癖が一致
+cg,小早川紗枝,うち,○○プロデューサーはん,〜どす／〜どすえ／〜やろか,,https://dic.nicovideo.jp/a/%E5%B0%8F%E6%97%A9%E5%B7%9D%E7%B4%97%E6%9E%9D https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,高,ニコニコ大百科とWikipediaで一人称一致
+cg,岸部彩華,あやか,プロデューサーさん,〜でぇ〜す／〜のぉ〜,,https://dic.nicovideo.jp/a/%E5%B2%B8%E9%83%A8%E5%BD%A9%E8%8F%AF https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。一人称は名乗りの台詞から
+cg,市原仁奈,仁奈,プロデューサー,〜でごぜーます／〜しやがります／〜ねーです,,https://dic.nicovideo.jp/a/%E5%B8%82%E5%8E%9F%E4%BB%81%E5%A5%88 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。一人称は台詞から
+cg,斉藤洋子,私,プロデューサー,〜だね／〜よね！,やっほー！,https://dic.nicovideo.jp/a/%E6%96%89%E8%97%A4%E6%B4%8B%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,早坂美玲,ウチ,○○プロデューサー,〜だぞ／〜だろ／〜だモン,ひっかくぞ！,https://dic.nicovideo.jp/a/%E6%97%A9%E5%9D%82%E7%BE%8E%E7%8E%B2 https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,高,ニコニコ大百科とWikipedia(荒い口調)で整合
+cg,服部瞳子,私,プロデューサーさん,〜わ,,https://dic.nicovideo.jp/a/%E6%9C%8D%E9%83%A8%E7%9E%B3%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,本田未央,私,○○プロデューサー,,えへへっ,https://dic.nicovideo.jp/a/%E6%9C%AC%E7%94%B0%E6%9C%AA%E5%A4%AE https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,ニコニコ大百科のみ。Wikipediaにあだ名の記述
+cg,東郷あい,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/%E6%9D%B1%E9%83%B7%E3%81%82%E3%81%84 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。台詞例が少ない
+cg,松本沙理奈,アタシ,プロデューサー,,ウフフッ,https://dic.nicovideo.jp/a/%E6%9D%BE%E6%9C%AC%E6%B2%99%E7%90%86%E5%A5%88 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,柳瀬美由紀,みゆき／あたし,プロデューサーさん,,,https://dic.nicovideo.jp/a/%E6%9F%B3%E7%80%AC%E7%BE%8E%E7%94%B1%E7%B4%80 https://sparql.crssnky.xyz/spql/imas/query,中,im@sparqlは「あたし」だが、ニコニコ大百科では無印期は「あたし」、テーマパーク以降は「みゆき」とある
+cg,桐野アヤ,アタイ,アンタ,,,https://dic.nicovideo.jp/a/%E6%A1%90%E9%87%8E%E3%82%A2%E3%83%A4 https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,中,一人称がim@sparql・ニコニコ大百科は「アタイ」、Wikipediaは後に「アタシ」
+cg,椎名法子,あたし,プロデューサーさん,〜よね！,,https://dic.nicovideo.jp/a/%E6%A4%8E%E5%90%8D%E6%B3%95%E5%AD%90(%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC) https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,横山千佳,あたし,プロデューサーさん,〜よー／〜だよ／〜もんっ,へーんしーん♪,https://dic.nicovideo.jp/a/%E6%A8%AA%E5%B1%B1%E5%8D%83%E4%BD%B3 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,水木聖來,アタシ,プロデューサー,〜だよ／〜ね／〜かな,ヘヘー,https://dic.nicovideo.jp/a/%E6%B0%B4%E6%9C%A8%E8%81%96%E4%BE%86 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,池袋晶葉,私,プロデューサー,〜！,ふっふっふ…／ちょえーっ！,https://dic.nicovideo.jp/a/%E6%B1%A0%E8%A2%8B%E6%99%B6%E8%91%89 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。im@sparqlには「天才」もあり
+cg,浜口あやめ,わたくし,○○殿,〜ニンッ,ニンニン,https://dic.nicovideo.jp/a/%E6%B5%9C%E5%8F%A3%E3%81%82%E3%82%84%E3%82%81 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,渋谷凛,私,○○プロデューサー,〜かな／〜よね／〜ってば,ふふっ,https://dic.nicovideo.jp/a/%E6%B8%8B%E8%B0%B7%E5%87%9B https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。敬語の記述なし
+cg,白菊ほたる,私,,,すみません,https://dic.nicovideo.jp/a/%E7%99%BD%E8%8F%8A%E3%81%BB%E3%81%9F%E3%82%8B https://sparql.crssnky.xyz/spql/imas/query,低,一人称・Pの呼び方は記事に明記なし(im@sparqlは私)
+cg,相川千夏,私,アナタ,〜わ／〜のよ,,https://dic.nicovideo.jp/a/%E7%9B%B8%E5%B7%9D%E5%8D%83%E5%A4%8F https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,矢口美羽,私,プロデューサーさん,〜ですねっ／〜ますっ,,https://dic.nicovideo.jp/a/%E7%9F%A2%E5%8F%A3%E7%BE%8E%E7%BE%BD https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,福山舞,私,プロデューサー,〜ですっ／〜ますっ,,https://dic.nicovideo.jp/a/%E7%A6%8F%E5%B1%B1%E8%88%9E https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,緒方智絵里,わたし,プロデューサーさん,,えへへ,https://dic.nicovideo.jp/a/%E7%B7%92%E6%96%B9%E6%99%BA%E7%B5%B5%E9%87%8C https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ。「○○さん」とも呼ぶ
+cg,藤原肇,私,○○さん(プレイヤー名),,,https://dic.nicovideo.jp/a/%E8%97%A4%E5%8E%9F%E8%82%87 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,西園寺琴歌,私,,,,https://dic.nicovideo.jp/a/%E8%A5%BF%E5%9C%92%E5%AF%BA%E7%90%B4%E6%AD%8C https://sparql.crssnky.xyz/spql/imas/query https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物,低,Pの呼び方は記載なし。Wikipediaでは様付けとある(未確定)
+cg,財前時子,私,貴方,〜よ／〜わ,,https://dic.nicovideo.jp/a/%E8%B2%A1%E5%89%8D%E6%99%82%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,中,Pの呼び方は加入時の台詞から
+cg,辻野あかり,私,,〜んご,なしてや！？,https://dic.nicovideo.jp/a/%E8%BE%BB%E9%87%8E%E3%81%82%E3%81%8B%E3%82%8A,低,一人称は台詞例から。Pの呼び方は記載なし
+cg,野々村そら,あたし,アナタ,〜っ／〜ねっ／〜よっ,,https://dic.nicovideo.jp/a/%E9%87%8E%E3%80%85%E6%9D%91%E3%81%9D%E3%82%89 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,難波笑美,ウチ,○○はん,〜やで／〜なっ,,https://dic.nicovideo.jp/a/%E9%9B%A3%E6%B3%A2%E7%AC%91%E7%BE%8E https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコ大百科のみ
+cg,高森藍子,私,プロデューサーさん,〜ねっ,,https://dic.nicovideo.jp/a/%E9%AB%98%E6%A3%AE%E8%97%8D%E5%AD%90 https://sparql.crssnky.xyz/spql/imas/query,低,一人称は台詞例、Pの呼び方は自己紹介の台詞から
+cg,黒埼ちとせ,私,,〜だよ／〜でしょ？,,https://dic.nicovideo.jp/a/%E9%BB%92%E5%9F%BC%E3%81%A1%E3%81%A8%E3%81%9B,低,Pの呼び方は記載なし
+cg,キャシー・グラハム,あたし,プロデューサーさん,〜なのよー／〜よぉ,ハァイ！,https://dic.nicovideo.jp/a/キャシー・グラハム https://sparql.crssnky.xyz/spql/imas/query,中,「プロデューサー」「○○さん」の記述もあり呼び方が揺れる。特訓後の呼び方は未確認
+cg,ナターリア,ワタシ／ナターリア,プロデューサー,〜ゾ／〜ヨ／〜ダー,,https://dic.nicovideo.jp/a/ナターリア https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコは「ワタシ」、im@sparqlは「ナターリア」で相違のため両方記載
+cg,リュ・ヘナ,,プロデューサーさん,,,https://dic.nicovideo.jp/a/リュ・ヘナ,低,一人称・語尾は確認できず。呼び方もセリフ1例のみ
+cg,三船美優,私,プロデューサーさん,〜です／〜ます,,https://dic.nicovideo.jp/a/三船美優 https://sparql.crssnky.xyz/spql/imas/query,中,特訓後は「あなた」呼びもあり
+cg,中野有香,あたし,プロデューサー,,押忍！,https://dic.nicovideo.jp/a/中野有香 https://sparql.crssnky.xyz/spql/imas/query,中,ニコニコでは「○○プロデューサー」(名前＋プロデューサー)
+cg,乙倉悠貴,私,プロデューサーさん,〜っ,えっとっ,https://dic.nicovideo.jp/a/乙倉悠貴 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,今井加奈,わたし,プロデューサーさん,〜ですっ／〜ですよねっ,えへへ☆,https://dic.nicovideo.jp/a/今井加奈 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,佐久間まゆ,まゆ／私,プロデューサーさん,〜ですよぉ／〜ですよね,うふふ,https://dic.nicovideo.jp/a/佐久間まゆ https://sparql.crssnky.xyz/spql/imas/query,中,「貴方」「○○さん」と呼ぶ場面もある
+cg,八神マキノ,私,貴方,〜わ／〜かしら,,https://dic.nicovideo.jp/a/八神マキノ https://sparql.crssnky.xyz/spql/imas/query,低,一人称・語尾はセリフ例ベースで明記なし。呼び方は「貴方」「プロデューサー」の両方
+cg,北川真尋,私,○○Pさん,〜っ／〜だよ／〜ねっ,まひろだーっしゅ！,https://dic.nicovideo.jp/a/北川真尋 https://sparql.crssnky.xyz/spql/imas/query,中,呼び方は「○○Pさん」(名前＋Pさん)形
+cg,原田美世,あたし,プロデューサーさん,〜だよ／〜してね,,https://dic.nicovideo.jp/a/原田美世 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,古賀小春,小春／私,,〜です〜／〜ますぅ,,https://dic.nicovideo.jp/a/古賀小春 https://sparql.crssnky.xyz/spql/imas/query,低,プロデューサーの呼び方は確認できず(検索結果の翻訳台詞では「プロデューサーさん」だが未開封のため不採用)
+cg,喜多日菜子,日菜子,,〜ですよねぇ／〜ですかぁ,むふふ,https://dic.nicovideo.jp/a/喜多日菜子 https://sparql.crssnky.xyz/spql/imas/query,低,プロデューサーの呼び方は開いたページで確認できず
+cg,城ヶ崎莉嘉,アタシ／莉嘉,Pくん,〜だよー／〜じゃん,,https://dic.nicovideo.jp/a/城ヶ崎莉嘉 https://sparql.crssnky.xyz/spql/imas/query,中,呼び方は「○○くん」(名前＋くん)形、絵・ボイスでは「Pくん」
+cg,夢見りあむ,ぼく,Pサマ,,やむ／ばぶぅ,https://dic.nicovideo.jp/a/夢見りあむ,中,一人称はニコニコ大百科から(im@sparql未取得)
+cg,大沼くるみ,くるみ,○○ぷろでゅーしゃー,〜のぉ／〜もん,はひぃ,https://dic.nicovideo.jp/a/大沼くるみ https://sparql.crssnky.xyz/spql/imas/query,中,呼び方は名前＋「ぷろでゅーしゃー」
+cg,奥山沙織,わだす,○○さん,〜だす／〜けんど,,https://dic.nicovideo.jp/a/奥山沙織 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,宮本フレデリカ,アタシ,プロデューサー,〜でーす／〜だよー／〜なの,,https://dic.nicovideo.jp/a/宮本フレデリカ https://sparql.crssnky.xyz/spql/imas/query,中,口調・語尾はセリフ例からの推測
+cg,小松伊吹,アタシ,アンタ,〜よ／〜ね／〜でしょ,,https://dic.nicovideo.jp/a/小松伊吹 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,島村卯月,私,プロデューサーさん,〜ましょうね♪／〜お願いしますっ！,頑張ります,https://dic.nicovideo.jp/a/島村卯月 https://sparql.crssnky.xyz/spql/imas/query,中,「○○プロデューサーさん」の形の台詞もある
+cg,愛野渚,私,プロデューサーさん,,余裕でしょォ／なァ〜んてね,https://dic.nicovideo.jp/a/愛野渚 https://sparql.crssnky.xyz/spql/imas/query,中,語尾の癖は「ましたァ！」の形で記載。後には「○○プロデューサー」と呼ぶ台詞も
+cg,新田美波,私,プロデューサーさん,〜ですね／〜ますね,,https://dic.nicovideo.jp/a/新田美波 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,星輝子,私,プロデューサー,〜だぜ／〜だぞ,フヒ／フヒヒ,https://dic.nicovideo.jp/a/星輝子 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,望月聖,わたし,,,,https://dic.nicovideo.jp/a/望月聖 https://sparql.crssnky.xyz/spql/imas/query,低,プロデューサーの呼び方は開いたページで確認できず
+cg,杉坂海,ウチ,,〜だよ／〜だけどさ,,https://dic.nicovideo.jp/a/杉坂海 https://sparql.crssnky.xyz/spql/imas/query,低,プロデューサーの呼び方は確認できず
+cg,松原早耶,早耶,○○さん,〜ですぅ／〜ますぅ,うふふ,https://dic.nicovideo.jp/a/松原早耶 https://sparql.crssnky.xyz/spql/imas/query,中,呼び方は名前＋さん(「さぁん」と伸ばす場合も)
+cg,松永涼,アタシ,アンタ,〜よ／〜だよ,アタシの歌を聴けぇ！！！,https://dic.nicovideo.jp/a/松永涼 https://sparql.crssnky.xyz/spql/imas/query,中,「○○サン」とも呼ぶ。決まり文句はニコニコ記載の口癖
+cg,栗原ネネ,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/栗原ネネ https://sparql.crssnky.xyz/spql/imas/query,低,一人称はim@sparqlのみ。ニコニコには語尾等の記載なし
+cg,梅木音葉,私,貴方,〜でしょう／〜かしら,例えるなら…○○かしら,https://dic.nicovideo.jp/a/梅木音葉 https://sparql.crssnky.xyz/spql/imas/query,中,「○○さん」とも呼ぶ
+cg,楊菲菲,ふぇいふぇい,プロデューサーさん,〜ダヨー／〜ネー,どもー／よろしくネー,https://dic.nicovideo.jp/a/楊菲菲 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,橘ありす,私,プロデューサー,〜です／〜ます,ふんす！,https://dic.nicovideo.jp/a/橘ありす https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,水本ゆかり,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/水本ゆかり https://sparql.crssnky.xyz/spql/imas/query,中,「○○さん」とも呼ぶ
+cg,沢田麻理菜,お姉さん,○○くん,〜わ／〜ね／〜よ,,https://dic.nicovideo.jp/a/沢田麻理菜 https://sparql.crssnky.xyz/spql/imas/query,中,一人称は「私」も(im@sparql)。呼び方は名前＋くん
+cg,浜川愛結奈,ワタシ,,〜の／〜よ,,https://dic.nicovideo.jp/a/浜川愛結奈 https://sparql.crssnky.xyz/spql/imas/query,低,プロデューサーの呼び方はニコニコに記載なし
+cg,瀬名詩織,私,プロデューサーさん,〜わ／〜のよ／〜かしら,ふふっ,https://dic.nicovideo.jp/a/瀬名詩織 https://sparql.crssnky.xyz/spql/imas/query,中,「○○さん」とも呼ぶ
+cg,白雪千夜,,プロデューサー,,,https://dic.nicovideo.jp/a/白雪千夜,低,一人称は「私」の台詞を確認したが明記なし。時期で呼び方が変わる
+cg,相葉夕美,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/相葉夕美 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,砂塚あきら,自分,Pサン,〜デス,そーデスか,https://dic.nicovideo.jp/a/砂塚あきら,中,一人称はim@sparqlでは未取得。セリフでは「自分」
+cg,篠原礼,私,あなた,〜わ／〜ね／〜かしら,,https://dic.nicovideo.jp/a/篠原礼 https://sparql.crssnky.xyz/spql/imas/query,低,一人称はim@sparqlでは「お姉さん」「私」。呼び方は「君」「あなた」の両方
+cg,脇山珠美,珠美,プロデューサー,〜のです／〜ですよね,ちっちゃくないよ！,https://dic.nicovideo.jp/a/脇山珠美 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,藤居朋,あたし,あんた,〜わ／〜よ,,https://dic.nicovideo.jp/a/藤居朋 https://sparql.crssnky.xyz/spql/imas/query,中,呼び方は「あんた」または呼び捨て
+cg,西島櫂,あたし,○○プロデューサー,〜よっ／〜さ／〜だね,,https://dic.nicovideo.jp/a/西島櫂 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,赤城みりあ,みりあ／私,プロデューサー,〜だよ／〜だね／〜だなっ,えへへ♪,https://dic.nicovideo.jp/a/赤城みりあ https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,速水奏,私,プロデューサーさん,〜よ／〜わ／〜ね,ふふっ,https://dic.nicovideo.jp/a/速水奏 https://sparql.crssnky.xyz/spql/imas/query,中,「あなた」とも呼ぶ
+cg,長富蓮実,私,プロデューサーさん,〜ですね♪／〜ですか？,,https://dic.nicovideo.jp/a/長富蓮実 https://sparql.crssnky.xyz/spql/imas/query,中,
+cg,首藤葵,あたし,○○プロデューサー,〜ちゃ,へっへー,https://dic.nicovideo.jp/a/首藤葵 https://sparql.crssnky.xyz/spql/imas/query,低,呼び方・口調は台詞例のみで明記なし
+cg,高橋礼子,私,プロデューサーさん,〜わ／〜かしら／〜ね,ふふっ,https://dic.nicovideo.jp/a/高橋礼子 https://sparql.crssnky.xyz/spql/imas/query,中,当初は「○○くん」と呼ぶ。一人称は台詞で名乗りのみ(im@sparqlは「私」)
+cg,黒川千秋,私,アナタ,〜わ／〜よ,,https://dic.nicovideo.jp/a/黒川千秋 https://sparql.crssnky.xyz/spql/imas/query,中,
+gakuen,倉本千奈,わたくし,先生,〜ですわ,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/倉本千奈 https://ja.wikipedia.org/wiki/学園アイドルマスター,高,プロデューサーは「プロデューサー」と呼ぶ場面もある(milacle)
+gakuen,十王星南,私,プロデューサー,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/,中,「先輩」「トッププロデューサーさん」と呼ぶ場面あり。語尾「〜よ」「〜なさい」はnico台詞からの推測のため入れず
+gakuen,姫崎莉波,私,プロデューサーくん,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/姫崎莉波,中,milacleでは「プロデューサーさん」も併記。場面により変わる
+gakuen,月村手毬,私,プロデューサー,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/月村手毬,高,
+gakuen,有村麻央,ボク,プロデューサー,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/有村麻央,高,「キミ」とも呼ぶ(milacle)
+gakuen,秦谷美鈴,わたし,プロデューサー,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/秦谷美鈴,中,game8は「プロデューサーさん」、wikiwiki/milacleは「プロデューサー」で食い違い。要確認
+gakuen,篠澤広,わたし,プロデューサー,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/篠澤広,高,
+gakuen,紫雲清夏,あたし,Pっち,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/紫雲清夏 https://ja.wikipedia.org/wiki/学園アイドルマスター,高,「プロデューサー」と呼ぶ場面もある
+gakuen,花海佑芽,あたし,プロデューサーさん,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/花海佑芽,高,語尾「だっ♪」は掲示板由来のため不採用
+gakuen,花海咲季,わたし,プロデューサー,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/花海咲季,高,
+gakuen,葛城リーリヤ,わたし,センパイ,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/葛城リーリヤ,高,wikiwikiの一人称は列推測のためgame8/nicoと整合を確認
+gakuen,藤田ことね,あたし,プロデューサー,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/藤田ことね,高,
+gakuen,賀陽燐羽,私,,,,https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/賀陽燐羽,低,一人称はwikiwiki1サイトのみ(列推測)。Pへの呼び方は両呼称表に記載なし
+gakuen,雨夜燕,私,,,,https://game8.jp/gakuen-idolmaster/793144 https://wikiwiki.jp/popumas_cat/学園アイドルマスター/学マス呼称表 https://milacle39.com/2026/05/04/gakumasucall/ https://dic.nicovideo.jp/a/雨夜燕,中,milacleに「貴様、プロデューサー」の記載あり、game8には欄なしのため呼び方はnull
+876,レトラ,,,,バモース！,https://wikiwiki.jp/popumas_cat/-s/1618eda5,低,一人称・P呼びは確認できず。「バモース！」は自己紹介から
+876,上水流宇宙,,プロデューサーさん,,わこす〜／おはよう SUN,https://dic.nicovideo.jp/a/上水流宇宙,低,一人称は記載なし。ニコニコ大百科のみ
+876,日高愛,あたし,,,,https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物 https://dic.nicovideo.jp/a/アイドルマスター:呼称表 https://dic.nicovideo.jp/a/日高愛,中,P(尾崎玲子)への呼び方は記載なし
+876,水谷絵理,わたし,,,,https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物 https://dic.nicovideo.jp/a/アイドルマスター:呼称表 https://dic.nicovideo.jp/a/水谷絵理,中,P(尾崎玲子)への呼び方は記載なし
+876,灯里愛夏,私（本人台詞）／ウチ（祖母に言及する場面(一人称かは不明)）,プロデューサーさん,,やっぴー！,https://dic.nicovideo.jp/a/灯里愛夏,中,ニコニコ大百科のみ
+961,奥空心白,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスター:呼称表 https://dic.nicovideo.jp/a/奥空心白,高,「プロデューサー」の併記もあり
+765as,亜夜,あたし,プロデューサー,,,https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物 https://dic.nicovideo.jp/a/アイドルマスター:呼称表,中,
+765as,玲音,アタシ,プロデューサー,,,https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物 https://dic.nicovideo.jp/a/アイドルマスター:呼称表,中,「キミ」とも呼ぶ
+765as,詩花,私,プロデューサーさん,,,https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物 https://dic.nicovideo.jp/a/アイドルマスター:呼称表 https://dic.nicovideo.jp/a/詩花,高,
+765as,音無小鳥,あたし／わたくし／私,プロデューサーさん,,ピヨッ！,https://sparql.crssnky.xyz/spql/imas/query https://dic.nicovideo.jp/a/アイドルマスター:呼称表 https://dic.nicovideo.jp/a/音無小鳥,高,一人称は場面で使い分け(im@sparql候補3つ)
+sc,七草にちか,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,
+sc,三峰結華,三峰（普段）／私（真面目なとき）,Pたん,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ https://note.com/philia_imas888/n/ne193749018cc,中,Pたん・場面の使い分けは呼称表とgameoの記述
+sc,八宮めぐる,わたし,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,ひらがな/漢字表記はサイトで揺れ(gameoは「わたし」、呼称表も「わたし」)
+sc,和泉愛依,うち,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://note.com/philia_imas888/n/ne193749018cc,中,noteでは「ウチ」と「あたし」の両方が使われるとある
+sc,園田智代子,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,
+sc,大崎甘奈,甘奈（普段）／私（時々）,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ https://note.com/philia_imas888/n/ne193749018cc,中,
+sc,大崎甜花,甜花,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ https://note.com/philia_imas888/n/ne193749018cc,中,
+sc,小宮果穂,あたし,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://note.com/philia_imas888/n/ne193749018cc,中,
+sc,市川雛菜,雛菜,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,
+sc,幽谷霧子,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ https://note.com/philia_imas888/n/ne193749018cc,中,一人称は表記ゆれ(gameoは「わたし」)
+sc,斑鳩ルカ,私,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://note.com/philia_imas888/n/ne193749018cc,中,一人称・Pの呼称は呼称表のみ。Pに対する荒さは未確認
+sc,月岡恋鐘,うち,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ,中,語尾・口癖は未確認
+sc,有栖川夏葉,私,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,
+sc,杜野凛世,凛世,プロデューサーさま,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ,中,gameoのコメントでは時々「わたくし」との指摘あり(未確認)
+sc,桑山千雪,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,
+sc,樋口円香,私,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ,中,
+sc,櫻木真乃,私,プロデューサーさん,,ほわ…／むんっ,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://dic.nicovideo.jp/a/櫻木真乃,中,口癖はニコニコ大百科の記述。語尾は未確認
+sc,浅倉透,私,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,
+sc,田中摩美々,私,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ https://note.com/philia_imas888/n/ne193749018cc,中,一人称が食い違い: 呼称表は「私」、Wikipediaは「まみみ」、noteは通常「わたし」で感情が動くと名前自称、gameoは摩美々/私。普段は私、感情が動くと名前の可能性
+sc,白瀬咲耶,私,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,
+sc,福丸小糸,わたし,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,gameoは「私」表記、呼称表は「わたし」
+sc,緋田美琴,私,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,
+sc,芹沢あさひ,わたし,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,
+sc,西城樹里,アタシ,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ,中,
+sc,郁田はるき,わたし,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,
+sc,鈴木羽那,あたし,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518,中,
+sc,風野灯織,私,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://note.com/philia_imas888/n/ne193749018cc,中,Pへの呼称は呼称表1サイトのみ
+sc,黛冬優子,ふゆ,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスター シャイニーカラーズ:呼称表 https://gameo.jp/imassc/146518 https://ja.wikipedia.org/wiki/アイドルマスター_シャイニーカラーズ https://note.com/philia_imas888/n/ne193749018cc,中,表の「ふゆ」は外向きキャラ時。素のときは私とされる(noteの記述)。Pへの呼称も要確認
+sidem,アスラン=ベルゼビュートⅡ世,我（通常(サタン時)）／僕（サタン離脱時）,主（通常）／プロデューサーさん（サタン離脱時）,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物,中,呼称表1サイトのみ(表記は『アスラン=BBII世』)。語尾・口癖は未確認。
+sidem,九十九一希,おれ,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/九十九一希,中,呼称表は『おれ』表記。
+sidem,伊集院北斗,俺,あなた,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/伊集院北斗,中,呼称表の並びからの判断。P呼びは行ラベルとの区別が曖昧で『あなた』を採用。
+sidem,兜大吾,ワシ,ボス,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/兜大吾,中,語尾の具体形は未確認。
+sidem,冬美旬,僕,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/冬美旬,中,
+sidem,卯月巻緒,俺,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/卯月巻緒,中,話し方の詳細は未確認。
+sidem,大河タケル,オレ／俺,アンタ,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物,中,オレ/俺の使い分けは未確認。
+sidem,天峰秀,俺,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/天峰秀,中,呼称表のみ。口調の詳細は未確認。
+sidem,姫野かのん,かのん,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表,中,呼称表1サイトのみ。話し方の詳細は未確認。
+sidem,岡村直央,ボク,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/岡村直央,中,大百科のカード台詞では『ぼく』表記。
+sidem,握野英雄,俺,,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/握野英雄,低,Pの呼び方が確認できない。
+sidem,東雲荘一郎,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物 https://dic.nicovideo.jp/a/東雲荘一郎,中,
+sidem,桜庭薫,僕,君,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/桜庭薫,中,P呼びは行ラベルとの区別が曖昧で『君』を採用。
+sidem,橘志狼,オレ,プロデューサー,〜だぜ,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/橘志狼,中,語尾は台詞引用からの判断。『オレ様』も使う。
+sidem,清澄九郎,私,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表,中,呼称表1サイトのみ。話し方の詳細は未確認。
+sidem,牙崎漣,オレ様,オマエ,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物 https://dic.nicovideo.jp/a/牙崎漣,中,P呼びは『オマエ/テメー』。
+sidem,眉見鋭心,俺,お前,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表,中,呼称表1サイトのみ。
+sidem,神楽麗,わたし,貴殿,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物 https://dic.nicovideo.jp/a/神楽麗,高,呼称表には『プロデューサーさん』も併記。
+sidem,秋山隼人,俺,プロデューサー,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/秋山隼人,中,
+sidem,紅井朱雀,オレ,プロデューサーさん,〜ですぜ,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/紅井朱雀,中,『ですぜ』は執事衣装後の台詞の記述から。
+sidem,花園百々人,ボク,ぴぃちゃん,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/花園百々人,中,
+sidem,華村翔真,アタシ,プロデューサーちゃん,〜よォ／〜ねェ,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物 https://dic.nicovideo.jp/a/華村翔真,中,
+sidem,蒼井享介,俺,監督,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物 https://dic.nicovideo.jp/a/蒼井享介,高,双子の兄悠介も『監督』。
+sidem,都築圭,僕,プロデューサーさん,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表,中,呼称表1サイトのみ。
+sidem,黒野玄武,俺,番長さん,,,https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表 https://dic.nicovideo.jp/a/黒野玄武,中,
+sidem,ピエール,ボク,プロデューサーさん,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集,中,一人称・呼び方はユニット会話集wikiのみ(カタカナ表記)
+sidem,伊瀬谷四季,オレ,プロデューサーちゃん,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://dic.nicovideo.jp/a/伊瀬谷四季 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物,中,一人称はwikiのみ。「ちゃん」付けはニコニコ大百科で確認
+sidem,信玄誠司,自分,プロデューサーさん,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://dic.nicovideo.jp/a/信玄誠司,中,呼び方はwikiのみ
+sidem,円城寺道流,自分,師匠,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集,中,wikiのみ。Pを「師匠」と呼ぶ点は要確認
+sidem,北村想楽,僕,プロデューサーさん,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://dic.nicovideo.jp/a/北村想楽,中,一人称・呼び方はwikiのみ
+sidem,古論クリス,私,プロデューサーさん／あなた,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://dic.nicovideo.jp/a/古論クリス,中,Pの呼び方はwikiで「あなた/プロデューサーさん」併記
+sidem,天ヶ瀬冬馬,俺,プロデューサー／あんた,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物 https://dic.nicovideo.jp/a/天ヶ瀬冬馬,中,Pの呼び方はwikiで「プロデューサー/あんた」併記
+sidem,天道輝,俺,プロデューサー／あんた,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物 https://dic.nicovideo.jp/a/天道輝,中,Pの呼び方はwikiで「あんたプロデューサー」と表記
+sidem,山下次郎,俺,プロデューサーちゃん／あんた,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集,中,wikiのみ。呼び方2種併記
+sidem,御手洗翔太,僕,プロデューサーさん,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集,中,wikiのみ
+sidem,木村龍,俺,プロデューサーさん,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集,中,wikiのみ
+sidem,柏木翼,オレ,プロデューサー,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://dic.nicovideo.jp/a/柏木翼,高,一人称・呼び方ともwikiとニコニコ大百科で一致
+sidem,榊夏来,俺,プロデューサーさん,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集,中,wikiのみ
+sidem,水嶋咲,あたし,プロデューサー,,パピッと,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物,中,口癖「パピッと」はWikipediaの記述から(例の一部)。一人称・呼び方はwikiのみ
+sidem,渡辺みのり,俺,プロデューサー,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://dic.nicovideo.jp/a/渡辺みのり https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物,中,一人称はwikiとニコニコ大百科で一致、Pの呼び方はwikiのみ
+sidem,猫柳キリオ,ワガハイ,プロデューサークン,〜にゃんす,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://dic.nicovideo.jp/a/猫柳キリオ https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物,高,一人称・呼び方・語尾ともwikiとニコニコ大百科で一致
+sidem,硲道夫,私,プロデューサー／君,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集,中,wikiのみ。呼び方2種併記
+sidem,神谷幸広,俺,プロデューサーさん,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集,中,wikiのみ
+sidem,秋月涼,僕,プロデューサーさん,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集,中,wikiのみ
+sidem,舞田類,俺,プロデューサーちゃん／君,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://dic.nicovideo.jp/a/舞田類 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物,中,呼び方2種併記
+sidem,若里春名,オレ,プロデューサー,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集,中,wikiのみ
+sidem,葛之葉雨彦,俺,プロデューサー／お前さん,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集,中,wikiのみ。「お前さんプロデューサー」と表記
+sidem,蒼井悠介,オレ,監督,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物,中,Pを「監督」と呼ぶ点はWikipediaとwikiで一致、一人称はwikiのみ
+sidem,鷹城恭二,俺,プロデューサー／あんた,,,https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集 https://dic.nicovideo.jp/a/鷹城恭二,中,呼び方2種併記
