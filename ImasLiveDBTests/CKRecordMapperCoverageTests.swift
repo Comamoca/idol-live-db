@@ -28,7 +28,7 @@ final class CKRecordMapperCoverageTests: XCTestCase {
     func testEveryRecordTypeHasASample() {
         let names = Set(samples(flag: true).map(caseName))
         XCTAssertEqual(names.count, samples(flag: true).count, "同じレコード型のサンプルが重なっている")
-        XCTAssertEqual(names.count, 22)
+        XCTAssertEqual(names.count, 24)
     }
 
     func testEveryFieldReachesTheModel() {
@@ -63,6 +63,8 @@ final class CKRecordMapperCoverageTests: XCTestCase {
         case .songVideo: "songVideo"
         case .showTicket: "showTicket"
         case .ticketSale: "ticketSale"
+        case .idolFacet: "idolFacet"
+        case .idolHairstyle: "idolHairstyle"
         }
     }
 
@@ -187,12 +189,20 @@ final class CKRecordMapperCoverageTests: XCTestCase {
                 id: v("id"), eventId: v("eventId"), showIds: v("showIds"), kind: v("kind"), name: v("name"),
                 startsAt: v("startsAt"), endsAt: v("endsAt"), resultAt: v("resultAt"), url: v("url"),
                 note: v("note"), sourceUrl: v("sourceUrl"), sortOrder: 19)),
+            .idolFacet(row: CkIdolFacetRow(
+                id: v("id"), idolId: v("idolId"), facet: v("facet"), value: v("value"), origin: v("origin"),
+                sourceNote: v("sourceNote"), sortOrder: 20)),
+            .idolHairstyle(row: CkIdolHairstyleRow(
+                id: v("id"), idolId: v("idolId"), label: v("label"), isMain: flag, hairColor: v("hairColor"),
+                hairColorSecondary: v("hairColorSecondary"), hairLength: v("hairLength"), styles: v("styles"),
+                bangs: v("bangs"), accessories: v("accessories"), origin: v("origin"),
+                sourceNote: v("sourceNote"), sortOrder: 21)),
         ]
     }
 
-    // MARK: - CKRecord → モデル (22 型を 1 件ずつ)
+    // MARK: - CKRecord → モデル (24 型を 1 件ずつ)
 
-    /// 22 型それぞれ、サンプルの行と同じ値を載せた CKRecord を型名つきで取り込み、
+    /// 24 型それぞれ、サンプルの行と同じ値を載せた CKRecord を型名つきで取り込み、
     /// モデルまで届くこと。`mapped(_:as:)` に渡す型名を打ち間違えると、その型の同期が
     /// 黙って全件落ちる (nil で warning ログが出るだけ) ので、ここで捕まえる。
     func testEveryRecordTypeIsIngestedFromACKRecord() {
@@ -310,6 +320,8 @@ final class CKRecordMapperCoverageTests: XCTestCase {
         case .songVideo: CKRecordMapper.songVideo(from: rec)
         case .showTicket: CKRecordMapper.showTicket(from: rec)
         case .ticketSale: CKRecordMapper.ticketSale(from: rec)
+        case .idolFacet: CKRecordMapper.idolFacet(from: rec)
+        case .idolHairstyle: CKRecordMapper.idolHairstyle(from: rec)
         }
     }
 
