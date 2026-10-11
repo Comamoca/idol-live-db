@@ -70,7 +70,13 @@ use std::collections::HashSet;
 // ---------------------------------------------------------------------------
 
 /// 同期モード。CloudKit へのクエリを epoch から張るか、前回同期以降に絞るか。
-#[derive(uniffi::Enum, Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(uniffi::Enum, Clone, Copy, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
+#[cfg_attr(
+    feature = "web-export",
+    derive(ts_rs::TS),
+    ts(export, export_to = "../../web/wasm/imas-sync-wasm/types/", rename_all = "snake_case")
+)]
 pub enum SyncMode {
     /// 全件取得 (iOS `modifiedSince == nil` / Android `since == 0`)。
     Full,
@@ -79,7 +85,13 @@ pub enum SyncMode {
 }
 
 /// そのモードになった理由。ログと診断 UI 用で、分岐そのものには使わない。
-#[derive(uniffi::Enum, Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(uniffi::Enum, Clone, Copy, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
+#[cfg_attr(
+    feature = "web-export",
+    derive(ts_rs::TS),
+    ts(export, export_to = "../../web/wasm/imas-sync-wasm/types/", rename_all = "snake_case")
+)]
 pub enum SyncModeReason {
     /// 前回のフル同期が途中で中断されて保留中 → 残りステップを再開する (フル扱い)。
     PendingFullResume,
@@ -96,7 +108,13 @@ pub enum SyncModeReason {
 }
 
 /// 起動時判定に必要な状態。呼び出し側が自分の永続化層から集めて渡す。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+#[cfg_attr(
+    feature = "web-export",
+    derive(ts_rs::TS),
+    ts(export, export_to = "../../web/wasm/imas-sync-wasm/types/", rename_all = "camelCase")
+)]
 pub struct SyncStartupState {
     /// フル同期が未完了のまま保留されているか (iOS の `sync_pending_full_start` の有無)。
     /// この機能を持たない環境は false。
@@ -117,7 +135,13 @@ pub struct SyncStartupState {
 }
 
 /// 起動時にどう走るかの結論。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+#[cfg_attr(
+    feature = "web-export",
+    derive(ts_rs::TS),
+    ts(export, export_to = "../../web/wasm/imas-sync-wasm/types/", rename_all = "camelCase")
+)]
 pub struct SyncStartupPlan {
     pub mode: SyncMode,
     /// クエリの起点。`None` = epoch から全件 (= `mode == Full` と必ず一致する)。
@@ -265,7 +289,13 @@ pub fn steps_for(available: &[String]) -> Vec<SyncStep> {
 // ---------------------------------------------------------------------------
 
 /// 同期 1 回分の起点。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+#[cfg_attr(
+    feature = "web-export",
+    derive(ts_rs::TS),
+    ts(export, export_to = "../../web/wasm/imas-sync-wasm/types/", rename_all = "camelCase")
+)]
 pub struct SyncRunStart {
     /// この実行が「開始した」とみなす時刻。フル再開時は中断前の開始時刻を引き継ぐ。
     /// 長時間同期の最中に変わったレコードを次回差分で拾えるよう、完了時にこれを
@@ -321,7 +351,13 @@ pub fn run_start_plan(
 // ---------------------------------------------------------------------------
 
 /// 1 ステップの取得起点。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+#[cfg_attr(
+    feature = "web-export",
+    derive(ts_rs::TS),
+    ts(export, export_to = "../../web/wasm/imas-sync-wasm/types/", rename_all = "camelCase")
+)]
 pub struct SyncStepStart {
     /// フル再開で完了済み → このステップは丸ごと飛ばす。
     pub skip: bool,
@@ -366,7 +402,13 @@ pub fn step_start_plan(
 pub const BOUNDARY_REWIND_SECONDS: f64 = 0.001;
 
 /// チャンクを 1 つ処理し終えた後に取るべき行動。
-#[derive(uniffi::Enum, Clone, Copy, Debug, PartialEq)]
+#[derive(uniffi::Enum, Clone, Copy, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[serde(tag = "kind", rename_all = "snake_case", rename_all_fields = "camelCase")]
+#[cfg_attr(
+    feature = "web-export",
+    derive(ts_rs::TS),
+    ts(export, export_to = "../../web/wasm/imas-sync-wasm/types/", tag = "kind", rename_all = "snake_case", rename_all_fields = "camelCase")
+)]
 pub enum SyncChunkAction {
     /// 同じクエリにまだ続きがある → 受け取ったカーソルで読み進める。
     ContinueCursor,
@@ -554,7 +596,13 @@ pub fn orphan_ids(local_ids: &[String], valid_ids: &[String]) -> Vec<String> {
 // ---------------------------------------------------------------------------
 
 /// 同期 1 回分を撃ち終えたときの状態。成功・失敗どちらでも同じものを渡す。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+#[cfg_attr(
+    feature = "web-export",
+    derive(ts_rs::TS),
+    ts(export, export_to = "../../web/wasm/imas-sync-wasm/types/", rename_all = "camelCase")
+)]
 pub struct SyncCompletionState {
     pub is_full_sync: bool,
     /// 起動時同期 (iOS `performStartupSync`) の一環として走ったか。
@@ -575,7 +623,13 @@ pub struct SyncCompletionState {
 }
 
 /// 同期完了時にやるべきこと。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+#[cfg_attr(
+    feature = "web-export",
+    derive(ts_rs::TS),
+    ts(export, export_to = "../../web/wasm/imas-sync-wasm/types/", rename_all = "camelCase")
+)]
 pub struct SyncCompletion {
     /// `last_sync_at` を保存してよいか。途中で打ち切った実行では保存しない
     /// (取り込めていない範囲を「同期済み」にすると次の差分から永久に落ちる)。

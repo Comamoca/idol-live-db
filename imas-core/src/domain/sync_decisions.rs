@@ -87,7 +87,13 @@ const MISSING_WORDS: &[&str] = &[
 const SCHEMA_INDEX_MARKERS: &[&str] = &["not queryable", "not sortable"];
 
 /// エラーから「判定に必要な事実」だけを抜いた射影。各 OS が自分の例外から組み立てる。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+#[cfg_attr(
+    feature = "web-export",
+    derive(ts_rs::TS),
+    ts(export, export_to = "../../web/wasm/imas-sync-wasm/types/", rename_all = "camelCase")
+)]
 pub struct SyncErrorSignal {
     /// CloudKit 自身が返したエラーか。
     ///
@@ -320,7 +326,13 @@ pub fn step_failure_plan(
 // ---------------------------------------------------------------------------
 
 /// チャンクを 1 つ取り込んだ後の進捗。
-#[derive(uniffi::Record, Clone, Copy, Debug, PartialEq)]
+#[derive(uniffi::Record, Clone, Copy, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+#[cfg_attr(
+    feature = "web-export",
+    derive(ts_rs::TS),
+    ts(export, export_to = "../../web/wasm/imas-sync-wasm/types/", rename_all = "camelCase")
+)]
 pub struct SyncChunkProgress {
     /// 巻き戻し区間で見た最大 modifiedAt。そのまま
     /// [`crate::domain::sync_planning::next_chunk_action`] の
