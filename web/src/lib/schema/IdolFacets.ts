@@ -15,6 +15,10 @@ brands: Array<FacetOption>,
  */
 attributes: Array<FacetOption>, 
 /**
+ * 属性をさらに分けたサブ属性。実データに出てくるものだけ、表の並びで。
+ */
+subAttributes: Array<FacetOption>, 
+/**
  * 誕生月 (1〜12)。値は `IdolQuery.birth_month` の数を文字列にしたもの。
  */
 birthMonths: Array<FacetOption>, sorts: Array<SortOption>, 

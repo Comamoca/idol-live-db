@@ -4,6 +4,8 @@
 -- (ddl_reproduces_the_bundled_schema) が固定している。ここの 2 表は CloudKit の本番スキーマに
 -- IdolFacet / IdolHairstyle を昇格し、日次 export が db/master.sql に出すようになってから
 -- master_schema.sql へ移す (そのとき schema_registry.rs の Auxiliary を Master にする)。
+-- 2026-10-12 に export が出すようになった。アプリ (iOS の移行・Android の Room) に表を足すまでは
+-- ここに置いたままにし、schema_ddl のテストはこのファイルを足して db/master.sql と突き合わせる。
 -- それまでは tools/apply_data.py (ensure_facet_tables) がこのファイルから表を作る。
 -- 定義は src/domain/idol_facets.rs、運用は docs/ARCHITECTURE-facets.md。
 

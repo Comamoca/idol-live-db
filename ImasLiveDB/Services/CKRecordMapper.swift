@@ -97,7 +97,8 @@ enum CKRecordMapper {
             debutDate: row.debutDate,
             attribute: row.attribute,
             isExternal: row.isExternal,
-            aliases: row.aliases
+            aliases: row.aliases,
+            subAttribute: row.subAttribute
             // voiceActors は読まない。声優は idol_voice_actors (期間つき履歴) が正で、
             // Idol からは外した。CloudKit 側のフィールドは旧アプリ向けにまだ送っているが、
             // こちらで読むと廃止した列に書き戻そうとして落ちる。

@@ -256,15 +256,17 @@ fn load_songs(conn: &Connection) -> Result<Vec<Song>, String> {
 }
 
 fn load_idols(conn: &Connection) -> Result<Vec<Idol>, String> {
+    // サブ属性は後から足した列 (旧スキーマのままの端末でもスナップショットを落とさない)。
+    let sub_attribute = optional_col(&table_columns(conn, "idols")?, "sub_attribute");
     let mut stmt = conn
-        .prepare(
+        .prepare(&format!(
             "SELECT id, brand_id, name, name_kana, name_romaji, color, sort_order, birthday,
                     blood_type, height, weight, birth_place, age, bust, waist, hip,
                     constellation, hobbies, talents, description, gender, handedness,
                     family_name, given_name, nickname, debut_date, attribute, is_external,
-                    aliases
-             FROM idols ORDER BY id",
-        )
+                    aliases, {sub_attribute}
+             FROM idols ORDER BY id"
+        ))
         .map_err(|e| e.to_string())?;
     let rows = stmt
         .query_map([], |r| {
@@ -298,6 +300,7 @@ fn load_idols(conn: &Connection) -> Result<Vec<Idol>, String> {
                 attribute: r.get(26)?,
                 is_external: r.get::<_, Option<i64>>(27)?.unwrap_or(0) != 0,
                 aliases: r.get(28)?,
+                sub_attribute: r.get(29)?,
             })
         })
         .map_err(|e| e.to_string())?;

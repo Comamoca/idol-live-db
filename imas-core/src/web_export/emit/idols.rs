@@ -159,8 +159,10 @@ fn profile_rows(record: &idol_queries::IdolRecord) -> Vec<ProfileRow> {
                 RowAction::FilterByBirthMonth { month } => {
                     Some(format!("/idols/birth-month/{month}/"))
                 }
+                // サブ属性別のページはまだ無い (一覧の絞り込みの「サブ属性」で引ける)。
                 // Web は書き込みも状態も持たないので、写しボタンも開閉も作らない。
-                RowAction::CopyValue | RowAction::ToggleExpansion | RowAction::None => None,
+                RowAction::FilterBySubAttribute { .. }
+                | RowAction::CopyValue | RowAction::ToggleExpansion | RowAction::None => None,
             },
         })
         .collect()

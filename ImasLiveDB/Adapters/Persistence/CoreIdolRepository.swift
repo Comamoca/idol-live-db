@@ -59,6 +59,8 @@ struct CoreIdolRepository: IdolReading {
                 records = try store.idolsByBirthPlace(birthPlace: place)
             case .bloodType(let type):
                 records = try store.idolsByBloodType(bloodType: type)
+            case .subAttribute(let id, _):
+                records = try store.idolsBySubAttribute(subAttribute: id)
             }
             return records.map(CoreRecordMapping.idol(from:))
         }

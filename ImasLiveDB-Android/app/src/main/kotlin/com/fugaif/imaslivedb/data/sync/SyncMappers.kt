@@ -127,7 +127,8 @@ object SyncMappers {
                 attribute = row.attribute.emptyToNull(),
                 isExternal = row.isExternal,
                 aliases = row.aliases.emptyToNull(),
-                voiceActors = voiceActorsById[row.id]
+                voiceActors = voiceActorsById[row.id],
+                subAttribute = row.subAttribute.emptyToNull()
             )
         }
 

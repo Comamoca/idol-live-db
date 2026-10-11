@@ -1255,6 +1255,14 @@ enum DatabaseMigrations {
                 """)
         }
 
+        // v50: idols.sub_attribute カラム追加 (属性をさらに分けたサブ属性。今はミリシタ BATTLE OF THEATER の 6 チーム)。
+        migrator.registerMigration("v50_idols_sub_attribute") { db in
+            let idolColumns = try Row.fetchAll(db, sql: "PRAGMA table_info(idols)").map { $0["name"] as String? }
+            if !idolColumns.contains("sub_attribute") {
+                try db.execute(sql: "ALTER TABLE idols ADD COLUMN sub_attribute TEXT")
+            }
+        }
+
         return migrator
     }
 }

@@ -328,6 +328,7 @@ fun IdolListScreen(
             brands = state.brands,
             currentBrandIds = state.selectedBrandIds,
             currentAttribute = state.selectedAttribute,
+            currentSubAttribute = state.selectedSubAttribute,
             currentDisplayMode = state.displayMode,
             currentShowCV = state.showCV,
             currentRequireMyPick = state.requireMyPick,
@@ -336,9 +337,9 @@ fun IdolListScreen(
             currentSortOrder = state.sortOrder,
             currentSortAscending = state.sortAscending,
             onDismiss = { showFilterSheet = false },
-            onApply = { brandIds, attribute, displayMode, showCV, requireMyPick, requireFavorite, requireNote, sortOrder, sortAscending ->
+            onApply = { brandIds, attribute, subAttribute, displayMode, showCV, requireMyPick, requireFavorite, requireNote, sortOrder, sortAscending ->
                 viewModel.applyFilterSheet(
-                    brandIds, attribute, displayMode, showCV,
+                    brandIds, attribute, subAttribute, displayMode, showCV,
                     requireMyPick, requireFavorite, requireNote, sortOrder, sortAscending
                 )
             }

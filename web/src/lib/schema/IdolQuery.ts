@@ -13,9 +13,13 @@ export type IdolQuery = {
  */
 brandIds: Array<string>, 
 /**
- * ブランド内サブ属性 (cute/cool/passion 等)。
+ * ブランド内の属性 (cute/cool/passion 等)。
  */
 attribute: string | null, 
+/**
+ * 属性をさらに分けたサブ属性 (`pretty` 等)。
+ */
+subAttribute: string | null, 
 /**
  * 誕生月 (1..=12)。
  */

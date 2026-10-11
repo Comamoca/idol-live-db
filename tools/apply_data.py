@@ -99,6 +99,14 @@ FIX_FIELD_WHITELIST = {
                         "accessories", "origin", "source_note", "sort_order"},
 }
 
+# idols.sub_attribute (属性をさらに分けたサブ属性) の値 → それが属する属性。
+# 唯一の正は imas-core/src/domain/idol_attributes.rs の SUB_ATTRIBUTES (表示名もそちら)。
+IDOL_SUB_ATTRIBUTES = {
+    "pretty": "princess", "girly": "princess",
+    "mystical": "fairy", "breaker": "fairy",
+    "sweetie": "angel", "charming": "angel",
+}
+
 FACETS_JSON = ROOT / "imas-core" / "facets.json"
 FACET_ORIGINS = {"official", "promoted"}
 MAIN_HAIRSTYLE_LABEL = "基本"
@@ -763,6 +771,16 @@ def validate(conn):
                         problems.append(
                             f"{tag}: '{table}' の '{k}' は fixes で直せない "
                             f"(許可: {sorted(FIX_FIELD_WHITELIST[table])})")
+                # サブ属性は表の値だけ、かつアイドルの属性と合うものだけ (合わないと画面に出ない)。
+                if table == "idols" and "sub_attribute" in fields and rid and exists(conn, table, rid):
+                    sub_attribute = fields["sub_attribute"]
+                    attr = fields.get("attribute") or conn.execute(
+                        "SELECT attribute FROM idols WHERE id = ?", (rid,)).fetchone()[0]
+                    if sub_attribute is not None and sub_attribute not in IDOL_SUB_ATTRIBUTES:
+                        problems.append(f"{tag}: sub_attribute '{sub_attribute}' は未知 (許可: {sorted(IDOL_SUB_ATTRIBUTES)})")
+                    elif sub_attribute is not None and IDOL_SUB_ATTRIBUTES[sub_attribute] != attr:
+                        problems.append(f"{tag}: sub_attribute '{sub_attribute}' は {IDOL_SUB_ATTRIBUTES[sub_attribute]} のサブ属性 "
+                                        f"(このアイドルの属性は {attr})")
                 if table == "idol_facets" and rid and exists(conn, table, rid):
                     row = conn.execute("SELECT facet FROM idol_facets WHERE id = ?", (rid,)).fetchone()
                     d = defs.get(row[0])

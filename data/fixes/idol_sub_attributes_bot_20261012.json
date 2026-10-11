@@ -1,0 +1,370 @@
+{
+  "unconfirmed": "CloudKit の Idol.subAttribute が Production に未反映。スキーマを反映したらこの行を消して --apply --push する (db/master.sql には入れてある)",
+  "source": "https://idolmaster-official.jp/news/01_15862",
+  "fixes": [
+    {
+      "table": "idols",
+      "id": "765as_天海春香",
+      "fields": {
+        "sub_attribute": "pretty"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_萩原雪歩",
+      "fields": {
+        "sub_attribute": "pretty"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_エミリースチュアート",
+      "fields": {
+        "sub_attribute": "pretty"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_七尾百合子",
+      "fields": {
+        "sub_attribute": "pretty"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_中谷育",
+      "fields": {
+        "sub_attribute": "pretty"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_徳川まつり",
+      "fields": {
+        "sub_attribute": "pretty"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_田中琴葉",
+      "fields": {
+        "sub_attribute": "pretty"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_矢吹可奈",
+      "fields": {
+        "sub_attribute": "pretty"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_我那覇響",
+      "fields": {
+        "sub_attribute": "girly"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_菊地真",
+      "fields": {
+        "sub_attribute": "girly"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_佐竹美奈子",
+      "fields": {
+        "sub_attribute": "girly"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_春日未来",
+      "fields": {
+        "sub_attribute": "girly"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_松田亜利沙",
+      "fields": {
+        "sub_attribute": "girly"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_横山奈緒",
+      "fields": {
+        "sub_attribute": "girly"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_福田のり子",
+      "fields": {
+        "sub_attribute": "girly"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_高坂海美",
+      "fields": {
+        "sub_attribute": "girly"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_高山紗代子",
+      "fields": {
+        "sub_attribute": "girly"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_四条貴音",
+      "fields": {
+        "sub_attribute": "mystical"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_如月千早",
+      "fields": {
+        "sub_attribute": "mystical"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_ジュリア",
+      "fields": {
+        "sub_attribute": "mystical"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_北沢志保",
+      "fields": {
+        "sub_attribute": "mystical"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_周防桃子",
+      "fields": {
+        "sub_attribute": "mystical"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_天空橋朋花",
+      "fields": {
+        "sub_attribute": "mystical"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_白石紬",
+      "fields": {
+        "sub_attribute": "mystical"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_真壁瑞希",
+      "fields": {
+        "sub_attribute": "mystical"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_水瀬伊織",
+      "fields": {
+        "sub_attribute": "breaker"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_秋月律子",
+      "fields": {
+        "sub_attribute": "breaker"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_二階堂千鶴",
+      "fields": {
+        "sub_attribute": "breaker"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_伴田路子",
+      "fields": {
+        "sub_attribute": "breaker"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_所恵美",
+      "fields": {
+        "sub_attribute": "breaker"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_最上静香",
+      "fields": {
+        "sub_attribute": "breaker"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_永吉昴",
+      "fields": {
+        "sub_attribute": "breaker"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_百瀬莉緒",
+      "fields": {
+        "sub_attribute": "breaker"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_舞浜歩",
+      "fields": {
+        "sub_attribute": "breaker"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_三浦あずさ",
+      "fields": {
+        "sub_attribute": "sweetie"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_高槻やよい",
+      "fields": {
+        "sub_attribute": "sweetie"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_北上麗花",
+      "fields": {
+        "sub_attribute": "sweetie"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_宮尾美也",
+      "fields": {
+        "sub_attribute": "sweetie"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_望月杏奈",
+      "fields": {
+        "sub_attribute": "sweetie"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_木下ひなた",
+      "fields": {
+        "sub_attribute": "sweetie"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_箱崎星梨花",
+      "fields": {
+        "sub_attribute": "sweetie"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_篠宮可憐",
+      "fields": {
+        "sub_attribute": "sweetie"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_豊川風花",
+      "fields": {
+        "sub_attribute": "sweetie"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_双海亜美",
+      "fields": {
+        "sub_attribute": "charming"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_双海真美",
+      "fields": {
+        "sub_attribute": "charming"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "765as_星井美希",
+      "fields": {
+        "sub_attribute": "charming"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_伊吹翼",
+      "fields": {
+        "sub_attribute": "charming"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_大神環",
+      "fields": {
+        "sub_attribute": "charming"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_島原エレナ",
+      "fields": {
+        "sub_attribute": "charming"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_桜守歌織",
+      "fields": {
+        "sub_attribute": "charming"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_野々原茜",
+      "fields": {
+        "sub_attribute": "charming"
+      }
+    },
+    {
+      "table": "idols",
+      "id": "ml_馬場このみ",
+      "fields": {
+        "sub_attribute": "charming"
+      }
+    }
+  ]
+}

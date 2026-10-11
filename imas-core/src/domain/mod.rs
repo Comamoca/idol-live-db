@@ -33,6 +33,7 @@ pub mod event_list_queries;
 pub mod event_naming;
 pub mod fuzzy_search;
 pub mod game_progress;
+pub mod idol_attributes;
 pub mod idol_detail;
 pub mod idol_list_filtering;
 pub mod idol_facets;
