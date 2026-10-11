@@ -1,0 +1,60 @@
+{
+ "title": "学マス: 極月学園のアイドル (藍井撫子・白草四音・白草月花) を追加",
+ "author": "Claude (fuga の依頼)",
+ "source": [
+  "https://x.com/gkmas_official/status/1867171802780467620",
+  "https://x.com/gkmas_official/status/1867172254590914641",
+  "https://x.com/gkmas_official/status/1867172776953700408"
+ ],
+ "_note": "公式 X「極月学園 アイドル紹介 (2/4)〜(4/4)」(2024-12-12 学マスカンファレンス) の画像の文面どおり。誕生日・身長などの数値とイメージカラーは公式に出ていないので空。debut_date は初公開日。",
+ "idols": [
+  {
+   "id": "gakuen_藍井撫子",
+   "brand_id": "gakuen",
+   "name": "藍井撫子",
+   "name_kana": "あおいなでしこ",
+   "family_name": "藍井",
+   "given_name": "撫子",
+   "sort_order": 8015,
+   "gender": "female",
+   "attribute": "1年",
+   "debut_date": "2024-12-12",
+   "description": "極月学園の1年生。学内上位層であるBランクアイドル。裕福な実家の力を活用し、多くのファンを獲得してきた。両親に溺愛されて育ったことから容姿に圧倒的な自信を持っている。四音のことを「お姉さま」と呼び、慕っているが、利用されている自覚はない。",
+   "voice_actors": ["若井友希"],
+   "source": "https://x.com/gkmas_official/status/1867171802780467620",
+   "brands": [{"brand_id": "gakuen", "is_primary": 1}]
+  },
+  {
+   "id": "gakuen_白草四音",
+   "brand_id": "gakuen",
+   "name": "白草四音",
+   "name_kana": "しらくさしおん",
+   "family_name": "白草",
+   "given_name": "四音",
+   "sort_order": 8016,
+   "gender": "female",
+   "attribute": "1年",
+   "debut_date": "2024-12-12",
+   "description": "極月学園の1年生。Aランクに君臨するアイドル。ボーカル、ビジュアル、ダンス、すべての能力が一級品。普段は物腰柔らかで猫を被っているが、その本性は冷徹にして残忍。アイドルは手段であり、ファンは道具。他者を蹴落とすことで成り上がってきた。",
+   "voice_actors": ["田中美海"],
+   "source": "https://x.com/gkmas_official/status/1867172254590914641",
+   "brands": [{"brand_id": "gakuen", "is_primary": 1}]
+  },
+  {
+   "id": "gakuen_白草月花",
+   "brand_id": "gakuen",
+   "name": "白草月花",
+   "name_kana": "しらくさげっか",
+   "family_name": "白草",
+   "given_name": "月花",
+   "sort_order": 8017,
+   "gender": "female",
+   "attribute": "3年",
+   "debut_date": "2024-12-12",
+   "description": "極月学園の3年生。学内で唯一人のSランク。すでにトップアイドルと名高く、現在はアメリカを中心に活躍中。無駄を嫌い、大抵の人間に興味がない。名を覚えるのは、才ある者のみ。クールな外見と傑出したパフォーマンスを売りにしており、海外の女性ファンが多い。",
+   "voice_actors": ["芹澤優"],
+   "source": "https://x.com/gkmas_official/status/1867172776953700408",
+   "brands": [{"brand_id": "gakuen", "is_primary": 1}]
+  }
+ ]
+}

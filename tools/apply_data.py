@@ -534,7 +534,7 @@ def validate(conn):
             if not idol.get("id") or exists(conn, "idols", idol.get("id", "")):
                 problems.append(f"{tag}: idol id が空 or 既存")
             for k in idol:
-                if k not in icol and k not in ("brands", *ANNOTATION_KEYS):
+                if k not in icol and k not in ("brands", "voice_actors", *ANNOTATION_KEYS):
                     problems.append(f"{tag}: idols に未知の列 '{k}'")
 
     for path, data in load("creators"):
@@ -963,8 +963,17 @@ def apply_all(conn):
     for path, data in load("idols"):
         for idol in data["idols"]:
             brands = idol.pop("brands", [])
+            voice_actors = idol_voice_actor_names(idol.pop("voice_actors", None))
             idol.pop("source", None)
             insert_row(conn, "idols", {k: v for k, v in idol.items() if k in icol})
+            # 声優は期間つき履歴の idol_voice_actors に持つ。CloudKit へは idols の
+            # voiceActors として載る (ck_records.push_columns)。
+            for name in voice_actors:
+                conn.execute(
+                    "INSERT OR IGNORE INTO idol_voice_actors (id, idol_id, name, valid_from, valid_to)"
+                    " VALUES (?,?,?,?,NULL)",
+                    (f"{idol['id']}__{name}", idol["id"], name, idol.get("debut_date")),
+                )
             for b in brands:
                 conn.execute(
                     "INSERT OR IGNORE INTO idol_brands (idol_id, brand_id, is_primary) VALUES (?,?,?)",
@@ -1077,6 +1086,15 @@ def apply_all(conn):
 
     conn.commit()
     return affected
+
+
+def idol_voice_actor_names(value):
+    """idols の `voice_actors` (配列か「、」「,」区切りの文字列) → 名前の並び。"""
+    if not value:
+        return []
+    if isinstance(value, str):
+        value = value.replace("、", ",").split(",")
+    return [n.strip() for n in value if n and n.strip()]
 
 
 def push_cloudkit(affected, production, db=None):

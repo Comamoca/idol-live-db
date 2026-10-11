@@ -275,7 +275,7 @@ pub const FACETS: &[FacetDef] = &[
     f("birthplace", Category::Profile, Kind::Single, None, "出身地", "都道府県 (「県」「府」「都」は付けない)。海外・市の名前のものは原文に近い形"),
     f("birthplace_region", Category::Profile, Kind::Single, Some(REGIONS), "出身地方", "出身地から自動。近畿は「関西」とも言う").auto(Auto::Exact).computed(),
     f("nationality", Category::Profile, Kind::Single, None, "国籍", "公式に分かるものだけ。出身地からは推測しない"),
-    f("school", Category::Profile, Kind::Single, None, "学校", "学マスは初星学園。ほかは公式に分かるものだけ").auto(Auto::Exact).computed(),
+    f("school", Category::Profile, Kind::Single, None, "学校", "学マスは初星学園 (極月学園の 4 人を除く)。ほかは公式に分かるものだけ").auto(Auto::Exact).computed(),
     f("grade", Category::Profile, Kind::Single, None, "学年", "「1年」「中学2年」など"),
     // --- appearance (hair_* は idol_hairstyles に保存。main の値が出る) ---
     f("hair_color", Category::Appearance, Kind::Single, Some(HAIR_COLORS), "髪色", "main の髪型の髪色。ほかの髪型は other_hairstyles に載る").hair(),
@@ -477,6 +477,18 @@ pub fn normalize_birthplace(raw: &str) -> Option<(String, &'static str)> {
 /// 星座の原文 → 12 星座のどれか (「花も恥じらう乙女座」→「乙女座」)。
 pub fn normalize_constellation(raw: &str) -> Option<&'static str> {
     CONSTELLATIONS.iter().copied().find(|c| raw.contains(c))
+}
+
+/// 学マスのうち、初星学園ではなくライバル校の極月学園に居るアイドル。
+/// 出典: 公式 X「極月学園 アイドル紹介 (1/4)〜(4/4)」(2024-12-12 学マスカンファレンス)。
+const GOKUGETSU_IDOLS: &[&str] = &["gakuen_賀陽燐羽", "gakuen_藍井撫子", "gakuen_白草四音", "gakuen_白草月花"];
+
+/// アイドル → 所属 (事務所・学園)。学マスは人によって初星学園と極月学園に分かれる。
+pub fn agency_of_idol(idol_id: &str, brand_id: &str) -> Option<&'static str> {
+    if brand_id == "gakuen" && GOKUGETSU_IDOLS.contains(&idol_id) {
+        return Some("極月学園");
+    }
+    agency_of_brand(brand_id)
 }
 
 /// ブランド → 所属 (事務所・学園)。
@@ -810,12 +822,13 @@ pub fn build_idol_facts(snap: &Snapshot, idol_id: &str, persona: &PersonaInput, 
         c.push(cand("birthplace_region", region).derived());
     }
     let brand_id = idol.brand_id.as_deref();
-    if brand_id == Some("gakuen") {
-        c.push(cand("school", "初星学園").derived());
+    let school = brand_id.filter(|b| *b == "gakuen").and_then(|b| agency_of_idol(idol_id, b));
+    if let Some(school) = school {
+        c.push(cand("school", school).derived());
     }
     if let Some(grade) = idol.attribute.as_deref().filter(|a| a.ends_with('年') && a.chars().next().is_some_and(|ch| ch.is_ascii_digit())) {
         c.push(cand("grade", grade));
-        if brand_id == Some("gakuen") {
+        if school == Some("初星学園") {
             // 初星学園は高等部。学年が分かっていれば推定ではなく確定。
             c.push(cand("school_stage", "高校生").derived());
         }
@@ -861,7 +874,7 @@ pub fn build_idol_facts(snap: &Snapshot, idol_id: &str, persona: &PersonaInput, 
     if let Some(b) = brand_id.and_then(|id| snap.brand(id)) {
         c.push(cand("brand", b.name.as_str()).extra(json!({ "id": b.id, "short_name": b.short_name })));
     }
-    if let Some(a) = brand_id.and_then(agency_of_brand) {
+    if let Some(a) = brand_id.and_then(|b| agency_of_idol(idol_id, b)) {
         c.push(cand("agency", a).derived());
     }
     let units = idols::idol_units(snap, idol_id);
@@ -1448,6 +1461,16 @@ mod tests {
     }
 
     #[test]
+    fn 極月学園のアイドルは学校と所属が極月学園になる() {
+        let snap = bundle_snapshot();
+        let d = facts(snap, "gakuen_賀陽燐羽", &[]);
+        assert_eq!(d["categories"]["profile"]["school"]["value"], "極月学園");
+        assert_eq!(d["categories"]["relations"]["agency"]["value"], "極月学園");
+        assert_eq!(agency_of_idol("gakuen_花海咲季", "gakuen"), Some("初星学園"));
+        assert_eq!(agency_of_idol("gakuen_白草月花", "gakuen"), Some("極月学園"));
+    }
+
+    #[test]
     fn 有村麻央の公式の項目と自動の項目() {
         let snap = bundle_snapshot();
         let d = facts(snap, "gakuen_有村麻央", &[]);
@@ -1459,7 +1482,7 @@ mod tests {
         assert_eq!(p["birth_month"]["value"], 1);
         assert_eq!(p["birthplace"]["value"], "兵庫");
         assert_eq!(p["birthplace_region"]["value"], "近畿");
-        assert_eq!(p["grade"]["value"], "1年");
+        assert_eq!(p["grade"]["value"], "3年");
         assert_eq!(p["height_band"]["value"], "150cm台");
         assert_eq!(d["categories"]["appearance"]["image_color"]["value"]["hex"], "#A453A6");
         assert_eq!(d["categories"]["appearance"]["image_color"]["value"]["name"], "紫");
