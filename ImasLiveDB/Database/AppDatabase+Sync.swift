@@ -66,10 +66,31 @@ extension AppDatabase {
     func upsertShowTickets(_ rows: [ShowTicketRecord]) throws { try upsertChunked(rows) }
     func upsertTicketSales(_ rows: [TicketSaleRecord]) throws { try upsertChunked(rows) }
     func upsertIdolFacets(_ rows: [IdolFacetRecord]) throws { try upsertChunked(rows) }
-    /// main でない行を先に書く。同梱 DB から始めた端末には「main は 1 人 1 つ」の一意索引があるので、
-    /// main の付け替え (A → B) が同じ束で届いたとき、B を先に書くと A がまだ main で弾かれる。
+    /// 髪型は CloudKit の写しが正。端末の表には「main は 1 人 1 つ」「label は 1 人の中で重ならない」の
+    /// 一意索引がある (同梱 DB と、起動時のコアのスキーマ適用が作る) ので、届いた行と衝突する端末の行を先に譲らせる:
+    /// main の行を書く前にその子のほかの行の main を外し、同じ label の別 id の行 (label を変えた旧行) は消す。
+    /// こうしないと、付け替え・label の変更が別の束や削除より先に届いたとき、新しい行が一意索引で捨てられる。
     func upsertIdolHairstyles(_ rows: [IdolHairstyleRecord]) throws {
-        try upsertChunked(rows.filter { !$0.isMain } + rows.filter(\.isMain))
+        try dbQueue.write { db in
+            for row in rows.filter({ !$0.isMain }) + rows.filter(\.isMain) {
+                do {
+                    try db.inSavepoint {
+                        try db.execute(
+                            sql: "DELETE FROM idol_hairstyles WHERE idol_id = ? AND label = ? AND id <> ?",
+                            arguments: [row.idolId, row.label, row.id])
+                        if row.isMain {
+                            try db.execute(
+                                sql: "UPDATE idol_hairstyles SET is_main = 0 WHERE idol_id = ? AND id <> ? AND is_main = 1",
+                                arguments: [row.idolId, row.id])
+                        }
+                        try row.upsert(db)
+                        return .commit
+                    }
+                } catch {
+                    syncUpsertLogger.error("upsert skip (idol_hairstyles): \(error.localizedDescription)")
+                }
+            }
+        }
     }
     func upsertTicketSalesAsync(_ rows: [TicketSaleRecord]) async throws { try await upsertChunkedAsync(rows) }
 

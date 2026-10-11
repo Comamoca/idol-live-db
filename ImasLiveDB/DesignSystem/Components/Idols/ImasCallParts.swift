@@ -238,6 +238,7 @@ struct ImasCallMatrix: View {
             .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { availableWidth = $0 }
             legend
         }
+        .sensoryFeedback(.selection, trigger: selection)
     }
 
     private var grid: some View {
@@ -309,7 +310,6 @@ struct ImasCallMatrix: View {
                 .buttonStyle(.plain)
                 .accessibilityLabel(spoken(cell, row: row, column: column))
                 .accessibilityAddTraits(isSelected ? .isSelected : [])
-                .sensoryFeedback(.selection, trigger: isSelected)
         } else {
             label.accessibilityLabel(spoken(cell, row: row, column: column))
         }

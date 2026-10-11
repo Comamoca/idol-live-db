@@ -82,7 +82,10 @@ struct UnitDetailView: View {
                 .environment(database)
         }
         .imasLoadAfterTransition { await vm.loadDetails(unit: unit) }
-        .onChange(of: tabs) { _, now in if tab != initialTab, now.contains(initialTab) { tab = initialTab } }
+        .onChange(of: tabs) { _, now in
+            // 初めに開くタブの指定 (ハーネス) だけ。既定 (楽曲) では、読み込み中に選んだタブを戻さない。
+            if initialTab != .songs, tab == .songs, now.contains(initialTab) { tab = initialTab }
+        }
         .trackScreen("unit_detail")
     }
 

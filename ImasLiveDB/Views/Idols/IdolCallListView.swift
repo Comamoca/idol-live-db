@@ -106,10 +106,13 @@ struct IdolCallListView: View {
 
     private func load() async {
         let loaded = (try? await idolReading.callGroups(idolId: idol.id, query: query, direction: direction)) ?? []
+        // 打鍵ごとに走るので、追い越された古い結果で上書きしない。
+        guard !Task.isCancelled else { return }
         let missing = Set(loaded.flatMap { $0.pairs.map(\.otherId) }).subtracting(others.keys)
         if !missing.isEmpty, let fetched = try? await idolReading.idols(ids: Array(missing)) {
             for other in fetched { others[other.id] = other }
         }
+        guard !Task.isCancelled else { return }
         groups = loaded
         hasLoaded = true
     }

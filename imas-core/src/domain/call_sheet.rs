@@ -16,6 +16,10 @@ use crate::domain::text_search_index::FoldedNeedle;
 /// 仲間としてまとめない (ブランドの全員が仲間になってしまう)。
 pub const UNIT_MATE_MAX_MEMBERS: usize = 12;
 
+/// 呼称表を出すユニットの人数の上限。これより大きい編成 (ブランド全員の名義など) はマス目が数万になり、
+/// 表として読めないので出さない (横に流して読めるのはこのくらいまで)。
+pub const UNIT_CALL_MATRIX_MAX_MEMBERS: usize = 16;
+
 /// アイドル詳細の区画に出す行数。
 pub const CALL_PREVIEW_LIMIT: usize = 3;
 
@@ -227,11 +231,12 @@ pub struct UnitCallMatrix {
     pub rows: Vec<Vec<UnitCallCell>>,
 }
 
-/// ユニットの呼称表。メンバーが 2 人未満か、メンバーどうしの呼び方が 1 つも無いユニットは `None` (タブを出さない)。
+/// ユニットの呼称表。メンバーが 2 人未満か [`UNIT_CALL_MATRIX_MAX_MEMBERS`] を超えるか、
+/// メンバーどうしの呼び方が 1 つも無いユニットは `None` (タブを出さない)。
 pub fn unit_call_matrix(snap: &Snapshot, unit_id: &str) -> Option<UnitCallMatrix> {
     let &ui = snap.unit_index_by_id.get(unit_id)?;
     let members: Vec<&str> = snap.members_by_unit[ui as usize].iter().map(|&ii| snap.idols[ii as usize].id.as_str()).collect();
-    if members.len() < 2 {
+    if members.len() < 2 || members.len() > UNIT_CALL_MATRIX_MAX_MEMBERS {
         return None;
     }
     let short = |forms: Vec<Form>| -> Option<String> {
@@ -327,5 +332,8 @@ mod tests {
         assert_eq!(m.rows[yi][yi].text.as_deref(), Some("三峰 / 私"));
         assert_eq!(m.rows[yi][n].text.as_deref(), Some("Pたん"));
         assert_eq!(unit_call_matrix(snap, "no-such-unit"), None);
+        // ブランド全員の名義 (193 人) は表にしない。
+        let all = snap.units.iter().find(|u| u.name == "THE IDOLM@STER CINDERELLA GIRLS!!").unwrap();
+        assert_eq!(unit_call_matrix(snap, &all.id), None);
     }
 }

@@ -1266,10 +1266,10 @@ enum DatabaseMigrations {
         // v51: アイドルの項目 (idol_facets) と髪型 (idol_hairstyles)。共有コアが見た目の版・項目の並びを組み、
         // この 2 表は CloudKit の写しを保存するだけ。FK は前例 (v35_ticket_sales) に合わせて付けない。
         // 中身は次の同期 (IdolFacet / IdolHairstyle) と、同梱 DB の reseed で入る。
-        // 髪型の一意索引 (main は 1 人 1 つ・label の重複なし) は端末では作らない。端末は CloudKit の写しで、
-        // main の付け替えが同期の途中で一時的に 2 つ重なると、一意索引があると後から来た行が捨てられる
-        // (守るのは投入側 apply_data --check とコアの hairstyle_set_problems)。
-        migrator.registerMigration("v51_idol_facets") { db in
+        // 髪型の一意索引 (main は 1 人 1 つ・label の重複なし) は、起動時にコアのスキーマ適用
+        // (applyCoreMasterSchema) が作る。同期で付け替え・label の変更が届いたときに新しい行が弾かれないよう、
+        // 取り込み (upsertIdolHairstyles) が衝突する端末の行を先に譲らせる。
+        migrator.registerMigration("v50_idol_facets") { db in
             try db.create(table: "idol_facets", ifNotExists: true) { t in
                 t.column("id", .text).primaryKey()
                 t.column("idol_id", .text).notNull()
