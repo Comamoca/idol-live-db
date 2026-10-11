@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import uniffi.imas_core.idolTeamFullName
 
 data class FilteredIdolsUiState(
     val title: String = "",
@@ -52,6 +53,8 @@ class FilteredIdolsViewModel(
                 emit("${value}出身のアイドル", idols.fetchIdolsByBirthPlace(value))
             IdolFilterKind.BLOOD_TYPE ->
                 emit("${value}型のアイドル", idols.fetchIdolsByBloodType(value))
+            IdolFilterKind.TEAM ->
+                emit("${idolTeamFullName(value) ?: value}のアイドル", idols.fetchIdolsByTeam(value))
             else -> emit(value, emptyList())
         }
     }

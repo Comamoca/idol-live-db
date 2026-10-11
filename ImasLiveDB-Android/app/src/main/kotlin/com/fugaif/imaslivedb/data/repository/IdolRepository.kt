@@ -70,6 +70,9 @@ class IdolRepository(
     suspend fun fetchIdolsByBloodType(bloodType: String): List<Idol> =
         hydrateIdols(snapshots.query { store -> store.idolsByBloodType(bloodType).map { it.id } })
 
+    suspend fun fetchIdolsByTeam(team: String): List<Idol> =
+        hydrateIdols(snapshots.query { store -> store.idolsByTeam(team).map { it.id } })
+
     // アイドル実体の単発/一括取得はスナップショットの hydration 先そのものなので Room 直のまま。
     suspend fun fetchIdol(id: String): Idol? {
         return db.idolDao().fetchIdol(id)

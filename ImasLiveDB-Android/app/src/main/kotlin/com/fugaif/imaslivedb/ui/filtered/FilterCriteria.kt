@@ -60,4 +60,7 @@ object IdolFilterKind {
 
     /** value = idols.blood_type の生値 (例: "A")。 */
     const val BLOOD_TYPE = "blood_type"
+
+    /** value = idols.team の生値 (例: "pretty")。見出しはコアの idolTeamFullName。 */
+    const val TEAM = "team"
 }

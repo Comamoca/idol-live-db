@@ -85,6 +85,8 @@ struct IdolFilterContext {
     var selectedBrandIds: Set<String> = []
     /// ブランド内サブ属性 (cute/cool/passion 等)。nil = 属性絞り込みなし。
     var selectedAttribute: String? = nil
+    /// 属性をさらに分けたチーム (`pretty` 等)。nil = チームで絞らない。
+    var selectedTeam: String? = nil
     var requireMyPick: Bool = false
     var myPickIds: Set<String> = []
     var requireFavorite: Bool = false
@@ -120,6 +122,7 @@ private func criteria(_ ctx: IdolFilterContext) -> IdolListFilterCriteria {
     IdolListFilterCriteria(
         selectedBrandIds: Array(ctx.selectedBrandIds),
         selectedAttribute: ctx.selectedAttribute,
+        selectedTeam: ctx.selectedTeam,
         requireMyPick: ctx.requireMyPick,
         myPickIds: Array(ctx.myPickIds),
         requireFavorite: ctx.requireFavorite,
@@ -142,6 +145,7 @@ private func idolListEntry(_ idol: Idol) -> IdolListEntry {
         nickname: idol.nickname,
         aliases: idol.aliases,
         attribute: idol.attribute,
+        team: idol.team,
         sortOrder: Int64(idol.sortOrder),
         age: idol.age.map(Int64.init),
         height: idol.height,

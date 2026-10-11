@@ -141,6 +141,10 @@ pub struct Idol {
     pub attribute: Option<String>,
     pub is_external: bool,
     pub aliases: Option<String>,
+    /// 属性をさらに分けたチーム (ミリシタ BATTLE OF THEATER の `pretty` 等)。
+    /// 値と表示名は [`crate::domain::idol_attributes`]。
+    #[serde(default)]
+    pub team: Option<String>,
 }
 
 impl Idol {

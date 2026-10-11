@@ -125,6 +125,7 @@ const FIELD_RULES: Record<string, Record<string, FieldRule>> = {
     bloodType: { type: "STRING", maxLen: 10 },
     birthPlace: { type: "STRING", maxLen: 100 },
     attribute: { type: "STRING", maxLen: 50 },
+    team: { type: "STRING", maxLen: 50 },
     aliases: { type: "STRING", maxLen: MAX_STR_DEFAULT },
     debutDate: { type: "STRING", maxLen: 50 },
     nickname: { type: "STRING", maxLen: 100 },

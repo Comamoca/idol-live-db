@@ -45,7 +45,8 @@ enum CoreRecordMapping {
             debutDate: record.debutDate,
             attribute: record.attribute,
             isExternal: record.isExternal,
-            aliases: record.aliases
+            aliases: record.aliases,
+            team: record.team
         )
     }
 

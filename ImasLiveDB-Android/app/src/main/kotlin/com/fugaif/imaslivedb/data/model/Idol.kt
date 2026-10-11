@@ -102,7 +102,11 @@ data class Idol(
 
     /** 担当声優のカンマ区切り。先頭が現役、以降は過去 CV (古い順)。 */
     @ColumnInfo(name = "voice_actors")
-    val voiceActors: String? = null
+    val voiceActors: String? = null,
+
+    /** 属性をさらに分けたチーム (ミリシタ BATTLE OF THEATER の `pretty` 等)。表示名はコアが持つ。 */
+    @ColumnInfo(name = "team")
+    val team: String? = null
 ) {
     /**
      * 表示用の短縮名 (アバターのモノグラム等)。優先順位: nickname > given_name > name。

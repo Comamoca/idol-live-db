@@ -76,6 +76,9 @@ pub struct IdolRecord {
     pub attribute: Option<String>,
     pub is_external: bool,
     pub aliases: Option<String>,
+    /// 属性をさらに分けたチーム ([`crate::domain::idol_attributes`])。
+    #[uniffi(default = None)]
+    pub team: Option<String>,
 }
 
 impl From<&Idol> for IdolRecord {
@@ -110,6 +113,7 @@ impl From<&Idol> for IdolRecord {
             attribute: i.attribute.clone(),
             is_external: i.is_external,
             aliases: i.aliases.clone(),
+            team: i.team.clone(),
         }
     }
 }
@@ -265,6 +269,11 @@ pub fn idols_by_birth_place(snap: &Snapshot, birth_place: &str) -> Vec<IdolRecor
 /// 元 SQL: `blood_type = ? ORDER BY sort_order`。
 pub fn idols_by_blood_type(snap: &Snapshot, blood_type: &str) -> Vec<IdolRecord> {
     official_order_filter(snap, |i| i.blood_type.as_deref() == Some(blood_type))
+}
+
+/// チームフィルタ (IdolFilterCriterion.team)。公式順。
+pub fn idols_by_team(snap: &Snapshot, team: &str) -> Vec<IdolRecord> {
+    official_order_filter(snap, |i| i.team.as_deref() == Some(team))
 }
 
 /// sort_order 順 (前計算済み idol_order) を保ったまま述語で絞る共通経路。
@@ -506,6 +515,12 @@ pub struct IdolProfileSource {
     pub talents: Option<String>,
     /// カラーコード (#RRGGBB)。
     pub color: Option<String>,
+    /// ブランド内の属性 (`princess` 等)。表示名はコアが付ける。
+    #[uniffi(default = None)]
+    pub attribute: Option<String>,
+    /// 属性をさらに分けたチーム (`pretty` 等)。
+    #[uniffi(default = None)]
+    pub team: Option<String>,
 }
 
 impl From<&IdolRecord> for IdolProfileSource {
@@ -527,6 +542,8 @@ impl From<&IdolRecord> for IdolProfileSource {
             hobbies: r.hobbies.clone(),
             talents: r.talents.clone(),
             color: r.color.clone(),
+            attribute: r.attribute.clone(),
+            team: r.team.clone(),
         }
     }
 }
@@ -560,6 +577,14 @@ fn profile_input(r: &IdolProfileSource) -> IdolProfileInput {
         ]),
         hobby_talent: join_parts(&[r.hobbies.clone(), r.talents.clone()]),
         color: r.color.clone(),
+        attribute_display: crate::domain::idol_attributes::attribute_display(
+            r.attribute.as_deref(),
+            r.team.as_deref(),
+        ),
+        // 属性と食い違うチームは表示に付けないので、行き先にもしない。
+        team: r.team.clone().filter(|t| {
+            crate::domain::idol_attributes::team_attribute(t) == r.attribute.as_deref()
+        }),
     }
 }
 
@@ -656,7 +681,7 @@ mod tests {
             height: None, weight: None, birth_place: None, age: None, bust: None, waist: None,
             hip: None, constellation: None, hobbies: None, talents: None, description: None,
             gender: None, handedness: None, family_name: None, given_name: None, nickname: None,
-            debut_date: None, attribute: None, is_external: false, aliases: None,
+            debut_date: None, attribute: None, is_external: false, aliases: None, team: None,
         }
     }
 
@@ -753,6 +778,43 @@ mod tests {
             idol_profile_input(&idol).birthplace_handedness.as_deref(),
             Some("東京都 ・ both")
         );
+    }
+
+    /// 属性の行はチームを添え、押すと同じチームの一覧へ (チームが属性と食い違えば添えない)。
+    #[test]
+    fn attribute_row_carries_the_team() {
+        use crate::domain::screen_composition::RowAction;
+        let row = |attribute: &str, team: Option<&str>| {
+            idol_profile_rows_from_source(&IdolProfileSource {
+                attribute: Some(attribute.into()),
+                team: team.map(Into::into),
+                ..Default::default()
+            })
+            .into_iter()
+            .find(|r| r.label == "属性")
+        };
+        let r = row("princess", Some("pretty")).unwrap();
+        assert_eq!(r.value, "プリンセス プリティ");
+        assert_eq!(r.action, RowAction::FilterByTeam { team: "pretty".into() });
+        let r = row("fairy", Some("pretty")).unwrap();
+        assert_eq!((r.value.as_str(), &r.action), ("フェアリー", &RowAction::None));
+        assert!(row("1年", None).is_none());
+    }
+
+    /// 実データの 52 人は 6 チームに分かれ、どのチームも属性と合っている。
+    #[test]
+    fn bundled_teams_match_their_attribute() {
+        let snap = crate::test_support::bundle_snapshot();
+        let with_team: Vec<&Idol> = snap.idols.iter().filter(|i| i.team.is_some()).collect();
+        assert_eq!(with_team.len(), 52);
+        for i in &with_team {
+            let team = i.team.as_deref().unwrap();
+            assert_eq!(crate::domain::idol_attributes::team_attribute(team), i.attribute.as_deref(), "{}", i.id);
+        }
+        for team in crate::domain::idol_attributes::all_teams() {
+            let n = idols_by_team(snap, &team).len();
+            assert!((8..=9).contains(&n), "{team}: {n}");
+        }
     }
 
     /// 生の値から組んだ行は、Android が自前で作っていた `04月03日` ではなく

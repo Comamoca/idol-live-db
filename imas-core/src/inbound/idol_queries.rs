@@ -96,6 +96,12 @@ impl SnapshotStore {
         Ok(queries::idols_by_blood_type(&snap, &blood_type))
     }
 
+    /// チームフィルタ (完全一致)。BATTLE OF THEATER のチーム (`pretty` 等) の一覧。
+    pub fn idols_by_team(&self, team: String) -> Result<Vec<IdolRecord>, SnapshotError> {
+        let snap = self.current()?;
+        Ok(queries::idols_by_team(&snap, &team))
+    }
+
     /// idol_id → 現任 CV 名のマップ (現任なしのアイドルはキーなし)。
     /// SQL 時代の fetchIdolCastNames 相当。
     pub fn idol_cast_names(&self) -> Result<HashMap<String, String>, SnapshotError> {
@@ -207,4 +213,23 @@ mod tests {
         assert!(store.idol_shows("存在しないid".into()).unwrap().is_empty());
         assert_eq!(store.idol_current_voice_actor("存在しないid".into()).unwrap(), None);
     }
+}
+
+/// そのブランドの属性の選択肢 (値と表示名。並びが画面の並び)。属性で分けないブランドは空。
+/// アプリの絞り込みはこれを並べるだけにする (対応表を各 OS に書き写さない)。
+#[uniffi::export]
+pub fn idol_attribute_options(brand_id: String) -> Vec<crate::domain::idol_attributes::IdolAttributeOption> {
+    crate::domain::idol_attributes::attribute_options(&brand_id)
+}
+
+/// その属性を分けたチームの選択肢 (ミリシタ BATTLE OF THEATER の 6 チーム)。無ければ空。
+#[uniffi::export]
+pub fn idol_team_options(attribute: String) -> Vec<crate::domain::idol_attributes::IdolAttributeOption> {
+    crate::domain::idol_attributes::team_options(&attribute)
+}
+
+/// チームの呼び名 (`pretty` → 「プリンセス プリティ」)。知らない値は `None`。
+#[uniffi::export]
+pub fn idol_team_full_name(team: String) -> Option<String> {
+    crate::domain::idol_attributes::team_full_name(&team)
 }

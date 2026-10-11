@@ -1255,6 +1255,14 @@ enum DatabaseMigrations {
                 """)
         }
 
+        // v50: idols.team カラム追加 (属性をさらに分けたチーム。ミリシタ BATTLE OF THEATER の 6 チーム)。
+        migrator.registerMigration("v50_idols_team") { db in
+            let idolColumns = try Row.fetchAll(db, sql: "PRAGMA table_info(idols)").map { $0["name"] as String? }
+            if !idolColumns.contains("team") {
+                try db.execute(sql: "ALTER TABLE idols ADD COLUMN team TEXT")
+            }
+        }
+
         return migrator
     }
 }

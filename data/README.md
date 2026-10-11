@@ -104,6 +104,10 @@ master.sqlite → CloudKit に一括反映します（直接 CloudKit に書く�
 ## 値の決まり
 
 - **brand_id**: `765as` / `cg` / `ml` / `sidem` / `sc`（シャニ）/ `gakuen`（学マス）/ `876` / `961` / `other`
+- **idols.attribute** (ブランド内の属性): `cute` / `cool` / `passion` (CG)、`princess` / `fairy` / `angel` (ML・765AS)、
+  `intelli` / `physical` / `mental` (SideM)、`sol` / `luna` / `stella` (シャニ)。表示名は `imas-core/src/domain/idol_attributes.rs`
+- **idols.team** (属性をさらに分けたチーム。ミリシタ BATTLE OF THEATER): `pretty` / `girly` (princess)、
+  `mystical` / `breaker` (fairy)、`sweetie` / `charming` (angel)。属性と合わない値は `--check` が落とす
 - **song_type**: `solo` / `unit` / `all` / `tie_in` / `cover`
 - **event kind**: `live` / `festival` / `release_event` / `radio` / `stream` / `other`
 - **event event_type** (催しの性格): `anniversary` / `orchestra` / `external_event` /

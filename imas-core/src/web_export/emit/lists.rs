@@ -804,7 +804,10 @@ fn idol_cells(ctx: &Ctx, record: &idol_queries::IdolRecord) -> Vec<Option<String
         record.blood_type.as_deref().map(content::idol_blood_display),
         record.constellation.clone(),
         record.birth_place.clone(),
-        record.attribute.as_deref().map(content::idol_attribute_label),
+        // 属性はアプリと同じ名前で、チームがあれば添える (「プリンセス プリティ」)。
+        // 表に無い値 (学マスの「1年」) は従来どおり。
+        crate::domain::idol_attributes::attribute_display(record.attribute.as_deref(), record.team.as_deref())
+            .or_else(|| record.attribute.as_deref().map(content::idol_attribute_label)),
         record.debut_date.as_deref().map(content::idol_debut_display),
         counts.and_then(|(songs, _)| nonzero(songs)),
         counts.and_then(|(_, shows)| nonzero(shows)),

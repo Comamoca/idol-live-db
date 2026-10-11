@@ -356,6 +356,9 @@ pub struct CkIdolRow {
     pub attribute: Option<String>,
     pub is_external: bool,
     pub aliases: Option<String>,
+    /// 属性をさらに分けたチーム (`pretty` 等)。
+    #[uniffi(default = None)]
+    pub team: Option<String>,
 }
 
 /// events
@@ -794,6 +797,7 @@ pub fn idol(record: &CkRecordInput) -> Option<CkIdolRow> {
         // 実データは INT64 なので差は出ないが、小数つき Double だけ false に倒れる。
         is_external: f.int64_exact("isExternal").unwrap_or(0) != 0,
         aliases: f.str("aliases"),
+        team: f.str("team"),
     })
 }
 
@@ -1939,6 +1943,7 @@ mod tests {
                 ("attribute", text("princess")),
                 ("isExternal", int(1)),
                 ("aliases", text("はるるん")),
+                ("team", text("pretty")),
                 // 廃止列。読まないので行には出ない。
                 ("voiceActors", text("中村繪里子")),
             ],
@@ -1975,6 +1980,7 @@ mod tests {
                 attribute: Some("princess".to_string()),
                 is_external: true,
                 aliases: Some("はるるん".to_string()),
+                team: Some("pretty".to_string()),
             }
         );
     }

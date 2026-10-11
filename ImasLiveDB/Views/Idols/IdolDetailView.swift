@@ -628,7 +628,9 @@ struct IdolDetailView: View {
             handedness: idol.handedness,
             hobbies: idol.hobbies,
             talents: idol.talents,
-            color: idol.color
+            color: idol.color,
+            attribute: idol.attribute,
+            team: idol.team
         ))
     }
 
@@ -640,6 +642,9 @@ struct IdolDetailView: View {
         switch row.action {
         case let .filterByBirthMonth(month):
             return (true, { go(.filteredIdols(.birthMonth(Int(month)))) })
+        // 属性の行は、チームが分かるとき同じチームのアイドル一覧へ。
+        case let .filterByTeam(team):
+            return (true, { go(.filteredIdols(.team(id: team, label: idolTeamFullName(team: team) ?? team))) })
         // カラーは押すと写せる (配信や実況で色コードを使う人が居る)。
         case RowAction.copyValue:
             return (false, { UIPasteboard.general.string = row.value })

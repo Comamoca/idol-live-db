@@ -17,6 +17,10 @@ brandIds: Array<string>,
  */
 attribute: string | null, 
 /**
+ * 属性をさらに分けたチーム (`pretty` 等)。
+ */
+team: string | null, 
+/**
  * 誕生月 (1..=12)。
  */
 birthMonth: number | null, 

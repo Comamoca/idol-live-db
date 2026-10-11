@@ -48,6 +48,10 @@ struct Idol: Codable, FetchableRecord, PersistableRecord, Identifiable, Hashable
     /// 検索や画像インポートのキーマッチでも matched キーとして使う。
     var aliases: String?
 
+    /// 属性をさらに分けたチーム (ミリシタ BATTLE OF THEATER の `pretty` 等)。
+    /// 値と表示名は共有コア (`idolTeamOptions` / `idolTeamFullName`) が持つ。
+    var team: String?
+
     enum CodingKeys: String, CodingKey {
         case id, name, color, birthday, height, weight, age, bust, waist, hip
         case constellation, hobbies, talents, description, gender, handedness, nickname
@@ -63,6 +67,7 @@ struct Idol: Codable, FetchableRecord, PersistableRecord, Identifiable, Hashable
         case attribute
         case isExternal = "is_external"
         case aliases
+        case team
     }
 
     /// `aliases` カラムをカンマ区切りで分割した配列。空白 trim 済み。

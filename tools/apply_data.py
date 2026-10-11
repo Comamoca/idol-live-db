@@ -99,6 +99,14 @@ FIX_FIELD_WHITELIST = {
                         "accessories", "origin", "source_note", "sort_order"},
 }
 
+# idols.team (属性をさらに分けたチーム) の値 → それが属する属性。
+# 唯一の正は imas-core/src/domain/idol_attributes.rs の TEAMS (表示名もそちら)。
+IDOL_TEAMS = {
+    "pretty": "princess", "girly": "princess",
+    "mystical": "fairy", "breaker": "fairy",
+    "sweetie": "angel", "charming": "angel",
+}
+
 FACETS_JSON = ROOT / "imas-core" / "facets.json"
 FACET_ORIGINS = {"official", "promoted"}
 MAIN_HAIRSTYLE_LABEL = "基本"
@@ -763,6 +771,16 @@ def validate(conn):
                         problems.append(
                             f"{tag}: '{table}' の '{k}' は fixes で直せない "
                             f"(許可: {sorted(FIX_FIELD_WHITELIST[table])})")
+                # チームは表の値だけ、かつアイドルの属性と合うものだけ (合わないと画面に出ない)。
+                if table == "idols" and "team" in fields and rid and exists(conn, table, rid):
+                    team = fields["team"]
+                    attr = fields.get("attribute") or conn.execute(
+                        "SELECT attribute FROM idols WHERE id = ?", (rid,)).fetchone()[0]
+                    if team is not None and team not in IDOL_TEAMS:
+                        problems.append(f"{tag}: team '{team}' は未知 (許可: {sorted(IDOL_TEAMS)})")
+                    elif team is not None and IDOL_TEAMS[team] != attr:
+                        problems.append(f"{tag}: team '{team}' は {IDOL_TEAMS[team]} のチーム "
+                                        f"(このアイドルの属性は {attr})")
                 if table == "idol_facets" and rid and exists(conn, table, rid):
                     row = conn.execute("SELECT facet FROM idol_facets WHERE id = ?", (rid,)).fetchone()
                     d = defs.get(row[0])

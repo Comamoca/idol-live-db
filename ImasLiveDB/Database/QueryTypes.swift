@@ -364,6 +364,8 @@ enum IdolFilterCriterion: Hashable, Sendable {
     case constellation(String)
     case birthPlace(String)
     case bloodType(String)
+    /// 属性をさらに分けたチーム (`pretty` 等)。label は「プリンセス プリティ」。
+    case team(id: String, label: String)
 
     var navigationTitle: String {
         switch self {
@@ -372,6 +374,7 @@ enum IdolFilterCriterion: Hashable, Sendable {
         case .constellation(let c): return "\(c)のアイドル"
         case .birthPlace(let p): return "\(p)出身のアイドル"
         case .bloodType(let t): return "\(t)型のアイドル"
+        case .team(_, let label): return "\(label)のアイドル"
         }
     }
 }

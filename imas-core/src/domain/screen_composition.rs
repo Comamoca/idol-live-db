@@ -910,6 +910,8 @@ pub enum RowAction {
     None,
     /// 同じ誕生月のアイドル一覧へ。
     FilterByBirthMonth { month: u32 },
+    /// 同じチーム (`pretty` 等) のアイドル一覧へ。見出しは [`crate::domain::idol_attributes::team_full_name`]。
+    FilterByTeam { team: String },
     /// 値を写す。
     CopyValue,
     /// 長い値をその場で開く/畳む。
@@ -947,6 +949,12 @@ pub struct IdolProfileInput {
     pub hobby_talent: Option<String>,
     /// カラーコード (#RRGGBB)。
     pub color: Option<String>,
+    /// 「プリンセス プリティ」等 (属性 + チーム)。
+    #[uniffi(default = None)]
+    pub attribute_display: Option<String>,
+    /// チームがあれば属性の行から同じチームのアイドル一覧へ飛べる。
+    #[uniffi(default = None)]
+    pub team: Option<String>,
 }
 
 /// アイドル詳細のプロフィール行を組み立てる。
@@ -972,6 +980,12 @@ pub fn idol_profile_rows(input: &IdolProfileInput) -> Vec<ScreenRow> {
 
     push(&mut rows, "よみ", &input.name_kana, RowStyle::Plain, RowAction::ToggleExpansion);
     push(&mut rows, "ローマ字", &input.name_romaji, RowStyle::Monospaced, RowAction::None);
+    // 属性の行は、チームが分かるときに「同じチームのアイドル」へ飛べる。
+    let attribute_action = match input.team.as_deref().filter(|t| !t.is_empty()) {
+        Some(team) => RowAction::FilterByTeam { team: team.to_string() },
+        None => RowAction::None,
+    };
+    push(&mut rows, "属性", &input.attribute_display, RowStyle::Plain, attribute_action);
 
     // 誕生日だけは、月が分かるときに「同じ誕生月のアイドル」へ飛べる。
     if let Some(bday) = &input.birthday_display {
@@ -1015,6 +1029,8 @@ mod tests {
             birthplace_handedness: Some("東京都 / 右利き".into()),
             hobby_talent: Some("読書 / 早起き".into()),
             color: Some("#EE7F9C".into()),
+            attribute_display: Some("キュート".into()),
+            team: None,
         }
     }
 
@@ -1023,7 +1039,7 @@ mod tests {
         let rows = idol_profile_rows(&full());
         let labels: Vec<&str> = rows.iter().map(|r| r.label.as_str()).collect();
         assert_eq!(labels, vec![
-            "よみ", "ローマ字", "誕生日", "年齢 / 身長 / 体重",
+            "よみ", "ローマ字", "属性", "誕生日", "年齢 / 身長 / 体重",
             "スリーサイズ", "血液型 / 星座", "出身 / 利き手", "趣味 / 特技", "カラー",
         ]);
     }

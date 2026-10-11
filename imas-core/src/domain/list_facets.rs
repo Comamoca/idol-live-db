@@ -13,7 +13,7 @@ use crate::domain::snapshot::Snapshot;
 use crate::domain::song_list_queries::{
     filter_song_indexes, song_list_sort_options_without_user_marks, SongListSort, SongQuery,
 };
-use crate::domain::{idol_queries, song_detail_queries, vocabulary};
+use crate::domain::{idol_attributes, idol_queries, song_detail_queries, vocabulary};
 use std::collections::{BTreeSet, HashSet};
 
 /// 選択肢 1 件。`value` は絞り込みの条件 (`SongQuery` / `IdolQuery`) にそのまま渡す文字列。
@@ -79,6 +79,8 @@ pub struct IdolFacets {
     pub brands: Vec<FacetOption>,
     /// 属性は実データに出てくるものだけ (ブランドごとに語彙が違う)。
     pub attributes: Vec<FacetOption>,
+    /// 属性をさらに分けたチーム。実データに出てくるものだけ、表の並びで。
+    pub teams: Vec<FacetOption>,
     /// 誕生月 (1〜12)。値は `IdolQuery.birth_month` の数を文字列にしたもの。
     pub birth_months: Vec<FacetOption>,
     pub sorts: Vec<SortOption>,
@@ -154,9 +156,23 @@ pub fn idol_facets(snap: &Snapshot, idol_entries: &[IdolListEntry]) -> IdolFacet
         .iter()
         .filter_map(|e| e.attribute.as_deref().filter(|a| !a.is_empty()))
         .collect();
+    let teams: HashSet<&str> = idol_entries
+        .iter()
+        .filter_map(|e| e.team.as_deref().filter(|t| !t.is_empty()))
+        .collect();
     IdolFacets {
         brands: present_brands(snap, idol_entries),
-        attributes: attributes.into_iter().map(|a| option(a, a)).collect(),
+        // 表に名前のある属性はその名前で (「princess」ではなく「プリンセス」)。
+        // 学マスの「1年」のような表に無い値はそのまま出す。
+        attributes: attributes
+            .into_iter()
+            .map(|a| option(a, idol_attributes::attribute_label(a).unwrap_or(a)))
+            .collect(),
+        teams: idol_attributes::all_teams()
+            .into_iter()
+            .filter(|t| teams.contains(t.as_str()))
+            .filter_map(|t| idol_attributes::team_full_name(&t).map(|name| option(t, name)))
+            .collect(),
         birth_months: (1..=12u32).map(|m| option(m.to_string(), format!("{m}月"))).collect(),
         sorts: sort_order_table()
             .into_iter()

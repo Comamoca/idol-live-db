@@ -26,6 +26,8 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasNote
 import com.fugaif.imaslivedb.ui.designsystem.ImasSegmented
 import com.fugaif.imaslivedb.ui.designsystem.ImasToggleRow
 import com.fugaif.imaslivedb.ui.theme.DS
+import uniffi.imas_core.idolAttributeOptions
+import uniffi.imas_core.idolTeamOptions
 
 /**
  * アイドル一覧のフィルタシート。iOS `IdolFilterSheet` の移植:
@@ -40,6 +42,7 @@ fun IdolFilterSheet(
     brands: List<Brand>,
     currentBrandIds: Set<String>,
     currentAttribute: String?,
+    currentTeam: String?,
     currentDisplayMode: IdolDisplayMode,
     currentShowCV: Boolean,
     currentRequireMyPick: Boolean,
@@ -51,6 +54,7 @@ fun IdolFilterSheet(
     onApply: (
         brandIds: Set<String>,
         attribute: String?,
+        team: String?,
         displayMode: IdolDisplayMode,
         showCV: Boolean,
         requireMyPick: Boolean,
@@ -66,6 +70,7 @@ fun IdolFilterSheet(
     var showCV by remember { mutableStateOf(currentShowCV) }
     var brandIds by remember { mutableStateOf(currentBrandIds) }
     var attribute by remember { mutableStateOf(currentAttribute) }
+    var team by remember { mutableStateOf(currentTeam) }
     var requireMyPick by remember { mutableStateOf(currentRequireMyPick) }
     var requireFavorite by remember { mutableStateOf(currentRequireFavorite) }
     var requireNote by remember { mutableStateOf(currentRequireNote) }
@@ -73,10 +78,13 @@ fun IdolFilterSheet(
     var sortAscending by remember { mutableStateOf(currentSortAscending) }
 
     // 属性チップは単一ブランド選択時のみ (ブランド共通のサブ属性が無いため)。
-    val attributesForBrand = brandIds.singleOrNull()?.let { IDOL_BRAND_ATTRIBUTES[it] } ?: emptyList()
+    // 選択肢と表示名は共有コアが持つ (iOS FilterSheet と同じ idolAttributeOptions)。
+    val attributesForBrand = brandIds.singleOrNull()?.let { idolAttributeOptions(it) } ?: emptyList()
+    // 属性を選ぶと、その属性を 2 つに分けたチーム (ミリシタ BATTLE OF THEATER) で更に絞れる。
+    val teamsForAttribute = attribute?.let { idolTeamOptions(it) } ?: emptyList()
 
     // リセットは絞り込みと並び順だけ戻す (表示形式と CV名併記は表示の好みなので残す。前の Android と同じ)。
-    val hasActiveFilters = brandIds.isNotEmpty() || attribute != null ||
+    val hasActiveFilters = brandIds.isNotEmpty() || attribute != null || team != null ||
         requireMyPick || requireFavorite || requireNote ||
         sortOrder != IdolSortOrder.OFFICIAL || sortAscending != null
 
@@ -93,6 +101,7 @@ fun IdolFilterSheet(
                     onReset = {
                         brandIds = emptySet()
                         attribute = null
+                        team = null
                         requireMyPick = false
                         requireFavorite = false
                         requireNote = false
@@ -100,7 +109,7 @@ fun IdolFilterSheet(
                         sortAscending = null
                     },
                     onApply = {
-                        onApply(brandIds, attribute, displayMode, showCV, requireMyPick, requireFavorite, requireNote, sortOrder, sortAscending)
+                        onApply(brandIds, attribute, team, displayMode, showCV, requireMyPick, requireFavorite, requireNote, sortOrder, sortAscending)
                         onDismiss()
                     },
                     title = "フィルタ"
@@ -152,7 +161,7 @@ fun IdolFilterSheet(
                         brands = brands,
                         includesAll = false,
                         selection = brandIds,
-                        onSelectionChange = { brandIds = it; attribute = null },
+                        onSelectionChange = { brandIds = it; attribute = null; team = null },
                         modifier = Modifier.fillMaxWidth().padding(horizontal = DS.Space.rowH, vertical = DS.Space.gap)
                     )
                 }
@@ -160,9 +169,22 @@ fun IdolFilterSheet(
                 if (attributesForBrand.isNotEmpty()) {
                     ImasListSection(title = "属性") {
                         ImasChipFlow(modifier = Modifier.fillMaxWidth().padding(horizontal = DS.Space.rowH, vertical = DS.Space.gap)) {
-                            ImasFilterChip(label = "全て", selected = attribute == null, onClick = { attribute = null })
-                            attributesForBrand.forEach { (value, label) ->
-                                ImasFilterChip(label = label, selected = attribute == value, onClick = { attribute = value })
+                            ImasFilterChip(label = "全て", selected = attribute == null, onClick = { attribute = null; team = null })
+                            attributesForBrand.forEach { option ->
+                                ImasFilterChip(
+                                    label = option.label,
+                                    selected = attribute == option.value,
+                                    // 属性を変えたらチームは外す (別の属性のチームは選べない)。
+                                    onClick = { if (attribute != option.value) team = null; attribute = option.value }
+                                )
+                            }
+                        }
+                        if (teamsForAttribute.isNotEmpty()) {
+                            ImasChipFlow(modifier = Modifier.fillMaxWidth().padding(horizontal = DS.Space.rowH, vertical = DS.Space.gap)) {
+                                ImasFilterChip(label = "全チーム", selected = team == null, onClick = { team = null })
+                                teamsForAttribute.forEach { option ->
+                                    ImasFilterChip(label = option.label, selected = team == option.value, onClick = { team = option.value })
+                                }
                             }
                         }
                     }

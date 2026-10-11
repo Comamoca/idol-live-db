@@ -108,6 +108,7 @@ private fun idolListEntry(idol: Idol): IdolListEntry = IdolListEntry(
     nickname = idol.nickname,
     aliases = idol.aliases,
     attribute = idol.attribute,
+    team = idol.team,
     sortOrder = idol.sortOrder.toLong(),
     age = idol.age?.toLong(),
     height = idol.height,

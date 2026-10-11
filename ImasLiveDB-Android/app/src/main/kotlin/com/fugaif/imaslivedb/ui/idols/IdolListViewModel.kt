@@ -22,19 +22,6 @@ enum class IdolDisplayMode { IDOL_NAME, CV_NAME }
 enum class IdolSearchTarget(val label: String) { NAME("アイドル名"), VOICE_ACTOR("CV名") }
 enum class IdolListMode { LIST, GRID }
 
-/**
- * ブランド内サブカテゴリ属性 (idols.attribute) の定義。(内部値, 表示ラベル)。
- * iOS `FilterSheet.swift` の `brandAttributes` と同一。
- * 表示ラベルの対応表は imas-core に無く、iOS も Swift 定数として持っているのでここに残す。
- */
-val IDOL_BRAND_ATTRIBUTES: Map<String, List<Pair<String, String>>> = mapOf(
-    "cg" to listOf("cute" to "キュート", "cool" to "クール", "passion" to "パッション"),
-    "ml" to listOf("princess" to "プリンセス", "fairy" to "フェアリー", "angel" to "エンジェル"),
-    "765as" to listOf("princess" to "プリンセス", "fairy" to "フェアリー", "angel" to "エンジェル"),
-    "sidem" to listOf("intelli" to "インテリ", "physical" to "フィジカル", "mental" to "メンタル"),
-    "sc" to listOf("sol" to "Sol", "luna" to "Luna", "stella" to "Stella")
-)
-
 data class IdolListUiState(
     val idols: List<Idol> = emptyList(),
     val brands: List<Brand> = emptyList(),
@@ -42,6 +29,8 @@ data class IdolListUiState(
     val castNames: Map<String, String> = emptyMap(),
     val selectedBrandIds: Set<String> = emptySet(),
     val selectedAttribute: String? = null,
+    /** 属性をさらに分けたチーム (ミリシタ BATTLE OF THEATER)。属性を選んだときだけ選べる。 */
+    val selectedTeam: String? = null,
     val searchText: String = "",
     /** 検索欄の語をアイドル名 / CV 名のどちらとして引くか。 */
     val searchTarget: IdolSearchTarget = IdolSearchTarget.NAME,
@@ -75,6 +64,7 @@ data class IdolListUiState(
     val activeFilterCount: Int
         get() = (if (selectedBrandIds.isEmpty()) 0 else 1) +
             (if (selectedAttribute != null) 1 else 0) +
+            (if (selectedTeam != null) 1 else 0) +
             (if (requireMyPick) 1 else 0) +
             (if (requireFavorite) 1 else 0) +
             (if (requireNote) 1 else 0)
@@ -97,6 +87,7 @@ private fun IdolListUiState.rebuilt(): IdolListUiState {
     val criteria = IdolListFilterCriteria(
         selectedBrandIds = selectedBrandIds.toList(),
         selectedAttribute = selectedAttribute,
+        selectedTeam = selectedTeam,
         requireMyPick = requireMyPick,
         myPickIds = pickIds.toList(),
         requireFavorite = requireFavorite,
@@ -267,6 +258,7 @@ class IdolListViewModel(app: Application) : AndroidViewModel(app) {
         _uiState.value = _uiState.value.copy(
             selectedBrandIds = emptySet(),
             selectedAttribute = null,
+            selectedTeam = null,
             displayMode = IdolDisplayMode.IDOL_NAME
         ).rebuilt()
     }
@@ -275,6 +267,7 @@ class IdolListViewModel(app: Application) : AndroidViewModel(app) {
     fun applyFilterSheet(
         brandIds: Set<String>,
         attribute: String?,
+        team: String?,
         displayMode: IdolDisplayMode,
         showCV: Boolean,
         requireMyPick: Boolean,
@@ -292,6 +285,7 @@ class IdolListViewModel(app: Application) : AndroidViewModel(app) {
         _uiState.value = _uiState.value.copy(
             selectedBrandIds = brandIds,
             selectedAttribute = attribute,
+            selectedTeam = team,
             displayMode = displayMode,
             showCV = showCV,
             requireMyPick = requireMyPick,
