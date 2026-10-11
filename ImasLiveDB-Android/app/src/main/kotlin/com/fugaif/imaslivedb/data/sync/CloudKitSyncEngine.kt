@@ -218,13 +218,13 @@ class CloudKitSyncEngine(
             { d, keys -> deleteInChunks(keys, d::deleteIdolFacets) },
             { d -> d.idolFacetIds() }),
         "IdolHairstyle" to StepIo(
-            // is_main=false の行を先に書く (端末には一意索引を作らないが、iOS と同じ順にして
-            // おく。IdolHairstyle.kt の KDoc 参照: main の付け替えで一時的に 2 行重なる
-            // 瞬間を避ける)。
+            // is_main=false の行を先に書く (iOS `upsertIdolHairstyles` と同じ順)。端末には
+            // 一意索引を作っていないので、行ごとに「同じ label の別 id を消す → main なら
+            // ほかの行を降格 → upsert」まで [SyncDao.upsertIdolHairstylesSafely] が担う
+            // (IdolHairstyle.kt の KDoc 参照)。
             { d, rows, _ ->
                 val (main, others) = SyncMappers.idolHairstyles(rows).partition { it.isMain }
-                d.upsertIdolHairstyles(others)
-                d.upsertIdolHairstyles(main)
+                d.upsertIdolHairstylesSafely(others + main)
             },
             { d, keys -> deleteInChunks(keys, d::deleteIdolHairstyles) },
             { d -> d.idolHairstyleIds() }),

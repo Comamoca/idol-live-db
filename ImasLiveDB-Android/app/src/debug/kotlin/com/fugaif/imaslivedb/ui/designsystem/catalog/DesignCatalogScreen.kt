@@ -121,6 +121,14 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasButton
 import com.fugaif.imaslivedb.ui.designsystem.ImasButtonRole
 import com.fugaif.imaslivedb.ui.designsystem.ImasButtonSize
 import com.fugaif.imaslivedb.ui.designsystem.ImasCandidateCount
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallMatrix
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallMatrixCell
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallMatrixCellKind
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallMatrixMember
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallMatrixSelection
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallPairCard
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallPairHeader
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallPairRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasCard
 import com.fugaif.imaslivedb.ui.designsystem.ImasCardList
 import com.fugaif.imaslivedb.ui.designsystem.ImasCardListStyle
@@ -180,6 +188,9 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasListBackdrop
 import com.fugaif.imaslivedb.ui.designsystem.ImasListSection
 import com.fugaif.imaslivedb.ui.designsystem.ImasListSummary
 import com.fugaif.imaslivedb.ui.designsystem.ImasLoadingState
+import com.fugaif.imaslivedb.ui.designsystem.ImasLookItemSpec
+import com.fugaif.imaslivedb.ui.designsystem.ImasLookStub
+import com.fugaif.imaslivedb.ui.designsystem.ImasLookSwatch
 import com.fugaif.imaslivedb.ui.designsystem.ImasMarkBar
 import com.fugaif.imaslivedb.ui.designsystem.ImasMarkKind
 import com.fugaif.imaslivedb.ui.designsystem.ImasMarkTile
@@ -211,6 +222,7 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasRecordRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasRemovableChip
 import com.fugaif.imaslivedb.ui.designsystem.ImasRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasRowDensity
+import com.fugaif.imaslivedb.ui.designsystem.ImasRowDivider
 import com.fugaif.imaslivedb.ui.designsystem.ImasRowEmphasis
 import com.fugaif.imaslivedb.ui.designsystem.ImasRowLeading
 import com.fugaif.imaslivedb.ui.designsystem.ImasRowPosition
@@ -230,6 +242,9 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasShortcutTile
 import com.fugaif.imaslivedb.ui.designsystem.ImasShowRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasSignInPrompt
 import com.fugaif.imaslivedb.ui.designsystem.ImasSongRow
+import com.fugaif.imaslivedb.ui.designsystem.ImasSpeechBoard
+import com.fugaif.imaslivedb.ui.designsystem.ImasSpeechColumn
+import com.fugaif.imaslivedb.ui.designsystem.ImasSpeechForm
 import com.fugaif.imaslivedb.ui.designsystem.ImasStageAssignmentTarget
 import com.fugaif.imaslivedb.ui.designsystem.ImasStageBadgeStamp
 import com.fugaif.imaslivedb.ui.designsystem.ImasStageCircleButton
@@ -328,6 +343,7 @@ enum class DesignCatalogPage(val id: String, val title: String) {
     HERO_SONG("heroSong", "詳細の頭 (曲)"),
     HERO_IDOL("heroIdol", "詳細の頭 (アイドル)"),
     HERO_IDOL_COLOR("heroIdolColor", "詳細の頭 (アイドル・色の面)"),
+    IDOL_PROFILE("idolProfile", "見た目・話し方・呼び方"),
     HUB("hub", "ハブ"),
     HUB_COLOR("hubColor", "ハブ (担当を色の面で)"),
     FEEDBACK("feedback", "状態・メーター"),
@@ -430,6 +446,7 @@ fun DesignCatalogScreen(
                     DesignCatalogPage.HERO_SONG -> SongHeroPage()
                     DesignCatalogPage.HERO_IDOL -> IdolHeroPage(ImasHeroSurface.PAPER)
                     DesignCatalogPage.HERO_IDOL_COLOR -> IdolHeroPage(ImasHeroSurface.COLOR)
+                    DesignCatalogPage.IDOL_PROFILE -> IdolProfilePartsPage()
                     DesignCatalogPage.HUB -> HubPage(ImasFeatureSurface.PANEL)
                     DesignCatalogPage.HUB_COLOR -> HubPage(ImasFeatureSurface.COLOR)
                     DesignCatalogPage.FEEDBACK -> FeedbackPage()
@@ -1538,6 +1555,97 @@ private fun IdolHeroPage(surface: ImasHeroSurface) {
                         )
                     }
                 }
+            }
+        }
+    }
+}
+
+// MARK: - 見た目・話し方・呼び方
+
+@Composable
+private fun IdolProfilePartsPage() {
+    var selection by remember { mutableStateOf(ImasCallMatrixSelection(3, 1)) }
+    var bigSelection by remember { mutableStateOf(ImasCallMatrixSelection(0, 1)) }
+
+    val members = listOf(
+        ImasCallMatrixMember("a", "春香", "天海春香", seed = Sample.haruka),
+        ImasCallMatrixMember("b", "千早", "如月千早", seed = Sample.chihaya),
+        ImasCallMatrixMember("c", "美希", "萩原雪歩", seed = Sample.miki),
+        ImasCallMatrixMember("d", "伊織", "水瀬伊織", seed = Sample.makoto),
+        ImasCallMatrixMember("e", "やよい", "高槻やよい", seed = Sample.yayoi)
+    )
+    fun rows(grid: List<List<String?>>): List<List<ImasCallMatrixCell>> = grid.mapIndexed { i, row ->
+        row.mapIndexed { j, text ->
+            ImasCallMatrixCell(
+                kind = if (i == j) ImasCallMatrixCellKind.FIRST_PERSON else if (j == row.lastIndex) ImasCallMatrixCellKind.PRODUCER else ImasCallMatrixCellKind.MEMBER,
+                text = text
+            )
+        }
+    }
+
+    CatalogPage {
+        ImasSection("見た目の半券", style = Small, footer = "髪色の見本は平らな 1 色。2 色目は左右に硬く分ける。押せる値 (髪型) は四角い枠の札。") {
+            Column(verticalArrangement = Arrangement.spacedBy(DS.Space.gapLoose)) {
+                ImasLookStub(
+                    swatches = listOf(ImasLookSwatch("#2B2730", "黒")), swatchCaption = "髪色 黒",
+                    items = listOf(
+                        ImasLookItemSpec("長さ", listOf("ロング"), opensList = false),
+                        ImasLookItemSpec("髪型", listOf("ツインテール", "縦ロール"), opensList = true),
+                        ImasLookItemSpec("眼鏡", listOf("かけている"), opensList = false)
+                    ),
+                    onSelect = { _, _ -> }
+                )
+                ImasLookStub(
+                    swatches = listOf(ImasLookSwatch("#2B2730", "黒"), ImasLookSwatch("#E3B94F", "金")), swatchCaption = "髪色 黒／金",
+                    items = listOf(
+                        ImasLookItemSpec("長さ", listOf("ショート"), opensList = false),
+                        ImasLookItemSpec("髪飾り", listOf("ヘアピン"), opensList = false)
+                    )
+                )
+                ImasLookStub(swatches = emptyList(), swatchCaption = "", items = listOf(ImasLookItemSpec("目の色", listOf("青"), opensList = false)))
+            }
+        }
+        ImasSection("話し方の掲示板", style = Small, footer = "一人称 (場面つき) と P の呼び方。ライトでもダークでも板は暗い。") {
+            Column(verticalArrangement = Arrangement.spacedBy(DS.Space.gapLoose)) {
+                ImasSpeechBoard(
+                    listOf(
+                        ImasSpeechColumn("一人称", listOf(ImasSpeechForm("はるちゃん", "普段"), ImasSpeechForm("わたし", "真面目なとき"))),
+                        ImasSpeechColumn("Pの呼び方", listOf(ImasSpeechForm("Pさん")))
+                    )
+                )
+                ImasSpeechBoard(listOf(ImasSpeechColumn("一人称", listOf(ImasSpeechForm("わたくし")))))
+            }
+        }
+        ImasSection("呼び方の行", style = Small, footer = "本人 → 相手・相手 → 本人。片方が未登録なら「—」(薄字)。") {
+            ImasCardList {
+                ImasCallPairHeader(outgoingTitle = "春香 → 相手", incomingTitle = "相手 → 春香")
+                ImasRowDivider(inset = DS.Space.gapLoose)
+                ImasCallPairRow(label = "千早", name = "如月千早", outgoing = "千早", incoming = "春香", selfName = "天海春香", seed = Sample.chihaya)
+                ImasRowDivider(inset = DS.Space.gapLoose)
+                ImasCallPairRow(label = "やよい", name = "高槻やよい", outgoing = "やよいちゃん", incoming = null, selfName = "天海春香", seed = Sample.yayoi)
+            }
+        }
+        ImasSection("ユニットの呼称表", style = Small, footer = "行の人 → 列の人。対角線は一人称。マス・行頭を押すと組を選ぶ。人数が多いと横に流す。") {
+            Column(verticalArrangement = Arrangement.spacedBy(DS.Space.gapLoose)) {
+                val grid = rows(
+                    listOf(
+                        listOf("あたし", "千早", "美希", "伊織", "やよい", "プロデューサー"),
+                        listOf("春香", "私", "美希", "伊織", "やよい", "プロデューサー"),
+                        listOf("春香", "千早", "美希", "伊織", "やよい", "プロデューサー"),
+                        listOf("春香っち", "千早っち", "美希っち", "伊織っち", "やよいっち", "Pっち"),
+                        listOf("春香さん", "千早さん", "美希さん", "伊織さん", "私", null)
+                    )
+                )
+                ImasCallMatrix(members = members, rows = grid, selection = selection, onSelectionChange = { selection = it })
+                ImasCallPairCard(
+                    forwardTitle = "春香 → 千早", forward = "千早", backwardTitle = "千早 → 春香", backward = "春香",
+                )
+                ImasCallPairCard(
+                    forwardTitle = "やよい → 春香", forward = "春香さん", backwardTitle = "春香 → やよい", backward = null
+                )
+                val bigMembers = (0 until 9).map { ImasCallMatrixMember("m$it", "M${it + 1}", "メンバー${it + 1}") }
+                val bigRows = rows((0 until 9).map { i -> (0..9).map { j -> if (i == j) "私" else if (j == 9) "P" else "M${j + 1}ちゃん" } })
+                ImasCallMatrix(members = bigMembers, rows = bigRows, selection = bigSelection, onSelectionChange = { bigSelection = it })
             }
         }
     }

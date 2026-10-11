@@ -55,6 +55,8 @@ class FilteredIdolsViewModel(
                 emit("${value}型のアイドル", idols.fetchIdolsByBloodType(value))
             IdolFilterKind.SUB_ATTRIBUTE ->
                 emit("${idolSubAttributeFullName(value) ?: value}のアイドル", idols.fetchIdolsBySubAttribute(value))
+            IdolFilterKind.HAIR_STYLE ->
+                emit("${value}のアイドル", idols.fetchIdolsByHairStyle(value))
             else -> emit(value, emptyList())
         }
     }

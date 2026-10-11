@@ -247,6 +247,14 @@ sealed class NavRoutes(val route: String) {
         }
     }
 
+    /** アイドルの呼び方の全員 (iOS IdolCallListView)。 */
+    data class IdolCalls(val idolId: String) : NavRoutes("idol_calls/{idolId}") {
+        companion object {
+            const val ROUTE = "idol_calls/{idolId}"
+            fun createRoute(idolId: String) = "idol_calls/$idolId"
+        }
+    }
+
     data object GamesSongQuizSetup : NavRoutes("games_songquiz_setup")
     data class GamesSongQuiz(val brandIds: String) : NavRoutes("games_songquiz/{brandIds}") {
         companion object {

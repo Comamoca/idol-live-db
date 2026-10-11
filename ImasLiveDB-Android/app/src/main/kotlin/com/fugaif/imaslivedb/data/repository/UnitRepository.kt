@@ -7,6 +7,7 @@ import com.fugaif.imaslivedb.data.db.AppDatabase
 import com.fugaif.imaslivedb.data.model.Idol
 import com.fugaif.imaslivedb.data.model.ImasUnit
 import uniffi.imas_core.IdolUnitRecord
+import uniffi.imas_core.UnitCallMatrix
 import uniffi.imas_core.UnitRecord
 
 /**
@@ -57,6 +58,13 @@ class UnitRepository(
                 .map { it.toUnit() }
                 .sortedWith(compareBy(SQLITE_BINARY_ORDER, ImasUnit::name))
         }
+
+    /**
+     * 呼称表。メンバーどうしの呼び方が無い (または 16 人を超える) ユニットは null
+     * (判断はコア `unit_call_matrix`。タブを出すかどうかは呼び出し側が null で判定する)。
+     */
+    suspend fun fetchUnitCallMatrix(unitId: String): UnitCallMatrix? =
+        snapshots.query { store -> store.unitCallMatrix(unitId) }
 
     /** タグが似ているユニットランキング表示用。N+1を避けてIN句で一括取得する。 */
     suspend fun fetchUnitsByIds(ids: List<String>): List<ImasUnit> {

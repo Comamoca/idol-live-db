@@ -9,6 +9,9 @@ import com.fugaif.imaslivedb.data.model.CastShowRow
 import com.fugaif.imaslivedb.data.model.Idol
 import com.fugaif.imaslivedb.data.model.IdolPerformedSong
 import com.fugaif.imaslivedb.data.model.Song
+import uniffi.imas_core.CallDirection
+import uniffi.imas_core.IdolCallGroup
+import uniffi.imas_core.IdolProfileExtras
 import uniffi.imas_core.IdolShowRecord
 import uniffi.imas_core.SimilarIdolCandidate
 
@@ -72,6 +75,21 @@ class IdolRepository(
 
     suspend fun fetchIdolsBySubAttribute(subAttribute: String): List<Idol> =
         hydrateIdols(snapshots.query { store -> store.idolsBySubAttribute(subAttribute).map { it.id } })
+    /** 同じ髪型のアイドル。プロフィールの「見た目」の髪型の札から開く一覧の母集団 (コア idolsByHairStyle)。 */
+    suspend fun fetchIdolsByHairStyle(style: String): List<Idol> =
+        hydrateIdols(snapshots.query { store -> store.idolsByHairStyle(style).map { it.id } })
+
+    /**
+     * プロフィールの見た目・話し方・呼び方 (組み立てはコア `idol_profile_extras`)。
+     */
+    suspend fun fetchIdolProfileExtras(idolId: String): IdolProfileExtras =
+        snapshots.query { store -> store.idolProfileExtras(idolId) }
+
+    /**
+     * 呼び方の全員。まとめ方・並び・検索の照合・向きの絞り込み・コピーの文面はコア (`idol_call_groups`)。
+     */
+    suspend fun fetchIdolCallGroups(idolId: String, query: String, direction: CallDirection): List<IdolCallGroup> =
+        snapshots.query { store -> store.idolCallGroups(idolId, query, direction) }
 
     // アイドル実体の単発/一括取得はスナップショットの hydration 先そのものなので Room 直のまま。
     suspend fun fetchIdol(id: String): Idol? {

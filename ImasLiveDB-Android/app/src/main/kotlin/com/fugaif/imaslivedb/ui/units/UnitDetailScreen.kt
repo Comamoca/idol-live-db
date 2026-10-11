@@ -29,7 +29,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -52,6 +51,12 @@ import com.fugaif.imaslivedb.ui.components.ImasSongRow
 import com.fugaif.imaslivedb.ui.components.UnitGridSection
 import com.fugaif.imaslivedb.ui.components.CopyItem
 import com.fugaif.imaslivedb.ui.components.Copyable
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallMatrix
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallMatrixCell
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallMatrixCellKind
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallMatrixMember
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallMatrixSelection
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallPairCard
 import com.fugaif.imaslivedb.ui.designsystem.ImasCardList
 import com.fugaif.imaslivedb.ui.designsystem.ImasChip
 import com.fugaif.imaslivedb.ui.designsystem.ImasChipFlow
@@ -61,12 +66,15 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasHero
 import com.fugaif.imaslivedb.ui.designsystem.ImasHeroLayout
 import com.fugaif.imaslivedb.ui.designsystem.ImasIdolRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasLoadingState
+import com.fugaif.imaslivedb.ui.designsystem.ImasNote
 import com.fugaif.imaslivedb.ui.designsystem.ImasRowDensity
 import com.fugaif.imaslivedb.ui.designsystem.ImasRowTrailing
 import com.fugaif.imaslivedb.ui.designsystem.ImasSectionHeader
 import com.fugaif.imaslivedb.ui.designsystem.ImasSegmented
 import com.fugaif.imaslivedb.ui.designsystem.ImasSignInPrompt
 import com.fugaif.imaslivedb.ui.designsystem.ImasUnitAvatar
+import com.fugaif.imaslivedb.ui.designsystem.imasCallMatrixSelectionSaver
+import uniffi.imas_core.UnitCallCellKind
 import com.fugaif.imaslivedb.ui.components.PersonalTagsSection
 import com.fugaif.imaslivedb.ui.polls.PollAchievementBadges
 import com.fugaif.imaslivedb.ui.tags.UnitTagPickerSheet
@@ -74,8 +82,17 @@ import com.fugaif.imaslivedb.ui.theme.DS
 import com.fugaif.imaslivedb.ui.theme.imasRowPress
 
 /**
- * ユニット詳細。iOS 構造: hero(ユニット名) → [楽曲/メンバー/コミュニティ] セグメント。
- * `ui.idols.IdolDetailScreen` のセグメント切替パターンを踏襲 (「ライブ」相当はユニットに馴染まないため3タブ)。
+ * ユニット詳細のタブ (iOS `UnitDetailTab`)。添字ではなくこの enum で持つ
+ * (呼称表タブの有無でタブの個数が変わるため、Int の添字は選択がずれる)。
+ */
+enum class UnitDetailTab(val label: String) {
+    SONGS("楽曲"), MEMBERS("メンバー"), CALLS("呼称表"), COMMUNITY("コミュニティ")
+}
+
+/**
+ * ユニット詳細。iOS 構造: hero(ユニット名) → [楽曲/メンバー/呼称表/コミュニティ] セグメント
+ * (呼称表はメンバーどうしの呼び方があるユニットだけ)。
+ * `ui.idols.IdolDetailScreen` のセグメント切替パターンを踏襲 (「ライブ」相当はユニットに馴染まないため)。
  * 画像登録機能は iOS のみの対応 (Android は今回未実装)。
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -97,7 +114,16 @@ fun UnitDetailScreen(
     val context = LocalContext.current
     val state by viewModel.uiState.collectAsState()
     val unit = state.unit
-    var segment by rememberSaveable(unitId) { mutableIntStateOf(0) }
+    // 呼称表はメンバーどうしの呼び方があるユニットだけ (読み込みが終わってから足す)。読み込み中に
+    // 選んだタブを戻さない (callMatrix が後から届いてタブの個数が変わっても tab はそのまま)。
+    val tabs = remember(state.callMatrix != null) {
+        if (state.callMatrix == null) listOf(UnitDetailTab.SONGS, UnitDetailTab.MEMBERS, UnitDetailTab.COMMUNITY)
+        else listOf(UnitDetailTab.SONGS, UnitDetailTab.MEMBERS, UnitDetailTab.CALLS, UnitDetailTab.COMMUNITY)
+    }
+    var tab by rememberSaveable(unitId) { mutableStateOf(UnitDetailTab.SONGS) }
+    var callSelection by rememberSaveable(unitId, stateSaver = imasCallMatrixSelectionSaver()) {
+        mutableStateOf(ImasCallMatrixSelection(0, 1))
+    }
     var showTagPicker by rememberSaveable { mutableStateOf(false) }
     var showLoginPrompt by rememberSaveable { mutableStateOf(false) }
     val authState by AppModule.from(context).authService.state.collectAsState()
@@ -137,15 +163,17 @@ fun UnitDetailScreen(
             Column(Modifier.fillMaxSize().padding(padding).verticalScroll(scroll)) {
                 Hero(unit)
                 ImasSegmented(
-                    labels = listOf("楽曲", "メンバー", "コミュニティ"),
-                    selection = segment, onSelect = { segment = it },
-                    modifier = imasResetScrollOnTabChange(scroll, segment)
+                    labels = tabs.map { it.label },
+                    selection = tabs.indexOf(tab).coerceAtLeast(0),
+                    onSelect = { tab = tabs[it] },
+                    modifier = imasResetScrollOnTabChange(scroll, tabs.indexOf(tab))
                         .fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp)
                 )
-                when (segment) {
-                    0 -> SongsBody(state, onNavigateToSongDetail)
-                    1 -> MembersBody(state, onNavigateToIdolDetail)
-                    else -> Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
+                when (tab) {
+                    UnitDetailTab.SONGS -> SongsBody(state, onNavigateToSongDetail)
+                    UnitDetailTab.MEMBERS -> MembersBody(state, onNavigateToIdolDetail)
+                    UnitDetailTab.CALLS -> CallsBody(state, callSelection) { callSelection = it }
+                    UnitDetailTab.COMMUNITY -> Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
                         CommunityBody(
                             unitId = unit.id,
                             tags = state.tags,
@@ -252,6 +280,48 @@ private fun MembersBody(state: UnitDetailUiState, onIdolClick: (String) -> Unit)
             }
         }
     }
+}
+
+/**
+ * 呼称表タブ。メンバー × (メンバー + P) のマス目。マスを押すと下に双方向の呼び方 (iOS `UnitDetailView.callsBody`)。
+ */
+@Composable
+private fun CallsBody(
+    state: UnitDetailUiState,
+    selection: ImasCallMatrixSelection,
+    onSelectionChange: (ImasCallMatrixSelection) -> Unit
+) {
+    val matrix = state.callMatrix ?: return
+    val byId = state.members.associateBy { it.id }
+    val members = matrix.memberIds.map { id ->
+        val idol = byId[id]
+        ImasCallMatrixMember(id = id, label = idol?.shortName ?: id, name = idol?.name ?: id, seed = idol?.color, imageUrl = null)
+    }
+    val rows = matrix.rows.map { row ->
+        row.map { cell -> ImasCallMatrixCell(kind = cell.kind.toMatrixKind(), text = cell.text) }
+    }
+    Column(
+        modifier = Modifier.padding(horizontal = DS.Space.screen, vertical = DS.Space.gapTight),
+        verticalArrangement = Arrangement.spacedBy(DS.Space.gap)
+    ) {
+        ImasSectionHeader("誰が誰をどう呼ぶか", count = "行の人 → 列の人", tight = true)
+        ImasCallMatrix(members = members, rows = rows, selection = selection, onSelectionChange = onSelectionChange)
+        if (selection.row < members.size && selection.column < members.size && selection.row != selection.column) {
+            ImasCallPairCard(
+                forwardTitle = "${members[selection.row].label} → ${members[selection.column].label}",
+                forward = rows[selection.row][selection.column].text,
+                backwardTitle = "${members[selection.column].label} → ${members[selection.row].label}",
+                backward = rows[selection.column][selection.row].text
+            )
+        }
+        ImasNote("呼び方はニコニコ大百科の呼称表・im@sparql (MIT License) などから。")
+    }
+}
+
+private fun UnitCallCellKind.toMatrixKind(): ImasCallMatrixCellKind = when (this) {
+    UnitCallCellKind.FIRST_PERSON -> ImasCallMatrixCellKind.FIRST_PERSON
+    UnitCallCellKind.MEMBER -> ImasCallMatrixCellKind.MEMBER
+    UnitCallCellKind.PRODUCER -> ImasCallMatrixCellKind.PRODUCER
 }
 
 /**

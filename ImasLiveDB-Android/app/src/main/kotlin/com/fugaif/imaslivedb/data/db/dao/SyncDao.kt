@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.fugaif.imaslivedb.data.model.Brand
 import com.fugaif.imaslivedb.data.model.Event
 import com.fugaif.imaslivedb.data.model.Idol
@@ -63,7 +64,35 @@ interface SyncDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE) suspend fun upsertShowTickets(rows: List<ShowTicket>)
     @Insert(onConflict = OnConflictStrategy.REPLACE) suspend fun upsertTicketSales(rows: List<TicketSale>)
     @Insert(onConflict = OnConflictStrategy.REPLACE) suspend fun upsertIdolFacets(rows: List<IdolFacet>)
-    @Insert(onConflict = OnConflictStrategy.REPLACE) suspend fun upsertIdolHairstyles(rows: List<IdolHairstyle>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE) suspend fun upsertIdolHairstyle(row: IdolHairstyle)
+
+    /**
+     * 同じ idol_id・同じ label で id が違う行 (= ラベルはそのまま、id だけ振り直された古い行) を消す。
+     * 端末の Room 表には [IdolHairstyle] の一意索引をあえて作っていない ([IdolHairstyle] の KDoc 参照) ので、
+     * REPLACE は PK (id) でしか効かず、この掃除をしないと古い id の行が居座ってしまう。
+     */
+    @Query("DELETE FROM idol_hairstyles WHERE idol_id = :idolId AND label = :label AND id != :id")
+    suspend fun deleteConflictingIdolHairstyleLabel(idolId: String, label: String, id: String)
+
+    /** この行が main になるので、同じアイドルの他の行の is_main を倒す (1 アイドル 1 main を保つ)。 */
+    @Query("UPDATE idol_hairstyles SET is_main = 0 WHERE idol_id = :idolId AND id != :id AND is_main = 1")
+    suspend fun demoteOtherMainIdolHairstyles(idolId: String, id: String)
+
+    /**
+     * 髪型の安全な upsert (iOS `AppDatabase+Sync.upsertIdolHairstyles` と同じ手順)。
+     * 1 行ずつ「同じ label の別 id 行を消す → main ならほかの行の is_main を倒す → upsert」を
+     * 1 トランザクションで行う。呼び出し側は is_main=false の行を先に渡す
+     * ([com.fugaif.imaslivedb.data.sync.CloudKitSyncEngine] 参照)。
+     */
+    @Transaction
+    suspend fun upsertIdolHairstylesSafely(rows: List<IdolHairstyle>) {
+        for (row in rows) {
+            deleteConflictingIdolHairstyleLabel(row.idolId, row.label, row.id)
+            if (row.isMain) demoteOtherMainIdolHairstyles(row.idolId, row.id)
+            upsertIdolHairstyle(row)
+        }
+    }
 
     @Query("DELETE FROM brands WHERE id IN (:ids)") suspend fun deleteBrands(ids: List<String>)
     @Query("DELETE FROM idols WHERE id IN (:ids)") suspend fun deleteIdols(ids: List<String>)

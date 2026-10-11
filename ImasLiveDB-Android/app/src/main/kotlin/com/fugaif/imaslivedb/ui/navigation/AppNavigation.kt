@@ -54,6 +54,7 @@ import com.fugaif.imaslivedb.ui.sortmaker.SortMakerPlayScreen
 import com.fugaif.imaslivedb.ui.sortmaker.SortMakerSetupScreen
 import com.fugaif.imaslivedb.ui.sortmaker.TierListScreen
 import com.fugaif.imaslivedb.data.games.SortMakerPurpose
+import com.fugaif.imaslivedb.ui.idols.IdolCallListScreen
 import com.fugaif.imaslivedb.ui.idols.IdolDetailScreen
 import com.fugaif.imaslivedb.ui.idols.IdolListScreen
 import com.fugaif.imaslivedb.ui.idols.IdolSongHistoryScreen
@@ -853,7 +854,16 @@ private fun NavGraphBuilder.detailRoutes(navController: NavHostController) {
             },
             onFilteredIdolsClick = { kind, value ->
                 navController.navigate(NavRoutes.FilteredIdols.createRoute(kind, value))
-            }
+            },
+            onNavigateToIdolCalls = { navController.navigate(NavRoutes.IdolCalls.createRoute(it)) }
+        )
+    }
+    composable(NavRoutes.IdolCalls.ROUTE) { backStackEntry ->
+        val idolId = backStackEntry.arguments?.getString("idolId") ?: return@composable
+        IdolCallListScreen(
+            idolId = idolId,
+            onNavigateBack = { navController.popBackStack() },
+            onNavigateToIdolDetail = { navController.navigate(NavRoutes.IdolDetail.createRoute(it)) }
         )
     }
     composable(NavRoutes.UnitDetail.ROUTE) { backStackEntry ->

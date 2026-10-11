@@ -94,6 +94,8 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasBadge
 import com.fugaif.imaslivedb.ui.designsystem.ImasBadgeKind
 import com.fugaif.imaslivedb.ui.designsystem.ImasBadgeSpec
 import com.fugaif.imaslivedb.ui.designsystem.ImasBoardCell
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallPairHeader
+import com.fugaif.imaslivedb.ui.designsystem.ImasCallPairRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasCardList
 import com.fugaif.imaslivedb.ui.designsystem.ImasChip
 import com.fugaif.imaslivedb.ui.designsystem.ImasChipFlow
@@ -104,14 +106,22 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasIconBadge
 import com.fugaif.imaslivedb.ui.designsystem.ImasIdolHeader
 import com.fugaif.imaslivedb.ui.designsystem.ImasLabeledRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasLoadingState
+import com.fugaif.imaslivedb.ui.designsystem.ImasLookItemSpec
+import com.fugaif.imaslivedb.ui.designsystem.ImasLookStub
+import com.fugaif.imaslivedb.ui.designsystem.ImasLookSwatch
 import com.fugaif.imaslivedb.ui.designsystem.ImasMarkBar
 import com.fugaif.imaslivedb.ui.designsystem.ImasMarkTile
 import com.fugaif.imaslivedb.ui.designsystem.ImasMetric
+import com.fugaif.imaslivedb.ui.designsystem.ImasNote
 import com.fugaif.imaslivedb.ui.designsystem.ImasRowDensity
+import com.fugaif.imaslivedb.ui.designsystem.ImasRowDivider
 import com.fugaif.imaslivedb.ui.designsystem.ImasSectionHeader
 import com.fugaif.imaslivedb.ui.designsystem.ImasSegmented
 import com.fugaif.imaslivedb.ui.designsystem.ImasShowRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasSignInPrompt
+import com.fugaif.imaslivedb.ui.designsystem.ImasSpeechBoard
+import com.fugaif.imaslivedb.ui.designsystem.ImasSpeechColumn
+import com.fugaif.imaslivedb.ui.designsystem.ImasSpeechForm
 import com.fugaif.imaslivedb.ui.components.PersonalTagsSection
 import com.fugaif.imaslivedb.ui.designsystem.ImasTicket
 import com.fugaif.imaslivedb.ui.filtered.IdolFilterKind
@@ -157,6 +167,8 @@ fun IdolDetailScreen(
      * [com.fugaif.imaslivedb.ui.filtered.IdolFilterKind] の定義に従う)。
      */
     onFilteredIdolsClick: (String, String) -> Unit = { _, _ -> },
+    /** 呼び方の「全員」から呼び方の全員画面へ。 */
+    onNavigateToIdolCalls: (String) -> Unit = {},
     viewModel: IdolDetailViewModel = viewModel(
         factory = IdolDetailViewModel.Factory(
             LocalContext.current.applicationContext as android.app.Application, idolId
@@ -236,7 +248,11 @@ fun IdolDetailScreen(
                         onNavigateToSongHistory(idol.id, songId)
                     }
                     1 -> SongsBody(state, idol, onNavigateToUnitDetail, onNavigateToSongDetail)
-                    2 -> ProfileBody(idol, state.brand, onNavigateToBirthMonth, onFilteredIdolsClick)
+                    2 -> ProfileBody(
+                        idol, state, state.brand, onNavigateToBirthMonth, onFilteredIdolsClick,
+                        onNavigateToIdol = onNavigateToIdolDetail,
+                        onSeeAllCalls = { onNavigateToIdolCalls(idol.id) }
+                    )
                     else -> Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
                         CommunityBody(
                             idolId = idol.id,
@@ -599,9 +615,12 @@ private fun SongsBody(state: IdolDetailUiState, idol: Idol, onUnit: (String) -> 
 @Composable
 private fun ProfileBody(
     idol: Idol,
+    state: IdolDetailUiState,
     brand: Brand?,
     onNavigateToBirthMonth: (Int) -> Unit,
-    onFilteredIdolsClick: (String, String) -> Unit
+    onFilteredIdolsClick: (String, String) -> Unit,
+    onNavigateToIdol: (String) -> Unit,
+    onSeeAllCalls: () -> Unit
 ) {
     val clipboard = LocalClipboardManager.current
     // 行の組み立て (どの行が・どの順で・押せるか) は共有コアが唯一の正。
@@ -672,9 +691,99 @@ private fun ProfileBody(
         idol.description?.takeIf { it.isNotEmpty() }?.let { desc ->
             Text(desc, fontSize = 14.sp, color = DS.ink2, modifier = Modifier.padding(16.dp))
         }
+        // 見た目・話し方・呼び方はプロフィールの下の方 (項目・紹介文の後、ギャラリーの前) に置く
+        // (iOS 0e842c9e、オーナー 2026-10-12 の指示と同じ並び)。
+        Column(verticalArrangement = Arrangement.spacedBy(DS.Space.section / 2)) {
+            LookSection(idol, state.extras?.look, onFilteredIdolsClick)
+            SpeechSection(state.extras?.speech)
+            CallSection(idol, state, onNavigateToIdol, onSeeAllCalls)
+        }
         SameProfileSection(idol, brand, onFilteredIdolsClick)
         // iOS も profileBody の末尾にギャラリーを置いている (プロフィールの一部という位置づけ)。
         GallerySection(idol.id)
+    }
+}
+
+/** 見た目。髪型が複数あるときは上で版を切り替える。髪型の札を押すと同じ髪型のアイドルへ。 */
+@Composable
+private fun LookSection(idol: Idol, look: uniffi.imas_core.IdolLook?, onFilteredIdolsClick: (String, String) -> Unit) {
+    val versions = look?.versions.orEmpty()
+    if (versions.isEmpty()) return
+    var selected by rememberSaveable(idol.id) { mutableStateOf(0) }
+    val index = selected.coerceIn(0, versions.lastIndex)
+    val current = versions[index]
+    Column(verticalArrangement = Arrangement.spacedBy(DS.Space.gap), modifier = Modifier.padding(horizontal = DS.Space.screen)) {
+        ImasSectionHeader(
+            "見た目",
+            count = if (versions.size == 1 && current.label.isNotEmpty()) "${current.label}の髪型" else null,
+            tight = true
+        )
+        if (versions.size > 1) {
+            ImasSegmented(
+                labels = versions.map { it.label },
+                selection = index,
+                onSelect = { selected = it }
+            )
+        }
+        ImasLookStub(
+            swatches = current.swatches.map { ImasLookSwatch(it.hex, it.name) },
+            swatchCaption = current.swatchCaption,
+            items = current.items.map { ImasLookItemSpec(it.label, it.values, it.opensIdolList) },
+            onSelect = { _, value -> onFilteredIdolsClick(IdolFilterKind.HAIR_STYLE, value) }
+        )
+    }
+}
+
+/** 話し方。一人称 (場面つき) と P の呼び方を掲示板に、下に性格と話し方の要約。 */
+@Composable
+private fun SpeechSection(speech: uniffi.imas_core.IdolSpeech?) {
+    if (speech == null) return
+    val columns = listOfNotNull(
+        speech.firstPerson.takeIf { it.isNotEmpty() }
+            ?.let { ImasSpeechColumn("一人称", it.map { f -> ImasSpeechForm(f.form, f.scene) }) },
+        speech.producerCall.takeIf { it.isNotEmpty() }
+            ?.let { ImasSpeechColumn("Pの呼び方", it.map { f -> ImasSpeechForm(f.form, f.scene) }) }
+    )
+    Column(verticalArrangement = Arrangement.spacedBy(DS.Space.gap), modifier = Modifier.padding(horizontal = DS.Space.screen)) {
+        ImasSectionHeader("話し方", tight = true)
+        if (columns.isNotEmpty()) ImasSpeechBoard(columns)
+        speech.toneNotes?.let { ImasNote(it) }
+    }
+}
+
+/** 呼び方。双方向の先頭の数行 (ユニットの仲間が先) と「全員」。 */
+@Composable
+private fun CallSection(
+    idol: Idol,
+    state: IdolDetailUiState,
+    onNavigateToIdol: (String) -> Unit,
+    onSeeAllCalls: () -> Unit
+) {
+    val calls = state.extras?.calls ?: return
+    if (calls.total == 0u) return
+    Column(verticalArrangement = Arrangement.spacedBy(DS.Space.gap), modifier = Modifier.padding(horizontal = DS.Space.screen)) {
+        ImasSectionHeader(
+            "呼び方", count = "${calls.total}", tight = true,
+            onSeeAll = onSeeAllCalls, seeAllTitle = "全員"
+        )
+        ImasCardList {
+            ImasCallPairHeader(outgoingTitle = "${idol.shortName} → 相手", incomingTitle = "相手 → ${idol.shortName}")
+            calls.preview.forEachIndexed { index, pair ->
+                if (index > 0) ImasRowDivider(inset = DS.Space.gapLoose)
+                val other = state.callPartners[pair.otherId]
+                ImasCallPairRow(
+                    label = other?.shortName ?: pair.otherName,
+                    name = pair.otherName,
+                    outgoing = pair.outgoing,
+                    incoming = pair.incoming,
+                    selfName = idol.name,
+                    seed = other?.color,
+                    brand = other?.brandId,
+                    entityId = pair.otherId,
+                    modifier = Modifier.imasRowPress(onClick = { other?.let { onNavigateToIdol(it.id) } })
+                )
+            }
+        }
     }
 }
 

@@ -63,4 +63,6 @@ object IdolFilterKind {
 
     /** value = idols.subAttribute の生値 (例: "pretty")。見出しはコアの idolSubAttributeFullName。 */
     const val SUB_ATTRIBUTE = "subAttribute"
+    /** value = 髪型の値そのもの (例: "ツインテール")。プロフィールの「見た目」の髪型の札から。 */
+    const val HAIR_STYLE = "hair_style"
 }

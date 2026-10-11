@@ -17,11 +17,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import uniffi.imas_core.UnitCallMatrix
 
 data class UnitDetailUiState(
     val unit: ImasUnit? = null,
     val members: List<Idol> = emptyList(),
     val songs: List<Song> = emptyList(),
+    /** 呼称表。メンバーどうしの呼び方が無い (16 人超も含む) ユニットは null (コア `unit_call_matrix`)。 */
+    val callMatrix: UnitCallMatrix? = null,
     val tags: List<CommunityApi.UnitTag> = emptyList(),
     /** タグが似ているユニット (このユニットが好きな人にはこのユニットも, サーバ算出)。 */
     val similarUnits: List<ImasUnit> = emptyList(),
@@ -59,10 +62,12 @@ class UnitDetailViewModel(app: Application, private val unitId: String) : Androi
                 }
                 val members = unitRepo.fetchUnitMembers(unitId)
                 val songs = songRepo.fetchUnitSongs(unitId)
+                val callMatrix = unitRepo.fetchUnitCallMatrix(unitId)
                 _uiState.value = UnitDetailUiState(
                     unit = unit,
                     members = members,
                     songs = songs,
+                    callMatrix = callMatrix,
                     isLoading = false
                 )
                 loadTags()

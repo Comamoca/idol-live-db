@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import uniffi.imas_core.IdolProfileExtras
 import uniffi.imas_core.SimilarIdolCandidate
 import uniffi.imas_core.nextShowIndex
 import uniffi.imas_core.similarIdolsFetchLimit
@@ -41,6 +42,10 @@ data class IdolDetailUiState(
     val personalTags: List<PersonalTag> = emptyList(),
     /** 出演履歴のうち今日以降で最も近い公演 (= 次の出演)。選び方はコア (nextShowIndex)。 */
     val nextShow: CastShowRow? = null,
+    /** プロフィールの見た目・話し方・呼び方 (組み立てはコア `idol_profile_extras`)。 */
+    val extras: IdolProfileExtras? = null,
+    /** 呼び方の先頭の行の相手 (アイコンの写真・判子の色に使う)。 */
+    val callPartners: Map<String, Idol> = emptyMap(),
     val isLoading: Boolean = true
 )
 
@@ -69,6 +74,10 @@ class IdolDetailViewModel(app: Application, private val idolId: String) : Androi
             val units = unitRepo.fetchUnitsForIdol(idolId)
             val unitIdsWithSongs = unitRepo.fetchUnitIdsForIdolWithSongs(idolId)
             val castShows = repo.fetchIdolShows(idolId)
+            val extras = repo.fetchIdolProfileExtras(idolId)
+            val callPartnerIds = extras.calls.preview.map { it.otherId }
+            val callPartners = if (callPartnerIds.isEmpty()) emptyMap() else
+                repo.fetchIdolsByIds(callPartnerIds).associateBy { it.id }
 
             _uiState.value = IdolDetailUiState(
                 idol = idol,
@@ -79,6 +88,8 @@ class IdolDetailViewModel(app: Application, private val idolId: String) : Androi
                 unitsWithoutSongs = units.filter { it.id !in unitIdsWithSongs },
                 castShows = castShows,
                 nextShow = nextShowIndex(castShows.map { it.date }, JstDay.today())?.let { castShows[it.toInt()] },
+                extras = extras,
+                callPartners = callPartners,
                 isLoading = false
             )
             loadTags()
