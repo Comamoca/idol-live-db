@@ -31,6 +31,7 @@ final class UnitListViewModelTests: XCTestCase {
         func unitSongs(unitId: String) async throws -> [Song] { [] }
         func unitIdsWithSongs(unitIds: [String]) async throws -> Set<String> { [] }
         func allUnits() async throws -> [ImasLiveDB.Unit] { unitsToReturn }
+        func callMatrix(unitId: String) async throws -> UnitCallMatrix? { nil }
     }
 
     private struct FakeBrandReading: BrandReading {

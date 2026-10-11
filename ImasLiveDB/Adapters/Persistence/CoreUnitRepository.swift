@@ -44,4 +44,10 @@ struct CoreUnitRepository: UnitReading {
             try store.allUnitRecords().map(CoreRecordMapping.unit(from:))
         }
     }
+
+    func callMatrix(unitId: String) async throws -> UnitCallMatrix? {
+        try await snapshot.withStore { store in
+            try store.unitCallMatrix(unitId: unitId)
+        }
+    }
 }

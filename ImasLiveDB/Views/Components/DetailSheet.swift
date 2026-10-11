@@ -15,6 +15,8 @@ enum DetailDestination: Identifiable, Hashable {
     case show(Show)
     case unit(Unit)
     case idolSongHistory(Idol, Song)
+    /// アイドルの呼び方の全員 (本人 → 相手・相手 → 本人)。
+    case idolCalls(Idol)
     case filteredSongs(SongFilterCriterion)
     case filteredIdols(IdolFilterCriterion)
     case filteredEvents(EventFilterCriterion)
@@ -39,6 +41,7 @@ enum DetailDestination: Identifiable, Hashable {
         case .show(let s): return "show_\(s.id)"
         case .unit(let u): return "unit_\(u.id)"
         case .idolSongHistory(let i, let s): return "idolSongHistory_\(i.id)_\(s.id)"
+        case .idolCalls(let i): return "idolCalls_\(i.id)"
         case .filteredSongs(let c): return "filteredSongs_\(c.navigationTitle)"
         case .filteredIdols(let c): return "filteredIdols_\(c.navigationTitle)"
         case .filteredEvents(let c): return "filteredEvents_\(c.navigationTitle)"
@@ -130,6 +133,8 @@ struct DetailContentView: View {
             UnitDetailView(unit: unit, navigate: { navigate($0) })
         case .idolSongHistory(let idol, let song):
             IdolSongHistoryView(idol: idol, song: song, navigate: { navigate($0) })
+        case .idolCalls(let idol):
+            IdolCallListView(idol: idol, navigate: { navigate($0) })
         case .filteredSongs(let criterion):
             FilteredSongsView(criterion: criterion, navigate: { navigate($0) })
         case .filteredIdols(let criterion):

@@ -44,4 +44,8 @@ protocol IdolReading: Sendable {
     func allIdolsForPicker() async throws -> [Idol]
     /// あるアイドルが特定曲を披露した公演履歴。
     func idolSongHistory(idolId: String, songId: String) async throws -> [CastShowRow]
+    /// プロフィールの見た目・話し方・呼び方 (区画の先頭の数行と人数)。組み立てはコア (`idol_profile_extras`)。
+    func profileExtras(idolId: String) async throws -> IdolProfileExtras
+    /// 呼び方の全員。見出しのまとめ・検索の照合・向きの絞り込みはコア (`idol_call_groups`)。
+    func callGroups(idolId: String, query: String, direction: CallDirection) async throws -> [IdolCallGroup]
 }

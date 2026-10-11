@@ -457,6 +457,10 @@ final class CloudKitSyncEngine: @unchecked Sendable {
             try database.upsertBrands(mapped(CKRecordMapper.brand))
         case "Idol":
             try database.upsertIdols(mapped(CKRecordMapper.idol))
+        case "IdolFacet":
+            try database.upsertIdolFacets(mapped(CKRecordMapper.idolFacet))
+        case "IdolHairstyle":
+            try database.upsertIdolHairstyles(mapped(CKRecordMapper.idolHairstyle))
         case "CastMember":
             // Cast テーブル廃止: 旧 CK レコードは無視。
             break

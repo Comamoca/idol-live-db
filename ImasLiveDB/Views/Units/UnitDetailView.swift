@@ -1,8 +1,8 @@
 import SwiftUI
 
 /// ユニット詳細 (IdolDetailView と同じ内部セグメント方式)。
-/// ヒーロー (アバター + 名前 + ブランド) を固定し、その下のボディを ImasSegmented で
-/// [楽曲][メンバー][コミュニティ] に切り替える。ユニットには横断的な出演履歴クエリが無いため
+/// ヒーロー (アバター + 名前 + ブランド) を固定し、その下のボディを ImasTabs で
+/// [楽曲][メンバー][呼称表][コミュニティ] に切り替える (呼称表はメンバーどうしの呼び方があるユニットだけ)。ユニットには横断的な出演履歴クエリが無いため
 /// 「ライブ」タブは無く、担当/お気に入り/メモも UserMark が unit を扱わないため無い。
 struct UnitDetailView: View {
     @Environment(AppDatabase.self) private var database
@@ -11,11 +11,16 @@ struct UnitDetailView: View {
     /// 非 nil なら子遷移は自前 sheet ではなく共有 path に push する (sheet 多重化回避)。
     /// nil (一覧からの standalone push) のときは自前 sheet で遷移する。
     var navigate: ((DetailDestination) -> Void)? = nil
+    /// 初めに開くタブ。見た目の確認用のハーネスが使う (呼称表は読み込みが終わってから出る)。
+    var initialTab: UnitDetailTab = .songs
 
     @State private var vm = UnitDetailViewModel()
     @State private var markService = UserMarkService.shared
     @State private var sheetDestination: DetailDestination?
-    @State private var segment = 0
+    @State private var tab: UnitDetailTab = .songs
+    /// 呼称表で選んでいる組 (行 = 呼ぶ人・列 = 呼ばれる人)。
+    @State private var callSelection = ImasCallMatrix.Selection(row: 0, column: 1)
+    @State private var imageService = CustomImageService.shared
     /// コミュニティタブ: このユニットに付いたタグ (自分が付けたタグ含む)。
     @State private var unitTagData: UnitTagListResponse?
     @State private var showUnitTagPicker = false
@@ -54,7 +59,7 @@ struct UnitDetailView: View {
                         .id("unit_detail_top")
                         .imasTracksScrolledPast(in: "unit_detail_scroll", $tabsScrolledPast)
                     Section {
-                        segmentBody(for: segment)
+                        segmentBody(for: tab)
                             .padding(.bottom, DS.sp7)
                     } header: {
                         segmentedBar
@@ -63,7 +68,7 @@ struct UnitDetailView: View {
                 }
             }
             .coordinateSpace(name: "unit_detail_scroll")
-            .onChange(of: segment) { _, _ in
+            .onChange(of: tab) { _, _ in
                 // 前のタブで下まで流していたら、次のタブは頭 (タブの見出しの下) から見せる。
                 if tabsScrolledPast { proxy.scrollTo("unit_detail_top", anchor: .top) }
             }
@@ -77,6 +82,7 @@ struct UnitDetailView: View {
                 .environment(database)
         }
         .imasLoadAfterTransition { await vm.loadDetails(unit: unit) }
+        .onChange(of: tabs) { _, now in if tab != initialTab, now.contains(initialTab) { tab = initialTab } }
         .trackScreen("unit_detail")
     }
 
@@ -96,13 +102,13 @@ struct UnitDetailView: View {
                        CopyItem("別名をコピー", unit.nameAlt, key: "unit_name_alt")])
     }
 
+    /// 呼称表はメンバーどうしの呼び方があるユニットだけ (読み込みが終わってから足す)。
+    private var tabs: [UnitDetailTab] {
+        vm.callMatrix == nil ? [.songs, .members, .community] : [.songs, .members, .calls, .community]
+    }
+
     private var segmentedBar: some View {
-        ImasTabs(
-            labels: ["楽曲", "メンバー", "コミュニティ"],
-            selection: $segment,
-            seed: nil,
-            brand: brandColor
-        )
+        ImasTabs(options: tabs, selection: $tab, seed: nil, brand: brandColor) { $0.label }
         .padding(.horizontal, DS.sp5)
         .padding(.top, DS.sp3)
         .padding(.bottom, DS.sp3)
@@ -111,11 +117,48 @@ struct UnitDetailView: View {
     // MARK: - Body switch
 
     @ViewBuilder
-    private func segmentBody(for segment: Int) -> some View {
-        switch segment {
-        case 0: songsBody
-        case 1: membersBody
-        default: communityBody
+    private func segmentBody(for tab: UnitDetailTab) -> some View {
+        switch tab {
+        case .songs: songsBody
+        case .members: membersBody
+        case .calls: callsBody
+        case .community: communityBody
+        }
+    }
+
+    // MARK: - 呼称表
+
+    /// メンバー × (メンバー + P) のマス目。対角線は一人称。マスを押すと下に双方向の呼び方。
+    @ViewBuilder
+    private var callsBody: some View {
+        if let matrix = vm.callMatrix {
+            let byId = Dictionary(vm.members.map { ($0.id, $0) }) { a, _ in a }
+            let members = matrix.memberIds.map { id in
+                let idol = byId[id]
+                return ImasCallMatrix.Member(id: id, label: idol?.shortName ?? id, name: idol?.name ?? id,
+                                             seed: idol?.color, imageURL: imageService.imageURL(for: id))
+            }
+            let rows = matrix.rows.map { row in
+                row.map { cell in
+                    ImasCallMatrix.Cell(kind: cell.kind.matrixKind, text: cell.text)
+                }
+            }
+            let sel = callSelection
+            VStack(alignment: .leading, spacing: DS.sp4) {
+                ImasSectionHeader("誰が誰をどう呼ぶか", count: "行の人 → 列の人", style: .small)
+                ImasCallMatrix(members: members, rows: rows, selection: $callSelection)
+                if sel.row < members.count, sel.column < members.count, sel.row != sel.column {
+                    ImasCallPairCard(
+                        forwardTitle: "\(members[sel.row].label) → \(members[sel.column].label)",
+                        forward: rows[sel.row][sel.column].text,
+                        backwardTitle: "\(members[sel.column].label) → \(members[sel.row].label)",
+                        backward: rows[sel.column][sel.row].text
+                    )
+                }
+                ImasNote("呼び方はニコニコ大百科の呼称表・im@sparql (MIT License) などから。")
+            }
+            .padding(.horizontal, DS.sp5)
+            .padding(.top, DS.sp4)
         }
     }
 
@@ -401,5 +444,29 @@ struct UnitDetailView: View {
         let byId = Dictionary(index.units.map { ($0.id, $0) }) { a, _ in a }
         similarSharedTags = Dictionary(response.units.map { ($0.unitId, $0.sharedTags) }) { a, _ in a }
         similarTagUnits = ids.compactMap { byId[$0] }
+    }
+}
+
+/// ユニット詳細のタブ。
+enum UnitDetailTab: Hashable {
+    case songs, members, calls, community
+
+    var label: String {
+        switch self {
+        case .songs: "楽曲"
+        case .members: "メンバー"
+        case .calls: "呼称表"
+        case .community: "コミュニティ"
+        }
+    }
+}
+
+private extension UnitCallCellKind {
+    var matrixKind: ImasCallMatrix.CellKind {
+        switch self {
+        case .firstPerson: .firstPerson
+        case .member: .member
+        case .producer: .producer
+        }
     }
 }

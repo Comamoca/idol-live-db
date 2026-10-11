@@ -65,6 +65,12 @@ extension AppDatabase {
     func upsertCostumeWears(_ rows: [CostumeWear]) throws { try upsertChunked(rows) }
     func upsertShowTickets(_ rows: [ShowTicketRecord]) throws { try upsertChunked(rows) }
     func upsertTicketSales(_ rows: [TicketSaleRecord]) throws { try upsertChunked(rows) }
+    func upsertIdolFacets(_ rows: [IdolFacetRecord]) throws { try upsertChunked(rows) }
+    /// main でない行を先に書く。同梱 DB から始めた端末には「main は 1 人 1 つ」の一意索引があるので、
+    /// main の付け替え (A → B) が同じ束で届いたとき、B を先に書くと A がまだ main で弾かれる。
+    func upsertIdolHairstyles(_ rows: [IdolHairstyleRecord]) throws {
+        try upsertChunked(rows.filter { !$0.isMain } + rows.filter(\.isMain))
+    }
     func upsertTicketSalesAsync(_ rows: [TicketSaleRecord]) async throws { try await upsertChunkedAsync(rows) }
 
     /// モデレーター編集の削除 (soft delete ではなく端末の即時反映用)。サーバ確定後に呼ぶ。

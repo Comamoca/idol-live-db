@@ -19,6 +19,8 @@ protocol UnitReading: Sendable {
     func unitIdsWithSongs(unitIds: [String]) async throws -> Set<String>
     /// 全ユニット (ピッカー用)。
     func allUnits() async throws -> [Unit]
+    /// ユニットの呼称表。メンバーどうしの呼び方が無いユニットは nil (コア `unit_call_matrix`)。
+    func callMatrix(unitId: String) async throws -> UnitCallMatrix?
 }
 
 extension UnitReading {

@@ -220,6 +220,11 @@ struct ImasLiveDBApp: App {
                 ProducerCardPreviewHarness(mode: ProducerCardPreviewHarness.envMode ?? .card)
                     .environment(appDatabase)
             }
+            // アイドルのプロフィール (見た目・話し方・呼び方) とユニットの呼称表の見た目確認用 (DEBUG のみ)。
+            .fullScreenCover(isPresented: .constant(ProfilePartsPreviewHarness.envMode != nil)) {
+                ProfilePartsPreviewHarness(mode: ProfilePartsPreviewHarness.envMode ?? .profile)
+                    .environment(appDatabase)
+            }
             #endif
     }
 }

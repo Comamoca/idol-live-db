@@ -18,6 +18,10 @@ final class IdolDetailViewModel {
     private(set) var unitsWithSongs: [Unit] = []
     private(set) var unitsWithoutSongs: [Unit] = []
     private(set) var brand: Brand?
+    /// プロフィールの見た目・話し方・呼び方 (組み立てはコア `idol_profile_extras`)。
+    private(set) var extras: IdolProfileExtras?
+    /// 呼び方の先頭の行の相手 (アイコンの写真・判子の色に使う)。
+    private(set) var callPartners: [String: Idol] = [:]
     /// `loadDetails` が一度でも終わったか。電光掲示板 (出演・歌唱曲の数) を読み込み中の
     /// 「0 / 0」のまま一瞬出してしまわないためのガード。
     private(set) var hasLoadedDetails = false
@@ -48,8 +52,9 @@ final class IdolDetailViewModel {
             async let u = idolReading.idolUnits(idolId: idol.id)
             async let b = brandReading.brands()
             async let s = idolReading.idolShows(idolId: idol.id)
-            let (loadedOriginal, loadedPerformed, loadedUnits, brands, shows) =
-                try await (o, p, u, b, s)
+            async let x = idolReading.profileExtras(idolId: idol.id)
+            let (loadedOriginal, loadedPerformed, loadedUnits, brands, shows, loadedExtras) =
+                try await (o, p, u, b, s, x)
             originalSongSections = loadedOriginal
             performedSongs = loadedPerformed
             units = loadedUnits
@@ -59,6 +64,11 @@ final class IdolDetailViewModel {
             unitsWithoutSongs = loadedUnits.filter { !withSongs.contains($0.id) }
             brand = brands.first { $0.id == idol.brandId }
             castShows = shows
+            extras = loadedExtras
+            let partnerIds = loadedExtras.calls.preview.map(\.otherId)
+            if !partnerIds.isEmpty, let partners = try? await idolReading.idols(ids: partnerIds) {
+                callPartners = Dictionary(partners.map { ($0.id, $0) }) { a, _ in a }
+            }
         } catch {
             Logger.database.error("load_failed idol_detail: \(error.localizedDescription)")
         }

@@ -31,6 +31,10 @@ final class IdolListViewModelTests: XCTestCase {
         func idolShows(idolId: String) async throws -> [CastShowRow] { [] }
         func allIdolsForPicker() async throws -> [Idol] { [] }
         func idolSongHistory(idolId: String, songId: String) async throws -> [CastShowRow] { [] }
+        func profileExtras(idolId: String) async throws -> IdolProfileExtras {
+            IdolProfileExtras(look: IdolLook(versions: []), speech: nil, calls: IdolCallSummary(total: 0, preview: []))
+        }
+        func callGroups(idolId: String, query: String, direction: CallDirection) async throws -> [IdolCallGroup] { [] }
     }
 
     private struct FakeBrandReading: BrandReading {

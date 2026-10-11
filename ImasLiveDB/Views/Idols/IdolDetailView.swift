@@ -12,6 +12,8 @@ struct IdolDetailView: View {
     /// 非 nil なら子遷移は自前 sheet ではなく共有 path に push する (sheet 多重化回避)。
     /// nil (一覧からの standalone push) のときは自前 sheet で遷移する。
     var navigate: ((DetailDestination) -> Void)? = nil
+    /// 初めに開くタブ (0 = ライブ、2 = プロフィール)。見た目の確認用のハーネスが使う。
+    var initialSegment = 0
 
     @State private var vm = IdolDetailViewModel()
     @State private var showEmptyUnits = false
@@ -22,6 +24,8 @@ struct IdolDetailView: View {
     @State private var editIdol: Idol?
     @State private var showLoginPrompt = false
     @State private var segment = 0
+    /// プロフィールの「見た目」で選んでいる版 (基本 / セカンドヘア …) の添字。
+    @State private var lookVersion = 0
     /// 楽曲タブの小タブ (節) の選択。節の heading を選択値に使う (節ごとに一意)。
     @State private var selectedSongSection: String?
     /// コミュニティタブ: このアイドルに付いたタグ (自分が付けたタグ含む)。
@@ -93,6 +97,12 @@ struct IdolDetailView: View {
                 // 前のタブで下まで流していたら、次のタブは頭 (タブの見出しの下) から見せる。
                 if tabsScrolledPast { proxy.scrollTo("idol_detail_top", anchor: .top) }
             }
+            // タブを指定して開いたときは、名札を流してタブの頭から見せる (読み込みが終わってから)。
+            .task {
+                guard initialSegment != 0 else { return }
+                try? await Task.sleep(for: .milliseconds(900))
+                proxy.scrollTo("idol_detail_top", anchor: .top)
+            }
         }
         .background(DS.bg)
         .scrollContentBackground(.hidden)
@@ -120,6 +130,7 @@ struct IdolDetailView: View {
             }
         }
         .imasLoadAfterTransition { await vm.loadDetails(idol: idol) }
+        .onAppear { if initialSegment != 0 { segment = initialSegment } }
         .trackScreen("idol_detail")
     }
 
@@ -368,6 +379,10 @@ struct IdolDetailView: View {
     @ViewBuilder
     private var profileBody: some View {
         VStack(spacing: DS.sp6) {
+            lookSection
+            speechSection
+            callSection
+
             if !vm.unitsWithSongs.isEmpty {
                 VStack(alignment: .leading, spacing: DS.sp3) {
                     ImasSectionHeader(title: "所属ユニット", count: "\(vm.unitsWithSongs.count)", tight: true)
@@ -419,6 +434,80 @@ struct IdolDetailView: View {
             gallerySection
         }
         .padding(.top, DS.sp4)
+    }
+
+    // MARK: - プロフィール: 見た目・話し方・呼び方 (組み立てはコア `idol_profile_extras`)
+
+    /// 見た目。髪型が複数あるときは上で版を切り替える。髪型の札を押すと同じ髪型のアイドルへ。
+    @ViewBuilder
+    private var lookSection: some View {
+        if let versions = vm.extras?.look.versions, !versions.isEmpty {
+            let current = versions[min(lookVersion, versions.count - 1)]
+            VStack(alignment: .leading, spacing: DS.sp3) {
+                ImasSectionHeader(title: "見た目", count: versions.count == 1 && !current.label.isEmpty ? "\(current.label)の髪型" : nil, tight: true)
+                if versions.count > 1 {
+                    ImasSegmented(options: Array(versions.indices), selection: $lookVersion) { versions[$0].label }
+                }
+                ImasLookStub(
+                    swatches: current.swatches.map { ImasLookStub.Swatch(hex: $0.hex, name: $0.name) },
+                    swatchCaption: current.swatchCaption,
+                    items: current.items.map { ImasLookStub.Item(label: $0.label, values: $0.values, opensList: $0.opensIdolList) },
+                    onSelect: { _, value in go(.filteredIdols(.hairStyle(value))) }
+                )
+                .imasTabSwipe(selection: $lookVersion, options: Array(versions.indices))
+            }
+            .padding(.horizontal, DS.sp5)
+        }
+    }
+
+    /// 話し方。一人称 (場面つき) と P の呼び方を掲示板に、下に性格と話し方の要約。
+    @ViewBuilder
+    private var speechSection: some View {
+        if let speech = vm.extras?.speech {
+            let columns = [
+                ImasSpeechBoard.Column(title: "一人称", forms: speech.firstPerson.map { .init(text: $0.form, scene: $0.scene) }),
+                ImasSpeechBoard.Column(title: "Pの呼び方", forms: speech.producerCall.map { .init(text: $0.form, scene: $0.scene) }),
+            ].filter { !$0.forms.isEmpty }
+            VStack(alignment: .leading, spacing: DS.sp3) {
+                ImasSectionHeader(title: "話し方", tight: true)
+                if !columns.isEmpty { ImasSpeechBoard(columns: columns) }
+                if let notes = speech.toneNotes { ImasNote(notes) }
+            }
+            .padding(.horizontal, DS.sp5)
+        }
+    }
+
+    /// 呼び方。双方向の先頭の数行 (ユニットの仲間が先) と「全員」。
+    @ViewBuilder
+    private var callSection: some View {
+        if let calls = vm.extras?.calls, calls.total > 0 {
+            VStack(alignment: .leading, spacing: DS.sp3) {
+                ImasSectionHeader("呼び方", count: "\(calls.total)", style: .small, seeAllTitle: "全員",
+                                  seeAll: { go(.idolCalls(idol)) })
+                ImasCardList {
+                    ImasCallPairHeader(outgoingTitle: "\(idol.shortName) → 相手", incomingTitle: "相手 → \(idol.shortName)")
+                    ForEach(calls.preview, id: \.otherId) { pair in
+                        ImasRowDivider(inset: DS.Space.gapLoose)
+                        let other = vm.callPartners[pair.otherId]
+                        Button {
+                            if let other { go(.idol(other)) }
+                        } label: {
+                            ImasCallPairRow(
+                                label: other?.shortName ?? pair.otherName,
+                                name: pair.otherName,
+                                seed: other?.color,
+                                imageURL: imageService.imageURL(for: pair.otherId),
+                                outgoing: pair.outgoing,
+                                incoming: pair.incoming,
+                                selfName: idol.name
+                            )
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
+            .padding(.horizontal, DS.sp5)
+        }
     }
 
     // MARK: - コミュニティ (投票の優勝経験 + タグ)

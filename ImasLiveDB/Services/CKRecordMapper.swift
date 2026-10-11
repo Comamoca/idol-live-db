@@ -35,6 +35,8 @@ enum CKRecordMapper {
         case .costumeWear(let row): costumeWear(row)
         case .showTicket(let row): showTicket(row)
         case .ticketSale(let row): ticketSale(row)
+        case .idolFacet(let row): idolFacet(row)
+        case .idolHairstyle(let row): idolHairstyle(row)
         case .venueName(let row): venueName(row)
         case .venueHall(let row): venueHall(row)
         case .song(let row): song(row)
@@ -264,6 +266,34 @@ enum CKRecordMapper {
     static func ticketSale(from record: CKRecord) -> TicketSaleRecord? {
         guard case .ticketSale(let row)? = mapped(record, as: "TicketSale") else { return nil }
         return ticketSale(row)
+    }
+
+    /// アイドルの項目 1 値。語彙の検査は取り込みでは行わない (読む側のコアが語彙に合わない行を読み飛ばす)。
+    static func idolFacet(_ row: CkIdolFacetRow) -> IdolFacetRecord {
+        IdolFacetRecord(
+            id: row.id, idolId: row.idolId, facet: row.facet, value: row.value,
+            origin: row.origin, sourceNote: row.sourceNote, sortOrder: row.sortOrder
+        )
+    }
+
+    static func idolFacet(from record: CKRecord) -> IdolFacetRecord? {
+        guard case .idolFacet(let row)? = mapped(record, as: "IdolFacet") else { return nil }
+        return idolFacet(row)
+    }
+
+    /// アイドルの髪型 1 つぶん。`styles` / `accessories` は `、` 区切りの文字列のまま保存する (割るのはコア)。
+    static func idolHairstyle(_ row: CkIdolHairstyleRow) -> IdolHairstyleRecord {
+        IdolHairstyleRecord(
+            id: row.id, idolId: row.idolId, label: row.label, isMain: row.isMain,
+            hairColor: row.hairColor, hairColorSecondary: row.hairColorSecondary, hairLength: row.hairLength,
+            styles: row.styles, bangs: row.bangs, accessories: row.accessories,
+            origin: row.origin, sourceNote: row.sourceNote, sortOrder: row.sortOrder
+        )
+    }
+
+    static func idolHairstyle(from record: CKRecord) -> IdolHairstyleRecord? {
+        guard case .idolHairstyle(let row)? = mapped(record, as: "IdolHairstyle") else { return nil }
+        return idolHairstyle(row)
     }
 
     /// 会場名と有効期間。表示を「公演日時点の名前」にするために使う。

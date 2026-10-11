@@ -9,7 +9,7 @@ import SwiftUI
 // =============================================================================
 
 enum DesignCatalogPage: String, CaseIterable, Identifiable {
-    case venue, venueRows, application, buttons, chips, rows, rows2, sections, heroSong, heroIdol, heroIdolColor, hub, hubColor,
+    case venue, venueRows, application, buttons, chips, rows, rows2, sections, heroSong, heroIdol, heroIdolColor, idolProfile, hub, hubColor,
          feedback, setlist, list, form, setup, community, chat, stage
 
     var id: String { rawValue }
@@ -27,6 +27,7 @@ enum DesignCatalogPage: String, CaseIterable, Identifiable {
         case .heroSong: return "詳細の頭 (曲)"
         case .heroIdol: return "詳細の頭 (アイドル)"
         case .heroIdolColor: return "詳細の頭 (アイドル・色の面)"
+        case .idolProfile: return "見た目・話し方・呼び方"
         case .hub: return "ハブ"
         case .hubColor: return "ハブ (担当を色の面で)"
         case .feedback: return "状態・メーター"
@@ -68,6 +69,7 @@ struct DesignCatalogPageView: View {
             case .heroSong: SongHeroPage()
             case .heroIdol: IdolHeroPage(surface: .paper)
             case .heroIdolColor: IdolHeroPage(surface: .color)
+            case .idolProfile: IdolProfilePartsPage()
             case .hub: HubPage(oshiSurface: .panel)
             case .hubColor: HubPage(oshiSurface: .color)
             case .feedback: FeedbackPage()
@@ -1615,4 +1617,88 @@ private struct CatalogDesignPicker: View {
             selection: $selection, sample: "ふがP", seed: Sample.saki)
     }
 }
+
+// MARK: - 見た目・話し方・呼び方
+
+private struct IdolProfilePartsPage: View {
+    @State private var selection = ImasCallMatrix.Selection(row: 3, column: 1)
+    @State private var bigSelection = ImasCallMatrix.Selection(row: 0, column: 1)
+
+    private static let members: [ImasCallMatrix.Member] = [
+        .init(id: "a", label: "恋鐘", name: "月岡恋鐘", seed: "#F84CAD"),
+        .init(id: "b", label: "摩美々", name: "田中摩美々", seed: "#A846FB"),
+        .init(id: "c", label: "咲耶", name: "白瀬咲耶", seed: "#006047"),
+        .init(id: "d", label: "結華", name: "三峰結華", seed: "#3B91C4"),
+        .init(id: "e", label: "霧子", name: "幽谷霧子", seed: "#9CCBE6"),
+    ]
+
+    private static func rows(_ grid: [[String?]]) -> [[ImasCallMatrix.Cell]] {
+        grid.enumerated().map { i, row in
+            row.enumerated().map { j, text in
+                ImasCallMatrix.Cell(kind: i == j ? .firstPerson : (j == row.count - 1 ? .producer : .member), text: text)
+            }
+        }
+    }
+
+    var body: some View {
+        ImasPage {
+            ImasSection("見た目の半券", style: .small, footer: "髪色の見本は平らな 1 色。2 色目は左右に硬く分ける。押せる値 (髪型) は四角い枠の札。") {
+                VStack(spacing: DS.Space.gapLoose) {
+                    ImasLookStub(
+                        swatches: [.init(hex: "#2B2730", name: "黒")], swatchCaption: "髪色 黒",
+                        items: [
+                            .init(label: "長さ", values: ["ロング"], opensList: false),
+                            .init(label: "髪型", values: ["ツインテール", "縦ロール"], opensList: true),
+                            .init(label: "眼鏡", values: ["かけている"], opensList: false),
+                        ],
+                        onSelect: { _, _ in }
+                    )
+                    ImasLookStub(
+                        swatches: [.init(hex: "#2B2730", name: "黒"), .init(hex: "#E3B94F", name: "金")], swatchCaption: "髪色 黒／金",
+                        items: [.init(label: "長さ", values: ["ショート"], opensList: false),
+                                .init(label: "髪飾り", values: ["ヘアピン"], opensList: false)]
+                    )
+                    ImasLookStub(swatches: [], swatchCaption: "", items: [.init(label: "目の色", values: ["青"], opensList: false)])
+                }
+            }
+            ImasSection("話し方の掲示板", style: .small, footer: "一人称 (場面つき) と P の呼び方。ライトでもダークでも板は暗い。") {
+                VStack(spacing: DS.Space.gapLoose) {
+                    ImasSpeechBoard(columns: [
+                        .init(title: "一人称", forms: [.init(text: "三峰", scene: "普段"), .init(text: "私", scene: "真面目なとき")]),
+                        .init(title: "Pの呼び方", forms: [.init(text: "Pたん")]),
+                    ])
+                    ImasSpeechBoard(columns: [.init(title: "一人称", forms: [.init(text: "わたくし")])])
+                }
+            }
+            ImasSection("呼び方の行", style: .small, footer: "本人 → 相手・相手 → 本人。片方が未登録なら「—」(薄字)。") {
+                ImasCardList {
+                    ImasCallPairHeader(outgoingTitle: "結華 → 相手", incomingTitle: "相手 → 結華")
+                    ImasRowDivider(inset: DS.Space.gapLoose)
+                    ImasCallPairRow(label: "摩美々", name: "田中摩美々", seed: "#A846FB", outgoing: "まみみん", incoming: "結華", selfName: "三峰結華")
+                    ImasRowDivider(inset: DS.Space.gapLoose)
+                    ImasCallPairRow(label: "透", name: "浅倉透", seed: "#50D0D0", outgoing: "とおるん", incoming: nil, selfName: "三峰結華")
+                }
+            }
+            ImasSection("ユニットの呼称表", style: .small, footer: "行の人 → 列の人。対角線は一人称。マス・行頭を押すと組を選ぶ。人数が多いと横に流す。") {
+                VStack(spacing: DS.Space.gapLoose) {
+                    ImasCallMatrix(members: Self.members, rows: Self.rows([
+                        ["うち", "摩美々", "咲耶", "結華", "霧子", "プロデューサー"],
+                        ["恋鐘", "私", "咲耶", "結華", "霧子", "プロデューサー"],
+                        ["恋鐘", "摩美々", "私", "結華", "霧子", "プロデューサー"],
+                        ["こがたん", "まみみん", "さくやん", "三峰 / 私", "きりりん", "Pたん"],
+                        ["恋鐘ちゃん", "摩美々ちゃん", "咲耶ちゃん", "結華ちゃん", "私", nil],
+                    ]), selection: $selection)
+                    ImasCallPairCard(forwardTitle: "結華 → 摩美々", forward: "まみみん", backwardTitle: "摩美々 → 結華", backward: "結華")
+                    ImasCallPairCard(forwardTitle: "霧子 → 恋鐘", forward: "恋鐘ちゃん", backwardTitle: "恋鐘 → 霧子", backward: nil)
+                    ImasCallMatrix(
+                        members: (0..<9).map { .init(id: "m\($0)", label: "M\($0 + 1)", name: "メンバー\($0 + 1)") },
+                        rows: Self.rows((0..<9).map { i in (0...9).map { j in i == j ? "私" : (j == 9 ? "P" : "M\(j + 1)ちゃん") } }),
+                        selection: $bigSelection
+                    )
+                }
+            }
+        }
+    }
+}
+
 #endif

@@ -1263,6 +1263,43 @@ enum DatabaseMigrations {
             }
         }
 
+        // v51: アイドルの項目 (idol_facets) と髪型 (idol_hairstyles)。共有コアが見た目の版・項目の並びを組み、
+        // この 2 表は CloudKit の写しを保存するだけ。FK は前例 (v35_ticket_sales) に合わせて付けない。
+        // 中身は次の同期 (IdolFacet / IdolHairstyle) と、同梱 DB の reseed で入る。
+        // 髪型の一意索引 (main は 1 人 1 つ・label の重複なし) は端末では作らない。端末は CloudKit の写しで、
+        // main の付け替えが同期の途中で一時的に 2 つ重なると、一意索引があると後から来た行が捨てられる
+        // (守るのは投入側 apply_data --check とコアの hairstyle_set_problems)。
+        migrator.registerMigration("v51_idol_facets") { db in
+            try db.create(table: "idol_facets", ifNotExists: true) { t in
+                t.column("id", .text).primaryKey()
+                t.column("idol_id", .text).notNull()
+                t.column("facet", .text).notNull()
+                t.column("value", .text).notNull()
+                t.column("origin", .text).notNull().defaults(to: "official")
+                t.column("source_note", .text)
+                t.column("sort_order", .integer).notNull().defaults(to: 0)
+            }
+            try db.create(table: "idol_hairstyles", ifNotExists: true) { t in
+                t.column("id", .text).primaryKey()
+                t.column("idol_id", .text).notNull()
+                t.column("label", .text).notNull()
+                t.column("is_main", .integer).notNull().defaults(to: 0)
+                t.column("hair_color", .text)
+                t.column("hair_color_secondary", .text)
+                t.column("hair_length", .text)
+                t.column("styles", .text)
+                t.column("bangs", .text)
+                t.column("accessories", .text)
+                t.column("origin", .text).notNull().defaults(to: "official")
+                t.column("source_note", .text)
+                t.column("sort_order", .integer).notNull().defaults(to: 0)
+            }
+            try db.execute(sql: """
+                CREATE INDEX IF NOT EXISTS idx_idol_facets_idol ON idol_facets(idol_id, facet);
+                CREATE INDEX IF NOT EXISTS idx_idol_hairstyles_idol ON idol_hairstyles(idol_id, sort_order);
+                """)
+        }
+
         return migrator
     }
 }

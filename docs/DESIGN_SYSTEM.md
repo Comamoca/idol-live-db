@@ -456,6 +456,28 @@ ImasSection("ライブ歌唱曲", count: "42曲", action: .seeAll { ... }, foote
 
 ---
 
+### 6.14 `ImasLookStub` 見た目の半券
+- **用途** アイドル詳細のプロフィールの頭で、髪色・髪型など「見た目」の項目を 1 枚の紙で見せる。
+- **使わない** ほかの「項目: 値」→ `ImasValueRow` / 色を選ぶ → `ImasSwatch`・`ImasColorPicker`。
+- **構成** 左の半券 = 髪色の見本 (平らな 1 色。2 色目があれば左右に硬く分ける) と色名、切り取り線、右 = 項目名と値の格子 (値のある項目だけ)。押せる値 (髪型) は四角い枠の札 + ›。
+- **状態** 髪色が無い子は半券を出さず右だけ。版 (基本 / セカンドヘア …) が 2 つ以上なら上に `ImasSegmented` を置き、半券を横に払っても替わる。
+- **色** 見本の色は中身そのもの (コアの `hair_color_hex`)。ほかは墨と灰。ぼかし・光は使わない。
+
+### 6.15 `ImasSpeechBoard` 話し方の掲示板
+- **用途** 一人称 (場面つき) とプロデューサーの呼び方を、掲示板 (`DS.board`) に大きく。性格と話し方の要約は下に `ImasNote`。
+- **構成** 1〜2 列。列の題は小さな字間の広い灰、最初の呼び方は 22pt 極太、2 つ目からは 16pt。場面はその下に小さく。
+
+### 6.16 `ImasCallPairHeader` / `ImasCallPairRow` 呼び方の行
+- **用途** 誰が誰をどう呼ぶかを双方向で並べる (アイドル詳細の「呼び方」、呼び方の全員)。
+- **構成** アイコン (写真か判子) ・名前・「本人 → 相手」(墨の極太)・「相手 → 本人」(灰の太字)。未登録は「—」(薄字)。列の題は `ImasCallPairHeader` (列の幅は行と同じ)。
+- **振る舞い** 押すとそのアイドルへ。全員の画面では長押しのメニュー (`.contextMenu`) で呼び方をコピー (コピーの文面はコア)。
+
+### 6.17 `ImasCallMatrix` / `ImasCallPairCard` ユニットの呼称表
+- **用途** ユニット詳細の「呼称表」タブ。メンバー × (メンバー + P) のマス目。
+- **構成** 上の行と左の列はアイコン。対角線は一人称で掲示板の色 (暗い板に明るい字)。選んだ組は墨の枠、その行は `DS.fill`。下に凡例 (一人称・選んだ組)。
+  選んだ組の双方向は `ImasCallPairCard` (切り取り線で左右に分けた紙に 22pt 極太)。
+- **振る舞い** マスを押すとその組を選ぶ (P の列と対角線は選べない)。行頭のアイコンを押すとその人の行へ移る。人数が多くマスが細くなりすぎると横に流す。
+
 ## 7. 入力
 
 | 部品 | 用途 | 中身 |
@@ -825,6 +847,9 @@ ImasSection("ライブ歌唱曲", count: "42曲", action: .seeAll { ... }, foote
 | P名刺・QR を見せる | `ImasProducerCard` / `ImasCardFace` / `ImasQRCode` / `ImasCameraFrame` / `ImasCardPortrait` / `ImasCardDesignPicker` / `ImasPortraitCropper` / `ImasCornerAdjuster` |
 | 自己紹介の 1 枚絵 (履歴書) | `ProfileSheetCard` (§13) |
 | 順序のある段から 1 つ選ばせる (なし / 担当 / メイン) | `ImasStepSlider` / `ImasStepSliderRow` |
+| 髪色・髪型など見た目を見せる | `ImasLookStub` |
+| 一人称・P の呼び方を見せる | `ImasSpeechBoard` |
+| 誰が誰をどう呼ぶかを並べる | `ImasCallPairRow` (列の題 `ImasCallPairHeader`) / ユニットの表は `ImasCallMatrix` + `ImasCallPairCard` |
 
 ---
 

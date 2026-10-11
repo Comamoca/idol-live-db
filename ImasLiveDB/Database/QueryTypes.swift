@@ -366,6 +366,8 @@ enum IdolFilterCriterion: Hashable, Sendable {
     case bloodType(String)
     /// 属性をさらに分けたサブ属性 (`pretty` 等)。label は「プリンセス プリティ」。
     case subAttribute(id: String, label: String)
+    /// 髪型 (ツインテール…) の版を 1 つでも持つ子。
+    case hairStyle(String)
 
     var navigationTitle: String {
         switch self {
@@ -375,6 +377,7 @@ enum IdolFilterCriterion: Hashable, Sendable {
         case .birthPlace(let p): return "\(p)出身のアイドル"
         case .bloodType(let t): return "\(t)型のアイドル"
         case .subAttribute(_, let label): return "\(label)のアイドル"
+        case .hairStyle(let s): return "\(s)のアイドル"
         }
     }
 }

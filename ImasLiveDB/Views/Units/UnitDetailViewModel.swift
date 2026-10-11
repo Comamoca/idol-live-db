@@ -9,6 +9,8 @@ final class UnitDetailViewModel {
     private(set) var songs: [Song] = []
     private(set) var members: [Idol] = []
     private(set) var brand: Brand?
+    /// 呼称表。メンバーどうしの呼び方が無いユニットは nil (タブを出さない。判断はコア `unit_call_matrix`)。
+    private(set) var callMatrix: UnitCallMatrix?
     /// 初回ロード中 (スケルトン表示用)。IdolListViewModel/UnitListViewModel と同じ命名。
     private(set) var isLoading = false
     /// 直近ロードの失敗メッセージ。nil なら未失敗 (成功 or 未ロード)。
@@ -33,9 +35,11 @@ final class UnitDetailViewModel {
             async let m = unitReading.unitMembers(unitId: unit.id)
             async let s = unitReading.unitSongs(unitId: unit.id)
             async let b = brandReading.brands()
-            let (loadedMembers, loadedSongs, brands) = try await (m, s, b)
+            async let c = unitReading.callMatrix(unitId: unit.id)
+            let (loadedMembers, loadedSongs, brands, matrix) = try await (m, s, b, c)
             members = loadedMembers
             songs = loadedSongs
+            callMatrix = matrix
             brand = brands.first { $0.id == unit.brandId }
             loadError = nil
         } catch {

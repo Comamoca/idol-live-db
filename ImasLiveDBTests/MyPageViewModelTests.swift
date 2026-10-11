@@ -63,6 +63,10 @@ final class MyPageViewModelTests: XCTestCase {
         func idolShows(idolId: String) async throws -> [CastShowRow] { [] }
         func allIdolsForPicker() async throws -> [Idol] { [] }
         func idolSongHistory(idolId: String, songId: String) async throws -> [CastShowRow] { [] }
+        func profileExtras(idolId: String) async throws -> IdolProfileExtras {
+            IdolProfileExtras(look: IdolLook(versions: []), speech: nil, calls: IdolCallSummary(total: 0, preview: []))
+        }
+        func callGroups(idolId: String, query: String, direction: CallDirection) async throws -> [IdolCallGroup] { [] }
     }
 
     private struct FakeUnitReading: UnitReading {
@@ -76,6 +80,7 @@ final class MyPageViewModelTests: XCTestCase {
         func unitSongs(unitId: String) async throws -> [Song] { [] }
         func unitIdsWithSongs(unitIds: [String]) async throws -> Set<String> { [] }
         func allUnits() async throws -> [ImasLiveDB.Unit] { units }
+        func callMatrix(unitId: String) async throws -> UnitCallMatrix? { nil }
     }
 
     private enum TestError: Error { case boom }

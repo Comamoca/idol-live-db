@@ -34,6 +34,10 @@ final class IdolDetailViewModelTests: XCTestCase {
         func searchIdols(query: String, limit: Int) async throws -> [Idol] { [] }
         func allIdolsForPicker() async throws -> [Idol] { [] }
         func idolSongHistory(idolId: String, songId: String) async throws -> [CastShowRow] { [] }
+        func profileExtras(idolId: String) async throws -> IdolProfileExtras {
+            IdolProfileExtras(look: IdolLook(versions: []), speech: nil, calls: IdolCallSummary(total: 0, preview: []))
+        }
+        func callGroups(idolId: String, query: String, direction: CallDirection) async throws -> [IdolCallGroup] { [] }
     }
 
     private struct FakeBrandReading: BrandReading {
@@ -52,6 +56,7 @@ final class IdolDetailViewModelTests: XCTestCase {
         func unitMembers(unitId: String) async throws -> [Idol] { [] }
         func unitSongs(unitId: String) async throws -> [Song] { [] }
         func allUnits() async throws -> [ImasLiveDB.Unit] { [] }
+        func callMatrix(unitId: String) async throws -> UnitCallMatrix? { nil }
     }
 
     // MARK: - Fixtures

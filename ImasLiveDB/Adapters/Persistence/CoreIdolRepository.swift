@@ -61,6 +61,8 @@ struct CoreIdolRepository: IdolReading {
                 records = try store.idolsByBloodType(bloodType: type)
             case .subAttribute(let id, _):
                 records = try store.idolsBySubAttribute(subAttribute: id)
+            case .hairStyle(let style):
+                records = try store.idolsByHairStyle(style: style)
             }
             return records.map(CoreRecordMapping.idol(from:))
         }
@@ -148,6 +150,18 @@ struct CoreIdolRepository: IdolReading {
     func idolSongHistory(idolId: String, songId: String) async throws -> [CastShowRow] {
         try await snapshot.withStore { store in
             try store.idolSongHistoryRecords(idolId: idolId, songId: songId).map(CoreRecordMapping.castShowRow(from:))
+        }
+    }
+
+    func profileExtras(idolId: String) async throws -> IdolProfileExtras {
+        try await snapshot.withStore { store in
+            try store.idolProfileExtras(idolId: idolId)
+        }
+    }
+
+    func callGroups(idolId: String, query: String, direction: CallDirection) async throws -> [IdolCallGroup] {
+        try await snapshot.withStore { store in
+            try store.idolCallGroups(idolId: idolId, query: query, direction: direction)
         }
     }
 }
