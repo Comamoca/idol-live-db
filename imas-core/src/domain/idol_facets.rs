@@ -227,6 +227,28 @@ pub const BLOOD_TYPES: &[&str] = &["A", "B", "O", "AB"];
 pub const HANDEDNESS: &[&str] = &["右利き", "左利き", "両利き"];
 pub const REGIONS: &[&str] = &["北海道", "東北", "関東", "中部", "近畿", "中国", "四国", "九州・沖縄", "海外"];
 pub const GRADES: &[&str] = &["1年", "2年", "3年"];
+/// ブランドの中の区分 (CG の属性・ML/765AS のタイプ・SC のソール/ルーナ/ステラ・SideM のタイプ)。
+pub const ATTRIBUTES: &[&str] = &[
+    "キュート", "クール", "パッション", "プリンセス", "フェアリー", "エンジェル", "ソール", "ルーナ", "ステラ", "フィジカル", "インテリ", "メンタル",
+];
+/// マスタの `idols.attribute` の値 → 語彙。ここに無いもの (「1年」など学年・空) は属性にしない。
+pub fn attribute_label(raw: &str) -> Option<&'static str> {
+    Some(match raw {
+        "cute" => "キュート",
+        "cool" => "クール",
+        "passion" => "パッション",
+        "princess" => "プリンセス",
+        "fairy" => "フェアリー",
+        "angel" => "エンジェル",
+        "sol" => "ソール",
+        "luna" => "ルーナ",
+        "stella" => "ステラ",
+        "physical" => "フィジカル",
+        "intelli" => "インテリ",
+        "mental" => "メンタル",
+        _ => return None,
+    })
+}
 pub const HAIR_COLORS: &[&str] =
     &["黒", "茶", "金", "白・銀", "赤", "オレンジ", "ピンク", "緑", "青", "水色", "紫"];
 pub const HAIR_LENGTHS: &[&str] = &["ロング", "ボブ〜ミディアム", "ショート"];
@@ -316,6 +338,21 @@ pub const FACETS: &[FacetDef] = &[
     f("dislikes", Category::Likes, Kind::Multi, None, "苦手なもの", "").taggable(),
     // --- relations ---
     f("brand", Category::Relations, Kind::Single, None, "ブランド", "値はブランド名。extra に id と短縮名").computed(),
+    f("attribute", Category::Relations, Kind::Single, Some(ATTRIBUTES), "属性", "ブランドの中の区分。CG はキュート/クール/パッション、ML・765AS はプリンセス/フェアリー/エンジェル、SC はソール/ルーナ/ステラ、SideM はフィジカル/インテリ/メンタル。無いブランドは項目ごと無い。学年は grade")
+        .aliases(&[
+            ("キュート", &["Cu", "cute"]),
+            ("クール", &["Co", "cool"]),
+            ("パッション", &["Pa", "passion"]),
+            ("プリンセス", &["Pr", "princess"]),
+            ("フェアリー", &["Fa", "fairy"]),
+            ("エンジェル", &["An", "angel"]),
+            ("ソール", &["sol"]),
+            ("ルーナ", &["luna"]),
+            ("ステラ", &["stella"]),
+            ("フィジカル", &["physical"]),
+            ("インテリ", &["intelli"]),
+            ("メンタル", &["mental"]),
+        ]),
     f("agency", Category::Relations, Kind::Single, None, "所属事務所・学園", "ブランドから自動").auto(Auto::Exact).computed(),
     f("unit_count", Category::Relations, Kind::Number, None, "ユニットの数", "").unit("組").computed(),
     f("representative_units", Category::Relations, Kind::Multi, None, "代表的なユニット", "恒常ユニットを優先して最大 5").computed(),
@@ -791,6 +828,10 @@ pub fn build_idol_facts(snap: &Snapshot, idol_id: &str, persona: &PersonaInput, 
             // `derived` を立てない: `derived` かつ `auto: estimate` は「推定」と読まれる (人が読む文面は「（推定）」を付ける)。
             c.push(cand("school_stage", "高校生"));
         }
+    }
+
+    if let Some(a) = idol.attribute.as_deref().and_then(attribute_label) {
+        c.push(cand("attribute", a));
     }
 
     // --- appearance ---
@@ -1676,5 +1717,33 @@ mod tests {
             .expect("年齢だけの中学生");
         let d = build_idol_facts(snap, &by_age.id, &PersonaInput::default(), &[]).unwrap();
         assert_eq!(d["categories"]["profile"]["school_stage"]["derived"], true);
+    }
+
+    /// 属性は語彙にある値だけ。学年 (「1年」) は属性にならず grade のまま。cg の 3 属性・ml の 3 タイプが出る。
+    #[test]
+    fn attribute_is_vocab_only_and_grade_is_not_attribute() {
+        let snap = bundle_snapshot();
+        let mut seen = std::collections::BTreeSet::new();
+        for i in snap.idols.iter() {
+            let d = build_idol_facts(snap, &i.id, &PersonaInput::default(), &[]).unwrap();
+            let r = &d["categories"]["relations"];
+            let raw = i.attribute.as_deref();
+            match raw.and_then(attribute_label) {
+                Some(l) => {
+                    assert_eq!(r["attribute"]["value"], l, "{}", i.id);
+                    seen.insert((i.brand_id.clone().unwrap_or_default(), l));
+                }
+                None => assert!(r.get("attribute").is_none(), "{} {:?}", i.id, raw),
+            }
+            if raw.is_some_and(|a| a.ends_with('年')) {
+                assert!(r.get("attribute").is_none());
+            }
+        }
+        for l in ["キュート", "クール", "パッション"] {
+            assert!(seen.contains(&("cg".to_string(), l)), "cg {l}");
+        }
+        for l in ["プリンセス", "フェアリー", "エンジェル"] {
+            assert!(seen.contains(&("ml".to_string(), l)), "ml {l}");
+        }
     }
 }

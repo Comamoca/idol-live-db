@@ -630,6 +630,74 @@
       "taggable": false
     },
     {
+      "auto": "no",
+      "category": "relations",
+      "key": "attribute",
+      "kind": "single",
+      "label": "属性",
+      "note": "ブランドの中の区分。CG はキュート/クール/パッション、ML・765AS はプリンセス/フェアリー/エンジェル、SC はソール/ルーナ/ステラ、SideM はフィジカル/インテリ/メンタル。無いブランドは項目ごと無い。学年は grade",
+      "store": "idol_facets",
+      "taggable": false,
+      "vocab": [
+        "キュート",
+        "クール",
+        "パッション",
+        "プリンセス",
+        "フェアリー",
+        "エンジェル",
+        "ソール",
+        "ルーナ",
+        "ステラ",
+        "フィジカル",
+        "インテリ",
+        "メンタル"
+      ],
+      "vocab_aliases": {
+        "インテリ": [
+          "intelli"
+        ],
+        "エンジェル": [
+          "An",
+          "angel"
+        ],
+        "キュート": [
+          "Cu",
+          "cute"
+        ],
+        "クール": [
+          "Co",
+          "cool"
+        ],
+        "ステラ": [
+          "stella"
+        ],
+        "ソール": [
+          "sol"
+        ],
+        "パッション": [
+          "Pa",
+          "passion"
+        ],
+        "フィジカル": [
+          "physical"
+        ],
+        "フェアリー": [
+          "Fa",
+          "fairy"
+        ],
+        "プリンセス": [
+          "Pr",
+          "princess"
+        ],
+        "メンタル": [
+          "mental"
+        ],
+        "ルーナ": [
+          "luna"
+        ]
+      }
+    },
+    {
       "auto": "exact",
       "category": "relations",
       "key": "agency",
