@@ -1,0 +1,48 @@
+{
+ "_note": "基本とは別の髪型 (is_main: false)。Web 検索 (data/research/appearance_20261010/hair_websearch_20261012.csv) で「別の髪型」と判定されたもの。",
+ "idol_hairstyles": [
+  {
+   "idol_id": "765as_三浦あずさ",
+   "label": "2以降",
+   "is_main": false,
+   "hair_color": "青",
+   "hair_length": "ショート",
+   "source": "https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物",
+   "source_note": "『アイドルマスター2』以降 (竜宮小町) は後ろ髪を切ったショート。基本はロング。色は基本と同じ"
+  },
+  {
+   "idol_id": "765as_秋月律子",
+   "label": "2",
+   "is_main": false,
+   "hair_color": "茶",
+   "styles": [
+    "まとめ髪"
+   ],
+   "source": "https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物",
+   "source_note": "『アイドルマスター2』ではお下げをやめてアップスタイル。基本は三つ編みのお下げ。色は基本と同じ"
+  },
+  {
+   "idol_id": "sidem_水嶋咲",
+   "label": "女装時",
+   "is_main": false,
+   "hair_color": "茶",
+   "hair_length": "ロング",
+   "styles": [
+    "ツインテール"
+   ],
+   "source": [
+    "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物"
+   ],
+   "source_note": "女装時のウィッグ (ロングのツインテール)。本来の髪は短髪で、基本はそちら。色はアイコン (女装姿) の目視"
+  },
+  {
+   "idol_id": "sidem_鷹城恭二",
+   "label": "衣装時",
+   "is_main": false,
+   "hair_color": "黒",
+   "hair_length": "ショート",
+   "source": "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "source_note": "日常は茶髪だが、衣装に身を包むときは灰がかった黒髪。長さは基本と同じ"
+  }
+ ]
+}

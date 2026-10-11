@@ -87,7 +87,7 @@ class FacetsTest(FacetsTestBase):
         self.post("idol_facets", {"source": "x", "idol_facets": [
             {"idol_id": "765as_a", "facet": "eye_color", "value": "虹色"},          # 語彙外
             {"idol_id": "765as_a", "facet": "nope", "value": "x"},                 # 定義に無い
-            {"idol_id": "765as_a", "facet": "age_band", "value": "10代"},          # 自動
+            {"idol_id": "765as_a", "facet": "birth_month", "value": "12"},        # 自動
             {"idol_id": "765as_a", "facet": "hair_color", "value": "金"},          # 髪は髪型の表
             {"idol_id": "765as_zzz", "facet": "dialect", "value": "x"},            # アイドル無し
             {"idol_id": "765as_a", "facet": "dialect", "value": "a"},

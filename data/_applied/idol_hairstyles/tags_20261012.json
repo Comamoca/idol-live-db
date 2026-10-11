@@ -1,0 +1,234 @@
+{
+ "_note": "調査の表に基本の髪型が無い子を、ファンのタグの票から埋めた (origin: promoted)。長さが同票で割れたものは入れていない。",
+ "idol_hairstyles": [
+  {
+   "idol_id": "cg_イム_ユジン",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ボブ〜ミディアム",
+   "styles": [
+    "アホ毛"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ボブ〜ミディアムヘア 1票、アホ毛 1票)"
+  },
+  {
+   "idol_id": "cg_ジュニー",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ロング",
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ロングヘア 1票)"
+  },
+  {
+   "idol_id": "cg_リュ_ヘナ",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ロング",
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ロングヘア 1票)"
+  },
+  {
+   "idol_id": "cg_三好紗南",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ロング",
+   "styles": [
+    "三つ編み・編み込み"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ロングヘア 1票、三つ編み・編み込み 1票)"
+  },
+  {
+   "idol_id": "cg_八神マキノ",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ロング",
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ロングヘア 1票)"
+  },
+  {
+   "idol_id": "cg_吉岡沙紀",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ショート",
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ショートヘア 1票)"
+  },
+  {
+   "idol_id": "cg_夢見りあむ",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ボブ〜ミディアム",
+   "styles": [
+    "アホ毛"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ボブ〜ミディアムヘア 2票、アホ毛 2票)"
+  },
+  {
+   "idol_id": "cg_持田亜里沙",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ロング",
+   "styles": [
+    "ひとつ縛り"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ロングヘア 1票、ひとつ縛り 1票)"
+  },
+  {
+   "idol_id": "cg_日野茜",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ロング",
+   "styles": [
+    "ハーフアップ"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ロングヘア 1票、ハーフアップ 1票)"
+  },
+  {
+   "idol_id": "cg_望月聖",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ロング",
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ロングヘア 2票)"
+  },
+  {
+   "idol_id": "cg_村松さくら",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ボブ〜ミディアム",
+   "styles": [
+    "ローツインテール"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ボブ〜ミディアムヘア 1票、ローツインテール 1票)"
+  },
+  {
+   "idol_id": "cg_柳瀬美由紀",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ボブ〜ミディアム",
+   "bangs": "おでこ",
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ボブ〜ミディアムヘア 1票、おでこ 1票)"
+  },
+  {
+   "idol_id": "cg_桃井あずき",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "黒",
+   "hair_length": "ロング",
+   "styles": [
+    "お団子"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ロングヘア 1票、黒髪 1票、お団子ヘア 1票)"
+  },
+  {
+   "idol_id": "cg_棟方愛海",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ボブ〜ミディアム",
+   "styles": [
+    "お団子"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ボブ〜ミディアムヘア 1票、お団子ヘア 2票)"
+  },
+  {
+   "idol_id": "cg_水木聖來",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ボブ〜ミディアム",
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ボブ〜ミディアムヘア 1票)"
+  },
+  {
+   "idol_id": "cg_真鍋いつき",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ボブ〜ミディアム",
+   "styles": [
+    "ポニーテール"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ボブ〜ミディアムヘア 1票、ポニーテール 1票)"
+  },
+  {
+   "idol_id": "cg_矢口美羽",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "黒",
+   "hair_length": "ロング",
+   "styles": [
+    "ポニーテール",
+    "お団子"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ロングヘア 1票、黒髪 1票、ポニーテール 1票、お団子ヘア 1票)"
+  },
+  {
+   "idol_id": "cg_結城晴",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ボブ〜ミディアム",
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ボブ〜ミディアムヘア 1票)"
+  },
+  {
+   "idol_id": "cg_脇山珠美",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ショート",
+   "styles": [
+    "アホ毛"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ショートヘア 1票、アホ毛 1票)"
+  },
+  {
+   "idol_id": "cg_若林智香",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ロング",
+   "styles": [
+    "ポニーテール"
+   ],
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ロングヘア 1票、ポニーテール 1票)"
+  },
+  {
+   "idol_id": "cg_間中美里",
+   "label": "基本",
+   "is_main": true,
+   "hair_length": "ショート",
+   "origin": "promoted",
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "source_note": "ファンのタグの票から埋めた (ショートヘア 1票)"
+  }
+ ]
+}

@@ -305,7 +305,7 @@ fn truncate_to_i64(value: f64) -> i64 {
 // ---- 行 (出力) ----
 
 /// brands
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkBrandRow {
     pub id: String,
     pub name: String,
@@ -325,7 +325,7 @@ pub struct CkBrandRow {
 /// ローカルの `voice_actors` 列を消す**。Android の Room は行を丸ごと置換するので、
 /// 素直に差し替えると CV 表示が同期のたび空になる (モジュール doc の受け入れ条件 2)。
 /// 列を温存する更新にするか idol_voice_actors 参照へ切り替えてから移植すること。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkIdolRow {
     pub id: String,
     pub brand_id: String,
@@ -362,7 +362,7 @@ pub struct CkIdolRow {
 }
 
 /// events
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkEventRow {
     pub id: String,
     pub brand_id: Option<String>,
@@ -380,7 +380,7 @@ pub struct CkEventRow {
 }
 
 /// shows
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkShowRow {
     pub id: String,
     pub event_id: String,
@@ -400,7 +400,7 @@ pub struct CkShowRow {
 }
 
 /// venues
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkVenueRow {
     pub id: String,
     pub name: String,
@@ -413,7 +413,7 @@ pub struct CkVenueRow {
 }
 
 /// venue_names
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkVenueNameRow {
     pub id: String,
     pub venue_id: String,
@@ -423,7 +423,7 @@ pub struct CkVenueNameRow {
 }
 
 /// creators
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkCreatorRow {
     pub id: String,
     /// 正規化した表記 (所属や括弧の揺れを落としたもの)。
@@ -437,7 +437,7 @@ pub struct CkCreatorRow {
 ///
 /// **画像のフィールドは持たない。** 版権物を配らない方針なので、
 /// CloudKit 側にも器を作らない (あると入れたくなる)。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkCostumeRow {
     pub id: String,
     pub brand_id: Option<String>,
@@ -456,7 +456,7 @@ pub struct CkCostumeRow {
 ///
 /// `setlist_item_id` / `idol_id` が None なのは**欠損ではなく正規の状態**
 /// (曲までは特定できていない / その場の全員)。required にしてはいけない。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkCostumeWearRow {
     pub id: String,
     pub costume_id: String,
@@ -471,7 +471,7 @@ pub struct CkCostumeWearRow {
 /// 公演のチケット価格。**税込・手数料抜きの定価**を持ち、席種は自由文字列
 /// (S席 / 立見 / 配信 (アーカイブ付き) …公演ごとに呼び方が違う)。
 /// `isEstimate` は公式に出ていない推定値の札で、実額と同じ顔で出さないために要る。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkShowTicketRow {
     pub id: String,
     pub show_id: String,
@@ -493,7 +493,7 @@ pub struct CkShowTicketRow {
 /// (`ticket_sales::validate_draft`) とローダ (未知の kind を落とす) が持つ)。
 /// `sourceUrl` が欠けていても空文字で受け、行ごと捨てない (行を落とすと審査済みの
 /// 出典が消えるより、空欄のまま届いて画面で気づける方が被害が小さい)。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkTicketSaleRow {
     pub id: String,
     pub event_id: String,
@@ -512,7 +512,7 @@ pub struct CkTicketSaleRow {
 }
 
 /// unit_versions
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkUnitVersionRow {
     pub id: String,
     pub unit_id: String,
@@ -527,7 +527,7 @@ pub struct CkUnitVersionRow {
 }
 
 /// venue_halls
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkVenueHallRow {
     pub id: String,
     pub venue_id: String,
@@ -539,7 +539,7 @@ pub struct CkVenueHallRow {
 ///
 /// 列を足したらここにも足すこと。読み落とすと upsert が Song の全列を書くため、
 /// 同期のたび NULL 上書きされる (series_group で実際に壊れた)。
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkSongRow {
     pub id: String,
     pub title: String,
@@ -584,7 +584,7 @@ pub struct CkSongRow {
 }
 
 /// units
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkUnitRow {
     pub id: String,
     pub brand_id: String,
@@ -596,7 +596,7 @@ pub struct CkUnitRow {
 }
 
 /// idol_brands
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkIdolBrandRow {
     pub idol_id: String,
     pub brand_id: String,
@@ -604,7 +604,7 @@ pub struct CkIdolBrandRow {
 }
 
 /// song_artists
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkSongArtistRow {
     pub song_id: String,
     pub idol_id: String,
@@ -612,14 +612,14 @@ pub struct CkSongArtistRow {
 }
 
 /// unit_members
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkUnitMemberRow {
     pub unit_id: String,
     pub idol_id: String,
 }
 
 /// show_cast
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkShowCastRow {
     pub show_id: String,
     pub idol_id: String,
@@ -628,7 +628,7 @@ pub struct CkShowCastRow {
 }
 
 /// setlist_items
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkSetlistItemRow {
     pub id: String,
     pub show_id: String,
@@ -640,14 +640,14 @@ pub struct CkSetlistItemRow {
 }
 
 /// setlist_performers
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkSetlistPerformerRow {
     pub setlist_item_id: String,
     pub idol_id: String,
 }
 
 /// song_videos
-#[derive(uniffi::Record, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkSongVideoRow {
     pub id: String,
     pub song_id: String,
@@ -1161,6 +1161,101 @@ pub fn map_record(record_type: &str, record: &CkRecordInput, now_millis: i64) ->
         _ => None,
     }
 }
+
+// ---- アイドルの項目・髪型 (アプリの同期には載らない。写す側の利用者向け) ----
+//
+// `IdolFacet` / `IdolHairstyle` は [`CkRow`] の変種にしない。uniffi の列挙に足すと、iOS / Android の
+// 網羅的な `when` / `switch` が壊れ、アプリが取り込まない型を取り込む口になるため。
+// CloudKit の公開データを表に写す側 (`mirror_ingest`) だけが [`mirror_extra_record`] 経由で使う。
+// 行の列は `facets_schema.sql` と同じ (`Snapshot::idol_facets` / `idol_hairstyles` が読む)。
+
+/// idol_facets (`IdolFacet`)。複数値の項目は 1 値 1 行。`origin` は official / promoted。
+#[derive(serde::Serialize, Clone, Debug, PartialEq)]
+pub struct CkIdolFacetRow {
+    pub id: String,
+    pub idol_id: String,
+    pub facet: String,
+    pub value: String,
+    pub origin: String,
+    pub source_note: Option<String>,
+    pub sort_order: i64,
+}
+
+/// idol_hairstyles (`IdolHairstyle`)。`styles` / `accessories` は '、' 区切りの 1 文字列のまま持つ
+/// (表の列と同じ。配列に割るのは `Snapshot` を組む側)。
+#[derive(serde::Serialize, Clone, Debug, PartialEq)]
+pub struct CkIdolHairstyleRow {
+    pub id: String,
+    pub idol_id: String,
+    pub label: String,
+    pub is_main: bool,
+    pub hair_color: Option<String>,
+    pub hair_color_secondary: Option<String>,
+    pub hair_length: Option<String>,
+    pub styles: Option<String>,
+    pub bangs: Option<String>,
+    pub accessories: Option<String>,
+    pub origin: String,
+    pub source_note: Option<String>,
+    pub sort_order: i64,
+}
+
+/// `origin` が欠損・空なら official (列の既定値と同じ)。
+fn origin_or_official(f: &Fields) -> String {
+    f.str("origin").filter(|o| !o.is_empty()).unwrap_or_else(|| "official".to_string())
+}
+
+pub fn idol_facet(record: &CkRecordInput) -> Option<CkIdolFacetRow> {
+    let f = Fields::new(record);
+    Some(CkIdolFacetRow {
+        id: f.entity_id()?,
+        idol_id: f.required("idolId")?,
+        facet: f.required("facet")?,
+        value: f.required("value")?,
+        origin: origin_or_official(&f),
+        source_note: f.str("sourceNote"),
+        sort_order: f.int_value("sortOrder"),
+    })
+}
+
+pub fn idol_hairstyle(record: &CkRecordInput) -> Option<CkIdolHairstyleRow> {
+    let f = Fields::new(record);
+    Some(CkIdolHairstyleRow {
+        id: f.entity_id()?,
+        idol_id: f.required("idolId")?,
+        label: f.required("label")?,
+        is_main: f.bool_value("isMain", false),
+        hair_color: f.str("hairColor"),
+        hair_color_secondary: f.str("hairColorSecondary"),
+        hair_length: f.str("hairLength"),
+        styles: f.str("styles"),
+        bangs: f.str("bangs"),
+        accessories: f.str("accessories"),
+        origin: origin_or_official(&f),
+        source_note: f.str("sourceNote"),
+        sort_order: f.int_value("sortOrder"),
+    })
+}
+
+/// 廃止予定の `Idol.voiceActors` (声優の表記 1 つ)。[`CkIdolRow`] は**意図的に読まない** (声優は履歴の表 `idol_voice_actors` が正で、
+/// アプリの端末 DB に書き戻すと廃止した列に当たる) が、CloudKit には履歴の型がまだ無いので、**写す側**はこれを声優の
+/// 代わりに持つ (`mirror_ingest` が `idols.voice_actors` に、`mirror_load` が履歴の行の無いアイドルの現在の声優にする)。
+pub fn legacy_voice_actors(record: &CkRecordInput) -> Option<String> {
+    Fields::new(record).str("voiceActors").map(|v| v.trim().to_string()).filter(|v| !v.is_empty())
+}
+
+/// [`CkRow`] に載せない型 (`IdolFacet` / `IdolHairstyle`) の変換。行は列名 → 値のオブジェクト。
+/// 対象外の型・必須キー欠損は `None`。
+pub fn mirror_extra_record(record_type: &str, record: &CkRecordInput) -> Option<serde_json::Value> {
+    match record_type {
+        "IdolFacet" => idol_facet(record).and_then(|r| serde_json::to_value(r).ok()),
+        "IdolHairstyle" => idol_hairstyle(record).and_then(|r| serde_json::to_value(r).ok()),
+        _ => None,
+    }
+}
+
+/// [`mirror_extra_record`] が扱う型。
+pub const EXTRA_RECORD_TYPES: &[&str] = &["IdolFacet", "IdolHairstyle"];
 
 /// この recordType を取り込むか。取り込まない型では変換を試みず、
 /// 「必須キー欠損で捨てた」ログにも載せない (iOS の switch の break 相当)。

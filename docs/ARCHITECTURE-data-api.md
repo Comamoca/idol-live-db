@@ -1,7 +1,7 @@
 # 公開データ API (`imas-data-api`) アーキテクチャ
 
-> マスタ (アイドル・曲・ユニット) を**読むだけ**の公開 HTTP API。最初の利用者は別プロジェクトの
-> yesno (当てっこゲーム)。LLM 向けの口は [`ARCHITECTURE-mcp.md`](ARCHITECTURE-mcp.md)、
+> マスタ (アイドル・曲・ユニット) を**読むだけ**の公開 HTTP API。外部のアプリや個人の
+> プロジェクトが使う。LLM 向けの口は [`ARCHITECTURE-mcp.md`](ARCHITECTURE-mcp.md)、
 > Web 出面は [`ARCHITECTURE-web.md`](ARCHITECTURE-web.md)、集計系の Worker は
 > [`ARCHITECTURE-worker.md`](ARCHITECTURE-worker.md)。データの流れは [`DATA_PIPELINE.md`](DATA_PIPELINE.md)。
 > アイドルの細かい項目 (`/v1/idols/:id/facts`) の定義・出どころ・タグとのつなぎは [`ARCHITECTURE-facets.md`](ARCHITECTURE-facets.md)。
@@ -150,14 +150,14 @@ Rust のテスト (`web_export::data_api` / `agent::tools::publish`) が、SQL �
    キャッシュに残っている応答は返し続ける。Workers の無料枠 (10 万リクエスト/日) は
    アセット配信と違って**全リクエストが Worker 呼び出し**を食う点が Web と違う。キャッシュ当たりも
    Worker は起動するので、人気が出て 10 万/日を超えそうなら Workers Paid (月 $5) が要る。
-   これが「ランニングコスト 0」の限界で、**yesno のような少数の利用者の間は無料枠に収まる**。
+   これが「ランニングコスト 0」の限界で、**利用者が少数の間は無料枠に収まる**。
    超える見込みが出たら、静的 JSON (Workers Static Assets は無制限・無料) に戻す案がある (§9)。
 
 ## 6. 同期 (マスタ → D1)
 
 **API は「CloudKit の最新の、FK 検査を通った書き出し」を毎日反映する。** CloudKit で直した値
 (例: 学マスの学年) は、翌日 03:00 JST (または手動実行) に API に届く。develop の `db/master.sql` は
-PR で入るまで古いので入力にしない。yesno などの利用者は、この鮮度を前提にしてよい。
+PR で入るまで古いので入力にしない。API の利用者は、この鮮度を前提にしてよい。
 
 - 自動: `.github/workflows/refresh-data.yml` の `sync-data-api` ジョブ。`export` → `check` (FK 検査) が
   緑のときだけ、export の artifact をそのまま `tools/sync_master_d1.py --remote --yes --master-sql` で流す。

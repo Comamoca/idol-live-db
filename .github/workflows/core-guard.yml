@@ -10,6 +10,7 @@ on:
       - "imas-core/**"
       - "imas-text-fold/**"
       - "web/wasm/imas-query-wasm/**"
+      - "web/wasm/imas-sync-wasm/**"
       - "db/master.sql"
       # 下の Build master.sqlite の段で実行している (壊れたら FK ゲートが黙って外れる)
       - "tools/build_db.sh"
@@ -22,6 +23,7 @@ on:
       - "imas-core/**"
       - "imas-text-fold/**"
       - "web/wasm/imas-query-wasm/**"
+      - "web/wasm/imas-sync-wasm/**"
       - "db/master.sql"
       - "tools/build_db.sh"
       - "tools/check_fk_integrity.py"
@@ -48,7 +50,8 @@ jobs:
             imas-core/target
             imas-text-fold/target
             web/wasm/imas-query-wasm/target
-          key: cargo-${{ runner.os }}-${{ hashFiles('imas-core/Cargo.lock', 'imas-text-fold/Cargo.lock', 'web/wasm/imas-query-wasm/Cargo.lock') }}
+            web/wasm/imas-sync-wasm/target
+          key: cargo-${{ runner.os }}-${{ hashFiles('imas-core/Cargo.lock', 'imas-text-fold/Cargo.lock', 'web/wasm/imas-query-wasm/Cargo.lock', 'web/wasm/imas-sync-wasm/Cargo.lock') }}
 
       # テストは同梱 master.sqlite を読む (スキーマ突き合わせ・実データ照合)。
       # gitignore 対象なので db/master.sql から作る。
@@ -73,3 +76,20 @@ jobs:
       # 同梱 master.sqlite を読む (上の Build master.sqlite の段で作ったもの)。
       - name: Test (imas-query-wasm)
         run: cargo test --locked --manifest-path web/wasm/imas-query-wasm/Cargo.toml
+
+      # CloudKit の公開データを表に写す部品 (docs/ARCHITECTURE-mirror.md)。同梱 master.sqlite を読む。
+      - name: Test (imas-sync-wasm)
+        run: cargo test --locked --manifest-path web/wasm/imas-sync-wasm/Cargo.toml
+
+      # wasm としてビルドできること (agent feature の道具が wasm で落ちないか。ホスト向けのテストでは見えない)。
+      - name: Build (imas-sync-wasm, wasm32)
+        run: |
+          rustup target add wasm32-unknown-unknown
+          cargo build --locked --release --target wasm32-unknown-unknown --manifest-path web/wasm/imas-sync-wasm/Cargo.toml
+
+      # 利用者に渡す TS の型 (web/wasm/imas-sync-wasm/types/) は ts-rs の生成物。Rust の型を変えて再生成し忘れたら落とす。
+      - name: Types are up to date (imas-sync-wasm)
+        working-directory: imas-core
+        run: |
+          cargo test --locked --features web-export --lib export_bindings
+          git diff --exit-code -- ../web/wasm/imas-sync-wasm/types

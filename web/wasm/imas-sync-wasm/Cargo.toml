@@ -1,0 +1,25 @@
+[package]
+name = "imas-sync-wasm"
+version = "0.1.0"
+edition = "2021"
+description = "CloudKit の公開データをマスタと同じ構造の SQLite に写すための部品 (wasm ラッパ)"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# 規則の実体。**ここには変換も判定も組み立ても 1 行も書かない。**
+# wasm では outbound (SQLite) と inbound (uniffi) が cfg で外れ、domain だけが載る。
+# agent は feature ゲートだけで依存を増やさない。アイドルの話し方 (data/personas) を項目の束に渡す
+# `idol_facts_document` を使うために付ける (使わない道具は LTO で落ちる)。
+imas-core = { path = "../../../imas-core", features = ["agent"] }
+wasm-bindgen = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+# Workers (有料) の 10MB 上限と起動時間のため、大きさを取る。計算は呼び出しの数が少ない (1 ページ・1 回の組み立て)。
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"

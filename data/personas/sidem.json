@@ -1,0 +1,837 @@
+[
+ {
+  "idol_id": "sidem_アスランbbⅱ世",
+  "name": "アスラン=ベルゼビュートⅡ世",
+  "first_person": [
+   {
+    "form": "我",
+    "scene": "通常(サタン時)"
+   },
+   {
+    "form": "僕",
+    "scene": "サタン離脱時"
+   }
+  ],
+  "producer_call": [
+   {
+    "form": "主",
+    "scene": "通常"
+   },
+   {
+    "form": "プロデューサーさん",
+    "scene": "サタン離脱時"
+   }
+  ],
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "師匠譲りの特徴的な口調で話す(Wikipedia)。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_九十九一希",
+  "name": "九十九一希",
+  "first_person": "おれ",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "台詞の前に三点リーダー(…)が付くことが多く、会話のテンポはスロー。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/九十九一希",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_伊集院北斗",
+  "name": "伊集院北斗",
+  "first_person": "俺",
+  "producer_call": "あなた",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "女性を「エンジェルちゃん」と呼ぶナンパ・ナルシスト寄りの軟派な振る舞い。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/伊集院北斗",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_兜大吾",
+  "name": "兜大吾",
+  "first_person": "ワシ",
+  "producer_call": "ボス",
+  "politeness": "方言(広島弁)を話す。",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "ゲーム内では数少ない方言キャラ(広島出身設定)で、物騒な言葉が時々出る。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/兜大吾",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_冬美旬",
+  "name": "冬美旬",
+  "first_person": "僕",
+  "producer_call": "プロデューサーさん",
+  "politeness": "基本は誰に対しても敬語。幼馴染の夏来にはタメ口。",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "普段は自信家で辛辣な物言い。Pへの信頼が上がるほど物腰が柔らかくなる。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/冬美旬",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_卯月巻緒",
+  "name": "卯月巻緒",
+  "first_person": "俺",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "『王子』らしさのある話し方とされる(詳細は記述少)。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/卯月巻緒",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_大河タケル",
+  "name": "大河タケル",
+  "first_person": [
+   "オレ",
+   "俺"
+  ],
+  "producer_call": "アンタ",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "口下手で口数が少ない(Wikipedia)。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_天峰秀",
+  "name": "天峰秀",
+  "first_person": "俺",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/天峰秀",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_姫野かのん",
+  "name": "姫野かのん",
+  "first_person": "かのん",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_岡村直央",
+  "name": "岡村直央",
+  "first_person": "ボク",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "気が弱い性格。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/岡村直央",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_握野英雄",
+  "name": "握野英雄",
+  "first_person": "俺",
+  "producer_call": "プロデューサー",
+  "politeness": "次郎には呼び捨てタメ口、冬馬には敬語など、同期か先輩後輩かで使い分ける。",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/握野英雄",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_東雲荘一郎",
+  "name": "東雲荘一郎",
+  "first_person": "私",
+  "producer_call": "プロデューサーさん",
+  "politeness": "基本的に誰に対しても敬語。Pには関西弁が混じることがある。",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "丁寧口調だが大阪出身で、怒ると丁寧口調が崩れ威圧感が出る。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/a/東雲荘一郎",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_桜庭薫",
+  "name": "桜庭薫",
+  "first_person": "僕",
+  "producer_call": "君",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "完璧主義で上から目線、人当たりはあまり良くない。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/桜庭薫",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_橘志狼",
+  "name": "橘志狼",
+  "first_person": "オレ",
+  "producer_call": "プロデューサー",
+  "politeness": "基本タメ口。",
+  "endings": [
+   "〜だぜ"
+  ],
+  "catchphrases": [],
+  "tone_notes": "やんちゃな少年らしく、語尾を伸ばす話し方。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/橘志狼",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_清澄九郎",
+  "name": "清澄九郎",
+  "first_person": "私",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_牙崎漣",
+  "name": "牙崎漣",
+  "first_person": "オレ様",
+  "producer_call": "オマエ",
+  "politeness": "目上にも遠慮のない言葉遣い。",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "口が悪く尊大。擬音語を多用する。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/a/牙崎漣",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_眉見鋭心",
+  "name": "眉見鋭心",
+  "first_person": "俺",
+  "producer_call": "お前",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_神楽麗",
+  "name": "神楽麗",
+  "first_person": "わたし",
+  "producer_call": "貴殿",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "堅い言葉遣い。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/a/神楽麗",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_秋山隼人",
+  "name": "秋山隼人",
+  "first_person": "俺",
+  "producer_call": "プロデューサー",
+  "politeness": "普通体の話し方。",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/秋山隼人",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_紅井朱雀",
+  "name": "紅井朱雀",
+  "first_person": "オレ",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [
+   "〜ですぜ"
+  ],
+  "catchphrases": [],
+  "tone_notes": "熱血ヤンキー設定。若い女性との会話が苦手。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/紅井朱雀",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_花園百々人",
+  "name": "花園百々人",
+  "first_person": "ボク",
+  "producer_call": "ぴぃちゃん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/花園百々人",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_華村翔真",
+  "name": "華村翔真",
+  "first_person": "アタシ",
+  "producer_call": "プロデューサーちゃん",
+  "politeness": "タメ口。",
+  "endings": [
+   "〜よォ",
+   "〜ねェ"
+  ],
+  "catchphrases": [],
+  "tone_notes": "元女形で、江戸言葉とオネエ言葉を混ぜた口調。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/a/華村翔真",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_蒼井享介",
+  "name": "蒼井享介",
+  "first_person": "俺",
+  "producer_call": "監督",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/a/蒼井享介",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_都築圭",
+  "name": "都築圭",
+  "first_person": "僕",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_黒野玄武",
+  "name": "黒野玄武",
+  "first_person": "俺",
+  "producer_call": "番長さん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "台詞で四文字熟語を多用する。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/アイドルマスターsidem:呼称表",
+   "https://dic.nicovideo.jp/a/黒野玄武",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_ピエール",
+  "name": "ピエール",
+  "first_person": "ボク",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_伊瀬谷四季",
+  "name": "伊瀬谷四季",
+  "first_person": "オレ",
+  "producer_call": "プロデューサーちゃん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "ひたすらテンションが高く、仲間をあだ名+「っち」で呼ぶ。",
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/a/伊瀬谷四季",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_信玄誠司",
+  "name": "信玄誠司",
+  "first_person": "自分",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/a/信玄誠司",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_円城寺道流",
+  "name": "円城寺道流",
+  "first_person": "自分",
+  "producer_call": "師匠",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_北村想楽",
+  "name": "北村想楽",
+  "first_person": "僕",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "語尾が伸びるタイプの話し方で、のんびり系に見えるが内心は毒のある川柳を詠むなど腹黒め。",
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/a/北村想楽",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_古論クリス",
+  "name": "古論クリス",
+  "first_person": "私",
+  "producer_call": [
+   {
+    "form": "プロデューサーさん",
+    "scene": null
+   },
+   {
+    "form": "あなた",
+    "scene": null
+   }
+  ],
+  "politeness": "常に丁寧語で話す。",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "常に丁寧語で、海の話を熱く語る。",
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/a/古論クリス",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_天ヶ瀬冬馬",
+  "name": "天ヶ瀬冬馬",
+  "first_person": "俺",
+  "producer_call": [
+   {
+    "form": "プロデューサー",
+    "scene": null
+   },
+   {
+    "form": "あんた",
+    "scene": null
+   }
+  ],
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "いわゆる俺様キャラで、少し口が悪いが熱血漢。",
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/a/天ヶ瀬冬馬",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_天道輝",
+  "name": "天道輝",
+  "first_person": "俺",
+  "producer_call": [
+   {
+    "form": "プロデューサー",
+    "scene": null
+   },
+   {
+    "form": "あんた",
+    "scene": null
+   }
+  ],
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "熱血で正義感が強く、台詞にダジャレを織り交ぜる。",
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/a/天道輝",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_山下次郎",
+  "name": "山下次郎",
+  "first_person": "俺",
+  "producer_call": [
+   {
+    "form": "プロデューサーちゃん",
+    "scene": null
+   },
+   {
+    "form": "あんた",
+    "scene": null
+   }
+  ],
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_御手洗翔太",
+  "name": "御手洗翔太",
+  "first_person": "僕",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_木村龍",
+  "name": "木村龍",
+  "first_person": "俺",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_柏木翼",
+  "name": "柏木翼",
+  "first_person": "オレ",
+  "producer_call": "プロデューサー",
+  "politeness": "Pには敬称なしで呼び捨て(さん付けしない)。",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "穏やかな性格の設定だが一人称は「オレ」で、年下は呼び捨てにする。",
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/a/柏木翼",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_榊夏来",
+  "name": "榊夏来",
+  "first_person": "俺",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_水嶋咲",
+  "name": "水嶋咲",
+  "first_person": "あたし",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [
+   "パピッと"
+  ],
+  "tone_notes": "「パピッと」など独特の言い回しが特徴。",
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_渡辺みのり",
+  "name": "渡辺みのり",
+  "first_person": "俺",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "穏やかで、アイドルの話になると熱く語る。",
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/a/渡辺みのり",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_猫柳キリオ",
+  "name": "猫柳キリオ",
+  "first_person": "ワガハイ",
+  "producer_call": "プロデューサークン",
+  "politeness": null,
+  "endings": [
+   "〜にゃんす"
+  ],
+  "catchphrases": [],
+  "tone_notes": "語尾に「にゃんす」を付ける独特の話し方で、他のアイドルにも「クン」を付けて呼ぶ。",
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/a/猫柳キリオ",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_硲道夫",
+  "name": "硲道夫",
+  "first_person": "私",
+  "producer_call": [
+   {
+    "form": "プロデューサー",
+    "scene": null
+   },
+   {
+    "form": "君",
+    "scene": null
+   }
+  ],
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_神谷幸広",
+  "name": "神谷幸広",
+  "first_person": "俺",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_秋月涼",
+  "name": "秋月涼",
+  "first_person": "僕",
+  "producer_call": "プロデューサーさん",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_舞田類",
+  "name": "舞田類",
+  "first_person": "俺",
+  "producer_call": [
+   {
+    "form": "プロデューサーちゃん",
+    "scene": null
+   },
+   {
+    "form": "君",
+    "scene": null
+   }
+  ],
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "英語交じりの口調(ルー語気味)で話す。",
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/a/舞田類",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_若里春名",
+  "name": "若里春名",
+  "first_person": "オレ",
+  "producer_call": "プロデューサー",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_葛之葉雨彦",
+  "name": "葛之葉雨彦",
+  "first_person": "俺",
+  "producer_call": [
+   {
+    "form": "プロデューサー",
+    "scene": null
+   },
+   {
+    "form": "お前さん",
+    "scene": null
+   }
+  ],
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_蒼井悠介",
+  "name": "蒼井悠介",
+  "first_person": "オレ",
+  "producer_call": "監督",
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": null,
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://ja.wikipedia.org/wiki/アイドルマスター_SideMの登場人物",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ },
+ {
+  "idol_id": "sidem_鷹城恭二",
+  "name": "鷹城恭二",
+  "first_person": "俺",
+  "producer_call": [
+   {
+    "form": "プロデューサー",
+    "scene": null
+   },
+   {
+    "form": "あんた",
+    "scene": null
+   }
+  ],
+  "politeness": null,
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "ぶっきらぼうな口調だが、プロデューサーを信頼している。",
+  "sources": [
+   "https://wikiwiki.jp/sidem/ﾕﾆｯﾄ会話集",
+   "https://dic.nicovideo.jp/a/鷹城恭二",
+   "https://dic.nicovideo.jp/t/a/アイドルマスターsidem%3A呼称表"
+  ]
+ }
+]

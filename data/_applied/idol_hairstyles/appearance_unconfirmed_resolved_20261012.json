@@ -1,0 +1,211 @@
+{
+ "_note": "確認待ち (unconfirmed_appearance_20261010.json) の 25 人のうち、2026-10-12 の Web 検索で髪色の境目・髪型の裏付けが取れた 15 人。根拠と判定は data/research/appearance_20261010/hair_websearch_unconfirmed_20261012.csv。裏付けの無い髪型・前髪は外した。",
+ "idol_hairstyles": [
+  {
+   "idol_id": "cg_相川千夏",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "茶",
+   "hair_length": "ショート",
+   "source": [
+    "https://w.atwiki.jp/aniwotawiki/pages/61203.html",
+    "https://zh.moegirl.org.cn/相川千夏",
+    "https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物"
+   ],
+   "source_note": "2026-10-12 Web検索: アニヲタWiki「ショートな茶髪のメガネレディ」/ 萌娘百科 发色: 棕发 / Wikipedia「眼鏡をかけたショートカットの女性」"
+  },
+  {
+   "idol_id": "cg_安斎都",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "赤",
+   "hair_length": "ショート",
+   "source": [
+    "https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物",
+    "https://dic.pixiv.net/a/安斎都"
+   ],
+   "source_note": "2026-10-12 Web検索: Wikipedia「探偵に憧れているショートの赤髪の少女」/ ピクシブ百科事典「探偵に憧れる赤毛の少女」"
+  },
+  {
+   "idol_id": "cg_梅木音葉",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "金",
+   "hair_length": "ショート",
+   "styles": [
+    "外はね"
+   ],
+   "source": [
+    "https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物",
+    "https://dic.nicovideo.jp/a/梅木音葉",
+    "https://dic.pixiv.net/a/梅木音葉"
+   ],
+   "source_note": "2026-10-12 Web検索: Wikipedia「黄色の髪の少女」/ ニコニコ大百科「金髪に隠れた耳」/ ピクシブ百科事典「金髪に緑眼という外見」"
+  },
+  {
+   "idol_id": "cg_キャシー_グラハム",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "金",
+   "hair_length": "ショート",
+   "source": [
+    "https://dic.nicovideo.jp/a/キャシー・グラハム",
+    "https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物",
+    "https://dic.pixiv.net/a/キャシー・グラハム"
+   ],
+   "source_note": "2026-10-12 Web検索: ニコニコ大百科「ショートの金髪・碧眼」/ Wikipedia「金髪碧眼の江戸っ子気質」/ ピクシブ百科事典「金髪ベリーショート」"
+  },
+  {
+   "idol_id": "cg_黒埼ちとせ",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "金",
+   "hair_length": "ロング",
+   "bangs": "片目隠れ",
+   "source": [
+    "https://dic.nicovideo.jp/a/黒埼ちとせ",
+    "https://dic.pixiv.net/a/黒埼ちとせ",
+    "https://zh.moegirl.org.cn/黑埼千岁"
+   ],
+   "source_note": "2026-10-12 Web検索: ニコニコ大百科「長い金髪に赤い瞳」/ ピクシブ百科事典「金髪赤目」/ 萌娘百科 发色: 金发"
+  },
+  {
+   "idol_id": "cg_小早川紗枝",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "黒",
+   "hair_length": "ロング",
+   "styles": [
+    "姫カット"
+   ],
+   "source": [
+    "https://dic.nicovideo.jp/a/小早川紗枝",
+    "https://w.atwiki.jp/aniwotawiki/pages/39526.html",
+    "https://dic.pixiv.net/a/小早川紗枝"
+   ],
+   "source_note": "2026-10-12 Web検索: ニコニコ大百科「黒髪ストレートロング枠な京都美人」/ アニヲタWiki「黒髪ストレートロングでスラっと見える」/ ピクシブ百科事典の関連語「黒髪ロング」 (萌娘百科の灰发は採らない)"
+  },
+  {
+   "idol_id": "cg_乙倉悠貴",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "白・銀",
+   "hair_length": "ショート",
+   "source": [
+    "https://zh.moegirl.org.cn/乙仓悠贵",
+    "https://dic.pixiv.net/a/乙倉悠貴",
+    "https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物"
+   ],
+   "source_note": "2026-10-12 Web検索: 萌娘百科 发色: 灰发 / ピクシブ百科事典 (日野森志歩との比較)「ショートカットで髪の色も銀色と、見た目が非常に似ている」/ Wikipedia「ショートヘアが特徴的」。灰は語彙に無いので白・銀に寄せた"
+  },
+  {
+   "idol_id": "sc_和泉愛依",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "茶",
+   "hair_color_secondary": "金",
+   "hair_length": "ロング",
+   "source": [
+    "https://w.atwiki.jp/aniwotawiki/pages/42280.html",
+    "https://zh.moegirl.org.cn/和泉爱依",
+    "https://dic.pixiv.net/a/和泉愛依"
+   ],
+   "source_note": "2026-10-12 Web検索: アニヲタWiki「髪は茶色で肌も褐色」「頭頂部が茶色で髪の先端が薄い金髪」/ 萌娘百科 发色: 棕发、萌点: 渐变色发。茶から金へのグラデーションなので 2 色目を金にした"
+  },
+  {
+   "idol_id": "gakuen_月村手毬",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "緑",
+   "hair_length": "ロング",
+   "styles": [
+    "ストレート",
+    "アホ毛"
+   ],
+   "source": [
+    "https://w.atwiki.jp/aniwotawiki/pages/56378.html",
+    "https://zh.moegirl.org.cn/月村手毬"
+   ],
+   "source_note": "2026-10-12 Web検索: アニヲタWiki「緑青色のウルフヘア」/ 萌娘百科 发色: 墨绿发 (萌点の「黑长直」は型の言い回しとみて採らない)。黒緑なので緑に寄せた"
+  },
+  {
+   "idol_id": "cg_アナスタシア",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "白・銀",
+   "hair_length": "ショート",
+   "source": [
+    "https://w.atwiki.jp/aniwotawiki/pages/39451.html",
+    "https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物"
+   ],
+   "source_note": "2026-10-12 Web検索: アニヲタWiki「雪のように白いショートヘアー」/ Wikipedia「銀髪碧眼の少女」。ストレートは裏付けが無く外した"
+  },
+  {
+   "idol_id": "cg_イヴ_サンタクロース",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "白・銀",
+   "hair_length": "ロング",
+   "source": [
+    "https://dic.nicovideo.jp/a/イヴ・サンタクロース",
+    "https://dic.pixiv.net/a/イヴ・サンタクロース",
+    "https://w.atwiki.jp/aniwotawiki/pages/46816.html"
+   ],
+   "source_note": "2026-10-12 Web検索: ニコニコ大百科「白髪金眼」/ ピクシブ百科事典「髪の色が白っぽい」/ アニヲタWiki「髪型もロングヘア」。白は語彙に無いので白・銀。ストレートは裏付けが無く外した"
+  },
+  {
+   "idol_id": "cg_ケイト",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "茶",
+   "hair_length": "ボブ〜ミディアム",
+   "source": [
+    "https://safebooru.org/index.php?page=post&s=list&tags=kate_(idolmaster) (solo タグ集計)"
+   ],
+   "source_note": "2026-10-12 Web検索: ニコニコ大百科・ピクシブ百科事典・アニヲタWiki とも髪の記述なし。ウェーブは裏付けが無く外し、色と長さはタグ (brown 18/18) のまま"
+  },
+  {
+   "idol_id": "gakuen_有村麻央",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "ピンク",
+   "hair_length": "ショート",
+   "source": [
+    "https://w.atwiki.jp/aniwotawiki/pages/57830.html",
+    "https://safebooru.org/index.php?page=post&s=list&tags=arimura_mao (solo タグ集計)"
+   ],
+   "source_note": "2026-10-12 Web検索: アニヲタWiki「前髪をかき上げたピンク色のクラゲヘア」「左目は前髪で若干隠れている」。若干なので片目隠れは外した"
+  },
+  {
+   "idol_id": "gakuen_姫崎莉波",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "茶",
+   "hair_length": "ロング",
+   "styles": [
+    "お団子"
+   ],
+   "source": [
+    "https://w.atwiki.jp/aniwotawiki/pages/58958.html",
+    "https://safebooru.org/index.php?page=post&s=list&tags=himesaki_rinami (solo タグ集計)"
+   ],
+   "source_note": "2026-10-12 Web検索: アニヲタWiki「明るい茶色の髪をお団子で結い、結んだ毛束の内2本を両肩の前に垂らしている」。お団子は基本の髪型 (タグ hair_bun も)"
+  },
+  {
+   "idol_id": "765as_玲音",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "オレンジ",
+   "hair_length": "ロング",
+   "styles": [
+    "ポニーテール"
+   ],
+   "source": [
+    "https://w.atwiki.jp/aniwotawiki/pages/33372.html",
+    "https://dic.pixiv.net/a/玲音(アイドルマスター)",
+    "https://safebooru.org/index.php?page=post&s=list&tags=leon_(idolmaster) (solo タグ集計)"
+   ],
+   "source_note": "2026-10-12 Web検索: アニヲタWiki「髪色はやよいとはまた違ったオレンジで毛先に行くほどダークになる」「ポニーテールである為…棚引く髪型」/ ピクシブ百科事典「オレンジのポニーテール」。長さはタグ long 9/9"
+  }
+ ]
+}

@@ -5,7 +5,9 @@
 //!   (場面で使い分ける子がいるため)。
 //! - `data/personas/call_names.json`: im@sparql (MIT License, © 2017 IM@Study,
 //!   https://github.com/crssnky/imasparql) の呼称データ。誰が誰をどう呼ぶか。
-//!   `tools/fetch_call_names_from_sparql.py` が作る。セリフ (台本) は入れない。
+//!   `tools/fetch_call_names_from_sparql.py` が作る。ニコニコ大百科の呼称表の行
+//!   (`tools/fetch_call_names_from_nicodic.py`) も同居し、行の `source` で出どころを分ける
+//!   (ここでは使わず、同じ from/to の呼び方は重複なく束ねる)。セリフ (台本) は入れない。
 //!
 //! データの無いアイドルは何も返さない (指示文は今まで通りモデルの知識に任せる)。
 
@@ -17,6 +19,12 @@ use std::sync::OnceLock;
 const PERSONA_FILES: &[&str] = &[
     include_str!("../../../../data/personas/765as.json"),
     include_str!("../../../../data/personas/ml.json"),
+    include_str!("../../../../data/personas/cg.json"),
+    include_str!("../../../../data/personas/sc.json"),
+    include_str!("../../../../data/personas/gakuen.json"),
+    include_str!("../../../../data/personas/sidem.json"),
+    include_str!("../../../../data/personas/876.json"),
+    include_str!("../../../../data/personas/961.json"),
 ];
 const CALL_NAMES: &str = include_str!("../../../../data/personas/call_names.json");
 

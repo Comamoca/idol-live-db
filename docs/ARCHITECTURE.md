@@ -3,6 +3,7 @@
 > **この文書は iOS (`ImasLiveDB/`) の設計方針。** 他コンポーネントは別ファイル:
 > - Android (`ImasLiveDB-Android/`) → [`ARCHITECTURE-android.md`](ARCHITECTURE-android.md)
 > - バックエンド Worker (`imas-live-api/`) → [`ARCHITECTURE-worker.md`](ARCHITECTURE-worker.md)
+> - CloudKit の公開データを自分の SQLite (サーバー・外部の利用者) に写す部品 (`web/wasm/imas-sync-wasm/`) → [`ARCHITECTURE-mirror.md`](ARCHITECTURE-mirror.md)
 > - データ所在・同期・マイグレーションの**全コンポーネント共通の思想**は本書下部「[データの所在・同期・マイグレーション](#データの所在同期マイグレーション-ios--android-共通の思想)」+ [`DATA_PIPELINE.md`](DATA_PIPELINE.md)
 >
 > ※ Android は iOS と同じ Hexagonal は敷かず、規模に見合った Compose+ViewModel+Repository 構成 (詳細は Android 文書)。

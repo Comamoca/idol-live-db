@@ -1,0 +1,1319 @@
+{
+ "title": "アイドルの髪型の見直し (本番の行の修正)",
+ "_note": "本番に入っている基本の髪型 (data/idol_hairstyles/appearance_20261010.json) のうち、ファンのタグと食い違った項目を Web 検索 (data/research/appearance_20261010/hair_websearch_20261012.csv) で確かめて直したもの、空の項目をタグで埋めたもの、オーナーが直接決めた値。方針: Web 検索の判定 (表/タグ/両方) を使い、分からなかった項目はタグの値、髪型 (複数値) は「両方」なら足し、同じ系統 (ツイン系・サイド系など) で重なる値は置き換える。各行の source_note の末尾に「2026-10-12 見直し」として変えた項目を書いた。",
+ "fixes": [
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_fa2ae8a716db1b487ead",
+   "fields": {
+    "hair_color": "黒",
+    "hair_length": "ロング",
+    "source_note": "声優コメントでツインテールの言及のみ。髪色・長さは未確認のため空欄 / 2026-10-12 見直し: 髪色 空→黒 (タグ)、長さ 空→ロング (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "765as_亜夜: 2026-10-12 見直し: 髪色 空→黒 (タグ)、長さ 空→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_ae88a7b47b2eb17399bc",
+   "fields": {
+    "styles": [
+     "ストレート",
+     "外はね"
+    ],
+    "source_note": "Wikipediaは2つのリボンのみ記載。色・長さは公式のカード絵で確認 / 2026-10-12 見直し: 髪型 ストレート→ストレート、外はね (Web検索)"
+   },
+   "source": "https://wikiwiki.jp/kingdedede/キャラ/【天海春香】",
+   "note": "765as_天海春香: 2026-10-12 見直し: 髪型 ストレート→ストレート、外はね (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_bd3bb95d7a25d3fc6a88",
+   "fields": {
+    "styles": [
+     "三つ編み・編み込み",
+     "アホ毛"
+    ],
+    "hair_length": "ロング",
+    "source_note": "Wikipediaは2本のお下げ。色・長さはカード絵 / 2026-10-12 見直し: 髪型 三つ編み・編み込み→三つ編み・編み込み、アホ毛 (Web検索)、長さ ボブ〜ミディアム→ロング (タグ)"
+   },
+   "source": [
+    "https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物",
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
+   ],
+   "note": "765as_秋月律子: 2026-10-12 見直し: 髪型 三つ編み・編み込み→三つ編み・編み込み、アホ毛 (Web検索)、長さ ボブ〜ミディアム→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_61fa652c9659c631944e",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "Wikipediaはボブ。長さはあご〜首元でショートとミディアムの境目。色はカード絵; 長さのタグが複数 (ショート/ボブ〜ミディアム)。調査の生の値の ショート を採用 / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+   },
+   "source": "https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物",
+   "note": "765as_萩原雪歩: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_5410d3bb5d7653e753e8",
+   "fields": {
+    "hair_length": "ロング",
+    "source_note": "Wikipediaはおさげ (ツインテール)。色・長さはカード絵 / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ロング (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "765as_高槻やよい: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_b63cf9348dac98b4055c",
+   "fields": {
+    "hair_length": "ショート",
+    "source_note": "Wikipediaは「茶色がかった赤のミディボブ、アホ毛2本」。茶と赤で迷う (茶を採用) / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (Web検索)"
+   },
+   "source": "https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物",
+   "note": "876_日高愛: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_b160bf76769f6f3d6321",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "黒/緑の割れ(黒が多数)。緑がかった黒の可能性 / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_ナターリア: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_6caaeb37119faef99a80",
+   "fields": {
+    "hair_color": "黒",
+    "source_note": "髪型は未確認 / 2026-10-12 見直し: 髪色 金→黒 (Web検索)"
+   },
+   "source": "https://neoapo.com/characters/32953",
+   "note": "cg_ヘレン: 2026-10-12 見直し: 髪色 金→黒 (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_3367740624eb9ce773f2",
+   "fields": {
+    "styles": [
+     "ツインテール"
+    ],
+    "bangs": "おでこ",
+    "source_note": "髪型は未確認 / 2026-10-12 見直し: 髪型 空→ツインテール (タグ)、前髪 空→おでこ (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_メアリー_コクラン: 2026-10-12 見直し: 髪型 空→ツインテール (タグ)、前髪 空→おでこ (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_46e682d0a4738819de97",
+   "fields": {
+    "styles": [
+     "ポニーテール"
+    ],
+    "source_note": "濃い茶で黒との境目 / 2026-10-12 見直し: 髪型 空→ポニーテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_三船美優: 2026-10-12 見直し: 髪型 空→ポニーテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_c77828d6039305f8c5c2",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "黒/緑の割れ(黒が多数); 長さのタグが複数 (ショート/ボブ〜ミディアム)。調査の生の値の ショート を採用 / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+   },
+   "source": "https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物",
+   "note": "cg_丹羽仁美: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_33a10dae9760060ce303",
+   "fields": {
+    "styles": [
+     "三つ編み・編み込み",
+     "ローツインテール"
+    ],
+    "source_note": "色は萌娘百科の記載。髪型の詳細は未確認 / 2026-10-12 見直し: 髪型 空→三つ編み・編み込み、ローツインテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_久川凪: 2026-10-12 見直し: 髪型 空→三つ編み・編み込み、ローツインテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_4caaa3b56a6747d78ffe",
+   "fields": {
+    "hair_length": "ロング",
+    "styles": [
+     "三つ編み・編み込み"
+    ],
+    "source_note": "色は萌娘百科の記載。長さ・髪型は未確認 / 2026-10-12 見直し: 長さ 空→ロング (タグ)、髪型 空→三つ編み・編み込み (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_久川颯: 2026-10-12 見直し: 長さ 空→ロング (タグ)、髪型 空→三つ編み・編み込み (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_15686b23fd7b42ca153f",
+   "fields": {
+    "source_note": "タグ集計と萌点が一致 / ゴールドアッシュ (オーナー確認)"
+   },
+   "source": "owner",
+   "note": "cg_仙崎恵磨: ゴールドアッシュ (オーナー確認)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_48814b388f1f036072b3",
+   "fields": {
+    "styles": [
+     "ひとつ縛り"
+    ],
+    "source_note": "淡い青〜青紫系で青・水色・紫の境目 / 2026-10-12 見直し: 髪型 空→ひとつ縛り (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_依田芳乃: 2026-10-12 見直し: 髪型 空→ひとつ縛り (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_f82e9d2ca2a4b5b2779a",
+   "fields": {
+    "styles": [
+     "ウェーブ",
+     "ポニーテール"
+    ],
+    "source_note": "2026-10-12 見直し: 髪型 ウェーブ→ウェーブ、ポニーテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_兵藤レナ: 2026-10-12 見直し: 髪型 ウェーブ→ウェーブ、ポニーテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_a579b4257ce0de608701",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "黒/茶の割れ(黒が多数)。おさげ風の低いツインテール / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+   },
+   "source": "https://dic.pixiv.net/a/冴島清美",
+   "note": "cg_冴島清美: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_02dde6343fcb0e08fbeb",
+   "fields": {
+    "styles": [
+     "ポニーテール"
+    ],
+    "source_note": "色のみ確認。長さ・髪型は未確認 / 2026-10-12 見直し: 髪型 空→ポニーテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_前川みく: 2026-10-12 見直し: 髪型 空→ポニーテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_94da0a03779ba3871826",
+   "fields": {
+    "hair_length": "ロング",
+    "source_note": "長さはタグから決められず空欄。不明: 長さ / 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_十時愛梨: 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_504123aa7d643394bee8",
+   "fields": {
+    "styles": [
+     "ローツインテール"
+    ],
+    "source_note": "黄色寄りの金 / 2026-10-12 見直し: 髪型 ツインテール→ローツインテール (Web検索)"
+   },
+   "source": "https://neoapo.com/characters/2130",
+   "note": "cg_双葉杏: 2026-10-12 見直し: 髪型 ツインテール→ローツインテール (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_ec5d9c8715d80958290c",
+   "fields": {
+    "hair_length": "ロング",
+    "source_note": "色のみ確認。長さ・髪型は不明 / 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_古澤頼子: 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_56a297e997ff7ab63403",
+   "fields": {
+    "hair_color": "黒",
+    "source_note": "金と明るい茶の境目 / 2026-10-12 見直し: 髪色 金→黒 (オーナー確認)"
+   },
+   "source": "owner",
+   "note": "cg_向井拓海: 2026-10-12 見直し: 髪色 金→黒 (オーナー確認)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_27b1393b013855f4a1b4",
+   "fields": {
+    "hair_length": "ショート",
+    "styles": [
+     "ストレート",
+     "アホ毛"
+    ],
+    "source_note": "2026-10-12 見直し: 長さ ロング→ショート (Web検索)、髪型 ストレート→ストレート、アホ毛 (タグ)"
+   },
+   "source": [
+    "https://neoapo.com/characters/32962",
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
+   ],
+   "note": "cg_和久井留美: 2026-10-12 見直し: 長さ ロング→ショート (Web検索)、髪型 ストレート→ストレート、アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_e98d5cfe78e6cb5a0513",
+   "fields": {
+    "styles": [
+     "ハーフアップツイン"
+    ],
+    "source_note": "タグ集計と萌点が一致 / 2026-10-12 見直し: 髪型 ツーサイドアップ→ハーフアップツイン (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_城ヶ崎莉嘉: 2026-10-12 見直し: 髪型 ツーサイドアップ→ハーフアップツイン (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_3e3ba86873dce6d8a16a",
+   "fields": {
+    "hair_length": "ロング",
+    "styles": [
+     "ポニーテール"
+    ],
+    "source_note": "色のみ確認。長さ・髪型は未確認 / 2026-10-12 見直し: 長さ 空→ロング (タグ)、髪型 空→ポニーテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_堀裕子: 2026-10-12 見直し: 長さ 空→ロング (タグ)、髪型 空→ポニーテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_5bc62c7f3af161ce8abf",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "タグ集計と萌点が一致 / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+   },
+   "source": "https://neoapo.com/characters/16205",
+   "note": "cg_多田李衣菜: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_e9dfbebe14f11112b3f2",
+   "fields": {
+    "hair_length": "ロング",
+    "hair_color": "黒",
+    "styles": [
+     "ひとつ縛り"
+    ],
+    "source_note": "髪型は未確認 / 2026-10-12 見直し: 長さ ショート→ロング (タグ)、髪色 茶→黒 (Web検索)、髪型 空→ひとつ縛り (タグ)"
+   },
+   "source": [
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+    "https://neoapo.com/characters/26795"
+   ],
+   "note": "cg_大和亜季: 2026-10-12 見直し: 長さ ショート→ロング (タグ)、髪色 茶→黒 (Web検索)、髪型 空→ひとつ縛り (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_7d5b860afdf461e1ae5e",
+   "fields": {
+    "hair_length": "ロング",
+    "source_note": "2026-10-12 見直し: 長さ ボブ〜ミディアム→ロング (Web検索)"
+   },
+   "source": "https://yaruo.fandom.com/wiki/姫川友紀",
+   "note": "cg_姫川友紀: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ロング (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_100e0501153137266906",
+   "fields": {
+    "hair_length": "ショート",
+    "source_note": "2026-10-12 見直し: 長さ ロング→ショート (Web検索)"
+   },
+   "source": "https://neoapo.com/characters/26505",
+   "note": "cg_宮本フレデリカ: 2026-10-12 見直し: 長さ ロング→ショート (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_284044bc8ef9a5834061",
+   "fields": {
+    "styles": [
+     "ハーフサイドテール"
+    ],
+    "source_note": "長さはロング/肩付近で迷い / 2026-10-12 見直し: 髪型 サイドテール→ハーフサイドテール (Web検索)"
+   },
+   "source": "https://neoapo.com/characters/7701",
+   "note": "cg_島村卯月: 2026-10-12 見直し: 髪型 サイドテール→ハーフサイドテール (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_9a6101d9f29688582ae4",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "灰/銀の割れ(灰が多数) / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_成宮由愛: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_365e34148cc6dcf6ab62",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "紫に挑染(メッシュ); 髪色2色以上 (2色目は未入力。調査の生の値: 紫/ショート/ショート,メッシュ) / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+   },
+   "source": "https://neoapo.com/characters/32694",
+   "note": "cg_早坂美玲: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_8dde9e01f565237ca3ec",
+   "fields": {
+    "styles": [
+     "アホ毛"
+    ],
+    "source_note": "2026-10-12 見直し: 髪型 ツインテール→アホ毛 (Web検索)"
+   },
+   "source": "https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物",
+   "note": "cg_星輝子: 2026-10-12 見直し: 髪型 ツインテール→アホ毛 (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_d6226ef6d327ab6159ef",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "タグ集計20件 / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_月宮雅: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_53d3f302a91f8d4303bf",
+   "fields": {
+    "hair_length": "ショート",
+    "styles": [
+     "外はね"
+    ],
+    "source_note": "髪型は未確認 / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (Web検索)、髪型 空→外はね (タグ)"
+   },
+   "source": [
+    "https://neoapo.com/characters/16222",
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
+   ],
+   "note": "cg_本田未央: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (Web検索)、髪型 空→外はね (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_0936eb806d1995217678",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "髪型は未確認 / 2026-10-12 見直し: 長さ ロング→ボブ〜ミディアム (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_村上巴: 2026-10-12 見直し: 長さ ロング→ボブ〜ミディアム (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_9ad8b3957d6988aa5f12",
+   "fields": {
+    "hair_length": "ショート",
+    "source_note": "色のみ確認。長さ・髪型は未確認 / 2026-10-12 見直し: 長さ 空→ショート (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_松原早耶: 2026-10-12 見直し: 長さ 空→ショート (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_51c3bdbf95dcb6f3f1b9",
+   "fields": {
+    "hair_length": "ショート",
+    "source_note": "2026-10-12 見直し: 長さ ロング→ショート (Web検索)"
+   },
+   "source": "https://seesaawiki.jp/chizuru_matsuo/d/%BE%BE%C8%F8%C0%E9%C4%E1",
+   "note": "cg_松尾千鶴: 2026-10-12 見直し: 長さ ロング→ショート (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_7915a03db01c42f05034",
+   "fields": {
+    "hair_length": "ロング",
+    "styles": [
+     "ポニーテール"
+    ],
+    "source_note": "色のみ確認。長さ・髪型は未確認 / 2026-10-12 見直し: 長さ 空→ロング (タグ)、髪型 空→ポニーテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_松山久美子: 2026-10-12 見直し: 長さ 空→ロング (タグ)、髪型 空→ポニーテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_fa24c2f2ee2c922cd2db",
+   "fields": {
+    "hair_length": "ロング",
+    "source_note": "色は赤茶系で境目 / 2026-10-12 見直し: 長さ ショート→ロング (Web検索)"
+   },
+   "source": "https://w.atwiki.jp/aniwotawiki/pages/48229.html",
+   "note": "cg_松永涼: 2026-10-12 見直し: 長さ ショート→ロング (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_7a819ace99fc9f8c311e",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "2026-10-12 見直し: 長さ ロング→ボブ〜ミディアム (Web検索)"
+   },
+   "source": "https://imas.gamedbs.jp/cgss/chara/detail/145",
+   "note": "cg_柳清良: 2026-10-12 見直し: 長さ ロング→ボブ〜ミディアム (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_78ce87ee75d5838e680b",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "2026-10-12 見直し: 長さ ロング→ボブ〜ミディアム (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_森久保乃々: 2026-10-12 見直し: 長さ ロング→ボブ〜ミディアム (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_759fe607d297295fc00d",
+   "fields": {
+    "hair_length": "ロング",
+    "source_note": "長さは未確認 / 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_楊菲菲: 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_60d8538d49e8faf69343",
+   "fields": {
+    "styles": [
+     "ハーフアップ"
+    ],
+    "source_note": "髪型は未確認 / 2026-10-12 見直し: 髪型 空→ハーフアップ (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_槙原志保: 2026-10-12 見直し: 髪型 空→ハーフアップ (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_1cf976d32ce48c49ce0c",
+   "fields": {
+    "hair_length": "ロング",
+    "source_note": "色・長さは不明 / 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_横山千佳: 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_1d12c8868bfb7ecd788e",
+   "fields": {
+    "styles": [
+     "ストレート",
+     "ポニーテール"
+    ],
+    "source_note": "2026-10-12 見直し: 髪型 ストレート→ストレート、ポニーテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_水野翠: 2026-10-12 見直し: 髪型 ストレート→ストレート、ポニーテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_539e396b80547327680f",
+   "fields": {
+    "hair_length": "ロング",
+    "source_note": "長さは根拠が取れず空欄。不明: 長さ / 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_浜口あやめ: 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_73f10eaceef0bbc34fc5",
+   "fields": {
+    "styles": [
+     "ストレート",
+     "ハーフアップ"
+    ],
+    "source_note": "タグ集計16件 / 2026-10-12 見直し: 髪型 ストレート→ストレート、ハーフアップ (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_涼宮星花: 2026-10-12 見直し: 髪型 ストレート→ストレート、ハーフアップ (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_79ac03ac4063d969ff85",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "長さはタグが割れ(ロング5/ショート3)で不明。タグ集計12件。不明: 長さ / 2026-10-12 見直し: 長さ 空→ボブ〜ミディアム (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_相馬夏美: 2026-10-12 見直し: 長さ 空→ボブ〜ミディアム (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_0d2f58653f9de9be9a39",
+   "fields": {
+    "styles": [
+     "ポニーテール"
+    ],
+    "hair_length": "ロング",
+    "source_note": "長さは未確認 / 2026-10-12 見直し: 髪型 ツインテール→ポニーテール (Web検索)、長さ 空→ロング (タグ)"
+   },
+   "source": [
+    "https://imascg-slstage.boom-app.wiki/entry/idol-4",
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
+   ],
+   "note": "cg_福山舞: 2026-10-12 見直し: 髪型 ツインテール→ポニーテール (Web検索)、長さ 空→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_a0f183a224ae9b1b9d72",
+   "fields": {
+    "styles": [
+     "外はね"
+    ],
+    "source_note": "タグ集計9件 / 2026-10-12 見直し: 髪型 アホ毛→外はね (Web検索)"
+   },
+   "source": "https://ja.wikipedia.org/wiki/アイドルマスター_シンデレラガールズの登場人物",
+   "note": "cg_西島櫂: 2026-10-12 見直し: 髪型 アホ毛→外はね (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_dfa51561b0a0115c88b6",
+   "fields": {
+    "styles": [
+     "ツインテール"
+    ],
+    "source_note": "髪型は未確認 / 2026-10-12 見直し: 髪型 空→ツインテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_諸星きらり: 2026-10-12 見直し: 髪型 空→ツインテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_7d817e29998e1578df92",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "styles": [
+     "アホ毛",
+     "ローツインテール"
+    ],
+    "source_note": "淡い金 (白寄り) で金と白の境目 / 2026-10-12 見直し: 長さ ロング→ボブ〜ミディアム (Web検索)、髪型 空→アホ毛、ローツインテール (タグ)"
+   },
+   "source": [
+    "https://neoapo.com/characters/34985",
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
+   ],
+   "note": "cg_遊佐こずえ: 2026-10-12 見直し: 長さ ロング→ボブ〜ミディアム (Web検索)、髪型 空→アホ毛、ローツインテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_19e17689ce993ef91102",
+   "fields": {
+    "hair_length": "ロング",
+    "source_note": "色(黒/茶)と長さがタグから決められず不明。タグ集計9件。不明: 色・長さ / 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_野々村そら: 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_b454e7f60dcd756455f0",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "タグ集計と萌点が一致 / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+   },
+   "source": "https://toenithm.hatenablog.com/entry/2017/09/02/195942",
+   "note": "cg_長富蓮実: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_42b9f593c434b2d49457",
+   "fields": {
+    "bangs": "おでこ",
+    "source_note": "タグ集計と萌点が一致 / 2026-10-12 見直し: 前髪 空→おでこ (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_関裕美: 2026-10-12 見直し: 前髪 空→おでこ (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_a82338ea704b8a0ebf9f",
+   "fields": {
+    "bangs": "おでこ",
+    "source_note": "タグ集計21件 / 2026-10-12 見直し: 前髪 空→おでこ (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_難波笑美: 2026-10-12 見直し: 前髪 空→おでこ (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_049631c6ccfa1132c369",
+   "fields": {
+    "hair_length": "ロング",
+    "source_note": "長さはタグが割れ(ロング6/ショート3)で不明。タグ集計14件。不明: 長さ / 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_首藤葵: 2026-10-12 見直し: 長さ 空→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_b482858dbc6c77db13db",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "緑/茶の割れ(緑が多数)。暗い緑がかった茶とも見え迷い / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+   },
+   "source": "https://dereste-hair.hateblo.jp/entry/2020/10/07/221349",
+   "note": "cg_高垣楓: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_8e522623766e4983ef47",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "タグ集計と萌点が一致 / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+   },
+   "source": "https://seesaawiki.jp/kakokako/d/%C2%EB%C9%D9%BB%CE%B2%D8%BB%D2",
+   "note": "cg_鷹富士茄子: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_15de97e9e576b7a1c8b1",
+   "fields": {
+    "hair_length": "ショート",
+    "source_note": "長さは未確認 / 2026-10-12 見直し: 長さ 空→ショート (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "cg_龍崎薫: 2026-10-12 見直し: 長さ 空→ショート (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_b2391024240247e06f17",
+   "fields": {
+    "styles": [
+     "アホ毛"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認 / 2026-10-12 見直し: 髪型 空→アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_ジュリア: 2026-10-12 見直し: 髪型 空→アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_3fb331211e857ea65356",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "styles": [
+     "三つ編み・編み込み"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。濃い青〜黒で迷う (青を採用); 長さのタグが複数 (ショート/ボブ〜ミディアム)。調査の生の値の ショート を採用 / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)、髪型 空→三つ編み・編み込み (タグ)"
+   },
+   "source": [
+    "https://w.atwiki.jp/aniwotawiki/pages/38589.html",
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
+   ],
+   "note": "ml_七尾百合子: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)、髪型 空→三つ編み・編み込み (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_ae72e614ab7782d075fb",
+   "fields": {
+    "styles": [
+     "お団子",
+     "ハーフサイドテール"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認; 長さのタグが複数 (ショート/ボブ〜ミディアム)。調査の生の値の ショート を採用 / 2026-10-12 見直し: 髪型 空→お団子、ハーフサイドテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_中谷育: 2026-10-12 見直し: 髪型 空→お団子、ハーフサイドテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_30996c6c05a52308c0a4",
+   "fields": {
+    "styles": [
+     "ポニーテール"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。髪型は確認できず空欄 / 2026-10-12 見直し: 髪型 空→ポニーテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_二階堂千鶴: 2026-10-12 見直し: 髪型 空→ポニーテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_047eae059d69a2352b3f",
+   "fields": {
+    "styles": [
+     "ローツインテール"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。灰がかったベージュ。灰と金で迷う / 2026-10-12 見直し: 髪型 ツインテール→ローツインテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_伴田路子: 2026-10-12 見直し: 髪型 ツインテール→ローツインテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_f5e9dbb35f18763e842a",
+   "fields": {
+    "styles": [
+     "ストレート",
+     "ローツインテール"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。濃い青緑〜黒で迷う (青を採用) / 2026-10-12 見直し: 髪型 ストレート→ストレート、ローツインテール (Web検索)"
+   },
+   "source": "https://w.atwiki.jp/aniwotawiki/pages/38965.html",
+   "note": "ml_北上麗花: 2026-10-12 見直し: 髪型 ストレート→ストレート、ローツインテール (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_ea4d24ba5fc7046fe3dc",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "styles": [
+     "アホ毛"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。髪型は確認できず空欄 / 2026-10-12 見直し: 長さ ロング→ボブ〜ミディアム (Web検索)、髪型 空→アホ毛 (タグ)"
+   },
+   "source": [
+    "https://neoapo.com/characters/20324",
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
+   ],
+   "note": "ml_周防桃子: 2026-10-12 見直し: 長さ ロング→ボブ〜ミディアム (Web検索)、髪型 空→アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_8321e81ca1abb75f0232",
+   "fields": {
+    "styles": [
+     "ハーフサイドテール"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。赤みのオレンジ。髪型は確認できず空欄 / 2026-10-12 見直し: 髪型 空→ハーフサイドテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_大神環: 2026-10-12 見直し: 髪型 空→ハーフサイドテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_f0bedf6cc81a2d505884",
+   "fields": {
+    "styles": [
+     "お団子"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。ベージュ寄りの茶。髪型は確認できず空欄 / 2026-10-12 見直し: 髪型 空→お団子 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_天空橋朋花: 2026-10-12 見直し: 髪型 空→お団子 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_7f96480c6fcf831a55d9",
+   "fields": {
+    "styles": [
+     "アホ毛"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。髪型は確認できず空欄 / 2026-10-12 見直し: 髪型 空→アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_島原エレナ: 2026-10-12 見直し: 髪型 空→アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_51ebb9ed8de311594c40",
+   "fields": {
+    "styles": [
+     "ストレート",
+     "アホ毛"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認 / 2026-10-12 見直し: 髪型 ストレート→ストレート、アホ毛 (Web検索)"
+   },
+   "source": "https://dic.nicovideo.jp/a/所恵美",
+   "note": "ml_所恵美: 2026-10-12 見直し: 髪型 ストレート→ストレート、アホ毛 (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_a4bb5f16f9aac319ea2e",
+   "fields": {
+    "styles": [
+     "ハーフサイドテール"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。髪型は確認できず空欄 (髪留めを集める設定) / 2026-10-12 見直し: 髪型 空→ハーフサイドテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_春日未来: 2026-10-12 見直し: 髪型 空→ハーフサイドテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_31df08959cc8e59e4b0a",
+   "fields": {
+    "styles": [
+     "ストレート",
+     "ハーフアップ"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。暗い紫がかった黒 / 2026-10-12 見直し: 髪型 ストレート→ストレート、ハーフアップ (Web検索)"
+   },
+   "source": "https://neoapo.com/characters/20295",
+   "note": "ml_最上静香: 2026-10-12 見直し: 髪型 ストレート→ストレート、ハーフアップ (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_0d865be8da392914eecf",
+   "fields": {
+    "styles": [
+     "アホ毛"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。髪型は確認できず空欄 / 2026-10-12 見直し: 髪型 空→アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_木下ひなた: 2026-10-12 見直し: 髪型 空→アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_1523c0b6bafa232c7d55",
+   "fields": {
+    "hair_length": "ロング",
+    "styles": [
+     "アホ毛",
+     "三つ編み・編み込み",
+     "まとめ髪"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。長さはあご付近でショートとミディアムの境目; 長さのタグが複数 (ショート/ボブ〜ミディアム)。調査の生の値の ショート を採用 / 2026-10-12 見直し: 長さ ショート→ロング (Web検索)、髪型 空→アホ毛、三つ編み・編み込み、まとめ髪 (タグ)"
+   },
+   "source": [
+    "https://w.atwiki.jp/aniwotawiki/pages/39606.html",
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
+   ],
+   "note": "ml_桜守歌織: 2026-10-12 見直し: 長さ ショート→ロング (Web検索)、髪型 空→アホ毛、三つ編み・編み込み、まとめ髪 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_4028a79e8163867002a8",
+   "fields": {
+    "styles": [
+     "アホ毛",
+     "サイドテール"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。髪型は確認できず空欄 / 2026-10-12 見直し: 髪型 空→アホ毛、サイドテール (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_横山奈緒: 2026-10-12 見直し: 髪型 空→アホ毛、サイドテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_ec66c57a4d47d31ecde3",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。暗い緑がかった茶。緑と茶で迷う (緑を採用) / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+   },
+   "source": "https://dic.nicovideo.jp/a/永吉昴",
+   "note": "ml_永吉昴: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_4d8b6b1f6df26a819ece",
+   "fields": {
+    "styles": [
+     "アホ毛"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。オレンジ寄りの茶で迷う。髪型は確認できず空欄 / 2026-10-12 見直し: 髪型 空→アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_矢吹可奈: 2026-10-12 見直し: 髪型 空→アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_977573f0168d0080817e",
+   "fields": {
+    "hair_length": "ロング",
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。長さ・髪型はカード絵に基づく。低確度 / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ロング (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_舞浜歩: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ロング (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_7f0182419bbbdeb43567",
+   "fields": {
+    "styles": [
+     "ウェーブ",
+     "アホ毛"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。濃い青紫。紫と青で迷う / 2026-10-12 見直し: 髪型 ウェーブ→ウェーブ、アホ毛 (Web検索)"
+   },
+   "source": "https://dic.nicovideo.jp/a/豊川風花",
+   "note": "ml_豊川風花: 2026-10-12 見直し: 髪型 ウェーブ→ウェーブ、アホ毛 (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_490f8317955e276168fd",
+   "fields": {
+    "styles": [
+     "外はね"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認 / 2026-10-12 見直し: 髪型 空→外はね (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_野々原茜: 2026-10-12 見直し: 髪型 空→外はね (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_543400ee6f485b97a7c1",
+   "fields": {
+    "styles": [
+     "三つ編み・編み込み"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。髪型は確認できず空欄 / 2026-10-12 見直し: 髪型 空→三つ編み・編み込み (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "ml_高坂海美: 2026-10-12 見直し: 髪型 空→三つ編み・編み込み (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_1b5b439aa72c6725ff86",
+   "fields": {
+    "styles": [
+     "三つ編み・編み込み",
+     "ローツインテール"
+    ],
+    "source_note": "公式カード絵 (ミリシタ公式) を確認。Wikipedia ML登場人物に「お下げ」の記述。色はカード絵 / 2026-10-12 見直し: 髪型 三つ編み・編み込み→三つ編み・編み込み、ローツインテール (Web検索)"
+   },
+   "source": "https://w.atwiki.jp/aniwotawiki/pages/38535.html",
+   "note": "ml_高山紗代子: 2026-10-12 見直し: 髪型 三つ編み・編み込み→三つ編み・編み込み、ローツインテール (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_ec5a43f4e44035a09239",
+   "fields": {
+    "hair_length": "ショート",
+    "styles": [
+     "アホ毛"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。長さ自信低め / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)、髪型 空→アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_九十九一希: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)、髪型 空→アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_7b07264268a4649a2fbd",
+   "fields": {
+    "hair_length": "ショート",
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。長さ自信低め / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_伊瀬谷四季: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_23450880884a39afd733",
+   "fields": {
+    "hair_length": "ショート",
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。金髪は pixiv百科事典に記述あり(染めている)。長さは短め〜中間で迷う / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_伊集院北斗: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_ba66303ec15357bc139b",
+   "fields": {
+    "styles": [
+     "逆立てた髪",
+     "アホ毛"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか / 2026-10-12 見直し: 髪型 逆立てた髪→逆立てた髪、アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_兜大吾: 2026-10-12 見直し: 髪型 逆立てた髪→逆立てた髪、アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_60ff130d0a86ea9c6213",
+   "fields": {
+    "hair_length": "ショート",
+    "hair_color": "白・銀",
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。白と黒のツートン(アイコン目視)。単色に収まらないため『その他』; 髪色2色以上 (2色目は未入力。調査の生の値: その他/ミディアム/ツートン) / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)、髪色 空→白・銀 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_北村想楽: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)、髪色 空→白・銀 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_d6c210797dc4b0169b18",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "pixiv百科事典: 明るい緑色の髪と左こめかみあたりの編み込み。長さはアイコン目視 / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_卯月巻緒: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_83f64cd68784da229999",
+   "fields": {
+    "styles": [
+     "逆立てた髪",
+     "アホ毛"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。青みのある黒 / 2026-10-12 見直し: 髪型 逆立てた髪→逆立てた髪、アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_大河タケル: 2026-10-12 見直し: 髪型 逆立てた髪→逆立てた髪、アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_324ea08343890ad2abd2",
+   "fields": {
+    "hair_length": "ショート",
+    "styles": [
+     "アホ毛"
+    ],
+    "source_note": "pixiv百科事典: 本人の髪色も青寄り。長さ・髪型は帽子を被った画像のため不明 / 2026-10-12 見直し: 長さ 空→ショート (タグ)、髪型 空→アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_天峰秀: 2026-10-12 見直し: 長さ 空→ショート (タグ)、髪型 空→アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_a4994aa3258f575a18bb",
+   "fields": {
+    "styles": [
+     "跳ね毛",
+     "アホ毛"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。赤みの茶 / 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (Web検索)"
+   },
+   "source": "https://neoapo.com/characters/20340",
+   "note": "sidem_天道輝: 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (Web検索)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_154bd2e7413833a43fe5",
+   "fields": {
+    "hair_length": "ショート",
+    "styles": [
+     "ハーフアップ"
+    ],
+    "source_note": "pixiv百科事典: 普段は片目隠れ(右目)でステージでは前髪を分ける。色・長さはアイコン目視 / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)、髪型 空→ハーフアップ (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_山下次郎: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)、髪型 空→ハーフアップ (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_fcbf6bc801cd2b1f0f82",
+   "fields": {
+    "styles": [
+     "逆立てた髪",
+     "アホ毛"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか / 2026-10-12 見直し: 髪型 逆立てた髪→逆立てた髪、アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_握野英雄: 2026-10-12 見直し: 髪型 逆立てた髪→逆立てた髪、アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_de1e78685f78d4bca92b",
+   "fields": {
+    "styles": [
+     "跳ね毛",
+     "アホ毛"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。カーキ寄りの緑で茶との境目に迷う / 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_柏木翼: 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_a42fa36e97742e92badc",
+   "fields": {
+    "hair_length": "ショート",
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。pixiv百科事典の山下次郎の項に銀髪組の記述 / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_榊夏来: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_7828acf1cccda012e275",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "styles": [
+     "逆立てた髪",
+     "ハーフサイドテール"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)、髪型 逆立てた髪→逆立てた髪、ハーフサイドテール (タグ)"
+   },
+   "source": [
+    "https://neoapo.com/characters/20343",
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
+   ],
+   "note": "sidem_橘志狼: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (Web検索)、髪型 逆立てた髪→逆立てた髪、ハーフサイドテール (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_8ccb363f8897556d80d5",
+   "fields": {
+    "hair_length": "ロング",
+    "styles": [
+     "ポニーテール",
+     "まとめ髪"
+    ],
+    "source_note": "pixiv百科事典: 普段は後ろで結わえた髪にヘアピン。色・長さはアイコン目視 / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ロング (タグ)、髪型 ひとつ縛り→ポニーテール、まとめ髪 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_渡辺みのり: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ロング (タグ)、髪型 ひとつ縛り→ポニーテール、まとめ髪 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_6639c2daafbaa4db5efb",
+   "fields": {
+    "hair_length": "ロング",
+    "styles": [
+     "跳ね毛",
+     "三つ編み・編み込み"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。銀髪は pixiv百科事典に記述あり(髪紐は衣装時)。長さ自信低め / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ロング (Web検索)、髪型 跳ね毛→跳ね毛、三つ編み・編み込み (タグ)"
+   },
+   "source": [
+    "https://batankyu.com/silver19/",
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
+   ],
+   "note": "sidem_牙崎漣: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ロング (Web検索)、髪型 跳ね毛→跳ね毛、三つ編み・編み込み (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_f34be308aa5e0beb3c45",
+   "fields": {
+    "styles": [
+     "アホ毛"
+    ],
+    "source_note": "pixiv百科事典: 黄緑とピンクのヘアカラー(染めている)。単色に収まらないため『その他』。長さ・髪型はアイコン目視; 髪色2色以上 (2色目は未入力。調査の生の値: その他/ショート/ツートン) / 2026-10-12 見直し: 髪型 空→アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_猫柳キリオ: 2026-10-12 見直し: 髪型 空→アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_9a3f306405432e7f2ba1",
+   "fields": {
+    "hair_length": "ショート",
+    "source_note": "アイコン目視(帽子姿)。長さ・髪型は不明。赤茶寄り / 2026-10-12 見直し: 長さ 空→ショート (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_眉見鋭心: 2026-10-12 見直し: 長さ 空→ショート (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_d318edb9f3f223cab41f",
+   "fields": {
+    "styles": [
+     "跳ね毛",
+     "アホ毛"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか / 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_秋山隼人: 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_b50a22b96cac28b13c68",
+   "fields": {
+    "hair_length": "ボブ〜ミディアム",
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。赤と黄のグラデーション気味。髪型にこだわりあり(pixiv百科事典) / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_紅井朱雀: 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_1d75504171119e5df07c",
+   "fields": {
+    "styles": [
+     "跳ね毛",
+     "アホ毛"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか / 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_舞田類: 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_459cfd6dd393c80a8e5f",
+   "fields": {
+    "hair_length": "ショート",
+    "source_note": "アイコン目視(帽子姿)。長さ・髪型は不明。淡い黄で金との境目に迷う / 2026-10-12 見直し: 長さ 空→ショート (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_花園百々人: 2026-10-12 見直し: 長さ 空→ショート (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_3783c0a7f030be2bf557",
+   "fields": {
+    "hair_length": "ショート",
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。銀との境目に迷う / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ) / 髪色は水色 (オーナー確認)"
+   },
+   "source": [
+    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+    "owner"
+   ],
+   "note": "sidem_葛之葉雨彦: 2026-10-12 見直し: 長さ ボブ〜ミディアム→ショート (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_3c46a91a61c73b035a70",
+   "fields": {
+    "styles": [
+     "跳ね毛",
+     "アホ毛"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。悠介より赤みが強く赤との境目に迷う / 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_蒼井享介: 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_d0fcbe9570e72148a449",
+   "fields": {
+    "styles": [
+     "跳ね毛",
+     "アホ毛"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか / 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_蒼井悠介: 2026-10-12 見直し: 髪型 跳ね毛→跳ね毛、アホ毛 (タグ)"
+  },
+  {
+   "table": "idol_hairstyles",
+   "id": "ih_5f9e44a4e93605171d53",
+   "fields": {
+    "styles": [
+     "ウェーブ",
+     "ひとつ縛り"
+    ],
+    "source_note": "公式ではなく非公式 Wiki のアイコン画像(Idol File)を目視。顔アイコンのため長さ・髪型は大まか。長さ・髪型は自信低め / 2026-10-12 見直し: 髪型 ウェーブ→ウェーブ、ひとつ縛り (タグ)"
+   },
+   "source": "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)",
+   "note": "sidem_都築圭: 2026-10-12 見直し: 髪型 ウェーブ→ウェーブ、ひとつ縛り (タグ)"
+  }
+ ]
+}

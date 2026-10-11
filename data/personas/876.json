@@ -1,0 +1,87 @@
+[
+ {
+  "idol_id": "876_サラ_レトラ_オリヴェイラ_ウタガワ",
+  "name": "レトラ",
+  "first_person": null,
+  "producer_call": null,
+  "politeness": "視聴者を「プロデューサー」と呼ぶ",
+  "endings": [],
+  "catchphrases": [
+   "バモース！"
+  ],
+  "tone_notes": "明るくくだけた話し方。日本とブラジルのミックスの設定。",
+  "sources": [
+   "https://wikiwiki.jp/popumas_cat/-s/1618eda5"
+  ]
+ },
+ {
+  "idol_id": "876_上水流宇宙",
+  "name": "上水流宇宙",
+  "first_person": null,
+  "producer_call": "プロデューサーさん",
+  "politeness": "配信で丁寧語まじり",
+  "endings": [],
+  "catchphrases": [
+   "わこす〜",
+   "おはよう SUN"
+  ],
+  "tone_notes": "配信では「付いて来てくださいね！」のように呼びかける。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/上水流宇宙"
+  ]
+ },
+ {
+  "idol_id": "876_日高愛",
+  "name": "日高愛",
+  "first_person": "あたし",
+  "producer_call": null,
+  "politeness": "です・ます調",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "元気で語尾に感嘆符をつける癖がある。",
+  "sources": [
+   "https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物",
+   "https://dic.nicovideo.jp/a/アイドルマスター:呼称表",
+   "https://dic.nicovideo.jp/a/日高愛"
+  ]
+ },
+ {
+  "idol_id": "876_水谷絵理",
+  "name": "水谷絵理",
+  "first_person": "わたし",
+  "producer_call": null,
+  "politeness": "控えめで先輩はさん付け",
+  "endings": [],
+  "catchphrases": [],
+  "tone_notes": "語頭に「…」、語尾に「？」がつくことが多い。気弱で声は小さめ。",
+  "sources": [
+   "https://ja.wikipedia.org/wiki/THE_IDOLM@STERの登場人物",
+   "https://dic.nicovideo.jp/a/アイドルマスター:呼称表",
+   "https://dic.nicovideo.jp/a/水谷絵理"
+  ]
+ },
+ {
+  "idol_id": "876_灯里愛夏",
+  "name": "灯里愛夏",
+  "first_person": [
+   {
+    "form": "私",
+    "scene": "本人台詞"
+   },
+   {
+    "form": "ウチ",
+    "scene": "祖母に言及する場面(一人称かは不明)"
+   }
+  ],
+  "producer_call": "プロデューサーさん",
+  "politeness": "落ち着いているときは敬語、配信ではくだけやすい",
+  "endings": [],
+  "catchphrases": [
+   "やっぴー！"
+  ],
+  "tone_notes": "丁寧だが配信では崩れ、ボケを振る。絵文字多用で「まなおじ」と呼ばれる。",
+  "sources": [
+   "https://dic.nicovideo.jp/a/灯里愛夏"
+  ]
+ }
+]
