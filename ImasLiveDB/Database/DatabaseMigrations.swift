@@ -1269,7 +1269,7 @@ enum DatabaseMigrations {
         // 髪型の一意索引 (main は 1 人 1 つ・label の重複なし) は、起動時にコアのスキーマ適用
         // (applyCoreMasterSchema) が作る。同期で付け替え・label の変更が届いたときに新しい行が弾かれないよう、
         // 取り込み (upsertIdolHairstyles) が衝突する端末の行を先に譲らせる。
-        migrator.registerMigration("v50_idol_facets") { db in
+        migrator.registerMigration("v51_idol_facets") { db in
             try db.create(table: "idol_facets", ifNotExists: true) { t in
                 t.column("id", .text).primaryKey()
                 t.column("idol_id", .text).notNull()

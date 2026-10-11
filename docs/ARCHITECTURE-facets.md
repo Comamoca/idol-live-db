@@ -166,7 +166,7 @@ DDL は [`imas-core/src/domain/master_schema.sql`](../imas-core/src/domain/maste
   `schema_registry.rs` では `Master` (`ddl_reproduces_the_bundled_schema` が `db/master.sql` との一致を固定する)。
   表の無い古い DB に投入するときだけ、`masterdb.ensure_facet_tables` が `master_schema.sql` から 2 表の文を抜いて作る。
 - アプリの同期 (`sync_planning`) は `Idol` の直後に `IdolFacet` → `IdolHairstyle` を取る (`CkRow::IdolFacet` / `IdolHairstyle`)。
-  iOS は GRDB の移行 v50、Android は Room の v38 で表を作る。同梱 DB を持たない古い端末も、次の同期で行が入る。
+  iOS は GRDB の移行 v51、Android は Room の v39 で表を作る。同梱 DB を持たない古い端末も、次の同期で行が入る。
 - Snapshot は `idol_facets` / `idol_hairstyles` を読む (表が無い DB では空)。ブラウザ (wasm) の `tables.json` には配らない。
 
 ## 4. 組み立てと API
