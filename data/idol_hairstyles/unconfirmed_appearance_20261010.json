@@ -1,20 +1,7 @@
 {
- "unconfirmed": "オーナー未確認の 25 人。2026-10-12 の見直しで、タグか Web 検索で裏付けられた子は appearance_20261012.json に移した。残りは各行の note の理由 (主に髪色の境目) で値が決まらない。長さ・髪型は見直しの値に直してある。確認できたら appearance_20261010.json と同じ形のファイルに移して投入する。",
- "_note": "調査の表 data/research/appearance_20261010/idol_appearance_review_20261010.csv のうち確認済みの 234 行に入っていない 111 行。 2026-10-12: 86 人を appearance_20261012.json に移した。",
+ "unconfirmed": "オーナー未確認の 10 人。2026-10-12 の見直しで、タグか Web 検索で裏付けられた子は appearance_20261012.json に移した。残りは各行の note の理由 (主に髪色の境目) で値が決まらない。長さ・髪型は見直しの値に直してある。確認できたら appearance_20261010.json と同じ形のファイルに移して投入する。",
+ "_note": "調査の表 data/research/appearance_20261010/idol_appearance_review_20261010.csv のうち確認済みの 234 行に入っていない 111 行。 2026-10-12: 86 人を appearance_20261012.json に移した。 2026-10-12 (2 回目): Web 検索で 15 人を appearance_unconfirmed_resolved_20261012.json に移した。",
  "idol_hairstyles": [
-  {
-   "idol_id": "cg_相川千夏",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "茶",
-   "hair_length": "ショート",
-   "source": [
-    "https://mzh.moegirl.org.cn/%E7%9B%B8%E5%B7%9D%E5%8D%83%E5%A4%8F",
-    "https://dic.nicovideo.jp/a/%E7%9B%B8%E5%B7%9D%E5%8D%83%E5%A4%8F"
-   ],
-   "source_note": "髪色は萌娘百科で棕发。黒に近い濃い茶の可能性あり。ニコニコ大百科でショートカット&眼鏡",
-   "note": "確認待ちに残す理由: 髪色: 茶か、黒に近い濃い茶か (色のタグが無く裏付けできない)"
-  },
   {
    "idol_id": "cg_相葉夕美",
    "label": "基本",
@@ -26,7 +13,7 @@
     "https://dic.nicovideo.jp/a/%E7%9B%B8%E8%91%89%E5%A4%95%E7%BE%8E"
    ],
    "source_note": "萌娘百科は金发、別情報は茶/金で割れる。薄い茶〜金の境目で要確認",
-   "note": "確認待ちに残す理由: 髪色: 茶か金かで資料が割れる"
+   "note": "確認待ちに残す理由 (2026-10-12 Web検索): 髪色の文章は萌娘百科の「金色短发」だけ。Wikipedia・ニコニコ大百科・ピクシブ百科事典・アニヲタWiki は髪色を書いていない。長さはショートで一致"
   },
   {
    "idol_id": "cg_浅利七海",
@@ -43,54 +30,7 @@
     "https://w.atwiki.jp/aniwotawiki/pages/39483.html"
    ],
    "source_note": "萌娘百科は蓝发。水色/青の境目。卷发。ほかの結び方は未確認 / 2026-10-12 見直し: 長さ ボブ〜ミディアム→ロング (Web検索)",
-   "note": "確認待ちに残す理由: 髪色: 水色か青かの境目"
-  },
-  {
-   "idol_id": "cg_アナスタシア",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "白・銀",
-   "hair_length": "ショート",
-   "styles": [
-    "ストレート"
-   ],
-   "source": [
-    "https://mzh.moegirl.org.cn/%E3%82%A2%E3%83%8A%E3%82%B9%E3%82%BF%E3%82%B7%E3%82%A2",
-    "https://dic.nicovideo.jp/a/%E3%82%A2%E3%83%8A%E3%82%B9%E3%82%BF%E3%82%B7%E3%82%A2",
-    "https://neoapo.com/characters/20271"
-   ],
-   "source_note": "銀髪はマンガペディア/ニコニコ等の記述。長さと型は立ち絵に基づく判断で要確認 / 2026-10-12 見直し: 長さ ロング→ショート (Web検索)",
-   "note": "確認待ちに残す理由: 髪型: ストレートは立ち絵の判断だけ (タグ・Web検索で裏付けが無い)"
-  },
-  {
-   "idol_id": "cg_安斎都",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "赤",
-   "hair_length": "ショート",
-   "source": [
-    "https://mzh.moegirl.org.cn/%E5%AE%89%E6%96%8E%E9%83%BD",
-    "https://dic.nicovideo.jp/a/%E5%AE%89%E6%96%8E%E9%83%BD"
-   ],
-   "source_note": "萌娘百科は红发。赤茶系で赤/茶の境目。短发",
-   "note": "確認待ちに残す理由: 髪色: 赤か茶かの境目"
-  },
-  {
-   "idol_id": "cg_梅木音葉",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "金",
-   "hair_length": "ショート",
-   "styles": [
-    "外はね"
-   ],
-   "source": [
-    "https://mzh.moegirl.org.cn/%E6%A2%85%E6%9C%A8%E9%9F%B3%E8%91%89",
-    "https://dic.nicovideo.jp/a/%E6%A2%85%E6%9C%A8%E9%9F%B3%E8%91%89",
-    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
-   ],
-   "source_note": "萌娘百科: 金发、短发。淡い金〜ベージュ寄りの可能性 / 2026-10-12 見直し: 髪型 空→外はね (タグ)",
-   "note": "確認待ちに残す理由: 髪色: 金か、ベージュ寄りか"
+   "note": "確認待ちに残す理由 (2026-10-12 Web検索): 髪色の文章は萌娘百科・biligame (同じ系統) の「蓝色长卷发」だけで、中国語の蓝は水色と青を分けない。日本語の wiki に髪色の記述なし"
   },
   {
    "idol_id": "cg_大石泉",
@@ -106,7 +46,7 @@
     "https://dic.nicovideo.jp/a/%E5%A4%A7%E7%9F%B3%E6%B3%89"
    ],
    "source_note": "萌娘百科は墨绿发(暗い緑)。黒に見える可能性もあり緑/黒の境目。长直",
-   "note": "確認待ちに残す理由: 髪色: 緑か黒かの境目"
+   "note": "確認待ちに残す理由 (2026-10-12 Web検索): 髪色の文章が見つからない (ニコニコ・ピクシブ・アニヲタWiki・biligame とも無し。萌娘百科は以前の墨绿发)。biligame の萌点で长直"
   },
   {
    "idol_id": "cg_岡崎泰葉",
@@ -120,7 +60,7 @@
     "https://dic.nicovideo.jp/a/%E5%B2%A1%E5%B4%8E%E6%B3%B0%E8%91%89"
    ],
    "source_note": "萌娘百科は蓝发(黒に近い暗色の可能性)。黒か青系か要確認。短发・齐刘海",
-   "note": "確認待ちに残す理由: 髪色: 黒か青系か"
+   "note": "確認待ちに残す理由 (2026-10-12 Web検索): 資料が割れる。アニヲタWiki「肩上で切られた黒髪」に対し、萌娘百科 发色: 蓝发、ピクシブ百科事典の関連語に「青髪」「おかっぱ」"
   },
   {
    "idol_id": "cg_緒方智絵里",
@@ -137,47 +77,7 @@
     "https://dic.nicovideo.jp/a/%E7%B7%92%E6%96%B9%E6%99%BA%E7%B5%B5%E9%87%8C"
    ],
    "source_note": "萌娘百科は酒红发。赤/茶の境目。長さ要確認",
-   "note": "確認待ちに残す理由: 髪色: 赤か茶かの境目"
-  },
-  {
-   "idol_id": "cg_乙倉悠貴",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "白・銀",
-   "hair_length": "ショート",
-   "source": [
-    "https://mzh.moegirl.org.cn/%E4%B9%99%E5%80%89%E6%82%A0%E8%B2%B4",
-    "https://dic.nicovideo.jp/a/%E4%B9%99%E5%80%89%E6%82%A0%E8%B2%B4"
-   ],
-   "source_note": "萌娘百科は灰发のみが根拠。灰か薄い茶か要確認。短发",
-   "note": "確認待ちに残す理由: 髪色: 灰か薄い茶か"
-  },
-  {
-   "idol_id": "cg_キャシー_グラハム",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "金",
-   "hair_length": "ショート",
-   "source": [
-    "https://mzh.moegirl.org.cn/%E3%82%AD%E3%83%A3%E3%82%B7%E3%83%BC%E3%83%BB%E3%82%B0%E3%83%A9%E3%83%8F%E3%83%A0",
-    "https://dic.nicovideo.jp/a/%E3%82%AD%E3%83%A3%E3%82%B7%E3%83%BC%E3%83%BB%E3%82%B0%E3%83%A9%E3%83%8F%E3%83%A0"
-   ],
-   "source_note": "ニコニコ大百科でショートの金髪。萌娘百科は橙发で金/オレンジの境目",
-   "note": "確認待ちに残す理由: 髪色: 金かオレンジかの境目"
-  },
-  {
-   "idol_id": "cg_黒埼ちとせ",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "金",
-   "hair_length": "ロング",
-   "bangs": "片目隠れ",
-   "source": [
-    "https://mzh.moegirl.org.cn/%E9%BB%92%E5%9F%BC%E3%81%A1%E3%81%A8%E3%81%9B",
-    "https://dic.nicovideo.jp/a/%E9%BB%92%E5%9F%BC%E3%81%A1%E3%81%A8%E3%81%9B"
-   ],
-   "source_note": "萌娘百科: 金发、超长发・遮眼发。淡い金/銀寄りの可能性あり",
-   "note": "確認待ちに残す理由: 髪色: 金か銀寄りか"
+   "note": "確認待ちに残す理由 (2026-10-12 Web検索): 資料が割れる。萌娘百科 发色: 酒红发 に対し、biligame「棕色双马尾」。日本語の wiki に髪色の記述なし"
   },
   {
    "idol_id": "cg_古賀小春",
@@ -190,61 +90,7 @@
     "https://dic.nicovideo.jp/a/%E5%8F%A4%E8%B3%80%E5%B0%8F%E6%98%A5"
    ],
    "source_note": "萌娘百科: 金发、短发・M形刘海。淡い金/茶の境目",
-   "note": "確認待ちに残す理由: 髪色: 金か茶かの境目"
-  },
-  {
-   "idol_id": "cg_小早川紗枝",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "黒",
-   "hair_length": "ロング",
-   "styles": [
-    "姫カット"
-   ],
-   "source": [
-    "https://mzh.moegirl.org.cn/%E5%B0%8F%E6%97%A9%E5%B7%9D%E7%B4%97%E6%9E%9D",
-    "https://dic.nicovideo.jp/a/%E5%B0%8F%E6%97%A9%E5%B7%9D%E7%B4%97%E6%9E%9D"
-   ],
-   "source_note": "萌娘百科は灰发。黒か灰か要確認。长直・姬发式",
-   "note": "確認待ちに残す理由: 髪色: 黒か灰か"
-  },
-  {
-   "idol_id": "gakuen_有村麻央",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "ピンク",
-   "hair_length": "ショート",
-   "bangs": "片目隠れ",
-   "source": "https://safebooru.org/index.php?page=post&s=list&tags=arimura_mao (solo タグ集計)",
-   "source_note": "pink 175/200、short 158。hair_over_one_eye 55 で片目隠れは約 1/4 だが特徴的なので付けた。要目視; 長さのタグが複数 (ショート/ボブ〜ミディアム)。調査の生の値の ショート を採用",
-   "note": "確認待ちに残す理由: 前髪: 片目隠れは全体の約 1/4 で要目視"
-  },
-  {
-   "idol_id": "gakuen_姫崎莉波",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "茶",
-   "hair_length": "ロング",
-   "styles": [
-    "お団子"
-   ],
-   "source": "https://safebooru.org/index.php?page=post&s=list&tags=himesaki_rinami (solo タグ集計)",
-   "source_note": "brown 185/200、long 152、hair_bun 51。お団子は全体の1/4で衣装差の可能性。要目視",
-   "note": "確認待ちに残す理由: 髪型: お団子が衣装差の可能性"
-  },
-  {
-   "idol_id": "gakuen_月村手毬",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "緑",
-   "hair_length": "ロング",
-   "styles": [
-    "ストレート",
-    "アホ毛"
-   ],
-   "source": "https://safebooru.org/index.php?page=post&s=list&tags=tsukimura_temari (solo タグ集計)",
-   "source_note": "green 141/200、black 18、blue 17。antenna_hair 44 + ahoge 13。黒緑なので要目視",
-   "note": "確認待ちに残す理由: 髪色: 緑か黒か (黒緑) で要目視"
+   "note": "確認待ちに残す理由 (2026-10-12 Web検索): 髪色が文章でも決まらない。ピクシブ百科事典「亜麻色のショートヘアー」、萌娘百科 发色: 金发。亜麻色は金と茶の間。長さも Wikipedia「ボブヘアーの少女」・アニヲタWiki「ボブカット」でボブ〜ミディアムの可能性"
   },
   {
    "idol_id": "876_上水流宇宙",
@@ -263,7 +109,7 @@
     "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
    ],
    "source_note": "solo 9 件のみで低信頼。purple 9/9、毛先が青系グラデ(gradient 4, multicolored 5)。要目視 / 2026-10-12 見直し: 髪型 空→三つ編み・編み込み (タグ)",
-   "note": "確認待ちに残す理由: 標本 9 件だけで低信頼 (色・長さとも要目視)"
+   "note": "確認待ちに残す理由 (2026-10-12 Web検索): ピクシブ百科事典だけが「青い髪のロングのストレートヘア」「水色の髪留めリボン」と書き、下書きの紫・三つ編みと食い違う。ほかの wiki に記述なし (色は青の可能性が高い)"
   },
   {
    "idol_id": "876_灯里愛夏",
@@ -276,7 +122,7 @@
     "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
    ],
    "source_note": "萌娘百科の検索要約に「红发・白发(渐变)」とあるのみ。safebooru にタグ無し。長さ・髪型は不明。要目視 / 2026-10-12 見直し: 長さ 空→ボブ〜ミディアム (タグ)",
-   "note": "確認待ちに残す理由: 髪色の出典が検索結果の要約だけ"
+   "note": "確認待ちに残す理由 (2026-10-12 Web検索): 髪の文章が見つからない (ピクシブ百科事典にも記述なし)。髪色の出典は萌娘百科の検索要約だけのまま"
   },
   {
    "idol_id": "876_サラ_レトラ_オリヴェイラ_ウタガワ",
@@ -292,59 +138,7 @@
     "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
    ],
    "source_note": "萌娘百科(蕾特拉)の検索要約に「黄发挑染」とあるのみ。長さは不明。safebooru にタグ無し。要目視; 髪色2色以上 (2色目は未入力。調査の生の値: 金//メッシュ) / 2026-10-12 見直し: 長さ 空→ショート (タグ)、髪型 空→三つ編み・編み込み (タグ)",
-   "note": "確認待ちに残す理由: 髪色の出典が検索結果の要約だけ"
-  },
-  {
-   "idol_id": "cg_イヴ_サンタクロース",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "白・銀",
-   "hair_length": "ロング",
-   "styles": [
-    "ストレート"
-   ],
-   "source": "https://safebooru.org/index.php?page=post&s=list&tags=eve_santaclaus (solo タグ集計)",
-   "source_note": "white 44 / silver 20 /78。白は選択肢に無いので銀(白銀)。long 70。ストレートは 3 件のみで記憶ベース",
-   "note": "確認待ちに残す理由: 髪型: ストレートは記憶ベース (3 件のみ)"
-  },
-  {
-   "idol_id": "cg_ケイト",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "茶",
-   "hair_length": "ボブ〜ミディアム",
-   "styles": [
-    "ウェーブ"
-   ],
-   "source": [
-    "https://safebooru.org/index.php?page=post&s=list&tags=kate_(idolmaster) (solo タグ集計)",
-    "derived:ファンのタグ (data/research/appearance_20261010/hair_tags_production_snapshot_20261010.json)"
-   ],
-   "source_note": "solo 18 件。brown 18、short 8 / medium 1(残りは未タグ)。wavy 2 件。要目視 / 2026-10-12 見直し: 長さ ショート→ボブ〜ミディアム (タグ)",
-   "note": "確認待ちに残す理由: 髪型: ウェーブは標本 2 件だけ"
-  },
-  {
-   "idol_id": "765as_玲音",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "オレンジ",
-   "hair_length": "ロング",
-   "styles": [
-    "ポニーテール"
-   ],
-   "source": "https://safebooru.org/index.php?page=post&s=list&tags=leon_(idolmaster) (solo タグ集計)",
-   "source_note": "solo 9 件のみで低信頼。orange 6、ponytail 6、long 9。要目視",
-   "note": "確認待ちに残す理由: 標本 9 件だけで低信頼"
-  },
-  {
-   "idol_id": "sc_和泉愛依",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "茶",
-   "hair_length": "ロング",
-   "source": "https://mzh.moegirl.org.cn/%E5%92%8C%E6%B3%89%E7%88%B1%E4%BE%9D (萌点・発色) ; https://safebooru.org/index.php?page=post&s=list&tags=izumi_mei+solo (タグ集計)",
-   "source_note": "茶107/金102でほぼ同数(multicolored 103、gradient 95)。金〜茶のグラデーション。萌娘百科は棕发・渐变色发。金とする見方もあり要目視; 髪色2色以上 (2色目は未入力。調査の生の値: 茶/ロング/ツートン)",
-   "note": "確認待ちに残す理由: 髪色: 茶か金か (グラデーション)"
+   "note": "確認待ちに残す理由 (2026-10-12 Web検索): ピクシブ百科事典「金髪に青と赤のメッシュが入ったプリン頭」だけ (独立した 2 つ目の資料が無い)。金は合っている見込み。メッシュは青と赤の 2 色"
   },
   {
    "idol_id": "sc_浅倉透",
@@ -357,7 +151,7 @@
    ],
    "source": "https://mzh.moegirl.org.cn/%E6%B5%85%E4%BB%93%E9%80%8F (萌点・発色) ; https://safebooru.org/index.php?page=post&s=list&tags=asakura_tooru+solo (タグ集計)",
    "source_note": "青128/茶59/紫59/黒42で割れた。multicolored151・gradient133。萌娘百科は褐，青・内层挑染。黒〜濃紺に見える絵もあり要目視。ショート153; 髪色2色以上 (2色目は未入力。調査の生の値: 青/ショート/アホ毛,メッシュ)",
-   "note": "確認待ちに残す理由: 髪色: 青か黒〜濃紺かで割れる"
+   "note": "確認待ちに残す理由 (2026-10-12 Web検索): 資料が割れる。ピクシブ百科事典「紫から青へのグラデーションが掛かった髪色」、萌娘百科 发色: 褐，青 (内层挑染)。黒〜濃紺とする文章は無いが、主の色が決まらない"
   }
  ]
 }
