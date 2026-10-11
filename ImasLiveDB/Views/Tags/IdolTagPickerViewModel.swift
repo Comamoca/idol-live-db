@@ -8,14 +8,11 @@ import Observation
 final class IdolTagPickerViewModel {
     let idolId: String
 
-    private(set) var tags: [CommunityTag] = []
-    /// `tags` をカテゴリごとにまとめたもの (検索していないときの見出し分け)。まとめ方はコア。
-    var categoryGroups: [(label: String, tags: [CommunityTag])] {
-        let byId = Dictionary(tags.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
-        let groups = idolTagCategoryGroups(tags: tags.map {
-            TagCategoryInput(id: $0.id, category: $0.category?.rawValue)
-        })
-        return groups.map { group in (group.label, group.tagIds.compactMap { byId[$0] }) }
+    /// 候補の全件 (人気順)。検索欄の絞り込みは `pool.matching` で手元で行う (`TagSearchPool`)。
+    private(set) var pool = TagSearchPool()
+    /// 候補をカテゴリごとにまとめたもの (検索していないときの見出し分け)。まとめ方はコア。
+    var categoryGroups: [TagCategorySection] {
+        pool.all.groupedByCategory { idolTagCategoryGroups(tags: $0) }
     }
     private(set) var myTagIds: Set<String> = []
     private(set) var isLoading = false
@@ -24,9 +21,6 @@ final class IdolTagPickerViewModel {
 
     private let tagReading: any CommunityTagReading
     private let tagWriting: any CommunityTagWriting
-    /// 検索デバウンス用の世代 ID (古い Task の結果が新しい入力を上書きしないためのガード)。
-    private var loadToken = 0
-
     /// View の init (nonisolated) から生成できるよう init も nonisolated にする。
     nonisolated init(
         idolId: String,
@@ -43,32 +37,15 @@ final class IdolTagPickerViewModel {
         defer { isLoading = false }
         async let tagResult = tagReading.idolTagCatalog(search: "", category: "", sort: "popular")
         async let idolTagResult = tagReading.idolTags(idolId: idolId)
-        tags = (try? await tagResult) ?? []
+        pool.replace((try? await tagResult) ?? [])
         if let result = try? await idolTagResult {
             myTagIds = Set(result.myTagIds)
         }
     }
 
-    /// 入力中の連打を抑えるための簡易デバウンス + 古い結果で新しい入力を上書きしないための世代ガード
-    /// (SongTagPickerViewModel.scheduleSearch と同方式)。
-    func scheduleSearch(_ searchText: String) {
-        loadToken += 1
-        let token = loadToken
-        Task {
-            try? await Task.sleep(nanoseconds: 200_000_000)
-            guard token == loadToken else { return }
-            await search(searchText)
-        }
-    }
-
-    private func search(_ searchText: String) async {
-        let result = (try? await tagReading.idolTagCatalog(search: searchText, category: "", sort: "popular")) ?? []
-        tags = result
-    }
-
     /// 新規タグ作成直後に候補一覧の先頭へ即時反映する。
     func insertCreated(_ tag: CommunityTag) {
-        tags.insert(tag, at: 0)
+        pool.insert(tag)
     }
 
     /// 選択タグをまとめて付与する。成功可否を返す。

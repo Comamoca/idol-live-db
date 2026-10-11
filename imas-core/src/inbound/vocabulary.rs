@@ -34,6 +34,15 @@ pub fn idol_tag_category_groups(tags: Vec<TagCategoryInput>) -> Vec<domain::TagC
     domain::group_tags_by_category(&domain::IDOL_TAG_CATEGORIES, &pairs)
 }
 
+/// 曲のタグをカテゴリごとにまとめる (タグを選ぶ画面・タグ一覧の見出し分け)。
+/// 並びは曲のタグのカテゴリの語彙の順 (ムード → シーン → 特別 → フリー)、最後に「その他」。
+/// 各まとまりの中は渡した順のまま。
+#[uniffi::export]
+pub fn song_tag_category_groups(tags: Vec<TagCategoryInput>) -> Vec<domain::TagCategoryGroup> {
+    let pairs: Vec<(String, Option<String>)> = tags.into_iter().map(|t| (t.id, t.category)).collect();
+    domain::group_tags_by_category(&domain::SONG_TAG_CATEGORIES, &pairs)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -54,5 +63,18 @@ mod tests {
             TagCategoryInput { id: "b".into(), category: None },
         ]);
         assert_eq!(g.iter().map(|g| g.label.as_str()).collect::<Vec<_>>(), vec!["魅力・外見", "その他"]);
+    }
+
+    #[test]
+    fn song_tag_category_groups_follow_song_vocabulary() {
+        let g = song_tag_category_groups(vec![
+            TagCategoryInput { id: "a".into(), category: Some("free".into()) },
+            TagCategoryInput { id: "b".into(), category: Some("mood".into()) },
+            TagCategoryInput { id: "c".into(), category: Some("charm".into()) },
+            TagCategoryInput { id: "d".into(), category: Some("mood".into()) },
+        ]);
+        assert_eq!(g.iter().map(|g| g.label.as_str()).collect::<Vec<_>>(), vec!["ムード", "フリー", "その他"]);
+        assert_eq!(g[0].tag_ids, vec!["b".to_string(), "d".to_string()], "まとまりの中は渡した順");
+        assert_eq!(g[2].tag_ids, vec!["c".to_string()], "曲の語彙に無いカテゴリはその他");
     }
 }

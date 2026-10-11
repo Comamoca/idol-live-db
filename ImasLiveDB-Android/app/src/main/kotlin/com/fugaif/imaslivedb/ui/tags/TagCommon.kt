@@ -9,6 +9,8 @@ import com.fugaif.imaslivedb.data.community.CommunityApi
 import com.fugaif.imaslivedb.data.model.Vocab
 import com.fugaif.imaslivedb.ui.designsystem.ImasFilterChip
 import com.fugaif.imaslivedb.ui.theme.hexToColor
+import uniffi.imas_core.TagCategoryGroup
+import uniffi.imas_core.TagCategoryInput
 import uniffi.imas_core.VocabularyTerm
 
 // タグ画面群 (TagListScreen / TagDetailScreen / TagCreateSheet / TagEditSheet / TagFilterSheet /
@@ -46,6 +48,30 @@ fun idolTagCategoryLabel(category: String?): String =
 
 fun unitTagCategoryLabel(category: String?): String =
     TAG_CATEGORIES_UNIT.firstOrNull { it.first == category }?.second ?: (category ?: "")
+
+/** タグの見出し分けの 1 まとまり (見出しと、その中のタグ)。iOS `TagCategorySection`。 */
+data class TagCategorySection(
+    /** カテゴリの生値。カテゴリの無いタグのまとまりは空文字。 */
+    val category: String,
+    val label: String,
+    val tags: List<CommunityApi.CommunityTag>
+)
+
+/**
+ * カテゴリごとにまとめる。まとめ方 (並び・「その他」) はコアの [grouper]
+ * (`songTagCategoryGroups` 等) が決め、各まとまりの中は今の並びのまま。
+ */
+fun List<CommunityApi.CommunityTag>.groupedByCategory(
+    grouper: (List<TagCategoryInput>) -> List<TagCategoryGroup>
+): List<TagCategorySection> {
+    val byId = associateBy { it.id }
+    return grouper(map { TagCategoryInput(it.id, it.category) }).map { group ->
+        TagCategorySection(group.category, group.label, group.tagIds.mapNotNull { byId[it] })
+    }
+}
+
+/** タグの一覧の並べ方。1 本の一覧 (今の並び順のまま) か、カテゴリごとの見出しに分けるか。iOS `TagListLayout`。 */
+enum class TagListLayout(val label: String) { FLAT("一覧"), BY_CATEGORY("カテゴリ別") }
 
 /**
  * タグピッカー (曲・アイドル・ユニット) 共通のタグ選択チップ (iOS `TagSelectChip`)。

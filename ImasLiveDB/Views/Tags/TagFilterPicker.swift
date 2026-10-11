@@ -6,16 +6,22 @@ struct TagFilterPicker: View {
     @Environment(\.dismiss) private var dismiss
     let onDone: ([CommunityTag]) -> Void
 
-    @State private var tags: [CommunityTag] = []
+    /// 候補の全件 (人気順)。検索欄は手元で絞る (`TagSearchPool`)。
+    @State private var pool = TagSearchPool()
     /// 選択中タグ。検索で一覧から消えても保持するため id ではなくオブジェクトで持つ。
     @State private var selected: [CommunityTag]
     @State private var query = ""
     @State private var isLoading = true
+    /// 検索していないときの並べ方 (人気タグランキング / カテゴリ別)。
+    @State private var layout: TagListLayout = .flat
 
     init(initialSelection: [CommunityTag], onDone: @escaping ([CommunityTag]) -> Void) {
         self.onDone = onDone
         _selected = State(initialValue: initialSelection)
     }
+
+    private var trimmedQuery: String { query.trimmingCharacters(in: .whitespaces) }
+    private var candidates: [CommunityTag] { pool.matching(trimmedQuery) }
 
     private func isSelected(_ tag: CommunityTag) -> Bool {
         selected.contains { $0.id == tag.id }
@@ -42,16 +48,30 @@ struct TagFilterPicker: View {
                     }
                     .listRowInsets(EdgeInsets())
                 }
-                ImasListSection(query.isEmpty ? "人気タグランキング" : "検索結果") {
-                    if isLoading {
-                        ImasInlineLoading()
-                            .listRowBackground(Color.clear)
-                    } else if tags.isEmpty {
-                        ImasEmptyState(.empty, title: "タグがありません")
-                            .listRowBackground(DS.surface)
-                    } else {
-                        ForEach(Array(tags.enumerated()), id: \.element.id) { idx, tag in
-                            tagRow(tag, rank: idx + 1)
+                if trimmedQuery.isEmpty {
+                    ImasTabs(options: TagListLayout.allCases, selection: $layout) { $0.label }
+                        .listRowInsets(EdgeInsets(top: 0, leading: DS.Space.screen, bottom: 0, trailing: DS.Space.screen))
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                }
+                if isLoading {
+                    ImasInlineLoading()
+                        .listRowBackground(Color.clear)
+                } else if candidates.isEmpty {
+                    ImasEmptyState(.empty, title: "タグがありません")
+                        .listRowBackground(DS.surface)
+                } else if trimmedQuery.isEmpty && layout == .byCategory {
+                    // カテゴリ (ムード・シーン …) ごとに見出しを分ける。中は人気順。
+                    ForEach(candidates.groupedByCategory { songTagCategoryGroups(tags: $0) }) { group in
+                        ImasListSection(group.label, count: "\(group.tags.count)") {
+                            ForEach(group.tags) { tag in tagRow(tag, rank: nil) }
+                        }
+                    }
+                } else {
+                    ImasListSection(trimmedQuery.isEmpty ? "人気タグランキング" : "検索結果") {
+                        ForEach(Array(candidates.enumerated()), id: \.element.id) { idx, tag in
+                            // 検索していない時は人気順そのものなので順位バッジを出す。
+                            tagRow(tag, rank: trimmedQuery.isEmpty ? idx + 1 : nil)
                         }
                     }
                 }
@@ -67,19 +87,19 @@ struct TagFilterPicker: View {
                 onDone(selected)
                 dismiss()
             }))
-            .task(id: query) { await load() }
+            .task { await load() }
             .trackScreen("tag_filter")
         }
     }
 
-    /// タグ候補 1 行。検索していない時は人気順そのものなので順位バッジを出す。
-    private func tagRow(_ tag: CommunityTag, rank: Int) -> some View {
+    /// タグ候補 1 行。`rank` があれば順位バッジを出す。
+    private func tagRow(_ tag: CommunityTag, rank: Int?) -> some View {
         Button {
             AppAnalytics.tap("tag_filter.toggle_tag")
             toggle(tag)
         } label: {
             HStack(spacing: DS.Space.gapTight) {
-                if query.isEmpty { ImasRankBadge(rank: rank) }
+                if let rank { ImasRankBadge(rank: rank) }
                 ImasRow(
                     title: tag.name,
                     leading: tag.color.map { .custom(AnyView(ImasSwatch(hex: $0.rawValue, size: .small)), width: 16) } ?? .none,
@@ -93,9 +113,11 @@ struct TagFilterPicker: View {
         .sensoryFeedback(.selection, trigger: isSelected(tag))
     }
 
+    /// 全件を 1 回だけ取る。検索欄の絞り込みは手元 (`pool.matching`) なので、打鍵ごとには取り直さない
+    /// (古い語の応答が後から届いて、消した後の一覧を上書きすることが無い)。
     private func load() async {
         isLoading = true
         defer { isLoading = false }
-        tags = (try? await AppContainer.shared.communityTagReading.tags(search: query, category: "", sort: "popular")) ?? []
+        pool.replace((try? await AppContainer.shared.communityTagReading.tags(search: "", category: "", sort: "popular")) ?? [])
     }
 }

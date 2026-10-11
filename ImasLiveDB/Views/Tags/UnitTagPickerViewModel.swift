@@ -8,7 +8,8 @@ import Observation
 final class UnitTagPickerViewModel {
     let unitId: String
 
-    private(set) var tags: [CommunityTag] = []
+    /// 候補の全件 (人気順)。検索欄の絞り込みは `pool.matching` で手元で行う (`TagSearchPool`)。
+    private(set) var pool = TagSearchPool()
     private(set) var myTagIds: Set<String> = []
     private(set) var isLoading = false
     private(set) var isApplying = false
@@ -16,9 +17,6 @@ final class UnitTagPickerViewModel {
 
     private let tagReading: any CommunityTagReading
     private let tagWriting: any CommunityTagWriting
-    /// 検索デバウンス用の世代 ID (古い Task の結果が新しい入力を上書きしないためのガード)。
-    private var loadToken = 0
-
     /// View の init (nonisolated) から生成できるよう init も nonisolated にする。
     nonisolated init(
         unitId: String,
@@ -35,32 +33,15 @@ final class UnitTagPickerViewModel {
         defer { isLoading = false }
         async let tagResult = tagReading.unitTagCatalog(search: "", category: "", sort: "popular")
         async let unitTagResult = tagReading.unitTags(unitId: unitId)
-        tags = (try? await tagResult) ?? []
+        pool.replace((try? await tagResult) ?? [])
         if let result = try? await unitTagResult {
             myTagIds = Set(result.myTagIds)
         }
     }
 
-    /// 入力中の連打を抑えるための簡易デバウンス + 古い結果で新しい入力を上書きしないための世代ガード
-    /// (SongTagPickerViewModel.scheduleSearch と同方式)。
-    func scheduleSearch(_ searchText: String) {
-        loadToken += 1
-        let token = loadToken
-        Task {
-            try? await Task.sleep(nanoseconds: 200_000_000)
-            guard token == loadToken else { return }
-            await search(searchText)
-        }
-    }
-
-    private func search(_ searchText: String) async {
-        let result = (try? await tagReading.unitTagCatalog(search: searchText, category: "", sort: "popular")) ?? []
-        tags = result
-    }
-
     /// 新規タグ作成直後に候補一覧の先頭へ即時反映する。
     func insertCreated(_ tag: CommunityTag) {
-        tags.insert(tag, at: 0)
+        pool.insert(tag)
     }
 
     /// 選択タグをまとめて付与する。成功可否を返す。
