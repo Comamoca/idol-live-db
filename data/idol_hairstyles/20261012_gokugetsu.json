@@ -1,0 +1,68 @@
+{
+ "_note": "極月学園の 4 人の基本の髪型。公式 X「極月学園 アイドル紹介 (1/4)〜(4/4)」の立ち絵を見て起こした。",
+ "idol_hairstyles": [
+  {
+   "idol_id": "gakuen_賀陽燐羽",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "紫",
+   "hair_length": "ロング",
+   "styles": [
+    "ツインテール",
+    "三つ編み・編み込み",
+    "アホ毛"
+   ],
+   "accessories": [
+    "その他の髪飾り"
+   ],
+   "source": "https://x.com/gkmas_official/status/1867170916213625339",
+   "source_note": "紫のツインテール。片側のこめかみに細い編み込み、蝶の髪飾り"
+  },
+  {
+   "idol_id": "gakuen_藍井撫子",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "ピンク",
+   "hair_length": "ボブ〜ミディアム",
+   "styles": [
+    "ツインテール",
+    "ウェーブ"
+   ],
+   "accessories": [
+    "リボン"
+   ],
+   "source": "https://x.com/gkmas_official/status/1867171802780467620",
+   "source_note": "ピンクの巻き髪ツインテール、黒いリボン"
+  },
+  {
+   "idol_id": "gakuen_白草四音",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "黒",
+   "hair_color_secondary": "赤",
+   "hair_length": "ロング",
+   "styles": [
+    "ストレート",
+    "三つ編み・編み込み"
+   ],
+   "bangs": "ぱっつん",
+   "accessories": [
+    "リボン"
+   ],
+   "source": "https://x.com/gkmas_official/status/1867172254590914641",
+   "source_note": "黒髪に赤のメッシュ (インナー)。頭頂の編み込み、赤いリボン"
+  },
+  {
+   "idol_id": "gakuen_白草月花",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "白・銀",
+   "hair_length": "ロング",
+   "styles": [
+    "ストレート"
+   ],
+   "source": "https://x.com/gkmas_official/status/1867172776953700408",
+   "source_note": "銀髪のロング。無造作に下ろしている"
+  }
+ ]
+}
