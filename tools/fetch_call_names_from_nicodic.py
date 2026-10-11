@@ -55,6 +55,17 @@ ALIASES = {
     "エミリー": "ml_エミリースチュアート",
 }
 
+# 表の列ずれで「相手を呼ぶ欄に自分の名前」が入ってしまう組 (呼ぶ側, 相手, 表の値) → (正しい呼び方, 出典)。
+# 2026-10-12 に表の反対側のセル・シャニマス攻略 Wiki の呼称一覧・im@sparql と突き合わせて確かめた。
+# 確かめられない組は直さずに落とす (imas-core の personas.rs のテストが、自分の下の名前で相手を呼ぶ行を止める)。
+WIKIWIKI_SC = "https://wikiwiki.jp/shinycolors/アイドル呼称一覧"
+CORRECTIONS = {
+    ("sc_白瀬咲耶", "sc_田中摩美々", "咲耶"): ("摩美々", None),
+    ("sc_八宮めぐる", "765as_我那覇響", "めぐる"): ("響", None),
+    ("sc_杜野凛世", "sc_西城樹里", "凛世"): ("樹里さん", None),
+    ("sc_緋田美琴", "sc_七草にちか", "美琴"): ("にちかちゃん", WIKIWIKI_SC),
+}
+
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
 LINE_BREAK_TAGS = {"br", "div", "p", "li"}
 
@@ -303,7 +314,8 @@ def main():
                 unmatched.add((title, who, label, "／".join(called), reason))
                 continue
             for c in called:
-                new_rows.add((src, dest, c, url))
+                fixed = CORRECTIONS.get((src, dest, c))
+                new_rows.add((src, dest, fixed[0], fixed[1] or url) if fixed else (src, dest, c, url))
             ok += 1
         per_page[title] = (ok, bad)
 
@@ -311,8 +323,8 @@ def main():
     rows = set()
     for r in existing:
         source = r.get("source", SPARQL_SOURCE)
-        if source.startswith(NICODIC):
-            continue  # 大百科の行は毎回作り直す
+        if source.startswith(NICODIC) or source == WIKIWIKI_SC:
+            continue  # 大百科の行 (と、その直し) は毎回作り直す
         rows.add((r["from"], r["to"], r["called"], source))
     sparql_rows = set(rows)
     rows |= new_rows
