@@ -6,6 +6,8 @@ imas-core (`agent::tools::speech`) がアプリに同梱して読む。DB や Cl
 - `<brand>.json` — 1 人ずつ出典を確かめた話し方。`idol_id` / `name` / `first_person` /
   `producer_call` / `politeness` / `endings` / `catchphrases` / `tone_notes` / `sources` の配列。
   一人称・呼び方は文字列 / 文字列の配列 / `{form, scene}` の配列のどれでもよい。
+  元の資料と呼称表で食い違う場合は、両方を配列に並べる (先頭が元の資料の値)。
+  「○○」はプレイヤーが付ける名前 (例「○○さん」=プレイヤー名+さん)。
   ブランドを足したら `imas-core/src/agent/tools/speech.rs` の `PERSONA_FILES` に 1 行足す。
 - `call_names.json` — 誰が誰をどう呼ぶか (`from` / `to` (`producer` はプロデューサー、`from` と同じ id は
   一人称) / `called` / `source`)。`source` は行の出どころの URL で、2 種類ある。

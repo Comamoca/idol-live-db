@@ -3,11 +3,15 @@
   "idol_id": "cg_アナスタシア",
   "name": "アナスタシア",
   "first_person": "私",
-  "producer_call": "貴方 / ○○プロデューサー",
+  "producer_call": [
+   "プロデューサー",
+   "貴方",
+   "○○プロデューサー"
+  ],
   "politeness": "丁寧語中心。ロシア語で言ってから、たどたどしい日本語で言い直す",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "落ち着いて真面目。ロシア語を先に言ってから日本語で言い直す癖がある。ためらいの「ンー…」が入る。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "落ち着いて真面目。ロシア語を先に言ってから日本語で言い直す癖がある。ためらいの「ンー…」が入る。",
   "sources": [
    "https://dic.nicovideo.jp/a/アナスタシア(アイドルマスター)",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -38,7 +42,10 @@
   "idol_id": "cg_ヘレン",
   "name": "ヘレン",
   "first_person": "私",
-  "producer_call": "○○",
+  "producer_call": [
+   "あなた",
+   "○○"
+  ],
   "politeness": "対等〜上から目線の言い切り調",
   "endings": [
    "〜わ",
@@ -49,7 +56,7 @@
    "世界レベル",
    "証明してあげる"
   ],
-  "tone_notes": "自信満々で大言壮語。女性的な言い切り調で「世界レベル」を連発する。 別の資料では、プロデューサーの呼び方は「あなた」とされる。",
+  "tone_notes": "自信満々で大言壮語。女性的な言い切り調で「世界レベル」を連発する。",
   "sources": [
    "https://dic.nicovideo.jp/a/ヘレン(アイドルマスター)",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -81,13 +88,16 @@
   "idol_id": "cg_上条春菜",
   "name": "上条春菜",
   "first_person": "アタシ / 私 (両方使う)",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○さん"
+  ],
   "politeness": "誰に対しても「です・ます」調",
   "endings": [],
   "catchphrases": [
    "まぁまぁ眼鏡どうぞ"
   ],
-  "tone_notes": "元気で明るく、感嘆符の多い丁寧語。眼鏡の話題が頻出する。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "元気で明るく、感嘆符の多い丁寧語。眼鏡の話題が頻出する。",
   "sources": [
    "https://dic.nicovideo.jp/a/上条春菜",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -119,7 +129,10 @@
   "idol_id": "cg_二宮飛鳥",
   "name": "二宮飛鳥",
   "first_person": "ボク",
-  "producer_call": "プロデューサー",
+  "producer_call": [
+   "キミ",
+   "プロデューサー"
+  ],
   "politeness": "誰にでも同じ調子の中二病風の話し方",
   "endings": [
    "〜さ",
@@ -129,7 +142,7 @@
   "catchphrases": [
    "やれやれ"
   ],
-  "tone_notes": "斜に構えた回りくどい哲学的な言い回し。中二病気味だが根は素直。 別の資料では、プロデューサーの呼び方は「キミ」とされる。",
+  "tone_notes": "斜に構えた回りくどい哲学的な言い回し。中二病気味だが根は素直。",
   "sources": [
    "https://dic.nicovideo.jp/a/二宮飛鳥",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -171,7 +184,11 @@
   "idol_id": "cg_兵藤レナ",
   "name": "兵藤レナ",
   "first_person": "私",
-  "producer_call": "○○さん / プロデューサーさん",
+  "producer_call": [
+   "プロデューサー (「貴方」も)",
+   "○○さん",
+   "プロデューサーさん"
+  ],
   "politeness": "砕けた女性口調",
   "endings": [
    "〜わ",
@@ -180,7 +197,7 @@
    "〜よ"
   ],
   "catchphrases": [],
-  "tone_notes": "強気で勝負好き、挑発的。負けず嫌いな面もある。 別の資料では、プロデューサーの呼び方は「プロデューサー (「貴方」も)」とされる。",
+  "tone_notes": "強気で勝負好き、挑発的。負けず嫌いな面もある。",
   "sources": [
    "https://dic.nicovideo.jp/a/兵藤レナ",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -271,7 +288,10 @@
   "idol_id": "cg_堀裕子",
   "name": "堀裕子",
   "first_person": "私 (「ユッコちゃん」と自称する例もある)",
-  "producer_call": "プロデューサー",
+  "producer_call": [
+   "○○プロデューサー",
+   "プロデューサー"
+  ],
   "politeness": "「です・ます」調",
   "endings": [
    "〜デース",
@@ -280,7 +300,7 @@
   "catchphrases": [
    "えいっ!"
   ],
-  "tone_notes": "超能力者を自称する元気でお調子者の話し方。自信満々だが、すぐ慌てる。 別の資料では、プロデューサーの呼び方は「○○プロデューサー」とされる。",
+  "tone_notes": "超能力者を自称する元気でお調子者の話し方。自信満々だが、すぐ慌てる。",
   "sources": [
    "https://dic.nicovideo.jp/a/堀裕子",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -328,14 +348,17 @@
   "idol_id": "cg_姫川友紀",
   "name": "姫川友紀",
   "first_person": "あたし",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサー"
+  ],
   "politeness": "くだけたタメ口",
   "endings": [
    "〜だな〜",
    "〜ぞっ"
   ],
   "catchphrases": [],
-  "tone_notes": "元気で明るく、野球の話題が多い。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "元気で明るく、野球の話題が多い。",
   "sources": [
    "https://dic.nicovideo.jp/a/姫川友紀",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -387,7 +410,12 @@
   "idol_id": "cg_川島瑞樹",
   "name": "川島瑞樹",
   "first_person": "私",
-  "producer_call": "君 / ○○プロデューサー / プロデューサー（ボイス）",
+  "producer_call": [
+   "○○君 (お姉さん風)",
+   "君",
+   "○○プロデューサー",
+   "プロデューサー（ボイス）"
+  ],
   "politeness": "落ち着いた標準語 (大阪出身だが標準語)",
   "endings": [
    "〜わよね",
@@ -396,7 +424,7 @@
   "catchphrases": [
    "わかるわ"
   ],
-  "tone_notes": "大人の落ち着きと自信、機知に富む。年齢を意識した自虐ネタも多い。 別の資料では、プロデューサーの呼び方は「○○君 (お姉さん風)」とされる。",
+  "tone_notes": "大人の落ち着きと自信、機知に富む。年齢を意識した自虐ネタも多い。",
   "sources": [
    "https://dic.nicovideo.jp/a/川島瑞樹",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -428,13 +456,16 @@
   "idol_id": "cg_日下部若葉",
   "name": "日下部若葉",
   "first_person": "私",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○さん"
+  ],
   "politeness": "ゆったりした丁寧語",
   "endings": [
    "〜ですよ〜"
   ],
   "catchphrases": [],
-  "tone_notes": "穏やかでマイペース。語尾をのばす。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "穏やかでマイペース。語尾をのばす。",
   "sources": [
    "https://dic.nicovideo.jp/a/日下部若葉",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -444,12 +475,15 @@
  {
   "idol_id": "cg_月宮雅",
   "name": "月宮雅",
-  "first_person": "みやびぃ",
+  "first_person": [
+   "みやび (「みやびぃ」)",
+   "みやびぃ"
+  ],
   "producer_call": "○○P",
   "politeness": "くだけた甘え口調",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "砕けた甘えたような話し方で、語尾を伸ばす。 別の資料では、一人称は「みやび (「みやびぃ」)」とされる。",
+  "tone_notes": "砕けた甘えたような話し方で、語尾を伸ばす。",
   "sources": [
    "https://dic.nicovideo.jp/a/月宮雅",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -553,7 +587,10 @@
   "idol_id": "cg_棟方愛海",
   "name": "棟方愛海",
   "first_person": "あたし (「あつみ」と自称する例も)",
-  "producer_call": "プロデューサー",
+  "producer_call": [
+   "○○プロデューサー",
+   "プロデューサー"
+  ],
   "politeness": "砕けたタメ口",
   "endings": [
    "〜だよ",
@@ -563,7 +600,7 @@
   "catchphrases": [
    "うひひ"
   ],
-  "tone_notes": "元気でいたずら好き。お山の話になると熱が入る。 別の資料では、プロデューサーの呼び方は「○○プロデューサー」とされる。",
+  "tone_notes": "元気でいたずら好き。お山の話になると熱が入る。",
   "sources": [
    "https://dic.nicovideo.jp/a/棟方愛海",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -574,7 +611,11 @@
   "idol_id": "cg_榊原里美",
   "name": "榊原里美",
   "first_person": "私 (わたし)",
-  "producer_call": "○○さん / おにいちゃん",
+  "producer_call": [
+   "プロデューサーさん (初期は「お兄ちゃん」)",
+   "○○さん",
+   "おにいちゃん"
+  ],
   "politeness": "語尾をのばすゆったり敬語",
   "endings": [
    "〜ですよぉ",
@@ -585,7 +626,7 @@
    "ほわぁ",
    "うふふ"
   ],
-  "tone_notes": "ほんわかのんびり。ぽんこつ気味で天然、おっとりしている。 別の資料では、プロデューサーの呼び方は「プロデューサーさん (初期は「お兄ちゃん」)」とされる。",
+  "tone_notes": "ほんわかのんびり。ぽんこつ気味で天然、おっとりしている。",
   "sources": [
    "https://dic.nicovideo.jp/a/榊原里美",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -596,7 +637,11 @@
   "idol_id": "cg_櫻井桃華",
   "name": "櫻井桃華",
   "first_person": "わたくし",
-  "producer_call": "○○ちゃま / ○○プロデューサー",
+  "producer_call": [
+   "Pちゃま / プロデューサーちゃま (アナタとも)",
+   "○○ちゃま",
+   "○○プロデューサー"
+  ],
   "politeness": "お嬢様口調",
   "endings": [
    "〜ですわ",
@@ -606,7 +651,7 @@
   "catchphrases": [
    "ごきげんよう"
   ],
-  "tone_notes": "優雅で自信家なお嬢様。Pを下僕のように扱うが、ファンには愛情深い。 別の資料では、プロデューサーの呼び方は「Pちゃま / プロデューサーちゃま (アナタとも)」とされる。",
+  "tone_notes": "優雅で自信家なお嬢様。Pを下僕のように扱うが、ファンには愛情深い。",
   "sources": [
    "https://dic.nicovideo.jp/a/櫻井桃華",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -687,7 +732,10 @@
   "idol_id": "cg_的場梨沙",
   "name": "的場梨沙",
   "first_person": "アタシ",
-  "producer_call": "プロデューサー",
+  "producer_call": [
+   "アンタ",
+   "プロデューサー"
+  ],
   "politeness": "強気なタメ口",
   "endings": [
    "〜しなさいよ",
@@ -697,7 +745,7 @@
   "catchphrases": [
    "ホントだし"
   ],
-  "tone_notes": "典型的なツンデレ。仕切り屋だが次第に打ち解ける。パパが大好き。 別の資料では、プロデューサーの呼び方は「アンタ」とされる。",
+  "tone_notes": "典型的なツンデレ。仕切り屋だが次第に打ち解ける。パパが大好き。",
   "sources": [
    "https://dic.nicovideo.jp/a/的場梨沙",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -708,14 +756,18 @@
   "idol_id": "cg_相馬夏美",
   "name": "相馬夏美",
   "first_person": "私",
-  "producer_call": "○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "です・ます調",
   "endings": [
    "〜わね",
    "〜わ"
   ],
   "catchphrases": [],
-  "tone_notes": "前向きで元気。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "前向きで元気。",
   "sources": [
    "https://dic.nicovideo.jp/a/相馬夏美",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -757,14 +809,17 @@
   "idol_id": "cg_若林智香",
   "name": "若林智香",
   "first_person": "アタシ",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○さん"
+  ],
   "politeness": "です・ます調",
   "endings": [
    "〜ですっ",
    "〜ですよ"
   ],
   "catchphrases": [],
-  "tone_notes": "元気いっぱいの応援好き。鹿児島出身。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "元気いっぱいの応援好き。鹿児島出身。",
   "sources": [
    "https://dic.nicovideo.jp/a/若林智香",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -829,7 +884,10 @@
   "idol_id": "cg_遊佐こずえ",
   "name": "遊佐こずえ",
   "first_person": "こずえ",
-  "producer_call": "ぷろでゅーさー",
+  "producer_call": [
+   "プロデューサー (「ぷろでゅーさー」と平仮名表記)",
+   "ぷろでゅーさー"
+  ],
   "politeness": "子どもっぽいタメ口",
   "endings": [
    "〜のー",
@@ -840,7 +898,7 @@
    "ふわぁ",
    "えへー"
   ],
-  "tone_notes": "眠たげで穏やか。ひらがなの喋りで、夢見がち。 別の資料では、プロデューサーの呼び方は「プロデューサー (「ぷろでゅーさー」と平仮名表記)」とされる。",
+  "tone_notes": "眠たげで穏やか。ひらがなの喋りで、夢見がち。",
   "sources": [
    "https://dic.nicovideo.jp/a/遊佐こずえ",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -851,14 +909,17 @@
   "idol_id": "cg_間中美里",
   "name": "間中美里",
   "first_person": "私",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサー / プロデューサーさん",
+   "○○プロデューサー"
+  ],
   "politeness": "ゆったりした敬語",
   "endings": [
    "〜ねぇ",
    "〜でしょう?"
   ],
   "catchphrases": [],
-  "tone_notes": "ゆったりのんびり。 別の資料では、プロデューサーの呼び方は「プロデューサー / プロデューサーさん」とされる。",
+  "tone_notes": "ゆったりのんびり。",
   "sources": [
    "https://dic.nicovideo.jp/a/間中美里",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -937,7 +998,10 @@
   "idol_id": "cg_ケイト",
   "name": "ケイト",
   "first_person": "私",
-  "producer_call": "プロデューサー",
+  "producer_call": [
+   "アナタ",
+   "プロデューサー"
+  ],
   "politeness": "丁寧寄りだが日本語が不自然",
   "endings": [
    "〜デス",
@@ -947,7 +1011,7 @@
   "catchphrases": [
    "ハァイ"
   ],
-  "tone_notes": "語尾がカタカナ風になる落ち着いた話し方で、間違った日本語や英語が混じる。本や雑誌の話題が多い。 別の資料では、プロデューサーの呼び方は「アナタ」とされる。",
+  "tone_notes": "語尾がカタカナ風になる落ち着いた話し方で、間違った日本語や英語が混じる。本や雑誌の話題が多い。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E3%82%B1%E3%82%A4%E3%83%88(%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC)",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -980,7 +1044,10 @@
   "idol_id": "cg_三好紗南",
   "name": "三好紗南",
   "first_person": "あたし",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○さん"
+  ],
   "politeness": "タメ口中心の元気な口調",
   "endings": [
    "〜だよ",
@@ -988,7 +1055,7 @@
    "〜じゃないかな"
   ],
   "catchphrases": [],
-  "tone_notes": "元気でくだけた口調のゲーム好き。ゲーム用語や格ゲーのコマンドを台詞に混ぜ、「ねッ☆」のように記号を添える。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "元気でくだけた口調のゲーム好き。ゲーム用語や格ゲーのコマンドを台詞に混ぜ、「ねッ☆」のように記号を添える。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E4%B8%89%E5%A5%BD%E7%B4%97%E5%8D%97",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1033,11 +1100,15 @@
   "idol_id": "cg_五十嵐響子",
   "name": "五十嵐響子",
   "first_person": "私",
-  "producer_call": "○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "丁寧語基調",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "丁寧語を基調に明るく弾むように話す家庭的な少女。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "丁寧語を基調に明るく弾むように話す家庭的な少女。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E4%BA%94%E5%8D%81%E5%B5%90%E9%9F%BF%E5%AD%90",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1066,7 +1137,10 @@
   "idol_id": "cg_佐藤心",
   "name": "佐藤心",
   "first_person": "はぁと",
-  "producer_call": "プロデューサー",
+  "producer_call": [
+   "Pちゃん",
+   "プロデューサー"
+  ],
   "politeness": "タメ口",
   "endings": [
    "〜だぞ☆",
@@ -1076,7 +1150,7 @@
    "しゅがーはぁと",
    "いいんだぞ（二回重ねる）"
   ],
-  "tone_notes": "ぶりっ子風の甘い口調で語尾に☆を多用するが、言動は強気でぞんざいなことも。自称はしゅがーはぁと。 別の資料では、プロデューサーの呼び方は「Pちゃん」とされる。",
+  "tone_notes": "ぶりっ子風の甘い口調で語尾に☆を多用するが、言動は強気でぞんざいなことも。自称はしゅがーはぁと。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E4%BD%90%E8%97%A4%E5%BF%83(%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC)",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1086,7 +1160,10 @@
  {
   "idol_id": "cg_冴島清美",
   "name": "冴島清美",
-  "first_person": "あたし",
+  "first_person": [
+   "私",
+   "あたし"
+  ],
   "producer_call": "○○プロデューサー",
   "politeness": "丁寧語",
   "endings": [
@@ -1094,7 +1171,7 @@
    "〜しますっ"
   ],
   "catchphrases": [],
-  "tone_notes": "風紀委員らしく丁寧語で強めに言い切るが、動揺すると言い淀む。 別の資料では、一人称は「私」とされる。",
+  "tone_notes": "風紀委員らしく丁寧語で強めに言い切るが、動揺すると言い淀む。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%86%B4%E5%B3%B6%E6%B8%85%E7%BE%8E",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1105,7 +1182,10 @@
   "idol_id": "cg_十時愛梨",
   "name": "十時愛梨",
   "first_person": "私",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○さん"
+  ],
   "politeness": "丁寧語基調",
   "endings": [
    "〜ですっ",
@@ -1115,7 +1195,7 @@
   "catchphrases": [
    "えへへっ♪"
   ],
-  "tone_notes": "丁寧語で明るく弾むふわふわした話し方。略して「Pさん」とも呼ぶ。ふざけた場面で「アタシ」と言うこともある。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "丁寧語で明るく弾むふわふわした話し方。略して「Pさん」とも呼ぶ。ふざけた場面で「アタシ」と言うこともある。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%8D%81%E6%99%82%E6%84%9B%E6%A2%A8",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1126,14 +1206,17 @@
   "idol_id": "cg_双葉杏",
   "name": "双葉杏",
   "first_person": "杏",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサー"
+  ],
   "politeness": "砕けた口調",
   "endings": [
    "〜だよ",
    "〜じゃないか"
   ],
   "catchphrases": [],
-  "tone_notes": "気だるげで砕けた話し方。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "気だるげで砕けた話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%8F%8C%E8%91%89%E6%9D%8F",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1144,14 +1227,17 @@
   "idol_id": "cg_向井拓海",
   "name": "向井拓海",
   "first_person": "アタシ",
-  "producer_call": "○○",
+  "producer_call": [
+   "プロデューサー",
+   "○○"
+  ],
   "politeness": "タメ口",
   "endings": [
    "〜ねーよ",
    "〜だろうが"
   ],
   "catchphrases": [],
-  "tone_notes": "乱暴でぶっきらぼうな男勝りの話し方。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "乱暴でぶっきらぼうな男勝りの話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%90%91%E4%BA%95%E6%8B%93%E6%B5%B7",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1162,7 +1248,10 @@
   "idol_id": "cg_土屋亜子",
   "name": "土屋亜子",
   "first_person": "アタシ",
-  "producer_call": "○○Pちゃん",
+  "producer_call": [
+   "Pちゃん（名前+Pちゃん）",
+   "○○Pちゃん"
+  ],
   "politeness": "タメ口の関西弁風",
   "endings": [
    "〜やね",
@@ -1172,7 +1261,7 @@
    "まいどまいどー！",
    "シクヨロ！"
   ],
-  "tone_notes": "関西弁風の話し方で、商売人っぽい挨拶をする。 別の資料では、プロデューサーの呼び方は「Pちゃん（名前+Pちゃん）」とされる。",
+  "tone_notes": "関西弁風の話し方で、商売人っぽい挨拶をする。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%9C%9F%E5%B1%8B%E4%BA%9C%E5%AD%90",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1183,7 +1272,10 @@
   "idol_id": "cg_塩見周子",
   "name": "塩見周子",
   "first_person": "あたし",
-  "producer_call": "○○",
+  "producer_call": [
+   "プロデューサー",
+   "○○"
+  ],
   "politeness": "タメ口",
   "endings": [
    "〜ねー",
@@ -1193,7 +1285,7 @@
    "〜ってやつ",
    "〜的なやつね"
   ],
-  "tone_notes": "飄々とした気楽な話し方で、「〜ってやつ」と軽く流す。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "飄々とした気楽な話し方で、「〜ってやつ」と軽く流す。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%A1%A9%E8%A6%8B%E5%91%A8%E5%AD%90",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1222,7 +1314,10 @@
   "idol_id": "cg_大西由里子",
   "name": "大西由里子",
   "first_person": "アタシ",
-  "producer_call": "プロデューサーさん",
+  "producer_call": [
+   "プロデューサー",
+   "プロデューサーさん"
+  ],
   "politeness": "タメ口",
   "endings": [
    "〜ねーっ"
@@ -1230,7 +1325,7 @@
   "catchphrases": [
    "ユリユリ"
   ],
-  "tone_notes": "明るくハイテンションで自分の名前を繰り返す。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "明るくハイテンションで自分の名前を繰り返す。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%A4%A7%E8%A5%BF%E7%94%B1%E9%87%8C%E5%AD%90",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1241,11 +1336,14 @@
   "idol_id": "cg_安斎都",
   "name": "安斎都",
   "first_person": "私",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○さん"
+  ],
   "politeness": "丁寧語",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "丁寧語で、探偵らしい勢いのある話し方。Pを助手扱いすることが多い。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "丁寧語で、探偵らしい勢いのある話し方。Pを助手扱いすることが多い。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%AE%89%E6%96%8E%E9%83%BD",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1256,7 +1354,12 @@
   "idol_id": "cg_小日向美穂",
   "name": "小日向美穂",
   "first_person": "わたし",
-  "producer_call": "○○プロデューサーさん / ○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサーさん",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "丁寧語",
   "endings": [
    "〜ですっ",
@@ -1265,7 +1368,7 @@
   "catchphrases": [
    "えへへっ"
   ],
-  "tone_notes": "丁寧語で弾むように話すが、緊張すると言葉につかえる。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "丁寧語で弾むように話すが、緊張すると言葉につかえる。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%B0%8F%E6%97%A5%E5%90%91%E7%BE%8E%E7%A9%82",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1276,14 +1379,17 @@
   "idol_id": "cg_岡崎泰葉",
   "name": "岡崎泰葉",
   "first_person": "私",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサー"
+  ],
   "politeness": "丁寧語基調",
   "endings": [
    "〜なの",
    "〜だもの"
   ],
   "catchphrases": [],
-  "tone_notes": "落ち着いて穏やかな丁寧語。砕けた場面で「〜なの」を使う。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "落ち着いて穏やかな丁寧語。砕けた場面で「〜なの」を使う。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%B2%A1%E5%B4%8E%E6%B3%B0%E8%91%89",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1294,14 +1400,17 @@
   "idol_id": "cg_工藤忍",
   "name": "工藤忍",
   "first_person": "アタシ",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサー",
+   "○○さん"
+  ],
   "politeness": "タメ口",
   "endings": [
    "〜だよ",
    "〜かな？"
   ],
   "catchphrases": [],
-  "tone_notes": "明るく親しみやすいタメ口。驚くと「ぴにゃ」と声を出す。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "明るく親しみやすいタメ口。驚くと「ぴにゃ」と声を出す。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%B7%A5%E8%97%A4%E5%BF%8D",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1312,14 +1421,18 @@
   "idol_id": "cg_持田亜里沙",
   "name": "持田亜里沙",
   "first_person": "ありさ先生",
-  "producer_call": "○○さん / ○○くん",
+  "producer_call": [
+   "プロデューサーくん",
+   "○○さん",
+   "○○くん"
+  ],
   "politeness": "柔らかい口調",
   "endings": [
    "〜ですよぉ♪",
    "〜ましょうね♪"
   ],
   "catchphrases": [],
-  "tone_notes": "保育士風にお姉さんぶる柔らかい話し方。 別の資料では、プロデューサーの呼び方は「プロデューサーくん」とされる。",
+  "tone_notes": "保育士風にお姉さんぶる柔らかい話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%8C%81%E7%94%B0%E4%BA%9C%E9%87%8C%E6%B2%99",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1362,7 +1475,12 @@
   "idol_id": "cg_木村夏樹",
   "name": "木村夏樹",
   "first_person": "アタシ",
-  "producer_call": "アンタ / ○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサー",
+   "アンタ",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "タメ口",
   "endings": [
    "〜だよね",
@@ -1370,7 +1488,7 @@
    "〜ぜっ"
   ],
   "catchphrases": [],
-  "tone_notes": "荒っぽく男っぽいが根は良い子。ほかに「アンタ」とも呼ぶ。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "荒っぽく男っぽいが根は良い子。ほかに「アンタ」とも呼ぶ。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%9C%A8%E6%9D%91%E5%A4%8F%E6%A8%B9",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1381,7 +1499,10 @@
   "idol_id": "cg_村松さくら",
   "name": "村松さくら",
   "first_person": "わたし",
-  "producer_call": "○○プロデューサーさん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサーさん"
+  ],
   "politeness": "丁寧語",
   "endings": [
    "〜でぇす",
@@ -1390,7 +1511,7 @@
   "catchphrases": [
    "えっへへー"
   ],
-  "tone_notes": "語尾を伸ばす甘えた丁寧語。名前で自称する場面もある。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "語尾を伸ばす甘えた丁寧語。名前で自称する場面もある。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%9D%91%E6%9D%BE%E3%81%95%E3%81%8F%E3%82%89",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1420,13 +1541,16 @@
   "idol_id": "cg_柳清良",
   "name": "柳清良",
   "first_person": "私",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー"
+  ],
   "politeness": "丁寧語",
   "endings": [
    "〜ですよ"
   ],
   "catchphrases": [],
-  "tone_notes": "看護師らしい穏やかな丁寧語。「あらあら」と言う。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "看護師らしい穏やかな丁寧語。「あらあら」と言う。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%9F%B3%E6%B8%85%E8%89%AF",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1492,11 +1616,15 @@
   "idol_id": "cg_氏家むつみ",
   "name": "氏家むつみ",
   "first_person": "私",
-  "producer_call": "○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "丁寧語",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "丁寧語で、言いよどみや照れ隠しが多い。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "丁寧語で、言いよどみや照れ隠しが多い。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%B0%8F%E5%AE%B6%E3%82%80%E3%81%A4%E3%81%BF",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1507,7 +1635,10 @@
   "idol_id": "cg_江上椿",
   "name": "江上椿",
   "first_person": "私",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○さん"
+  ],
   "politeness": "丁寧語",
   "endings": [
    "〜です",
@@ -1515,7 +1646,7 @@
    "〜ですね"
   ],
   "catchphrases": [],
-  "tone_notes": "丁寧で柔らかく親しみのある話し方。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "丁寧で柔らかく親しみのある話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%B1%9F%E4%B8%8A%E6%A4%BF",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1541,7 +1672,10 @@
   "idol_id": "cg_涼宮星花",
   "name": "涼宮星花",
   "first_person": "わたくし",
-  "producer_call": "○○様",
+  "producer_call": [
+   "プロデューサー様",
+   "○○様"
+  ],
   "politeness": "お嬢様言葉",
   "endings": [
    "〜ですわ",
@@ -1549,7 +1683,7 @@
    "〜ですの"
   ],
   "catchphrases": [],
-  "tone_notes": "お嬢様言葉で話し、ふふっと微笑む。 別の資料では、プロデューサーの呼び方は「プロデューサー様」とされる。",
+  "tone_notes": "お嬢様言葉で話し、ふふっと微笑む。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%B6%BC%E5%AE%AE%E6%98%9F%E8%8A%B1",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1579,14 +1713,17 @@
   "idol_id": "cg_相原雪乃",
   "name": "相原雪乃",
   "first_person": "私",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○さん"
+  ],
   "politeness": "お嬢様口調",
   "endings": [
    "〜ですわ",
    "〜でしょうか"
   ],
   "catchphrases": [],
-  "tone_notes": "お嬢様口調で、お茶の時間に誘う。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "お嬢様口調で、お茶の時間に誘う。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E7%9B%B8%E5%8E%9F%E9%9B%AA%E4%B9%83",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1597,14 +1734,17 @@
   "idol_id": "cg_真鍋いつき",
   "name": "真鍋いつき",
   "first_person": "私",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー"
+  ],
   "politeness": "丁寧語",
   "endings": [
    "〜ですっ",
    "〜ですよ"
   ],
   "catchphrases": [],
-  "tone_notes": "明るく活発な丁寧語。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "明るく活発な丁寧語。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E7%9C%9F%E9%8D%8B%E3%81%84%E3%81%A4%E3%81%8D",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1634,13 +1774,17 @@
   "idol_id": "cg_綾瀬穂乃香",
   "name": "綾瀬穂乃香",
   "first_person": "私",
-  "producer_call": "○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "丁寧語",
   "endings": [],
   "catchphrases": [
    "ぴにゃこら太ー！"
   ],
-  "tone_notes": "丁寧でストイックな話し方。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "丁寧でストイックな話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E7%B6%BE%E7%80%AC%E7%A9%82%E4%B9%83%E9%A6%99",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1731,11 +1875,14 @@
   "idol_id": "cg_道明寺歌鈴",
   "name": "道明寺歌鈴",
   "first_person": "わたし",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "Pさん",
+   "○○さん"
+  ],
   "politeness": "丁寧語",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "丁寧語で勢いよく話し、動揺して噛みやすい。 別の資料では、プロデューサーの呼び方は「Pさん」とされる。",
+  "tone_notes": "丁寧語で勢いよく話し、動揺して噛みやすい。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E9%81%93%E6%98%8E%E5%AF%BA%E6%AD%8C%E9%88%B4",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1799,13 +1946,16 @@
   "idol_id": "cg_イヴ_サンタクロース",
   "name": "イヴ・サンタクロース",
   "first_person": "私",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサー",
+   "○○さん"
+  ],
   "politeness": "丁寧語中心(「ございます」「でしょうかぁ」など)",
   "endings": [
    "〜すぅ"
   ],
   "catchphrases": [],
-  "tone_notes": "おっとりしたのんびり屋で、語尾を間延びさせる話し方。丁寧な言い回しが多い。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "おっとりしたのんびり屋で、語尾を間延びさせる話し方。丁寧な言い回しが多い。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E3%82%A4%E3%83%B4%E3%83%BB%E3%82%B5%E3%83%B3%E3%82%BF%E3%82%AF%E3%83%AD%E3%83%BC%E3%82%B9",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1864,7 +2014,11 @@
   "idol_id": "cg_並木芽衣子",
   "name": "並木芽衣子",
   "first_person": "私",
-  "producer_call": "○○プロデューサー / ○○プロデューサーさん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー",
+   "○○プロデューサーさん"
+  ],
   "politeness": "基本はくだけた親しみやすい口調",
   "endings": [
    "〜だよ",
@@ -1874,7 +2028,7 @@
   "catchphrases": [
    "えへへ"
   ],
-  "tone_notes": "年上らしい姉的な親しみやすさがあり、「ねぇ」「ねね」と話しかけて始める。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "年上らしい姉的な親しみやすさがあり、「ねぇ」「ねね」と話しかけて始める。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E4%B8%A6%E6%9C%A8%E8%8A%BD%E8%A1%A3%E5%AD%90",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1927,14 +2081,17 @@
    "千枝",
    "私"
   ],
-  "producer_call": "○○プロデューサーさん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサーさん"
+  ],
   "politeness": "「です」「ました」などの丁寧語",
   "endings": [
    "〜ですっ",
    "〜ねっ"
   ],
   "catchphrases": [],
-  "tone_notes": "気弱で素直な性格に沿った、やわらかい丁寧語。名前で自分を指す場面がある。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "気弱で素直な性格に沿った、やわらかい丁寧語。名前で自分を指す場面がある。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E4%BD%90%E3%80%85%E6%9C%A8%E5%8D%83%E6%9E%9D",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1962,7 +2119,11 @@
   "idol_id": "cg_前川みく",
   "name": "前川みく",
   "first_person": "みく",
-  "producer_call": "○○チャン / Pチャン",
+  "producer_call": [
+   "プロデューサーチャン",
+   "○○チャン",
+   "Pチャン"
+  ],
   "politeness": "猫マネの甘えた口調",
   "endings": [
    "〜にゃ",
@@ -1970,7 +2131,7 @@
    "〜にゃん"
   ],
   "catchphrases": [],
-  "tone_notes": "猫語の語尾を多用する元気な話し方。からかうような強気さも混ざる。 別の資料では、プロデューサーの呼び方は「プロデューサーチャン」とされる。",
+  "tone_notes": "猫語の語尾を多用する元気な話し方。からかうような強気さも混ざる。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%89%8D%E5%B7%9D%E3%81%BF%E3%81%8F",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1981,14 +2142,17 @@
   "idol_id": "cg_南条光",
   "name": "南条光",
   "first_person": "アタシ",
-  "producer_call": "○○P",
+  "producer_call": [
+   "○○さん(プレイヤー名)",
+   "○○P"
+  ],
   "politeness": "砕けた言い回し",
   "endings": [
    "〜だろ",
    "〜じゃないか"
   ],
   "catchphrases": [],
-  "tone_notes": "ヒーロー好きらしい勢いのある話し方。 別の資料では、プロデューサーの呼び方は「○○さん(プレイヤー名)」とされる。",
+  "tone_notes": "ヒーロー好きらしい勢いのある話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%8D%97%E6%9D%A1%E5%85%89",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -1999,13 +2163,17 @@
   "idol_id": "cg_古澤頼子",
   "name": "古澤頼子",
   "first_person": "私",
-  "producer_call": "○○さん / 貴方",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○さん",
+   "貴方"
+  ],
   "politeness": "基本的に丁寧語",
   "endings": [
    "〜ですね"
   ],
   "catchphrases": [],
-  "tone_notes": "落ち着いた丁寧語で、「…」で言い淀む話し方。Pを「貴方」と呼ぶこともある。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "落ち着いた丁寧語で、「…」で言い淀む話し方。Pを「貴方」と呼ぶこともある。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%8F%A4%E6%BE%A4%E9%A0%BC%E5%AD%90",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2035,14 +2203,17 @@
   "idol_id": "cg_城ヶ崎美嘉",
   "name": "城ヶ崎美嘉",
   "first_person": "アタシ",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサー"
+  ],
   "politeness": "フランクなギャル風の口調",
   "endings": [
    "〜だよー",
    "〜してよね"
   ],
   "catchphrases": [],
-  "tone_notes": "フランクなギャル風の話し方。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "フランクなギャル風の話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%9F%8E%E3%83%B6%E5%B4%8E%E7%BE%8E%E5%98%89",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2072,7 +2243,10 @@
   "idol_id": "cg_大槻唯",
   "name": "大槻唯",
   "first_person": "ゆい",
-  "producer_call": "○○ちゃん",
+  "producer_call": [
+   "Pちゃん",
+   "○○ちゃん"
+  ],
   "politeness": "基本はタメ口でテンション高め",
   "endings": [
    "〜もん！",
@@ -2082,7 +2256,7 @@
    "ちゃーっす",
    "ヤバくないっ？"
   ],
-  "tone_notes": "親しげでからかい混じりのギャル風。「アタシ」と言うこともある。 別の資料では、プロデューサーの呼び方は「Pちゃん」とされる。",
+  "tone_notes": "親しげでからかい混じりのギャル風。「アタシ」と言うこともある。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%A4%A7%E6%A7%BB%E5%94%AF",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2113,7 +2287,11 @@
   "idol_id": "cg_安部菜々",
   "name": "安部菜々",
   "first_person": "ナナ",
-  "producer_call": "○○プロデューサー / ご主人様♪",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー",
+   "ご主人様♪"
+  ],
   "politeness": "基本は丁寧な敬語",
   "endings": [
    "〜ですよぉっ"
@@ -2122,7 +2300,7 @@
    "キャハっ！",
    "えへ♪"
   ],
-  "tone_notes": "明るく親しみやすい敬語で、ぶりっ子風の言い回しや「ウサミン」という自称も使う。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "明るく親しみやすい敬語で、ぶりっ子風の言い回しや「ウサミン」という自称も使う。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%AE%89%E9%83%A8%E8%8F%9C%E3%80%85",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2172,7 +2350,10 @@
   "idol_id": "cg_市原仁奈",
   "name": "市原仁奈",
   "first_person": "仁奈",
-  "producer_call": "○○",
+  "producer_call": [
+   "プロデューサー",
+   "○○"
+  ],
   "politeness": "独特で少し荒っぽい話し方",
   "endings": [
    "〜でごぜーます",
@@ -2180,7 +2361,7 @@
    "〜ねーです"
   ],
   "catchphrases": [],
-  "tone_notes": "きぐるみ好きの子どもらしく、名前で自分を呼ぶ。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "きぐるみ好きの子どもらしく、名前で自分を呼ぶ。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E5%B8%82%E5%8E%9F%E4%BB%81%E5%A5%88",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2191,7 +2372,10 @@
   "idol_id": "cg_斉藤洋子",
   "name": "斉藤洋子",
   "first_person": "私",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサー"
+  ],
   "politeness": "親しげなタメ口が中心、丁寧語も混ざる",
   "endings": [
    "〜だね",
@@ -2200,7 +2384,7 @@
   "catchphrases": [
    "やっほー！"
   ],
-  "tone_notes": "明るく元気で感嘆符の多い話し方。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "明るく元気で感嘆符の多い話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%96%89%E8%97%A4%E6%B4%8B%E5%AD%90",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2268,11 +2452,15 @@
   "idol_id": "cg_東郷あい",
   "name": "東郷あい",
   "first_person": "私",
-  "producer_call": "○○ / ○○くん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○",
+   "○○くん"
+  ],
   "politeness": "丁寧語は目立たない",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "男性的で落ち着いた断定調。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "男性的で落ち着いた断定調。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%9D%B1%E9%83%B7%E3%81%82%E3%81%84",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2283,13 +2471,16 @@
   "idol_id": "cg_松本沙理奈",
   "name": "松本沙理奈",
   "first_person": "アタシ",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサー"
+  ],
   "politeness": "敬語の記述なし",
   "endings": [],
   "catchphrases": [
    "ウフフッ"
   ],
-  "tone_notes": "陽気でフランクな色っぽい話し方。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "陽気でフランクな色っぽい話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%9D%BE%E6%9C%AC%E6%B2%99%E7%90%86%E5%A5%88",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2299,12 +2490,19 @@
  {
   "idol_id": "cg_柳瀬美由紀",
   "name": "柳瀬美由紀",
-  "first_person": "あたし / みゆき（ﾃｰﾏﾊﾟｰｸ以降）",
-  "producer_call": "○○プロデューサーさん",
+  "first_person": [
+   "みゆき",
+   "あたし",
+   "みゆき（ﾃｰﾏﾊﾟｰｸ以降）"
+  ],
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサーさん"
+  ],
   "politeness": "子どもらしい砕けた話し方、丁寧語が混ざることもある",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "家族のようにPを慕い、お兄ちゃんと呼ぼうとして照れる。 別の資料では、一人称は「みゆき／あたし」、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "家族のようにPを慕い、お兄ちゃんと呼ぼうとして照れる。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%9F%B3%E7%80%AC%E7%BE%8E%E7%94%B1%E7%B4%80",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2331,13 +2529,16 @@
   "idol_id": "cg_椎名法子",
   "name": "椎名法子",
   "first_person": "あたし",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー"
+  ],
   "politeness": "親しみやすくくだけた口調",
   "endings": [
    "〜よね！"
   ],
   "catchphrases": [],
-  "tone_notes": "ドーナツ好きで親しみやすい話し方。大阪出身だが普段は関西弁を使わない。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "ドーナツ好きで親しみやすい話し方。大阪出身だが普段は関西弁を使わない。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%A4%8E%E5%90%8D%E6%B3%95%E5%AD%90(%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC)",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2348,7 +2549,11 @@
   "idol_id": "cg_横山千佳",
   "name": "横山千佳",
   "first_person": "あたし",
-  "producer_call": "○○くん / ○○プロデューサー",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○くん",
+   "○○プロデューサー"
+  ],
   "politeness": "くだけた口調で敬語は見られない",
   "endings": [
    "〜よー",
@@ -2358,7 +2563,7 @@
   "catchphrases": [
    "へーんしーん♪"
   ],
-  "tone_notes": "魔法少女好きの元気な話し方。名前で自分を呼ぶこともある。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "魔法少女好きの元気な話し方。名前で自分を呼ぶこともある。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%A8%AA%E5%B1%B1%E5%8D%83%E4%BD%B3",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2369,7 +2574,10 @@
   "idol_id": "cg_水木聖來",
   "name": "水木聖來",
   "first_person": "アタシ",
-  "producer_call": "○○プロデューサーさん",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサーさん"
+  ],
   "politeness": "砕けた友達のような口調",
   "endings": [
    "〜だよ",
@@ -2379,7 +2587,7 @@
   "catchphrases": [
    "ヘヘー"
   ],
-  "tone_notes": "ダンス好きの親しげな話し方。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "ダンス好きの親しげな話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%B0%B4%E6%9C%A8%E8%81%96%E4%BE%86",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2390,7 +2598,10 @@
   "idol_id": "cg_池袋晶葉",
   "name": "池袋晶葉",
   "first_person": "私",
-  "producer_call": "○○",
+  "producer_call": [
+   "プロデューサー",
+   "○○"
+  ],
   "politeness": "不遜な物言い",
   "endings": [
    "〜！"
@@ -2399,7 +2610,7 @@
    "ふっふっふ…",
    "ちょえーっ！"
   ],
-  "tone_notes": "演説のような不遜な語り口。Pを助手と呼ぶ時期もあったが、後にパートナーと認める。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "演説のような不遜な語り口。Pを助手と呼ぶ時期もあったが、後にパートナーと認める。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E6%B1%A0%E8%A2%8B%E6%99%B6%E8%91%89",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2467,14 +2678,17 @@
   "idol_id": "cg_相川千夏",
   "name": "相川千夏",
   "first_person": "私",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "アナタ",
+   "○○さん"
+  ],
   "politeness": "対等に近いくだけた話し方",
   "endings": [
    "〜わ",
    "〜のよ"
   ],
   "catchphrases": [],
-  "tone_notes": "高飛車で挑発的。Pをプロデューサーさんと呼ぶこともある。 別の資料では、プロデューサーの呼び方は「アナタ」とされる。",
+  "tone_notes": "高飛車で挑発的。Pをプロデューサーさんと呼ぶこともある。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E7%9B%B8%E5%B7%9D%E5%8D%83%E5%A4%8F",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2485,14 +2699,17 @@
   "idol_id": "cg_矢口美羽",
   "name": "矢口美羽",
   "first_person": "私",
-  "producer_call": "○○プロデューサーさん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサーさん"
+  ],
   "politeness": "基本は丁寧語",
   "endings": [
    "〜ですねっ",
    "〜ますっ"
   ],
   "catchphrases": [],
-  "tone_notes": "礼儀正しい頑張り屋で、感情が高ぶると砕ける。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "礼儀正しい頑張り屋で、感情が高ぶると砕ける。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E7%9F%A2%E5%8F%A3%E7%BE%8E%E7%BE%BD",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2503,14 +2720,17 @@
   "idol_id": "cg_福山舞",
   "name": "福山舞",
   "first_person": "私",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサー"
+  ],
   "politeness": "Pには敬語",
   "endings": [
    "〜ですっ",
    "〜ますっ"
   ],
   "catchphrases": [],
-  "tone_notes": "年下ながらしっかり者で、Pには敬語。「えへへ」と笑う。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "年下ながらしっかり者で、Pには敬語。「えへへ」と笑う。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E7%A6%8F%E5%B1%B1%E8%88%9E",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2521,13 +2741,17 @@
   "idol_id": "cg_緒方智絵里",
   "name": "緒方智絵里",
   "first_person": "わたし",
-  "producer_call": "○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "基本は丁寧な「です・ます」",
   "endings": [],
   "catchphrases": [
    "えへへ"
   ],
-  "tone_notes": "弱気でおどおどした話し方。特訓後は負けず嫌いな面が出る。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "弱気でおどおどした話し方。特訓後は負けず嫌いな面が出る。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E7%B7%92%E6%96%B9%E6%99%BA%E7%B5%B5%E9%87%8C",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2605,7 +2829,10 @@
   "idol_id": "cg_野々村そら",
   "name": "野々村そら",
   "first_person": "あたし",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "アナタ",
+   "○○プロデューサー"
+  ],
   "politeness": "砕けた話し方",
   "endings": [
    "〜っ",
@@ -2613,7 +2840,7 @@
    "〜よっ"
   ],
   "catchphrases": [],
-  "tone_notes": "英語のひらがな表記が多い、ポジティブな語り口。 別の資料では、プロデューサーの呼び方は「アナタ」とされる。",
+  "tone_notes": "英語のひらがな表記が多い、ポジティブな語り口。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E9%87%8E%E3%80%85%E6%9D%91%E3%81%9D%E3%82%89",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2642,13 +2869,17 @@
   "idol_id": "cg_高森藍子",
   "name": "高森藍子",
   "first_person": "私",
-  "producer_call": "○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "丁寧語が基本",
   "endings": [
    "〜ねっ"
   ],
   "catchphrases": [],
-  "tone_notes": "穏やかで優しい丁寧な話し方。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "穏やかで優しい丁寧な話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/%E9%AB%98%E6%A3%AE%E8%97%8D%E5%AD%90",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2749,13 +2980,16 @@
   "idol_id": "cg_中野有香",
   "name": "中野有香",
   "first_person": "あたし",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサー"
+  ],
   "politeness": "年上・同年代・年下を問わず基本的に敬語で話す",
   "endings": [],
   "catchphrases": [
    "押忍！"
   ],
-  "tone_notes": "武道少女らしく、礼儀正しい敬語で「押忍！」とあいさつする。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "武道少女らしく、礼儀正しい敬語で「押忍！」とあいさつする。",
   "sources": [
    "https://dic.nicovideo.jp/a/中野有香",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2785,7 +3019,10 @@
   "idol_id": "cg_今井加奈",
   "name": "今井加奈",
   "first_person": "わたし",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー"
+  ],
   "politeness": "丁寧語(です・ます)が基本",
   "endings": [
    "〜ですっ",
@@ -2794,7 +3031,7 @@
   "catchphrases": [
    "えへへ☆"
   ],
-  "tone_notes": "明るく素直な丁寧語。語尾に「っ」や「ね」を添える。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "明るく素直な丁寧語。語尾に「っ」や「ね」を添える。",
   "sources": [
    "https://dic.nicovideo.jp/a/今井加奈",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2808,7 +3045,10 @@
    "まゆ",
    "私"
   ],
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○さん"
+  ],
   "politeness": "丁寧語を基調に柔らかく甘える話し方",
   "endings": [
    "〜ですよぉ",
@@ -2817,7 +3057,7 @@
   "catchphrases": [
    "うふふ"
   ],
-  "tone_notes": "丁寧で甘い口調。プロデューサーへの好意と嫉妬が語気に出る。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "丁寧で甘い口調。プロデューサーへの好意と嫉妬が語気に出る。",
   "sources": [
    "https://dic.nicovideo.jp/a/佐久間まゆ",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2828,14 +3068,17 @@
   "idol_id": "cg_八神マキノ",
   "name": "八神マキノ",
   "first_person": "私",
-  "producer_call": "プロデューサー",
+  "producer_call": [
+   "貴方",
+   "プロデューサー"
+  ],
   "politeness": "クールで理屈っぽく、丁寧語よりやや常体寄り(セリフ例から)",
   "endings": [
    "〜わ",
    "〜かしら"
   ],
   "catchphrases": [],
-  "tone_notes": "冷静で分析的な話し方。「フフ」と笑う。 別の資料では、プロデューサーの呼び方は「貴方」とされる。",
+  "tone_notes": "冷静で分析的な話し方。「フフ」と笑う。",
   "sources": [
    "https://dic.nicovideo.jp/a/八神マキノ",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2867,14 +3110,18 @@
   "idol_id": "cg_原田美世",
   "name": "原田美世",
   "first_person": "あたし",
-  "producer_call": "○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "くだけた話し言葉",
   "endings": [
    "〜だよ",
    "〜してね"
   ],
   "catchphrases": [],
-  "tone_notes": "さばさばした砕けた口調。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "さばさばした砕けた口調。",
   "sources": [
    "https://dic.nicovideo.jp/a/原田美世",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2929,14 +3176,18 @@
    "アタシ",
    "莉嘉"
   ],
-  "producer_call": "○○くん / Pくん（ボイス）",
+  "producer_call": [
+   "Pくん",
+   "○○くん",
+   "Pくん（ボイス）"
+  ],
   "politeness": "くだけたタメ口",
   "endings": [
    "〜だよー",
    "〜じゃん"
   ],
   "catchphrases": [],
-  "tone_notes": "ギャルっぽく明るいタメ口。「へへ」と笑う。 別の資料では、プロデューサーの呼び方は「Pくん」とされる。",
+  "tone_notes": "ギャルっぽく明るいタメ口。「へへ」と笑う。",
   "sources": [
    "https://dic.nicovideo.jp/a/城ヶ崎莉嘉",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2964,7 +3215,10 @@
   "idol_id": "cg_大沼くるみ",
   "name": "大沼くるみ",
   "first_person": "くるみ",
-  "producer_call": "ぷろでゅーしゃー",
+  "producer_call": [
+   "○○ぷろでゅーしゃー",
+   "ぷろでゅーしゃー"
+  ],
   "politeness": "幼く舌足らずな話し方で丁寧語は見られない",
   "endings": [
    "〜のぉ",
@@ -2973,7 +3227,7 @@
   "catchphrases": [
    "はひぃ"
   ],
-  "tone_notes": "内気で舌足らず。サ行・ラ行が「しゅ」「りゅ」に崩れる。 別の資料では、プロデューサーの呼び方は「○○ぷろでゅーしゃー」とされる。",
+  "tone_notes": "内気で舌足らず。サ行・ラ行が「しゅ」「りゅ」に崩れる。",
   "sources": [
    "https://dic.nicovideo.jp/a/大沼くるみ",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -2984,14 +3238,17 @@
   "idol_id": "cg_奥山沙織",
   "name": "奥山沙織",
   "first_person": "わだす",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "○○さん",
+   "○○プロデューサー"
+  ],
   "politeness": "秋田弁(東北方言)混じりの丁寧語",
   "endings": [
    "〜だす",
    "〜けんど"
   ],
   "catchphrases": [],
-  "tone_notes": "秋田弁の訛りが強い素朴な話し方。歌は訛らない。 別の資料では、プロデューサーの呼び方は「○○さん」とされる。",
+  "tone_notes": "秋田弁の訛りが強い素朴な話し方。歌は訛らない。",
   "sources": [
    "https://dic.nicovideo.jp/a/奥山沙織",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3002,7 +3259,10 @@
   "idol_id": "cg_宮本フレデリカ",
   "name": "宮本フレデリカ",
   "first_person": "アタシ",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサー"
+  ],
   "politeness": "砕けたタメ口(セリフ例から)",
   "endings": [
    "〜でーす",
@@ -3010,7 +3270,7 @@
    "〜なの"
   ],
   "catchphrases": [],
-  "tone_notes": "マイペースで軽いノリのくだけた話し方。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "マイペースで軽いノリのくだけた話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/宮本フレデリカ",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3040,7 +3300,11 @@
   "idol_id": "cg_島村卯月",
   "name": "島村卯月",
   "first_person": "私",
-  "producer_call": "○○プロデューサー / ○○プロデューサーさん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー",
+   "○○プロデューサーさん"
+  ],
   "politeness": "丁寧語が基本で明るく礼儀正しい",
   "endings": [
    "〜ましょうね♪",
@@ -3049,7 +3313,7 @@
   "catchphrases": [
    "頑張ります"
   ],
-  "tone_notes": "明るく前向きな丁寧語。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "明るく前向きな丁寧語。",
   "sources": [
    "https://dic.nicovideo.jp/a/島村卯月",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3060,14 +3324,17 @@
   "idol_id": "cg_愛野渚",
   "name": "愛野渚",
   "first_person": "私",
-  "producer_call": "○○プロデューサー",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー"
+  ],
   "politeness": "親しみやすいくだけた口調で敬語は使わない",
   "endings": [],
   "catchphrases": [
    "余裕でしょォ",
    "なァ〜んてね"
   ],
-  "tone_notes": "気風がよく、語尾が半音のカタカナ調になる独特の抑揚。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "気風がよく、語尾が半音のカタカナ調になる独特の抑揚。",
   "sources": [
    "https://dic.nicovideo.jp/a/愛野渚",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3116,12 +3383,15 @@
  {
   "idol_id": "cg_望月聖",
   "name": "望月聖",
-  "first_person": "私",
+  "first_person": [
+   "わたし",
+   "私"
+  ],
   "producer_call": "○○さん / プロデューサーさん",
   "politeness": "丁寧語を基調とした穏やかな話し方",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "穏やかで間の多い丁寧語。 別の資料では、一人称は「わたし」とされる。",
+  "tone_notes": "穏やかで間の多い丁寧語。",
   "sources": [
    "https://dic.nicovideo.jp/a/望月聖",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3150,7 +3420,10 @@
   "idol_id": "cg_松原早耶",
   "name": "松原早耶",
   "first_person": "早耶",
-  "producer_call": "○○さぁん",
+  "producer_call": [
+   "○○さん",
+   "○○さぁん"
+  ],
   "politeness": "丁寧語ベースの甘えた話し方",
   "endings": [
    "〜ですぅ",
@@ -3159,7 +3432,7 @@
   "catchphrases": [
    "うふふ"
   ],
-  "tone_notes": "語尾を「すぅ」と伸ばし、「☆」「♪」を付けて甘える。 別の資料では、プロデューサーの呼び方は「○○さん」とされる。",
+  "tone_notes": "語尾を「すぅ」と伸ばし、「☆」「♪」を付けて甘える。",
   "sources": [
    "https://dic.nicovideo.jp/a/松原早耶",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3170,7 +3443,10 @@
   "idol_id": "cg_松永涼",
   "name": "松永涼",
   "first_person": "アタシ",
-  "producer_call": "○○サン",
+  "producer_call": [
+   "アンタ",
+   "○○サン"
+  ],
   "politeness": "熱く強気なくだけた口調",
   "endings": [
    "〜よ",
@@ -3179,7 +3455,7 @@
   "catchphrases": [
    "アタシの歌を聴けぇ！！！"
   ],
-  "tone_notes": "ロッカーらしく熱く強気。 別の資料では、プロデューサーの呼び方は「アンタ」とされる。",
+  "tone_notes": "ロッカーらしく熱く強気。",
   "sources": [
    "https://dic.nicovideo.jp/a/松永涼",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3190,11 +3466,14 @@
   "idol_id": "cg_栗原ネネ",
   "name": "栗原ネネ",
   "first_person": "私",
-  "producer_call": "○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○さん"
+  ],
   "politeness": "丁寧で物腰やわらかい",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "おっとりした丁寧語。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "おっとりした丁寧語。",
   "sources": [
    "https://dic.nicovideo.jp/a/栗原ネネ",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3266,11 +3545,15 @@
   "idol_id": "cg_水本ゆかり",
   "name": "水本ゆかり",
   "first_person": "私",
-  "producer_call": "○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "丁寧な言葉遣いで訛りはない",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "育ちの良さを感じさせる丁寧語。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "育ちの良さを感じさせる丁寧語。",
   "sources": [
    "https://dic.nicovideo.jp/a/水本ゆかり",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3353,11 +3636,15 @@
   "idol_id": "cg_相葉夕美",
   "name": "相葉夕美",
   "first_person": "私",
-  "producer_call": "○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "親しみやすいタメ口に丁寧な依頼表現が混ざる",
   "endings": [],
   "catchphrases": [],
-  "tone_notes": "明るく親しみやすい話し方。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "明るく親しみやすい話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/相葉夕美",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3405,7 +3692,11 @@
   "idol_id": "cg_脇山珠美",
   "name": "脇山珠美",
   "first_person": "珠美",
-  "producer_call": "○○プロデューサー / ○○殿",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサー",
+   "○○殿"
+  ],
   "politeness": "丁寧語(です・ます調)が中心",
   "endings": [
    "〜のです",
@@ -3414,7 +3705,7 @@
   "catchphrases": [
    "ちっちゃくないよ！"
   ],
-  "tone_notes": "自分を名前で呼ぶ丁寧語。小さいと言われることに反発する。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "自分を名前で呼ぶ丁寧語。小さいと言われることに反発する。",
   "sources": [
    "https://dic.nicovideo.jp/a/脇山珠美",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3443,7 +3734,11 @@
   "idol_id": "cg_西島櫂",
   "name": "西島櫂",
   "first_person": "あたし",
-  "producer_call": "(特訓前)あんた / (特訓後)○○プロデューサー",
+  "producer_call": [
+   "○○プロデューサー",
+   "(特訓前)あんた",
+   "(特訓後)○○プロデューサー"
+  ],
   "politeness": "砕けたタメ口",
   "endings": [
    "〜よっ",
@@ -3451,7 +3746,7 @@
    "〜だね"
   ],
   "catchphrases": [],
-  "tone_notes": "さっぱりしたタメ口。 別の資料では、プロデューサーの呼び方は「○○プロデューサー」とされる。",
+  "tone_notes": "さっぱりしたタメ口。",
   "sources": [
    "https://dic.nicovideo.jp/a/西島櫂",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3465,7 +3760,11 @@
    "みりあ",
    "私"
   ],
-  "producer_call": "○○プロデューサーさん / ○○プロデューサー",
+  "producer_call": [
+   "プロデューサー",
+   "○○プロデューサーさん",
+   "○○プロデューサー"
+  ],
   "politeness": "敬語を使わないくだけた口調",
   "endings": [
    "〜だよ",
@@ -3475,7 +3774,7 @@
   "catchphrases": [
    "えへへ♪"
   ],
-  "tone_notes": "小学生らしく無邪気でくだけた話し方。 別の資料では、プロデューサーの呼び方は「プロデューサー」とされる。",
+  "tone_notes": "小学生らしく無邪気でくだけた話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/赤城みりあ",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3486,7 +3785,12 @@
   "idol_id": "cg_速水奏",
   "name": "速水奏",
   "first_person": "私",
-  "producer_call": "あなた / ○○プロデューサー / ○○さん",
+  "producer_call": [
+   "プロデューサーさん",
+   "あなた",
+   "○○プロデューサー",
+   "○○さん"
+  ],
   "politeness": "敬語を使わないくだけた話し言葉",
   "endings": [
    "〜よ",
@@ -3496,7 +3800,7 @@
   "catchphrases": [
    "ふふっ"
   ],
-  "tone_notes": "大人びて含みのある話し方。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "大人びて含みのある話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/速水奏",
    "https://sparql.crssnky.xyz/spql/imas/query",
@@ -3544,7 +3848,12 @@
   "idol_id": "cg_高橋礼子",
   "name": "高橋礼子",
   "first_person": "私",
-  "producer_call": "あなた / ○○プロデューサー / ○○くん",
+  "producer_call": [
+   "プロデューサーさん",
+   "あなた",
+   "○○プロデューサー",
+   "○○くん"
+  ],
   "politeness": "大人の女性らしい落ち着いたくだけた話し方",
   "endings": [
    "〜わ",
@@ -3554,7 +3863,7 @@
   "catchphrases": [
    "ふふっ"
   ],
-  "tone_notes": "年上らしい余裕のある誘うような話し方。 別の資料では、プロデューサーの呼び方は「プロデューサーさん」とされる。",
+  "tone_notes": "年上らしい余裕のある誘うような話し方。",
   "sources": [
    "https://dic.nicovideo.jp/a/高橋礼子",
    "https://sparql.crssnky.xyz/spql/imas/query",
