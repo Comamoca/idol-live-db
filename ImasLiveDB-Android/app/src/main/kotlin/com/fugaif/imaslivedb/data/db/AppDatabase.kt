@@ -38,6 +38,8 @@ import com.fugaif.imaslivedb.data.model.Expense
 import com.fugaif.imaslivedb.data.model.ShowTicket
 import com.fugaif.imaslivedb.data.model.Idol
 import com.fugaif.imaslivedb.data.model.IdolBrand
+import com.fugaif.imaslivedb.data.model.IdolFacet
+import com.fugaif.imaslivedb.data.model.IdolHairstyle
 import com.fugaif.imaslivedb.data.model.IdolVoiceActor
 import com.fugaif.imaslivedb.data.model.ImasUnit
 import com.fugaif.imaslivedb.data.model.Meta
@@ -96,9 +98,11 @@ import com.fugaif.imaslivedb.data.model.UserMark
         PlaylistItem::class,
         MyProducerCard::class,
         ReceivedProducerCard::class,
-        ReceivedCardMeeting::class
+        ReceivedCardMeeting::class,
+        IdolFacet::class,
+        IdolHairstyle::class
     ],
-    version = 38,
+    version = 39,
     // 確定スキーマを app/schemas へ JSON で吐く。共有コア (imas-core) が持つ
     // マスタ DDL と突き合わせて、片方だけスキーマを変えた事故を CI で捕まえるため。
     exportSchema = true
@@ -828,6 +832,56 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        /**
+         * v39: アイドルの項目 (idol_facets) と髪型 (idol_hairstyles)。共有コアの
+         * `ensureMasterSchema` が同じ表を作る (iOS 側はコミット 40b3c2d4 で既に対応済み)。
+         * CloudKit の新レコード型 IdolFacet / IdolHairstyle として配られる (v21→v22 の
+         * TicketSale と同じ位置づけ) ので、show_cast_performers (v37, seed のみ) と違い、
+         * 既存インストールも次の同期で自然に埋まる。seed の指紋リセットは不要。
+         *
+         * 共有コアの `master_schema.sql` が持つ `idol_hairstyles` の一意索引 2 つ
+         * (idx_idol_hairstyles_label / idx_idol_hairstyles_main) は**端末には作らない**
+         * ([IdolHairstyle] の KDoc 参照: 端末は CloudKit の写しで、main の付け替えが同期の
+         * 途中で一時的に重なると一意索引で行が捨てられるため)。作るのは非一意の
+         * idx_idol_facets_idol / idx_idol_hairstyles_idol だけ。
+         */
+        val MIGRATION_38_39 = object : Migration(38, 39) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `idol_facets` (" +
+                        "`id` TEXT NOT NULL PRIMARY KEY, " +
+                        "`idol_id` TEXT NOT NULL, " +
+                        "`facet` TEXT NOT NULL, " +
+                        "`value` TEXT NOT NULL, " +
+                        "`origin` TEXT NOT NULL DEFAULT 'official', " +
+                        "`source_note` TEXT, " +
+                        "`sort_order` INTEGER NOT NULL DEFAULT 0)"
+                )
+                db.execSQL(
+                    "CREATE INDEX IF NOT EXISTS `idx_idol_facets_idol` ON `idol_facets` (`idol_id`, `facet`)"
+                )
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `idol_hairstyles` (" +
+                        "`id` TEXT NOT NULL PRIMARY KEY, " +
+                        "`idol_id` TEXT NOT NULL, " +
+                        "`label` TEXT NOT NULL, " +
+                        "`is_main` INTEGER NOT NULL DEFAULT 0, " +
+                        "`hair_color` TEXT, " +
+                        "`hair_color_secondary` TEXT, " +
+                        "`hair_length` TEXT, " +
+                        "`styles` TEXT, " +
+                        "`bangs` TEXT, " +
+                        "`accessories` TEXT, " +
+                        "`origin` TEXT NOT NULL DEFAULT 'official', " +
+                        "`source_note` TEXT, " +
+                        "`sort_order` INTEGER NOT NULL DEFAULT 0)"
+                )
+                db.execSQL(
+                    "CREATE INDEX IF NOT EXISTS `idx_idol_hairstyles_idol` ON `idol_hairstyles` (`idol_id`, `sort_order`)"
+                )
+            }
+        }
+
         /** 登録する移行の全部 (古い順)。本番の builder と移行テストが同じ並びを使う。 */
         val ALL_MIGRATIONS: Array<Migration> = arrayOf(
             MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9,
@@ -836,7 +890,7 @@ abstract class AppDatabase : RoomDatabase() {
             MIGRATION_19_20, MIGRATION_20_21, MIGRATION_21_22, MIGRATION_22_23, MIGRATION_23_24,
             MIGRATION_24_25, MIGRATION_25_26, MIGRATION_26_27, MIGRATION_27_28,
             MIGRATION_28_29, MIGRATION_29_30, MIGRATION_30_31, MIGRATION_31_32,
-            MIGRATION_32_33, MIGRATION_33_34, MIGRATION_34_35, MIGRATION_35_36, MIGRATION_36_37, MIGRATION_37_38
+            MIGRATION_32_33, MIGRATION_33_34, MIGRATION_34_35, MIGRATION_35_36, MIGRATION_36_37, MIGRATION_37_38, MIGRATION_38_39
         )
     }
 }

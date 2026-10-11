@@ -9,6 +9,8 @@ import uniffi.imas_core.CkCostumeWearRow
 import uniffi.imas_core.CkCreatorRow
 import uniffi.imas_core.CkEventRow
 import uniffi.imas_core.CkIdolBrandRow
+import uniffi.imas_core.CkIdolFacetRow
+import uniffi.imas_core.CkIdolHairstyleRow
 import uniffi.imas_core.CkIdolRow
 import uniffi.imas_core.CkRow
 import uniffi.imas_core.CkSetlistItemRow
@@ -78,6 +80,8 @@ class SyncMappersCoverageTest {
         Case(CkSongVideoRow::class.java, CkRow::SongVideo, SyncMappers::songVideos),
         Case(CkShowTicketRow::class.java, CkRow::ShowTicket, SyncMappers::showTickets),
         Case(CkTicketSaleRow::class.java, CkRow::TicketSale, SyncMappers::ticketSales),
+        Case(CkIdolFacetRow::class.java, CkRow::IdolFacet, SyncMappers::idolFacets),
+        Case(CkIdolHairstyleRow::class.java, CkRow::IdolHairstyle, SyncMappers::idolHairstyles),
     )
 
     /** コアが取り込むレコード型のどれにも、写し方が用意されている。 */

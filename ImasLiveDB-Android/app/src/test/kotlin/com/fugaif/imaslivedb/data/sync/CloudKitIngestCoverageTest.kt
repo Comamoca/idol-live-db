@@ -15,6 +15,8 @@ import uniffi.imas_core.CkCostumeWearRow
 import uniffi.imas_core.CkCreatorRow
 import uniffi.imas_core.CkEventRow
 import uniffi.imas_core.CkIdolBrandRow
+import uniffi.imas_core.CkIdolFacetRow
+import uniffi.imas_core.CkIdolHairstyleRow
 import uniffi.imas_core.CkIdolRow
 import uniffi.imas_core.CkRow
 import uniffi.imas_core.CkSetlistItemRow
@@ -71,6 +73,8 @@ class CloudKitIngestCoverageTest {
         "SongVideo" to CkSongVideoRow::class.java,
         "ShowTicket" to CkShowTicketRow::class.java,
         "TicketSale" to CkTicketSaleRow::class.java,
+        "IdolFacet" to CkIdolFacetRow::class.java,
+        "IdolHairstyle" to CkIdolHairstyleRow::class.java,
     )
 
     @Test

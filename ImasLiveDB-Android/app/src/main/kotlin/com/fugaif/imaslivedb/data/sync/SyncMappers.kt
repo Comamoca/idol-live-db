@@ -4,6 +4,8 @@ import com.fugaif.imaslivedb.data.model.Brand
 import com.fugaif.imaslivedb.data.model.Event
 import com.fugaif.imaslivedb.data.model.Idol
 import com.fugaif.imaslivedb.data.model.IdolBrand
+import com.fugaif.imaslivedb.data.model.IdolFacet
+import com.fugaif.imaslivedb.data.model.IdolHairstyle
 import com.fugaif.imaslivedb.data.model.ImasUnit
 import com.fugaif.imaslivedb.data.model.SetlistItem
 import com.fugaif.imaslivedb.data.model.SetlistPerformer
@@ -76,6 +78,8 @@ object SyncMappers {
             is CkRow.VenueHall -> row.row.id
             is CkRow.ShowTicket -> row.row.id
             is CkRow.TicketSale -> row.row.id
+            is CkRow.IdolFacet -> row.row.id
+            is CkRow.IdolHairstyle -> row.row.id
             else -> null
         }
     }
@@ -340,6 +344,46 @@ object SyncMappers {
                 url = row.url.emptyToNull(),
                 note = row.note.emptyToNull(),
                 sourceUrl = row.sourceUrl,
+                sortOrder = row.sortOrder
+            )
+        }
+
+    /**
+     * アイドルの項目。`facet` / `value` は生文字列のまま持つ (判断・表示の振り分けは
+     * 呼び出し側が持つ。コアの `CkIdolFacetRow` と同じ理由)。
+     */
+    fun idolFacets(rows: List<CkRow>): List<IdolFacet> =
+        rows.filterIsInstance<CkRow.IdolFacet>().map { (row) ->
+            IdolFacet(
+                id = row.id,
+                idolId = row.idolId,
+                facet = row.facet,
+                value = row.value,
+                origin = row.origin,
+                sourceNote = row.sourceNote.emptyToNull(),
+                sortOrder = row.sortOrder
+            )
+        }
+
+    /**
+     * アイドルの髪型。`styles` / `accessories` は '、' 区切りの 1 文字列のまま持つ
+     * (配列への分割は読む側。コアの `CkIdolHairstyleRow` と同じ理由)。
+     */
+    fun idolHairstyles(rows: List<CkRow>): List<IdolHairstyle> =
+        rows.filterIsInstance<CkRow.IdolHairstyle>().map { (row) ->
+            IdolHairstyle(
+                id = row.id,
+                idolId = row.idolId,
+                label = row.label,
+                isMain = row.isMain,
+                hairColor = row.hairColor.emptyToNull(),
+                hairColorSecondary = row.hairColorSecondary.emptyToNull(),
+                hairLength = row.hairLength.emptyToNull(),
+                styles = row.styles.emptyToNull(),
+                bangs = row.bangs.emptyToNull(),
+                accessories = row.accessories.emptyToNull(),
+                origin = row.origin,
+                sourceNote = row.sourceNote.emptyToNull(),
                 sortOrder = row.sortOrder
             )
         }

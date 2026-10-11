@@ -211,6 +211,23 @@ class CloudKitSyncEngine(
             { d, rows, _ -> d.upsertTicketSales(SyncMappers.ticketSales(rows)) },
             { d, keys -> deleteInChunks(keys, d::deleteTicketSales) },
             { d -> d.ticketSaleIds() }),
+        // アイドルの項目・髪型。idols にだけ依存するので、アイドルが入った後ならいつでもよい
+        // (コアの STEPS_IN_FK_ORDER と同じ理由づけ)。
+        "IdolFacet" to StepIo(
+            { d, rows, _ -> d.upsertIdolFacets(SyncMappers.idolFacets(rows)) },
+            { d, keys -> deleteInChunks(keys, d::deleteIdolFacets) },
+            { d -> d.idolFacetIds() }),
+        "IdolHairstyle" to StepIo(
+            // is_main=false の行を先に書く (端末には一意索引を作らないが、iOS と同じ順にして
+            // おく。IdolHairstyle.kt の KDoc 参照: main の付け替えで一時的に 2 行重なる
+            // 瞬間を避ける)。
+            { d, rows, _ ->
+                val (main, others) = SyncMappers.idolHairstyles(rows).partition { it.isMain }
+                d.upsertIdolHairstyles(others)
+                d.upsertIdolHairstyles(main)
+            },
+            { d, keys -> deleteInChunks(keys, d::deleteIdolHairstyles) },
+            { d -> d.idolHairstyleIds() }),
     )
 
     /**
