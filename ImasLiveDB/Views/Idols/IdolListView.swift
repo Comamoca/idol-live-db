@@ -32,8 +32,8 @@ struct IdolListView: View {
     /// デフォルトが復活するのを防ぐため)。
     @State private var hasUserInteractedWithBrandFilter = false
     @State private var selectedAttribute: String? = nil
-    /// 属性をさらに分けたチーム (ミリシタ BATTLE OF THEATER)。属性を選んだときだけ選べる。
-    @State private var selectedTeam: String? = nil
+    /// 属性をさらに分けたサブ属性 (ミリシタ BATTLE OF THEATER)。属性を選んだときだけ選べる。
+    @State private var selectedSubAttribute: String? = nil
     @AppStorage("idols_require_my_pick") private var requireMyPick: Bool = false
     @AppStorage("idols_require_favorite") private var requireFavorite: Bool = false
     @AppStorage("idols_require_note") private var requireNote: Bool = false
@@ -79,7 +79,7 @@ struct IdolListView: View {
     private var activeFilterCount: Int {
         (selectedBrandIds.isEmpty ? 0 : 1)
         + (selectedAttribute != nil ? 1 : 0)
-        + (selectedTeam != nil ? 1 : 0)
+        + (selectedSubAttribute != nil ? 1 : 0)
         + (requireMyPick ? 1 : 0)
         + (requireFavorite ? 1 : 0)
         + (requireNote ? 1 : 0)
@@ -93,7 +93,7 @@ struct IdolListView: View {
     /// 再計算 (`task(id:)`) のトリガーキー。並び順もここに含める
     /// (含め忘れると、フィルタシートで並び順を変えても一覧が旧い並びのまま残る)。
     private var filterKey: String {
-        "\(brandsKey)_\(selectedAttribute ?? "")_\(selectedTeam ?? "")_\(requireMyPick)_\(requireFavorite)_\(requireNote)_\(sortOrderRaw)_\(sortAscendingRaw)"
+        "\(brandsKey)_\(selectedAttribute ?? "")_\(selectedSubAttribute ?? "")_\(requireMyPick)_\(requireFavorite)_\(requireNote)_\(sortOrderRaw)_\(sortAscendingRaw)"
     }
 
     private var filterBadgeCount: Int {
@@ -129,7 +129,7 @@ struct IdolListView: View {
     private func clearAllFilters() {
         selectedBrandIds = []
         selectedAttribute = nil
-        selectedTeam = nil
+        selectedSubAttribute = nil
         displayModeRaw = IdolDisplayMode.idolName.rawValue
         requireMyPick = false
         requireFavorite = false
@@ -282,7 +282,7 @@ struct IdolListView: View {
                 ),
                 selectedBrandIds: $selectedBrandIds,
                 selectedAttribute: $selectedAttribute,
-                selectedTeam: $selectedTeam,
+                selectedSubAttribute: $selectedSubAttribute,
                 displayMode: Binding(
                     get: { displayMode },
                     set: { displayModeRaw = $0.rawValue }
@@ -453,7 +453,7 @@ struct IdolListView: View {
         var ctx = IdolFilterContext(
             selectedBrandIds: selectedBrandIds,
             selectedAttribute: selectedAttribute,
-            selectedTeam: selectedTeam,
+            selectedSubAttribute: selectedSubAttribute,
             searchText: searchText,
             searchTarget: searchTarget)
         if requireMyPick {

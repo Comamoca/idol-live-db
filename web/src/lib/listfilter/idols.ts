@@ -1,7 +1,7 @@
 /**
  * アイドル一覧の絞り込み設定。
  *
- * アプリの絞り込み (`filter_idol_list`) と同じ軸: ブランド / 属性 / チーム / 誕生月 /
+ * アプリの絞り込み (`filter_idol_list`) と同じ軸: ブランド / 属性 / サブ属性 / 誕生月 /
  * 名前の検索 / CV 名の検索 (名前と CV 名は別の欄。混ぜて当てない)。**誕生月は今までどおり別ページとしても残っていて**、
  * ここでは他の軸と組み合わせられる形にしてある。
  */
@@ -26,9 +26,9 @@ export function mountIdolFilter(root: HTMLElement): void {
       { key: "voiceActor", kind: "text", label: "CV 名" },
       { key: "brandIds", kind: "select", label: "ブランド", options: f.brands, multi: true },
       { key: "attribute", kind: "select", label: "属性", options: f.attributes },
-      // 属性をさらに分けたチーム (ミリシタ BATTLE OF THEATER)。チームの居ない一覧では出さない。
-      ...(f.teams.length > 0
-        ? [{ key: "team", kind: "select", label: "チーム", options: f.teams } satisfies FieldSpec]
+      // 属性をさらに分けたサブ属性 (ミリシタ BATTLE OF THEATER)。サブ属性の居ない一覧では出さない。
+      ...(f.subAttributes.length > 0
+        ? [{ key: "subAttribute", kind: "select", label: "サブ属性", options: f.subAttributes } satisfies FieldSpec]
         : []),
       { key: "birthMonth", kind: "select", label: "誕生月", options: f.birthMonths, numeric: true },
     ],

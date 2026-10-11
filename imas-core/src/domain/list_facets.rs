@@ -79,8 +79,8 @@ pub struct IdolFacets {
     pub brands: Vec<FacetOption>,
     /// 属性は実データに出てくるものだけ (ブランドごとに語彙が違う)。
     pub attributes: Vec<FacetOption>,
-    /// 属性をさらに分けたチーム。実データに出てくるものだけ、表の並びで。
-    pub teams: Vec<FacetOption>,
+    /// 属性をさらに分けたサブ属性。実データに出てくるものだけ、表の並びで。
+    pub sub_attributes: Vec<FacetOption>,
     /// 誕生月 (1〜12)。値は `IdolQuery.birth_month` の数を文字列にしたもの。
     pub birth_months: Vec<FacetOption>,
     pub sorts: Vec<SortOption>,
@@ -156,9 +156,9 @@ pub fn idol_facets(snap: &Snapshot, idol_entries: &[IdolListEntry]) -> IdolFacet
         .iter()
         .filter_map(|e| e.attribute.as_deref().filter(|a| !a.is_empty()))
         .collect();
-    let teams: HashSet<&str> = idol_entries
+    let sub_attributes: HashSet<&str> = idol_entries
         .iter()
-        .filter_map(|e| e.team.as_deref().filter(|t| !t.is_empty()))
+        .filter_map(|e| e.sub_attribute.as_deref().filter(|t| !t.is_empty()))
         .collect();
     IdolFacets {
         brands: present_brands(snap, idol_entries),
@@ -168,10 +168,10 @@ pub fn idol_facets(snap: &Snapshot, idol_entries: &[IdolListEntry]) -> IdolFacet
             .into_iter()
             .map(|a| option(a, idol_attributes::attribute_label(a).unwrap_or(a)))
             .collect(),
-        teams: idol_attributes::all_teams()
+        sub_attributes: idol_attributes::all_sub_attributes()
             .into_iter()
-            .filter(|t| teams.contains(t.as_str()))
-            .filter_map(|t| idol_attributes::team_full_name(&t).map(|name| option(t, name)))
+            .filter(|t| sub_attributes.contains(t.as_str()))
+            .filter_map(|t| idol_attributes::sub_attribute_full_name(&t).map(|name| option(t, name)))
             .collect(),
         birth_months: (1..=12u32).map(|m| option(m.to_string(), format!("{m}月"))).collect(),
         sorts: sort_order_table()

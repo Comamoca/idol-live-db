@@ -200,7 +200,7 @@ struct IdolFilterSheet: View {
     @Binding var sortAscending: Bool?
     @Binding var selectedBrandIds: Set<String>
     @Binding var selectedAttribute: String?
-    @Binding var selectedTeam: String?
+    @Binding var selectedSubAttribute: String?
     @Binding var displayMode: IdolDisplayMode
     @Binding var showCV: Bool
     @Binding var requireMyPick: Bool
@@ -212,7 +212,7 @@ struct IdolFilterSheet: View {
     @State private var localSortAscending: Bool?
     @State private var localBrandIds: Set<String> = []
     @State private var localAttribute: String?
-    @State private var localTeam: String?
+    @State private var localSubAttribute: String?
     @State private var localDisplayMode: IdolDisplayMode = .idolName
     @State private var localShowCV: Bool = false
     @State private var localMyPick: Bool = false
@@ -231,10 +231,10 @@ struct IdolFilterSheet: View {
         return idolAttributeOptions(brandId: bid)
     }
 
-    /// 選んだ属性をさらに分けたチーム (ミリシタ BATTLE OF THEATER)。属性が未選択なら空。
-    private var teamsForAttribute: [IdolAttributeOption] {
+    /// 選んだ属性をさらに分けたサブ属性 (ミリシタ BATTLE OF THEATER)。属性が未選択なら空。
+    private var subAttributesForAttribute: [IdolAttributeOption] {
         guard let attribute = localAttribute else { return [] }
-        return idolTeamOptions(attribute: attribute)
+        return idolSubAttributeOptions(attribute: attribute)
     }
 
     var body: some View {
@@ -265,7 +265,7 @@ struct IdolFilterSheet: View {
                         // localAttribute を巻き添えで消してしまうため)。
                         guard didRestore else { return }
                         localAttribute = nil
-                        localTeam = nil
+                        localSubAttribute = nil
                     }
 
                 if !attributesForBrand.isEmpty {
@@ -276,12 +276,12 @@ struct IdolFilterSheet: View {
                                 attributeChip(value: item.value, label: item.label)
                             }
                         }
-                        // 属性を選ぶと、その属性を 2 つに分けたチームで更に絞れる。
-                        if !teamsForAttribute.isEmpty {
+                        // 属性を選ぶと、その属性を 2 つに分けたサブ属性で更に絞れる。
+                        if !subAttributesForAttribute.isEmpty {
                             ImasChipRow {
-                                teamChip(value: nil, label: "全チーム")
-                                ForEach(teamsForAttribute, id: \.value) { item in
-                                    teamChip(value: item.value, label: item.label)
+                                subAttributeChip(value: nil, label: "全て")
+                                ForEach(subAttributesForAttribute, id: \.value) { item in
+                                    subAttributeChip(value: item.value, label: item.label)
                                 }
                             }
                         }
@@ -313,7 +313,7 @@ struct IdolFilterSheet: View {
                 localSortAscending = sortAscending
                 localBrandIds = selectedBrandIds
                 localAttribute = selectedAttribute
-                localTeam = selectedTeam
+                localSubAttribute = selectedSubAttribute
                 localDisplayMode = displayMode
                 localShowCV = showCV
                 localMyPick = requireMyPick
@@ -343,7 +343,7 @@ struct IdolFilterSheet: View {
 
     private var hasActiveFilters: Bool {
         localSortOrder != .official || localSortAscending != nil
-            || !localBrandIds.isEmpty || localAttribute != nil || localTeam != nil || localDisplayMode != .idolName
+            || !localBrandIds.isEmpty || localAttribute != nil || localSubAttribute != nil || localDisplayMode != .idolName
             || localShowCV || localMyPick || localFavorite || localNote
     }
 
@@ -352,7 +352,7 @@ struct IdolFilterSheet: View {
         localSortAscending = nil
         localBrandIds = []
         localAttribute = nil
-        localTeam = nil
+        localSubAttribute = nil
         localDisplayMode = .idolName
         localShowCV = false
         localMyPick = false
@@ -365,7 +365,7 @@ struct IdolFilterSheet: View {
         sortAscending = localSortAscending
         selectedBrandIds = localBrandIds
         selectedAttribute = localAttribute
-        selectedTeam = localTeam
+        selectedSubAttribute = localSubAttribute
         displayMode = localDisplayMode
         showCV = localShowCV
         requireMyPick = localMyPick
@@ -376,15 +376,15 @@ struct IdolFilterSheet: View {
 
     private func attributeChip(value: String?, label: String) -> some View {
         ImasFilterChip(text: label, isSelected: localAttribute == value) {
-            // 属性を変えたらチームは外す (別の属性のチームは選べない)。
-            if localAttribute != value { localTeam = nil }
+            // 属性を変えたらサブ属性は外す (別の属性のサブ属性は選べない)。
+            if localAttribute != value { localSubAttribute = nil }
             localAttribute = value
         }
     }
 
-    private func teamChip(value: String?, label: String) -> some View {
-        ImasFilterChip(text: label, isSelected: localTeam == value) {
-            localTeam = value
+    private func subAttributeChip(value: String?, label: String) -> some View {
+        ImasFilterChip(text: label, isSelected: localSubAttribute == value) {
+            localSubAttribute = value
         }
     }
 }

@@ -29,8 +29,8 @@ data class IdolListUiState(
     val castNames: Map<String, String> = emptyMap(),
     val selectedBrandIds: Set<String> = emptySet(),
     val selectedAttribute: String? = null,
-    /** 属性をさらに分けたチーム (ミリシタ BATTLE OF THEATER)。属性を選んだときだけ選べる。 */
-    val selectedTeam: String? = null,
+    /** 属性をさらに分けたサブ属性 (ミリシタ BATTLE OF THEATER)。属性を選んだときだけ選べる。 */
+    val selectedSubAttribute: String? = null,
     val searchText: String = "",
     /** 検索欄の語をアイドル名 / CV 名のどちらとして引くか。 */
     val searchTarget: IdolSearchTarget = IdolSearchTarget.NAME,
@@ -64,7 +64,7 @@ data class IdolListUiState(
     val activeFilterCount: Int
         get() = (if (selectedBrandIds.isEmpty()) 0 else 1) +
             (if (selectedAttribute != null) 1 else 0) +
-            (if (selectedTeam != null) 1 else 0) +
+            (if (selectedSubAttribute != null) 1 else 0) +
             (if (requireMyPick) 1 else 0) +
             (if (requireFavorite) 1 else 0) +
             (if (requireNote) 1 else 0)
@@ -87,7 +87,7 @@ private fun IdolListUiState.rebuilt(): IdolListUiState {
     val criteria = IdolListFilterCriteria(
         selectedBrandIds = selectedBrandIds.toList(),
         selectedAttribute = selectedAttribute,
-        selectedTeam = selectedTeam,
+        selectedSubAttribute = selectedSubAttribute,
         requireMyPick = requireMyPick,
         myPickIds = pickIds.toList(),
         requireFavorite = requireFavorite,
@@ -258,7 +258,7 @@ class IdolListViewModel(app: Application) : AndroidViewModel(app) {
         _uiState.value = _uiState.value.copy(
             selectedBrandIds = emptySet(),
             selectedAttribute = null,
-            selectedTeam = null,
+            selectedSubAttribute = null,
             displayMode = IdolDisplayMode.IDOL_NAME
         ).rebuilt()
     }
@@ -267,7 +267,7 @@ class IdolListViewModel(app: Application) : AndroidViewModel(app) {
     fun applyFilterSheet(
         brandIds: Set<String>,
         attribute: String?,
-        team: String?,
+        subAttribute: String?,
         displayMode: IdolDisplayMode,
         showCV: Boolean,
         requireMyPick: Boolean,
@@ -285,7 +285,7 @@ class IdolListViewModel(app: Application) : AndroidViewModel(app) {
         _uiState.value = _uiState.value.copy(
             selectedBrandIds = brandIds,
             selectedAttribute = attribute,
-            selectedTeam = team,
+            selectedSubAttribute = subAttribute,
             displayMode = displayMode,
             showCV = showCV,
             requireMyPick = requireMyPick,

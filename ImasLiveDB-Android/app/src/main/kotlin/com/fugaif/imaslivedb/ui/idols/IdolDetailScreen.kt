@@ -627,7 +627,7 @@ private fun ProfileBody(
                 talents = idol.talents,
                 color = idol.color,
                 attribute = idol.attribute,
-                team = idol.team
+                subAttribute = idol.subAttribute
             )
         )
     }
@@ -645,10 +645,10 @@ private fun ProfileBody(
                     val month = action.month.toInt()
                     ({ onNavigateToBirthMonth(month) })
                 }
-                // 属性の行は、チームが分かるとき同じチームのアイドル一覧へ (iOS の filteredIdols(.team) と同じ行先)。
-                is RowAction.FilterByTeam -> {
-                    val team = action.team
-                    ({ onFilteredIdolsClick(IdolFilterKind.TEAM, team) })
+                // 属性の行は、サブ属性が分かるとき同じサブ属性のアイドル一覧へ (iOS の filteredIdols(.subAttribute) と同じ行先)。
+                is RowAction.FilterBySubAttribute -> {
+                    val subAttribute = action.subAttribute
+                    ({ onFilteredIdolsClick(IdolFilterKind.SUB_ATTRIBUTE, subAttribute) })
                 }
                 // カラーは押すと写せる (配信や実況で色コードを使う人が居る)。
                 RowAction.CopyValue -> ({ clipboard.setText(AnnotatedString(row.value)) })
@@ -665,7 +665,7 @@ private fun ProfileBody(
                 // 押せる見た目 (accent 文字 + 矢印) を出すのは onClick ではなく tappable。
                 // 「別画面へ行く」行だけ立てる — 複写は押せるが行先が無いので矢印は嘘になる
                 // (iOS ImasLabeledRow の showChevron/tappable と同じ切り分け)。
-                tappable = action is RowAction.FilterByBirthMonth || action is RowAction.FilterByTeam,
+                tappable = action is RowAction.FilterByBirthMonth || action is RowAction.FilterBySubAttribute,
                 seed = idol.color, brand = idol.brandId, onClick = onClick
             )
         }

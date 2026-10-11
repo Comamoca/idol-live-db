@@ -910,8 +910,8 @@ pub enum RowAction {
     None,
     /// 同じ誕生月のアイドル一覧へ。
     FilterByBirthMonth { month: u32 },
-    /// 同じチーム (`pretty` 等) のアイドル一覧へ。見出しは [`crate::domain::idol_attributes::team_full_name`]。
-    FilterByTeam { team: String },
+    /// 同じサブ属性 (`pretty` 等) のアイドル一覧へ。見出しは [`crate::domain::idol_attributes::sub_attribute_full_name`]。
+    FilterBySubAttribute { sub_attribute: String },
     /// 値を写す。
     CopyValue,
     /// 長い値をその場で開く/畳む。
@@ -949,12 +949,12 @@ pub struct IdolProfileInput {
     pub hobby_talent: Option<String>,
     /// カラーコード (#RRGGBB)。
     pub color: Option<String>,
-    /// 「プリンセス プリティ」等 (属性 + チーム)。
+    /// 「プリンセス プリティ」等 (属性 + サブ属性)。
     #[uniffi(default = None)]
     pub attribute_display: Option<String>,
-    /// チームがあれば属性の行から同じチームのアイドル一覧へ飛べる。
+    /// サブ属性があれば属性の行から同じサブ属性のアイドル一覧へ飛べる。
     #[uniffi(default = None)]
-    pub team: Option<String>,
+    pub sub_attribute: Option<String>,
 }
 
 /// アイドル詳細のプロフィール行を組み立てる。
@@ -980,9 +980,9 @@ pub fn idol_profile_rows(input: &IdolProfileInput) -> Vec<ScreenRow> {
 
     push(&mut rows, "よみ", &input.name_kana, RowStyle::Plain, RowAction::ToggleExpansion);
     push(&mut rows, "ローマ字", &input.name_romaji, RowStyle::Monospaced, RowAction::None);
-    // 属性の行は、チームが分かるときに「同じチームのアイドル」へ飛べる。
-    let attribute_action = match input.team.as_deref().filter(|t| !t.is_empty()) {
-        Some(team) => RowAction::FilterByTeam { team: team.to_string() },
+    // 属性の行は、サブ属性が分かるときに「同じサブ属性のアイドル」へ飛べる。
+    let attribute_action = match input.sub_attribute.as_deref().filter(|t| !t.is_empty()) {
+        Some(sub_attribute) => RowAction::FilterBySubAttribute { sub_attribute: sub_attribute.to_string() },
         None => RowAction::None,
     };
     push(&mut rows, "属性", &input.attribute_display, RowStyle::Plain, attribute_action);
@@ -1030,7 +1030,7 @@ mod tests {
             hobby_talent: Some("読書 / 早起き".into()),
             color: Some("#EE7F9C".into()),
             attribute_display: Some("キュート".into()),
-            team: None,
+            sub_attribute: None,
         }
     }
 

@@ -78,7 +78,7 @@ class AppDatabaseMigrationTest {
     /** 公演の演者の表 (MIGRATION_36_37) を足しても、端末ローカルの行は残る。 */
     @Test fun migrates36ToLatest() = assertMigrates(from = 36)
 
-    /** 直前の版。アイドルのチームの列 (MIGRATION_37_38) を足しても、端末ローカルの行は残る。 */
+    /** 直前の版。アイドルのサブ属性の列 (MIGRATION_37_38) を足しても、端末ローカルの行は残る。 */
     @Test fun migrates37ToLatest() = assertMigrates(from = 37)
 
     /**

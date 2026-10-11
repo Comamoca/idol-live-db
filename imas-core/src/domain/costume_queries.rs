@@ -517,7 +517,7 @@ mod tests {
             attribute: None,
             is_external: false,
             aliases: None,
-            team: None,
+            sub_attribute: None,
         }
     }
 

@@ -679,7 +679,7 @@
       },
       {
         "tableName": "idols",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `brand_id` TEXT NOT NULL, `name` TEXT NOT NULL, `name_kana` TEXT, `name_romaji` TEXT, `family_name` TEXT, `given_name` TEXT, `nickname` TEXT, `color` TEXT, `sort_order` INTEGER NOT NULL, `birthday` TEXT, `blood_type` TEXT, `height` REAL, `weight` REAL, `birth_place` TEXT, `age` INTEGER, `bust` REAL, `waist` REAL, `hip` REAL, `constellation` TEXT, `hobbies` TEXT, `talents` TEXT, `description` TEXT, `gender` TEXT, `handedness` TEXT, `debut_date` TEXT, `attribute` TEXT, `is_external` INTEGER NOT NULL, `aliases` TEXT, `voice_actors` TEXT, `team` TEXT, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `brand_id` TEXT NOT NULL, `name` TEXT NOT NULL, `name_kana` TEXT, `name_romaji` TEXT, `family_name` TEXT, `given_name` TEXT, `nickname` TEXT, `color` TEXT, `sort_order` INTEGER NOT NULL, `birthday` TEXT, `blood_type` TEXT, `height` REAL, `weight` REAL, `birth_place` TEXT, `age` INTEGER, `bust` REAL, `waist` REAL, `hip` REAL, `constellation` TEXT, `hobbies` TEXT, `talents` TEXT, `description` TEXT, `gender` TEXT, `handedness` TEXT, `debut_date` TEXT, `attribute` TEXT, `is_external` INTEGER NOT NULL, `aliases` TEXT, `voice_actors` TEXT, `sub_attribute` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -862,8 +862,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "team",
-            "columnName": "team",
+            "fieldPath": "subAttribute",
+            "columnName": "sub_attribute",
             "affinity": "TEXT",
             "notNull": false
           }

@@ -76,9 +76,9 @@ pub struct IdolRecord {
     pub attribute: Option<String>,
     pub is_external: bool,
     pub aliases: Option<String>,
-    /// 属性をさらに分けたチーム ([`crate::domain::idol_attributes`])。
+    /// 属性をさらに分けたサブ属性 ([`crate::domain::idol_attributes`])。
     #[uniffi(default = None)]
-    pub team: Option<String>,
+    pub sub_attribute: Option<String>,
 }
 
 impl From<&Idol> for IdolRecord {
@@ -113,7 +113,7 @@ impl From<&Idol> for IdolRecord {
             attribute: i.attribute.clone(),
             is_external: i.is_external,
             aliases: i.aliases.clone(),
-            team: i.team.clone(),
+            sub_attribute: i.sub_attribute.clone(),
         }
     }
 }
@@ -271,9 +271,9 @@ pub fn idols_by_blood_type(snap: &Snapshot, blood_type: &str) -> Vec<IdolRecord>
     official_order_filter(snap, |i| i.blood_type.as_deref() == Some(blood_type))
 }
 
-/// チームフィルタ (IdolFilterCriterion.team)。公式順。
-pub fn idols_by_team(snap: &Snapshot, team: &str) -> Vec<IdolRecord> {
-    official_order_filter(snap, |i| i.team.as_deref() == Some(team))
+/// サブ属性フィルタ (IdolFilterCriterion.sub_attribute)。公式順。
+pub fn idols_by_sub_attribute(snap: &Snapshot, sub_attribute: &str) -> Vec<IdolRecord> {
+    official_order_filter(snap, |i| i.sub_attribute.as_deref() == Some(sub_attribute))
 }
 
 /// sort_order 順 (前計算済み idol_order) を保ったまま述語で絞る共通経路。
@@ -518,9 +518,9 @@ pub struct IdolProfileSource {
     /// ブランド内の属性 (`princess` 等)。表示名はコアが付ける。
     #[uniffi(default = None)]
     pub attribute: Option<String>,
-    /// 属性をさらに分けたチーム (`pretty` 等)。
+    /// 属性をさらに分けたサブ属性 (`pretty` 等)。
     #[uniffi(default = None)]
-    pub team: Option<String>,
+    pub sub_attribute: Option<String>,
 }
 
 impl From<&IdolRecord> for IdolProfileSource {
@@ -543,7 +543,7 @@ impl From<&IdolRecord> for IdolProfileSource {
             talents: r.talents.clone(),
             color: r.color.clone(),
             attribute: r.attribute.clone(),
-            team: r.team.clone(),
+            sub_attribute: r.sub_attribute.clone(),
         }
     }
 }
@@ -579,11 +579,11 @@ fn profile_input(r: &IdolProfileSource) -> IdolProfileInput {
         color: r.color.clone(),
         attribute_display: crate::domain::idol_attributes::attribute_display(
             r.attribute.as_deref(),
-            r.team.as_deref(),
+            r.sub_attribute.as_deref(),
         ),
-        // 属性と食い違うチームは表示に付けないので、行き先にもしない。
-        team: r.team.clone().filter(|t| {
-            crate::domain::idol_attributes::team_attribute(t) == r.attribute.as_deref()
+        // 属性と食い違うサブ属性は表示に付けないので、行き先にもしない。
+        sub_attribute: r.sub_attribute.clone().filter(|t| {
+            crate::domain::idol_attributes::sub_attribute_attribute(t) == r.attribute.as_deref()
         }),
     }
 }
@@ -681,7 +681,7 @@ mod tests {
             height: None, weight: None, birth_place: None, age: None, bust: None, waist: None,
             hip: None, constellation: None, hobbies: None, talents: None, description: None,
             gender: None, handedness: None, family_name: None, given_name: None, nickname: None,
-            debut_date: None, attribute: None, is_external: false, aliases: None, team: None,
+            debut_date: None, attribute: None, is_external: false, aliases: None, sub_attribute: None,
         }
     }
 
@@ -780,14 +780,14 @@ mod tests {
         );
     }
 
-    /// 属性の行はチームを添え、押すと同じチームの一覧へ (チームが属性と食い違えば添えない)。
+    /// 属性の行はサブ属性を添え、押すと同じサブ属性の一覧へ (サブ属性が属性と食い違えば添えない)。
     #[test]
-    fn attribute_row_carries_the_team() {
+    fn attribute_row_carries_the_sub_attribute() {
         use crate::domain::screen_composition::RowAction;
-        let row = |attribute: &str, team: Option<&str>| {
+        let row = |attribute: &str, sub_attribute: Option<&str>| {
             idol_profile_rows_from_source(&IdolProfileSource {
                 attribute: Some(attribute.into()),
-                team: team.map(Into::into),
+                sub_attribute: sub_attribute.map(Into::into),
                 ..Default::default()
             })
             .into_iter()
@@ -795,25 +795,25 @@ mod tests {
         };
         let r = row("princess", Some("pretty")).unwrap();
         assert_eq!(r.value, "プリンセス プリティ");
-        assert_eq!(r.action, RowAction::FilterByTeam { team: "pretty".into() });
+        assert_eq!(r.action, RowAction::FilterBySubAttribute { sub_attribute: "pretty".into() });
         let r = row("fairy", Some("pretty")).unwrap();
         assert_eq!((r.value.as_str(), &r.action), ("フェアリー", &RowAction::None));
         assert!(row("1年", None).is_none());
     }
 
-    /// 実データの 52 人は 6 チームに分かれ、どのチームも属性と合っている。
+    /// 実データの 52 人は 6 チームに分かれ、どのサブ属性も属性と合っている。
     #[test]
-    fn bundled_teams_match_their_attribute() {
+    fn bundled_sub_attributes_match_their_attribute() {
         let snap = crate::test_support::bundle_snapshot();
-        let with_team: Vec<&Idol> = snap.idols.iter().filter(|i| i.team.is_some()).collect();
-        assert_eq!(with_team.len(), 52);
-        for i in &with_team {
-            let team = i.team.as_deref().unwrap();
-            assert_eq!(crate::domain::idol_attributes::team_attribute(team), i.attribute.as_deref(), "{}", i.id);
+        let with_sub_attribute: Vec<&Idol> = snap.idols.iter().filter(|i| i.sub_attribute.is_some()).collect();
+        assert_eq!(with_sub_attribute.len(), 52);
+        for i in &with_sub_attribute {
+            let sub_attribute = i.sub_attribute.as_deref().unwrap();
+            assert_eq!(crate::domain::idol_attributes::sub_attribute_attribute(sub_attribute), i.attribute.as_deref(), "{}", i.id);
         }
-        for team in crate::domain::idol_attributes::all_teams() {
-            let n = idols_by_team(snap, &team).len();
-            assert!((8..=9).contains(&n), "{team}: {n}");
+        for sub_attribute in crate::domain::idol_attributes::all_sub_attributes() {
+            let n = idols_by_sub_attribute(snap, &sub_attribute).len();
+            assert!((8..=9).contains(&n), "{sub_attribute}: {n}");
         }
     }
 

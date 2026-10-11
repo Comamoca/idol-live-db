@@ -96,10 +96,10 @@ impl SnapshotStore {
         Ok(queries::idols_by_blood_type(&snap, &blood_type))
     }
 
-    /// チームフィルタ (完全一致)。BATTLE OF THEATER のチーム (`pretty` 等) の一覧。
-    pub fn idols_by_team(&self, team: String) -> Result<Vec<IdolRecord>, SnapshotError> {
+    /// サブ属性フィルタ (完全一致)。BATTLE OF THEATER のチーム (`pretty` 等) の一覧。
+    pub fn idols_by_sub_attribute(&self, sub_attribute: String) -> Result<Vec<IdolRecord>, SnapshotError> {
         let snap = self.current()?;
-        Ok(queries::idols_by_team(&snap, &team))
+        Ok(queries::idols_by_sub_attribute(&snap, &sub_attribute))
     }
 
     /// idol_id → 現任 CV 名のマップ (現任なしのアイドルはキーなし)。
@@ -222,14 +222,14 @@ pub fn idol_attribute_options(brand_id: String) -> Vec<crate::domain::idol_attri
     crate::domain::idol_attributes::attribute_options(&brand_id)
 }
 
-/// その属性を分けたチームの選択肢 (ミリシタ BATTLE OF THEATER の 6 チーム)。無ければ空。
+/// その属性を分けたサブ属性の選択肢 (ミリシタ BATTLE OF THEATER の 6 チーム)。無ければ空。
 #[uniffi::export]
-pub fn idol_team_options(attribute: String) -> Vec<crate::domain::idol_attributes::IdolAttributeOption> {
-    crate::domain::idol_attributes::team_options(&attribute)
+pub fn idol_sub_attribute_options(attribute: String) -> Vec<crate::domain::idol_attributes::IdolAttributeOption> {
+    crate::domain::idol_attributes::sub_attribute_options(&attribute)
 }
 
-/// チームの呼び名 (`pretty` → 「プリンセス プリティ」)。知らない値は `None`。
+/// サブ属性の呼び名 (`pretty` → 「プリンセス プリティ」)。知らない値は `None`。
 #[uniffi::export]
-pub fn idol_team_full_name(team: String) -> Option<String> {
-    crate::domain::idol_attributes::team_full_name(&team)
+pub fn idol_sub_attribute_full_name(sub_attribute: String) -> Option<String> {
+    crate::domain::idol_attributes::sub_attribute_full_name(&sub_attribute)
 }

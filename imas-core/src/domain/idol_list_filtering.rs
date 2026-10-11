@@ -129,11 +129,11 @@ pub struct IdolListEntry {
     /// 表示名を短くしたアイドル (レトラ = サラ・レトラ・オリヴェイラ・ウタガワ) が
     /// フルネームで検索できなくなるのを防ぐため検索対象に含める。
     pub aliases: Option<String>,
-    /// ブランド内サブ属性 (cute/cool/passion 等)。
+    /// ブランド内の属性 (cute/cool/passion 等)。
     pub attribute: Option<String>,
-    /// 属性をさらに分けたチーム (`pretty` 等。[`crate::domain::idol_attributes`])。
+    /// 属性をさらに分けたサブ属性 (`pretty` 等。[`crate::domain::idol_attributes`])。
     #[uniffi(default = None)]
-    pub team: Option<String>,
+    pub sub_attribute: Option<String>,
     /// 公式順。同値時の安定化にも使う。`sort_order` が NULL のアイドルは `i64::MAX`
     /// (末尾。Q-07) を入れる。
     pub sort_order: i64,
@@ -161,10 +161,10 @@ pub struct IdolListEntry {
 pub struct IdolQuery {
     /// 空 = 全ブランド。
     pub brand_ids: Vec<String>,
-    /// ブランド内サブ属性 (cute/cool/passion 等)。
+    /// ブランド内の属性 (cute/cool/passion 等)。
     pub attribute: Option<String>,
-    /// 属性をさらに分けたチーム (`pretty` 等)。
-    pub team: Option<String>,
+    /// 属性をさらに分けたサブ属性 (`pretty` 等)。
+    pub sub_attribute: Option<String>,
     /// 誕生月 (1..=12)。
     pub birth_month: Option<u32>,
     /// 名前 / かな / 別名 / 愛称の部分一致。CV 名は見ない ([`Self::voice_actor`])。
@@ -183,7 +183,7 @@ impl IdolQuery {
         IdolListFilterCriteria {
             selected_brand_ids: self.brand_ids.clone(),
             selected_attribute: self.attribute.clone(),
-            selected_team: self.team.clone(),
+            selected_sub_attribute: self.sub_attribute.clone(),
             search_text: self.search_text.clone(),
             voice_actor_text: self.voice_actor.clone(),
             birth_month: self.birth_month,
@@ -214,7 +214,7 @@ pub fn idol_list_entries(snap: &crate::domain::snapshot::Snapshot) -> Vec<IdolLi
             nickname: r.nickname,
             aliases: r.aliases,
             attribute: r.attribute,
-            team: r.team,
+            sub_attribute: r.sub_attribute,
             // NULL は末尾 (Q-07)。コアの他の公式順と同じキー。
             sort_order: r.sort_order.unwrap_or(i64::MAX),
             age: r.age,
@@ -234,12 +234,12 @@ pub fn idol_list_entries(snap: &crate::domain::snapshot::Snapshot) -> Vec<IdolLi
 pub struct IdolListFilterCriteria {
     /// 選択ブランド (空 = 全ブランド)。
     pub selected_brand_ids: Vec<String>,
-    /// ブランド内サブ属性 (cute/cool/passion 等)。None = 属性絞り込みなし。
+    /// ブランド内の属性 (cute/cool/passion 等)。None = 属性絞り込みなし。
     pub selected_attribute: Option<String>,
-    /// 属性をさらに分けたチーム (`pretty` 等)。None = チームで絞らない。
-    /// 属性と一緒に使う前提だが、チームだけでも絞れる (チームの値は属性をまたいで一意)。
+    /// 属性をさらに分けたサブ属性 (`pretty` 等)。None = サブ属性で絞らない。
+    /// 属性と一緒に使う前提だが、サブ属性だけでも絞れる (サブ属性の値は属性をまたいで一意)。
     #[uniffi(default = None)]
-    pub selected_team: Option<String>,
+    pub selected_sub_attribute: Option<String>,
     pub require_my_pick: bool,
     pub my_pick_ids: Vec<String>,
     pub require_favorite: bool,
@@ -347,7 +347,7 @@ impl<'a> NonTextAxes<'a> {
         let id = e.idol_id.as_str();
         (self.brands.is_empty() || self.brands.contains(e.brand_id.as_str()))
             && c.selected_attribute.as_deref().is_none_or(|attr| e.attribute.as_deref() == Some(attr))
-            && c.selected_team.as_deref().is_none_or(|team| e.team.as_deref() == Some(team))
+            && c.selected_sub_attribute.as_deref().is_none_or(|sub_attribute| e.sub_attribute.as_deref() == Some(sub_attribute))
             && (!c.require_my_pick || self.my_picks.contains(id))
             && (!c.require_favorite || self.favorites.contains(id))
             && (!c.require_note || self.notes.contains(id))
@@ -528,7 +528,7 @@ mod tests {
             nickname: None,
             aliases: None,
             attribute: None,
-            team: None,
+            sub_attribute: None,
             sort_order: 0,
             age: None,
             height: None,
@@ -625,19 +625,19 @@ mod tests {
     }
 
     #[test]
-    fn team_filter_narrows_within_the_attribute() {
+    fn sub_attribute_filter_narrows_within_the_attribute() {
         let mut a = entry("a");
         a.attribute = Some("princess".to_string());
-        a.team = Some("pretty".to_string());
+        a.sub_attribute = Some("pretty".to_string());
         let mut b = entry("b");
         b.attribute = Some("princess".to_string());
-        b.team = Some("girly".to_string());
+        b.sub_attribute = Some("girly".to_string());
         let mut c = entry("c");
         c.attribute = Some("princess".to_string());
         let idols = [a, b, c];
         let ctx = IdolListFilterCriteria {
             selected_attribute: Some("princess".to_string()),
-            selected_team: Some("girly".to_string()),
+            selected_sub_attribute: Some("girly".to_string()),
             ..Default::default()
         };
         assert_eq!(picked_ids(&idols, &filter_idol_list(&idols, &ctx)), vec_of(&["b"]));

@@ -104,9 +104,9 @@ data class Idol(
     @ColumnInfo(name = "voice_actors")
     val voiceActors: String? = null,
 
-    /** 属性をさらに分けたチーム (ミリシタ BATTLE OF THEATER の `pretty` 等)。表示名はコアが持つ。 */
-    @ColumnInfo(name = "team")
-    val team: String? = null
+    /** 属性をさらに分けたサブ属性 (ミリシタ BATTLE OF THEATER の `pretty` 等)。表示名はコアが持つ。 */
+    @ColumnInfo(name = "sub_attribute")
+    val subAttribute: String? = null
 ) {
     /**
      * 表示用の短縮名 (アバターのモノグラム等)。優先順位: nickname > given_name > name。

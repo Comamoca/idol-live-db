@@ -819,12 +819,12 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         /**
-         * v38: idols.team (属性をさらに分けたチーム。ミリシタ BATTLE OF THEATER の 6 チーム)。
-         * iOS v50_idols_team と対。値は同期 (CloudKit の Idol.team) と次の seed で入る。
+         * v38: idols.sub_attribute (属性をさらに分けたサブ属性。今はミリシタ BATTLE OF THEATER の 6 チーム)。
+         * iOS v50_idols_sub_attribute と対。値は同期 (CloudKit の Idol.subAttribute) と次の seed で入る。
          */
         val MIGRATION_37_38 = object : Migration(37, 38) {
             override fun migrate(db: SupportSQLiteDatabase) {
-                db.execSQL("ALTER TABLE idols ADD COLUMN team TEXT")
+                db.execSQL("ALTER TABLE idols ADD COLUMN sub_attribute TEXT")
             }
         }
 
