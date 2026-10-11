@@ -46,6 +46,18 @@ mod tests {
     use rusqlite::Connection;
     use std::collections::BTreeMap;
 
+    /// コアの DDL に、項目・髪型の 2 表 (`facets_schema.sql`) を足した DB。
+    ///
+    /// 日次 export は CloudKit に昇格した IdolFacet / IdolHairstyle を db/master.sql に出すが、
+    /// アプリ (iOS の移行・Android の Room) はまだ表を持たないので `MASTER_SCHEMA_SQL` には入れない。
+    /// アプリ側に表を足すときに `master_schema.sql` へ移し、ここは `MASTER_SCHEMA_SQL` だけに戻す。
+    fn master_with_facets() -> Connection {
+        let conn = Connection::open_in_memory().unwrap();
+        conn.execute_batch(MASTER_SCHEMA_SQL).expect("DDL が流せる");
+        conn.execute_batch(crate::domain::mirror_schema::FACETS_SCHEMA_SQL).expect("項目の DDL が流せる");
+        conn
+    }
+
     /// 「表名 → (列名, 型, NOT NULL, 既定値) の並び」を読む。
     /// 列の順序も含めて比べたいので Vec のまま持つ。
     fn schema_of(conn: &Connection) -> BTreeMap<String, Vec<String>> {
@@ -84,8 +96,7 @@ mod tests {
     /// スキーマ所有権をコアへ移す前提が崩れるので、必ず追随させること。
     #[test]
     fn ddl_reproduces_the_bundled_schema() {
-        let fresh = Connection::open_in_memory().unwrap();
-        fresh.execute_batch(MASTER_SCHEMA_SQL).expect("DDL が流せる");
+        let fresh = master_with_facets();
 
         let a = schema_of(&fresh);
         let b = schema_of(&bundle_conn());
@@ -103,8 +114,7 @@ mod tests {
     /// 索引も再現できること (性能の前提なので形だけでなく索引まで見る)。
     #[test]
     fn ddl_reproduces_the_indexes() {
-        let fresh = Connection::open_in_memory().unwrap();
-        fresh.execute_batch(MASTER_SCHEMA_SQL).unwrap();
+        let fresh = master_with_facets();
         let read = |c: &Connection| -> Vec<String> {
             let mut stmt = c
                 .prepare("SELECT name FROM sqlite_master WHERE type='index' AND sql IS NOT NULL ORDER BY name")
