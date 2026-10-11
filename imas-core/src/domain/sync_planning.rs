@@ -226,6 +226,9 @@ const STEPS_IN_FK_ORDER: &[(&str, &str)] = &[
     ("Creator", "作詞作曲の読み"),
     // Phase 2: brands のみ依存
     ("Idol", "アイドル"),
+    // アイドルの項目と髪型。idols にだけ依存する。
+    ("IdolFacet", "アイドルの項目"),
+    ("IdolHairstyle", "アイドルの髪型"),
     ("Event", "イベント"),
     ("ImasUnit", "ユニット"),
     // 会場は Show より前。Show が venue_id で参照するため。
@@ -507,6 +510,8 @@ pub fn table_info(record_type: &str) -> Option<SyncTableInfo> {
     let (table, pk_columns): (&str, &[&str]) = match record_type {
         "Brand" => ("brands", &["id"]),
         "Idol" => ("idols", &["id"]),
+        "IdolFacet" => ("idol_facets", &["id"]),
+        "IdolHairstyle" => ("idol_hairstyles", &["id"]),
         "Event" => ("events", &["id"]),
         "ImasUnit" => ("units", &["id"]),
         "Show" => ("shows", &["id"]),
@@ -1014,7 +1019,7 @@ mod tests {
     #[test]
     fn all_steps_keeps_parents_before_children() {
         let steps = all_steps();
-        assert_eq!(steps.len(), 22);
+        assert_eq!(steps.len(), 24);
         let index = |record_type: &str| {
             steps
                 .iter()

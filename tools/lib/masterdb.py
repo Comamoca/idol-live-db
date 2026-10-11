@@ -48,11 +48,21 @@ def _keep_content_hash_row(text: str, sql_path) -> str:
     return text
 
 
-# アイドルの項目の表 (idol_facets / idol_hairstyles)。CloudKit の本番に昇格し、日次 export が
-# db/master.sql に出すようになるまでは master_schema.sql にも db/master.sql にも無いので、
-# DDL は imas-core/src/domain/facets_schema.sql から作る (昇格後は master.sql に在るので何もしない)。
-FACETS_SCHEMA = ROOT / "imas-core" / "src" / "domain" / "facets_schema.sql"
+# アイドルの項目の表 (idol_facets / idol_hairstyles)。db/master.sql には日次 export で入っているが、
+# 古い DB (表の無い master.sqlite) にも投入できるよう、無ければ正本の DDL (master_schema.sql) から
+# この 2 表の文だけを抜いて作る。
+MASTER_SCHEMA = ROOT / "imas-core" / "src" / "domain" / "master_schema.sql"
 FACET_TABLES = ("idol_facets", "idol_hairstyles")
+
+
+def facet_tables_ddl() -> str:
+    """master_schema.sql のうち、項目の 2 表の CREATE TABLE / INDEX 文だけ (`IF NOT EXISTS` つき)。"""
+    statements = [s.strip() for s in MASTER_SCHEMA.read_text(encoding="utf-8").split(";")]
+    picked = [s for s in statements
+              if re.match(r"CREATE (UNIQUE )?(TABLE|INDEX) ", s)
+              and re.search(r"\b(TABLE|ON) (%s)\b" % "|".join(FACET_TABLES), s)]
+    return "".join(re.sub(r"CREATE (UNIQUE )?(TABLE|INDEX) ", r"CREATE \1\2 IF NOT EXISTS ", s) + ";\n"
+                   for s in picked)
 
 
 def ensure_facet_tables(conn: sqlite3.Connection) -> bool:
@@ -60,9 +70,7 @@ def ensure_facet_tables(conn: sqlite3.Connection) -> bool:
     have = {r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type = 'table'")}
     if all(t in have for t in FACET_TABLES):
         return False
-    ddl = re.sub(r"CREATE (UNIQUE )?(TABLE|INDEX) ", r"CREATE \1\2 IF NOT EXISTS ",
-                 FACETS_SCHEMA.read_text(encoding="utf-8"))
-    conn.executescript(ddl)
+    conn.executescript(facet_tables_ddl())
     return True
 
 

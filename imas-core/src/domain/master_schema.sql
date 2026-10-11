@@ -36,6 +36,32 @@ CREATE TABLE creators (
         );
 CREATE TABLE events (id TEXT PRIMARY KEY NOT NULL, brand_id TEXT, name TEXT NOT NULL, event_type TEXT NOT NULL, is_streaming INTEGER NOT NULL DEFAULT 0, is_solo INTEGER NOT NULL DEFAULT 1, kind TEXT NOT NULL DEFAULT 'live', ticket_deadline TEXT, ticket_lottery_date TEXT, ticket_url TEXT, joint_brand_ids TEXT, ticket_open_date TEXT, name_kana TEXT);
 CREATE TABLE idol_brands (idol_id TEXT NOT NULL, brand_id TEXT NOT NULL, is_primary INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (idol_id, brand_id));
+CREATE TABLE idol_facets (
+            id TEXT PRIMARY KEY NOT NULL,
+            idol_id TEXT NOT NULL,
+            facet TEXT NOT NULL,
+            value TEXT NOT NULL,
+            origin TEXT NOT NULL DEFAULT 'official',
+            source_note TEXT,
+            sort_order INTEGER NOT NULL DEFAULT 0,
+            FOREIGN KEY (idol_id) REFERENCES idols(id) ON DELETE CASCADE
+        );
+CREATE TABLE idol_hairstyles (
+            id TEXT PRIMARY KEY NOT NULL,
+            idol_id TEXT NOT NULL,
+            label TEXT NOT NULL,
+            is_main INTEGER NOT NULL DEFAULT 0,
+            hair_color TEXT,
+            hair_color_secondary TEXT,
+            hair_length TEXT,
+            styles TEXT,
+            bangs TEXT,
+            accessories TEXT,
+            origin TEXT NOT NULL DEFAULT 'official',
+            source_note TEXT,
+            sort_order INTEGER NOT NULL DEFAULT 0,
+            FOREIGN KEY (idol_id) REFERENCES idols(id) ON DELETE CASCADE
+        );
 CREATE TABLE idol_voice_actors (
   id TEXT PRIMARY KEY NOT NULL,
   idol_id TEXT NOT NULL,
@@ -143,6 +169,10 @@ CREATE INDEX idx_costume_wears_show ON costume_wears(show_id);
 CREATE INDEX idx_costumes_brand ON costumes(brand_id);
 CREATE INDEX idx_creators_name ON creators(name);
 CREATE INDEX idx_events_is_solo ON events(is_solo);
+CREATE INDEX idx_idol_facets_idol ON idol_facets(idol_id, facet);
+CREATE INDEX idx_idol_hairstyles_idol ON idol_hairstyles(idol_id, sort_order);
+CREATE UNIQUE INDEX idx_idol_hairstyles_label ON idol_hairstyles(idol_id, label);
+CREATE UNIQUE INDEX idx_idol_hairstyles_main ON idol_hairstyles(idol_id) WHERE is_main = 1;
 CREATE INDEX idx_idol_voice_actors_idol ON idol_voice_actors(idol_id);
 CREATE INDEX idx_idols_attribute ON idols(attribute);
 CREATE INDEX idx_idols_is_external ON idols(is_external);

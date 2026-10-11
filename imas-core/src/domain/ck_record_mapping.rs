@@ -684,6 +684,8 @@ pub enum CkRow {
     SongVideo { row: CkSongVideoRow },
     ShowTicket { row: CkShowTicketRow },
     TicketSale { row: CkTicketSaleRow },
+    IdolFacet { row: CkIdolFacetRow },
+    IdolHairstyle { row: CkIdolHairstyleRow },
 }
 
 /// 1 recordType 分のバッチを「取り込む行 / 削除する recordName / 捨てた recordName」に
@@ -1158,19 +1160,18 @@ pub fn map_record(record_type: &str, record: &CkRecordInput, now_millis: i64) ->
         "SongVideo" => song_video(record, now_millis).map(|row| CkRow::SongVideo { row }),
         "ShowTicket" => show_ticket(record).map(|row| CkRow::ShowTicket { row }),
         "TicketSale" => ticket_sale(record).map(|row| CkRow::TicketSale { row }),
+        "IdolFacet" => idol_facet(record).map(|row| CkRow::IdolFacet { row }),
+        "IdolHairstyle" => idol_hairstyle(record).map(|row| CkRow::IdolHairstyle { row }),
         _ => None,
     }
 }
 
-// ---- アイドルの項目・髪型 (アプリの同期には載らない。写す側の利用者向け) ----
+// ---- アイドルの項目・髪型 ----
 //
-// `IdolFacet` / `IdolHairstyle` は [`CkRow`] の変種にしない。uniffi の列挙に足すと、iOS / Android の
-// 網羅的な `when` / `switch` が壊れ、アプリが取り込まない型を取り込む口になるため。
-// CloudKit の公開データを表に写す側 (`mirror_ingest`) だけが [`mirror_extra_record`] 経由で使う。
-// 行の列は `facets_schema.sql` と同じ (`Snapshot::idol_facets` / `idol_hairstyles` が読む)。
+// 行の列は `master_schema.sql` の `idol_facets` / `idol_hairstyles` と同じ (`Snapshot` が読む)。
 
 /// idol_facets (`IdolFacet`)。複数値の項目は 1 値 1 行。`origin` は official / promoted。
-#[derive(serde::Serialize, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkIdolFacetRow {
     pub id: String,
     pub idol_id: String,
@@ -1183,7 +1184,7 @@ pub struct CkIdolFacetRow {
 
 /// idol_hairstyles (`IdolHairstyle`)。`styles` / `accessories` は '、' 区切りの 1 文字列のまま持つ
 /// (表の列と同じ。配列に割るのは `Snapshot` を組む側)。
-#[derive(serde::Serialize, Clone, Debug, PartialEq)]
+#[derive(uniffi::Record, serde::Serialize, Clone, Debug, PartialEq)]
 pub struct CkIdolHairstyleRow {
     pub id: String,
     pub idol_id: String,
@@ -1244,19 +1245,6 @@ pub fn legacy_voice_actors(record: &CkRecordInput) -> Option<String> {
     Fields::new(record).str("voiceActors").map(|v| v.trim().to_string()).filter(|v| !v.is_empty())
 }
 
-/// [`CkRow`] に載せない型 (`IdolFacet` / `IdolHairstyle`) の変換。行は列名 → 値のオブジェクト。
-/// 対象外の型・必須キー欠損は `None`。
-pub fn mirror_extra_record(record_type: &str, record: &CkRecordInput) -> Option<serde_json::Value> {
-    match record_type {
-        "IdolFacet" => idol_facet(record).and_then(|r| serde_json::to_value(r).ok()),
-        "IdolHairstyle" => idol_hairstyle(record).and_then(|r| serde_json::to_value(r).ok()),
-        _ => None,
-    }
-}
-
-/// [`mirror_extra_record`] が扱う型。
-pub const EXTRA_RECORD_TYPES: &[&str] = &["IdolFacet", "IdolHairstyle"];
-
 /// この recordType を取り込むか。取り込まない型では変換を試みず、
 /// 「必須キー欠損で捨てた」ログにも載せない (iOS の switch の break 相当)。
 pub fn is_ingested_record_type(record_type: &str) -> bool {
@@ -1288,6 +1276,8 @@ pub const INGESTED_RECORD_TYPES: &[&str] = &[
     "SongVideo",
     "ShowTicket",
     "TicketSale",
+    "IdolFacet",
+    "IdolHairstyle",
 ];
 
 /// 1 recordType 分のバッチ仕分け。deletedAt の有無で削除/生存に割り、

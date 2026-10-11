@@ -6,7 +6,8 @@
 > と MCP の `get_idol_facts` ([`ARCHITECTURE-mcp.md`](ARCHITECTURE-mcp.md))。
 > 入れ方は [`data/README.md`](../data/README.md)、データの流れは [`DATA_PIPELINE.md`](DATA_PIPELINE.md)。
 
-> 状態: **実装済み・未デプロイ** (2026-10-11)。CloudKit のスキーマ昇格・push・本番 D1 への反映はオーナーの操作 (§9)。
+> 状態: **CloudKit の本番に昇格済み・アプリの同梱 DB に入った** (2026-10-12)。日次 export が `db/master.sql` に出し、
+> アプリは同梱 DB と CloudKit の同期 (`IdolFacet` / `IdolHairstyle` のステップ) で持つ。画面はアイドル詳細のプロフィール (§13)。
 
 ## 1. 決めたこと
 
@@ -132,7 +133,7 @@
 
 ### 3.2 `idol_hairstyles` (髪型のまとまり)
 
-DDL は [`imas-core/src/domain/facets_schema.sql`](../imas-core/src/domain/facets_schema.sql)。
+DDL は [`imas-core/src/domain/master_schema.sql`](../imas-core/src/domain/master_schema.sql) (同梱マスタの正本)。
 
 | 列 | 意味 |
 |---|---|
@@ -157,14 +158,16 @@ DDL は [`imas-core/src/domain/facets_schema.sql`](../imas-core/src/domain/facet
 | `origin` | `official` / `promoted` |
 | `source_note` | 出典・昇格の根拠 (「tag 12票 2026-10」など)。`/facts` では `extra.note` に出る |
 
-### 3.4 CloudKit・export・import
+### 3.4 CloudKit・export・import・アプリ
 
-- レコード型 `IdolFacet` / `IdolHairstyle` を `tools/cloudkit_schema.ckdb` に足した。**Production への昇格はしていない** (§9)。
-- `tools/lib/ck_tables.py` に表・型・`idol_id` での絞り込み (`--ids` / `scope_id`) を足した。`apply_data.py --push` は触ったアイドルの行だけを送る。
-- 日次 export (`export_cloudkit.py`) は、recordType が昇格されるまで表を作らず `db/master.sql` の形を変えない。昇格後の最初の export で
-  表が作られて取り込まれる。そのとき `facets_schema.sql` の DDL を `master_schema.sql` に移し、`schema_registry.rs` の `Auxiliary` を `Master` にする
-  (`ddl_reproduces_the_bundled_schema` が `db/master.sql` との一致を固定しているため、先には移せない)。
-- Snapshot には `idol_facets` / `idol_hairstyles` を読む (表が無い DB では空)。ブラウザ (wasm) の `tables.json` には配らない。
+- レコード型 `IdolFacet` / `IdolHairstyle` は `tools/cloudkit_schema.ckdb` にあり、Production に昇格済み。
+- `tools/lib/ck_tables.py` に表・型・`idol_id` での絞り込み (`--ids` / `scope_id`) がある。`apply_data.py --push` は触ったアイドルの行だけを送る。
+- 日次 export (`export_cloudkit.py`) が `db/master.sql` に 2 表を出す。DDL は `master_schema.sql` が正本で、
+  `schema_registry.rs` では `Master` (`ddl_reproduces_the_bundled_schema` が `db/master.sql` との一致を固定する)。
+  表の無い古い DB に投入するときだけ、`masterdb.ensure_facet_tables` が `master_schema.sql` から 2 表の文を抜いて作る。
+- アプリの同期 (`sync_planning`) は `Idol` の直後に `IdolFacet` → `IdolHairstyle` を取る (`CkRow::IdolFacet` / `IdolHairstyle`)。
+  iOS は GRDB の移行 v50、Android は Room の v38 で表を作る。同梱 DB を持たない古い端末も、次の同期で行が入る。
+- Snapshot は `idol_facets` / `idol_hairstyles` を読む (表が無い DB では空)。ブラウザ (wasm) の `tables.json` には配らない。
 
 ## 4. 組み立てと API
 
@@ -841,8 +844,7 @@ python3 tools/check_ckdb_schema.py --base origin/develop       # 事前に「足
 # 4. 反映
 python3 tools/apply_data.py --apply --push --production --only appearance_20261010.json
 git mv data/idol_hairstyles/appearance_20261010.json data/_applied/idol_hairstyles/
-# 5. 翌日の日次 export で db/master.sql に表が入る → facets_schema.sql の DDL を master_schema.sql に移し、
-#    schema_registry の idol_facets / idol_hairstyles を Master にする (別コミット)
+# 5. 翌日の日次 export で db/master.sql に入る (DDL は master_schema.sql が正本。2026-10-12 に移した)
 # 6. 公開データ API に反映 (既存の同期。facts 文書も一緒に組まれる)
 python3 tools/sync_master_d1.py --remote --yes   # または Actions → Refresh master data
 ```
@@ -901,3 +903,14 @@ cd imas-data-api && npm test
 - デレステのセカンドヘアなど、髪型が複数ある子の調査。
 - 未確認 111 人の確認。髪色が 2 色以上の子の 2 色目。
 - 項目の編集 UI (今は `data/` の JSON と PR)。
+
+## 13. アプリの画面 (2026-10-12)
+
+アイドル詳細の「プロフィール」タブの頭 (所属ユニットより上) に 3 つ、ユニット詳細に 1 つ。射影はコアが組み、画面は描くだけ。
+
+| 区画 | 中身 | コア |
+|---|---|---|
+| 見た目 | 半券のカード (`ImasLookStub`)。左に髪色の見本 (2 色目は左右に硬く分ける)、右に長さ・髪型・前髪・髪飾り・眼鏡・目の色の値のある項目だけ。髪型は四角い札で、押すと同じ髪型のアイドルの一覧。版 (基本 / セカンドヘア / 女装時…) が 2 つ以上なら上で切り替える | `idol_appearance::idol_look` / `idol_indices_with_hair_style`。見本の色は `hair_color_hex` |
+| 話し方 | 掲示板 (`ImasSpeechBoard`)。一人称 (場面つき) と P の呼び方、下に性格と話し方の要約 | `idol_appearance::idol_speech` (データは `personas`) |
+| 呼び方 | 双方向の先頭 3 行 (ユニットの仲間が先) と「全員 ›」。シートは 1 行に「本人→相手」と「相手→本人」、片方が無ければ「—」。ユニットごと・ブランドごとの見出し、検索と「両方 / 呼ぶ / 呼ばれる」の切り替え、長押しのメニューでコピー | `call_sheet::idol_call_summary` / `idol_call_groups` |
+| 呼称表 (ユニット詳細のタブ) | メンバー × (メンバー + P) のマス目。対角線は一人称。マスを押すと下に双方向の呼び方。人数が多いと横に流す | `call_sheet::unit_call_matrix` (メンバーどうしの呼び方が無いユニットはタブを出さない) |

@@ -21,9 +21,6 @@
 use crate::domain::schema_ddl::MASTER_SCHEMA_SQL;
 use crate::domain::sync_planning::{steps_for, table_info, SyncTableInfo};
 
-/// アイドルの項目・髪型の表の DDL (同梱マスタには、CloudKit に昇格されるまで入らない)。
-pub const FACETS_SCHEMA_SQL: &str = include_str!("facets_schema.sql");
-
 /// `song_videos` (`SongVideo`) は同梱マスタに無く、アプリが自分の移行で作る表。写す側が使えるよう列を揃える
 /// ([`crate::domain::ck_record_mapping::CkSongVideoRow`] と同じ)。
 const SONG_VIDEOS_DDL: &str = "CREATE TABLE song_videos (
@@ -82,36 +79,19 @@ pub const MIRROR_SEEN_DDL: &str = "CREATE TABLE mirror_seen (
   PRIMARY KEY (record_type, run_id, id)
 ) WITHOUT ROWID";
 
-/// 写し先の表と主キー。アプリの同期の対応表 ([`table_info`]) に、アプリが取り込まない型
-/// (`IdolFacet` / `IdolHairstyle`) を足したもの。未知のレコードタイプは `None`。
+/// 写し先の表と主キー。アプリの同期の対応表 ([`table_info`]) と同じ。未知のレコードタイプは `None`。
 pub fn mirror_table_info(record_type: &str) -> Option<SyncTableInfo> {
-    match record_type {
-        "IdolFacet" => Some(SyncTableInfo { table: "idol_facets".into(), pk_columns: vec!["id".into()] }),
-        "IdolHairstyle" => Some(SyncTableInfo { table: "idol_hairstyles".into(), pk_columns: vec!["id".into()] }),
-        other => table_info(other),
-    }
+    table_info(record_type)
 }
 
 /// 写すステップを FK 依存順に返す。`available` が空なら全部、そうでなければその型だけ (並びは常にこちらの定義が正)。
-///
-/// アプリの全ステップ ([`crate::domain::sync_planning::all_steps`]) に、アイドルの項目と髪型
-/// (`IdolFacet` / `IdolHairstyle`。`idols` にだけ依存する) を `Idol` の直後に足す。
+/// アプリの全ステップ ([`crate::domain::sync_planning::all_steps`]) と同じ。
 pub fn mirror_steps(available: &[String]) -> Vec<MirrorStep> {
-    let mut out = Vec::new();
-    for step in steps_for(&[]) {
-        let is_idol = step.record_type == "Idol";
-        out.push(step_of(&step.record_type, &step.display_name));
-        if is_idol {
-            out.push(step_of("IdolFacet", "アイドルの項目"));
-            out.push(step_of("IdolHairstyle", "アイドルの髪型"));
-        }
-    }
-    out.retain(|s| available.is_empty() || available.iter().any(|a| *a == s.record_type));
-    out
+    steps_for(available).into_iter().map(|step| step_of(&step.record_type, &step.display_name)).collect()
 }
 
 fn step_of(record_type: &str, display_name: &str) -> MirrorStep {
-    // 呼ぶのは steps_for と EXTRA だけなので必ず引ける。
+    // 呼ぶのは steps_for だけなので必ず引ける。
     let info = mirror_table_info(record_type).expect("ステップの型は表を持つ");
     let (seen_sql, orphan_probe_sql, orphan_delete_sql) = orphan_sql(&info.table, &info.pk_columns);
     MirrorStep {
@@ -188,7 +168,7 @@ pub fn mirror_index_ddl(record_types: &[String]) -> String {
     out
 }
 
-/// 表の CREATE 文 (制約を外した形)。同梱マスタ → アイドルの項目の表 → `song_videos` の順に探す。
+/// 表の CREATE 文 (制約を外した形)。同梱マスタ → `song_videos` の順に探す。
 fn create_table_sql(table: &str) -> Option<String> {
     let found = schema_statements().into_iter().find(|s| table_of_create(s).as_deref() == Some(table));
     match found {
@@ -198,19 +178,14 @@ fn create_table_sql(table: &str) -> Option<String> {
     }
 }
 
-/// 同梱マスタとアイドルの項目の DDL を 1 文ずつに割る (コメント行は捨てる)。
+/// 同梱マスタの DDL を 1 文ずつに割る (コメント行は捨てる)。
 fn schema_statements() -> Vec<String> {
-    [MASTER_SCHEMA_SQL, FACETS_SCHEMA_SQL]
-        .into_iter()
-        .flat_map(|sql| {
-            let body: String = sql
-                .lines()
-                .filter(|l| !l.trim_start().starts_with("--"))
-                .collect::<Vec<_>>()
-                .join("\n");
-            body.split(';').map(|s| s.trim().to_string()).filter(|s| !s.is_empty()).collect::<Vec<_>>()
-        })
-        .collect()
+    let body: String = MASTER_SCHEMA_SQL
+        .lines()
+        .filter(|l| !l.trim_start().starts_with("--"))
+        .collect::<Vec<_>>()
+        .join("\n");
+    body.split(';').map(|s| s.trim().to_string()).filter(|s| !s.is_empty()).collect()
 }
 
 fn table_of_create(sql: &str) -> Option<String> {
@@ -323,8 +298,8 @@ mod tests {
         assert_eq!(pos("IdolFacet"), pos("Idol") + 1);
         assert_eq!(pos("IdolHairstyle"), pos("Idol") + 2);
         assert!(pos("Brand") < pos("Idol") && pos("Idol") < pos("Show") && pos("Show") < pos("SetlistItem"));
-        // 取り込む型の全部 + 項目と髪型
-        assert_eq!(types.len(), crate::domain::ck_record_mapping::INGESTED_RECORD_TYPES.len() + 2);
+        // 取り込む型の全部 (項目と髪型を含む)
+        assert_eq!(types.len(), crate::domain::ck_record_mapping::INGESTED_RECORD_TYPES.len());
     }
 
     #[test]
@@ -355,7 +330,6 @@ mod tests {
 
         let master = Connection::open_in_memory().unwrap();
         master.execute_batch(MASTER_SCHEMA_SQL).unwrap();
-        master.execute_batch(&FACETS_SCHEMA_SQL.lines().filter(|l| !l.trim_start().starts_with("--")).collect::<Vec<_>>().join("\n")).unwrap();
         let (m, mi) = (columns_of(&master), columns_of(&mirror));
         for step in mirror_steps(&[]) {
             if step.table == "song_videos" {

@@ -1,123 +1,12 @@
-//! アイドルの話し方 (一人称・プロデューサーの呼び方・語尾・口癖・呼称) をアプリに同梱して引く。
+//! アイドルの話し方 (一人称・プロデューサーの呼び方・語尾・口癖・呼称) を LLM 向けの形にする。
 //!
-//! - `data/personas/<brand>.json`: 出典付きで 1 人ずつ確かめた話し方。ブランドごとに足していく。
-//!   一人称・呼び方は文字列 / 文字列の配列 / `{form, scene}` の配列のどれでも来る
-//!   (場面で使い分ける子がいるため)。
-//! - `data/personas/call_names.json`: im@sparql (MIT License, © 2017 IM@Study,
-//!   https://github.com/crssnky/imasparql) の呼称データ。誰が誰をどう呼ぶか。
-//!   `tools/fetch_call_names_from_sparql.py` が作る。ニコニコ大百科の呼称表の行
-//!   (`tools/fetch_call_names_from_nicodic.py`) も同居し、行の `source` で出どころを分ける
-//!   (ここでは使わず、同じ from/to の呼び方は重複なく束ねる)。セリフ (台本) は入れない。
-//!
-//! データの無いアイドルは何も返さない (指示文は今まで通りモデルの知識に任せる)。
+//! データ (`data/personas/`) を読むのは [`crate::domain::personas`]。ここはトーク・タイムラインの指示文と
+//! 公開 API の話し方に整えるだけ。データの無いアイドルは何も返さない (指示文は今まで通りモデルの知識に任せる)。
 
 use serde_json::Value;
-use std::collections::HashMap;
-use std::sync::OnceLock;
 
-/// ブランドごとの話し方ファイル。ブランドを足したらここに 1 行足す。
-const PERSONA_FILES: &[&str] = &[
-    include_str!("../../../../data/personas/765as.json"),
-    include_str!("../../../../data/personas/ml.json"),
-    include_str!("../../../../data/personas/cg.json"),
-    include_str!("../../../../data/personas/sc.json"),
-    include_str!("../../../../data/personas/gakuen.json"),
-    include_str!("../../../../data/personas/sidem.json"),
-    include_str!("../../../../data/personas/876.json"),
-    include_str!("../../../../data/personas/961.json"),
-];
-const CALL_NAMES: &str = include_str!("../../../../data/personas/call_names.json");
-
-struct SpeechData {
-    personas: HashMap<String, Value>,
-    /// (呼ぶ側, 呼ばれる側 or "producer") → 呼び方 (複数あれば出てきた順)。
-    calls: HashMap<(String, String), Vec<String>>,
-}
-
-fn data() -> &'static SpeechData {
-    static DATA: OnceLock<SpeechData> = OnceLock::new();
-    DATA.get_or_init(|| {
-        let mut personas = HashMap::new();
-        for file in PERSONA_FILES {
-            let rows: Vec<Value> = serde_json::from_str(file).expect("data/personas の JSON が壊れている");
-            for row in rows {
-                if let Some(id) = row["idol_id"].as_str() {
-                    personas.insert(id.to_string(), row.clone());
-                }
-            }
-        }
-        let mut calls: HashMap<(String, String), Vec<String>> = HashMap::new();
-        let rows: Vec<Value> = serde_json::from_str(CALL_NAMES).expect("call_names.json が壊れている");
-        for row in rows {
-            if let (Some(from), Some(to), Some(called)) = (row["from"].as_str(), row["to"].as_str(), row["called"].as_str()) {
-                let list = calls.entry((from.to_string(), to.to_string())).or_default();
-                if !list.iter().any(|c| c == called) {
-                    list.push(called.to_string());
-                }
-            }
-        }
-        SpeechData { personas, calls }
-    })
-}
-
-/// 文字列 / 配列 / `{form, scene}` を「A／B（場面）」の 1 行にする。
-fn render(value: &Value) -> Option<String> {
-    let text = match value {
-        Value::String(s) => s.trim().to_string(),
-        Value::Array(items) => items
-            .iter()
-            .filter_map(|item| match item {
-                Value::Object(o) => {
-                    let form = o.get("form")?.as_str()?;
-                    Some(match o.get("scene").and_then(Value::as_str) {
-                        Some(scene) => format!("{form}（{scene}）"),
-                        None => form.to_string(),
-                    })
-                }
-                other => render(other),
-            })
-            .collect::<Vec<_>>()
-            .join("／"),
-        _ => String::new(),
-    };
-    (!text.is_empty()).then_some(text)
-}
-
-/// プロデューサーの呼び方。話し方ファイルを優先し、無ければ呼称データ。
-pub fn producer_call(idol_id: &str) -> Option<String> {
-    let d = data();
-    d.personas
-        .get(idol_id)
-        .and_then(|p| render(&p["producer_call"]))
-        .or_else(|| d.calls.get(&(idol_id.to_string(), "producer".to_string())).map(|c| c.join("／")))
-}
-
-/// `from` が `to` をどう呼ぶか。
-pub fn call_name(from: &str, to: &str) -> Option<String> {
-    data().calls.get(&(from.to_string(), to.to_string())).map(|c| c.join("／"))
-}
-
-/// `from` が呼び方を持っている相手 (アイドルだけ) と呼び方。相手の id 順。
-pub fn call_names_from(from: &str) -> Vec<(String, String)> {
-    let mut out: Vec<(String, String)> = data()
-        .calls
-        .iter()
-        .filter(|((f, t), _)| f == from && t != "producer")
-        .map(|((_, t), c)| (t.clone(), c.join("／")))
-        .collect();
-    out.sort();
-    out
-}
-
-/// その子の口癖・決まり文句 (話し方ファイルの `catchphrases`)。
-pub fn catchphrases(idol_id: &str) -> Vec<String> {
-    let Some(p) = data().personas.get(idol_id) else { return Vec::new() };
-    match &p["catchphrases"] {
-        Value::String(s) => vec![s.clone()],
-        Value::Array(items) => items.iter().filter_map(|v| v.as_str().map(String::from)).collect(),
-        _ => Vec::new(),
-    }
-}
+use crate::domain::personas::{persona, render};
+pub use crate::domain::personas::{call_name, call_names_from, catchphrases, producer_call};
 
 /// 公開 API 向けの話し方 (一人称・プロデューサーの呼び方・語尾・口癖・呼称)。
 ///
@@ -125,8 +14,7 @@ pub fn catchphrases(idol_id: &str) -> Vec<String> {
 /// 出典 URL (`sources`) は載せない。データの無い子は `None`。
 /// `names` は呼称の相手 id → 名前の引き (マスタに居ない相手は落とす)。
 pub fn speech_profile(idol_id: &str, name_of: impl Fn(&str) -> Option<String>) -> Option<Value> {
-    let d = data();
-    let persona = d.personas.get(idol_id);
+    let persona = persona(idol_id);
     let mut o = serde_json::Map::new();
     let mut put = |key: &str, v: Option<String>| {
         if let Some(v) = v {
@@ -164,8 +52,7 @@ pub fn speech_profile(idol_id: &str, name_of: impl Fn(&str) -> Option<String>) -
 /// 項目 (`/facts`) の personality に渡す話し方。`render` の「A／B（場面）」を項目ごとの値に割る。
 /// データの無い子は空の入力。
 pub fn persona_input(idol_id: &str) -> crate::domain::idol_facets::PersonaInput {
-    let d = data();
-    let persona = d.personas.get(idol_id);
+    let persona = persona(idol_id);
     let list = |v: Option<String>| -> Vec<String> {
         v.map(|t| t.split('／').map(str::trim).filter(|s| !s.is_empty()).map(String::from).collect()).unwrap_or_default()
     };
@@ -217,8 +104,7 @@ pub const CATCHPHRASE_RULE: &str = "語尾・口癖は参考。毎回は使わ�
 /// (`tone_notes`) を主に渡し、語尾・口癖は参考として添える (連打すると不自然になるため)。
 /// `others` は呼び方を添える相手 (id, 名前)、`avoid` は直近で使ったので今回は使わない口癖。
 pub fn speech_block(idol_id: &str, others: &[(String, String)], avoid: &[String]) -> Option<String> {
-    let d = data();
-    let persona = d.personas.get(idol_id);
+    let persona = persona(idol_id);
     let mut must: Vec<String> = Vec::new();
     if let Some(v) = persona.and_then(|p| render(&p["first_person"])) {
         must.push(format!("一人称: {v}"));
@@ -274,30 +160,6 @@ pub fn speech_block(idol_id: &str, others: &[(String, String)], avoid: &[String]
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test_support::bundle_snapshot;
-
-    #[test]
-    fn 同梱した話し方のidはすべてマスタにいる() {
-        let snap = bundle_snapshot();
-        for id in data().personas.keys() {
-            assert!(snap.idol_index_by_id.contains_key(id), "{id} がマスタに無い");
-        }
-        for (from, to) in data().calls.keys() {
-            assert!(snap.idol_index_by_id.contains_key(from), "{from} がマスタに無い");
-            assert!(to == "producer" || snap.idol_index_by_id.contains_key(to), "{to} がマスタに無い");
-        }
-    }
-
-    #[test]
-    fn 場面つきの一人称と配列の呼び方を1行にする() {
-        assert_eq!(render(&serde_json::json!("私")).as_deref(), Some("私"));
-        assert_eq!(render(&serde_json::json!(["あなた様", "プロデューサー"])).as_deref(), Some("あなた様／プロデューサー"));
-        assert_eq!(
-            render(&serde_json::json!([{ "form": "亜美", "scene": "普段" }, { "form": "私" }])).as_deref(),
-            Some("亜美（普段）／私")
-        );
-        assert_eq!(render(&serde_json::json!(null)), None);
-    }
 
     #[test]
     fn 話し方ファイルのある子は一人称と呼び方が出る() {
@@ -309,9 +171,7 @@ mod tests {
     #[test]
     fn 呼称データにある仲間の呼び方が出る() {
         // 呼称データには自称 (自分を呼ぶ行) もあるので、相手が自分でない組を決まった順で選ぶ。
-        let (from, to) = data()
-            .calls
-            .keys()
+        let (from, to) = crate::domain::personas::call_keys()
             .filter(|(f, t)| f.starts_with("ml_") && t.starts_with("ml_") && f != t)
             .min()
             .cloned()

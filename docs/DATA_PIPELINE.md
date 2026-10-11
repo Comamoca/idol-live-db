@@ -175,9 +175,8 @@ python3 tools/sync_master_d1.py --remote --yes --from-cloudkit --key-file tools/
 定義と設計は [`ARCHITECTURE-facets.md`](ARCHITECTURE-facets.md)、入れ方は [`data/README.md`](../data/README.md)。
 
 - 投入口は `data/idol_facets/` と `data/idol_hairstyles/` (`apply_data.py --check` → `--apply --push`)。直しは `data/fixes/`。
-- CloudKit のレコード型 `IdolFacet` / `IdolHairstyle` は `tools/cloudkit_schema.ckdb` に足してあるが、**Production に未昇格**。
-  昇格するまで日次 export は表を作らず、`db/master.sql` の形は変わらない。昇格後の最初の export で表が入り、
-  そのあと `imas-core/src/domain/facets_schema.sql` の DDL を `master_schema.sql` に移す。
+- CloudKit のレコード型 `IdolFacet` / `IdolHairstyle` は Production に昇格済みで、日次 export が `db/master.sql` に出す。
+  DDL の正本は `imas-core/src/domain/master_schema.sql`。アプリは同梱 DB と CloudKit の同期で持つ。
 - 同期 (`sync-data-api`) は、`facts` 文書も `docs` 表に組んで置く (追加の設定は要らない)。
 
 ## events の種別 (`event_type`)

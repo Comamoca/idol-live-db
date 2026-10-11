@@ -28,8 +28,8 @@
 use serde_json::{Map, Value};
 
 use crate::domain::ck_record_mapping::{
-    deleted_at_millis, is_ingested_record_type, legacy_voice_actors, map_record, mirror_extra_record, record_from_web_services_json,
-    CkRecordInput, CkRow, EXTRA_RECORD_TYPES,
+    deleted_at_millis, is_ingested_record_type, legacy_voice_actors, map_record, record_from_web_services_json,
+    CkRecordInput, CkRow,
 };
 use crate::domain::mirror_schema::{mirror_table_info, quote};
 use crate::domain::sync_planning::parse_composite_record_name;
@@ -73,7 +73,7 @@ pub struct MirrorIngest {
 /// 写さないレコードタイプでは `None`。`now_millis` は SongVideo の `createdAt` 欠損時の既定値にだけ使う。
 pub fn ingest(record_type: &str, record_jsons: &[String], now_millis: i64) -> Option<MirrorIngest> {
     let info = mirror_table_info(record_type)?;
-    if !is_ingested_record_type(record_type) && !EXTRA_RECORD_TYPES.contains(&record_type) {
+    if !is_ingested_record_type(record_type) {
         return None;
     }
     let mut objects: Vec<Map<String, Value>> = Vec::new();
@@ -185,11 +185,7 @@ pub fn ingest_page(record_type: &str, body: &str, now_millis: i64) -> Result<Mir
 
 /// レコード → 列名 → 値のオブジェクト。必須項目の欠損は `None`。真偽は 0 / 1 にする。
 fn row_object(record_type: &str, record: &CkRecordInput, now_millis: i64) -> Option<Map<String, Value>> {
-    let value = if EXTRA_RECORD_TYPES.contains(&record_type) {
-        mirror_extra_record(record_type, record)?
-    } else {
-        ck_row_value(&map_record(record_type, record, now_millis)?)?
-    };
+    let value = ck_row_value(&map_record(record_type, record, now_millis)?)?;
     let Value::Object(mut o) = value else { return None };
     for v in o.values_mut() {
         if let Value::Bool(b) = v {
@@ -236,6 +232,8 @@ fn ck_row_value(row: &CkRow) -> Option<Value> {
         CkRow::SongVideo { row } => serde_json::to_value(row),
         CkRow::ShowTicket { row } => serde_json::to_value(row),
         CkRow::TicketSale { row } => serde_json::to_value(row),
+        CkRow::IdolFacet { row } => serde_json::to_value(row),
+        CkRow::IdolHairstyle { row } => serde_json::to_value(row),
     };
     v.ok()
 }

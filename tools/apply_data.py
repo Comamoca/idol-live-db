@@ -1215,7 +1215,7 @@ def main():
     conn = sqlite3.connect(args.db)
     conn.execute("PRAGMA foreign_keys = ON")
     # 項目の表は CloudKit の昇格・日次 export を待たずに投入できるよう、無ければここで作る
-    # (DDL は imas-core/src/domain/facets_schema.sql)。
+    # (DDL は imas-core/src/domain/master_schema.sql)。
     masterdb.ensure_facet_tables(conn)
 
     has_any = any(load(k) for k in list(KIND_TABLES) + ["fixes"])

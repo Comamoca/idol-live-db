@@ -70,6 +70,7 @@ pub mod event_hero;
 pub mod event_naming;
 pub mod fuzzy_search;
 pub mod gallery_manifest;
+pub mod idol_appearance;
 pub mod idol_detail;
 pub mod intro_don_session;
 pub mod list_grouping;
