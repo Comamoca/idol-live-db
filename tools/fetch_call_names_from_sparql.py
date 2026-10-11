@@ -10,6 +10,8 @@ data/personas/call_names.json に書き出す。キャラとのトーク・タ�
 - 突き合わせはアイドルの日本語名 (空白を除いて完全一致)。当たらない行は落とし、件数を出す。
 - 呼ぶ相手がプロデューサーの行は to = "producer"。
 - セリフ (imas:ScriptText) は台本の書き写しなので取り込まない。
+- 行には出どころ `source` (この取得元の URL) を付ける。ニコニコ大百科の呼称表から取った行
+  (tools/fetch_call_names_from_nicodic.py) は消さずに残す。
 
 usage:
   python3 tools/fetch_call_names_from_sparql.py           # 取得して書き出す
@@ -24,6 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "ImasLiveDB" / "Resources" / "master.sqlite"
 OUT = ROOT / "data" / "personas" / "call_names.json"
 ENDPOINT = "https://sparql.crssnky.xyz/spql/imas/query"
+SOURCE = ENDPOINT  # 行の source
 PRODUCER = "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Producer"
 
 QUERY = """
@@ -69,10 +72,16 @@ def main():
             continue
         rows.add((src, dest, called))
 
-    out = [{"from": f, "to": t, "called": c} for f, t, c in sorted(rows)]
+    # 他の取得元 (大百科など) の行はそのまま残し、この取得元の行だけ作り直す。
+    kept = []
+    if OUT.exists():
+        kept = [(r["from"], r["to"], r["called"], r["source"]) for r in json.loads(OUT.read_text(encoding="utf-8"))
+                if r.get("source", SOURCE) != SOURCE]
+    merged = {(f, t, c, SOURCE) for f, t, c in rows} | set(kept)
+    out = [{"from": f, "to": t, "called": c, "source": s} for f, t, c, s in sorted(merged)]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    print(f"書き出し {len(out)} 件 → {OUT.relative_to(ROOT)} (突き合わせできず {len(unmatched)} 組)")
+    print(f"書き出し {len(out)} 件 (うち im@sparql {len(rows)} 件) → {OUT.relative_to(ROOT)} (突き合わせできず {len(unmatched)} 組)")
 
 
 if __name__ == "__main__":

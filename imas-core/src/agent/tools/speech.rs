@@ -5,7 +5,9 @@
 //!   (場面で使い分ける子がいるため)。
 //! - `data/personas/call_names.json`: im@sparql (MIT License, © 2017 IM@Study,
 //!   https://github.com/crssnky/imasparql) の呼称データ。誰が誰をどう呼ぶか。
-//!   `tools/fetch_call_names_from_sparql.py` が作る。セリフ (台本) は入れない。
+//!   `tools/fetch_call_names_from_sparql.py` が作る。ニコニコ大百科の呼称表の行
+//!   (`tools/fetch_call_names_from_nicodic.py`) も同居し、行の `source` で出どころを分ける
+//!   (ここでは使わず、同じ from/to の呼び方は重複なく束ねる)。セリフ (台本) は入れない。
 //!
 //! データの無いアイドルは何も返さない (指示文は今まで通りモデルの知識に任せる)。
 
