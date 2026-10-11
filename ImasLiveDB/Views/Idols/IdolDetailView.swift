@@ -101,6 +101,13 @@ struct IdolDetailView: View {
             .task {
                 guard initialSegment != 0 else { return }
                 try? await Task.sleep(for: .milliseconds(900))
+                #if DEBUG
+                // 見た目確認のハーネス (PREVIEW_SCROLL=extras) は見た目・話し方・呼び方まで流す。
+                if ProcessInfo.processInfo.environment["PREVIEW_SCROLL"] == "extras" {
+                    proxy.scrollTo("idol_profile_extras", anchor: .top)
+                    return
+                }
+                #endif
                 proxy.scrollTo("idol_detail_top", anchor: .top)
             }
         }
@@ -379,10 +386,6 @@ struct IdolDetailView: View {
     @ViewBuilder
     private var profileBody: some View {
         VStack(spacing: DS.sp6) {
-            lookSection
-            speechSection
-            callSection
-
             if !vm.unitsWithSongs.isEmpty {
                 VStack(alignment: .leading, spacing: DS.sp3) {
                     ImasSectionHeader(title: "所属ユニット", count: "\(vm.unitsWithSongs.count)", tight: true)
@@ -430,6 +433,14 @@ struct IdolDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, DS.sp5)
             }
+
+            // 見た目・話し方・呼び方はプロフィールの下の方 (所属ユニット・項目の後) に置く (オーナー 2026-10-12)。
+            VStack(spacing: DS.sp6) {
+                lookSection
+                speechSection
+                callSection
+            }
+            .id("idol_profile_extras")
 
             gallerySection
         }
