@@ -7,9 +7,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -82,6 +84,8 @@ fun ImasLookStub(
     Row(
         modifier
             .fillMaxWidth()
+            // 半券の見本は中身の高さいっぱいに塗る (固有の高さを持たない面なので、行の高さを中身に合わせる)。
+            .height(IntrinsicSize.Min)
             .background(DS.surface, shape)
             .border(1.dp, DS.line, shape)
             .clip(shape)

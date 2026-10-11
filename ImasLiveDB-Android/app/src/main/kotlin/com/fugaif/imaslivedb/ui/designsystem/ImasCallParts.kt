@@ -390,7 +390,7 @@ private fun MatrixCellView(
         ImasCallMatrixCellKind.MEMBER -> "${fromMember.name}から${members.getOrNull(column)?.name ?: ""}へ ${cell.text ?: "未登録"}"
     }
     val background = when {
-        cell.kind == ImasCallMatrixCellKind.FIRST_PERSON -> DS.board
+        cell.kind == ImasCallMatrixCellKind.FIRST_PERSON -> DS.sys
         isSelected -> DS.surface
         else -> Color.Transparent
     }
@@ -420,7 +420,7 @@ private fun MatrixCellView(
                 11.sp,
                 if (cell.kind == ImasCallMatrixCellKind.FIRST_PERSON || isSelected) FontWeight.Black else FontWeight.Medium
             ),
-            color = if (cell.kind == ImasCallMatrixCellKind.FIRST_PERSON) DS.boardInk else if (cell.text == null) DS.ink3 else DS.ink,
+            color = if (cell.kind == ImasCallMatrixCellKind.FIRST_PERSON) DS.onSys else if (cell.text == null) DS.ink3 else DS.ink,
             textAlign = TextAlign.Center,
             maxLines = 3,
             overflow = TextOverflow.Ellipsis,
@@ -433,7 +433,7 @@ private fun MatrixCellView(
 private fun MatrixLegend() {
     Row(horizontalArrangement = Arrangement.spacedBy(DS.Space.gapLoose)) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(DS.sp2)) {
-            Box(Modifier.size(12.dp).background(DS.board))
+            Box(Modifier.size(12.dp).background(DS.sys))
             Text("一人称", style = ImasTextRole.BADGE.style, color = DS.ink2)
         }
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(DS.sp2)) {

@@ -7,7 +7,7 @@ import SwiftUI
 // ImasCallPairHeader / ImasCallPairRow
 //                    呼び方の 1 行。相手のアイコン・名前と「本人 → 相手」「相手 → 本人」を並べる。
 //                    片方が未登録なら「—」(薄字)。見出しの行は列の題だけ。
-// ImasCallMatrix     ユニットの呼称表。メンバー × (メンバー + P) のマス目。対角線は一人称 (暗い板の色)。
+// ImasCallMatrix     ユニットの呼称表。メンバー × (メンバー + P) のマス目。対角線は一人称 (墨の塗り。ダークでは生成り)。
 //                    マス・行頭を押すと組を選ぶ。人数が多いと横に流す。
 // ImasCallPairCard   選んだ組の双方向の呼び方を、切り取り線で分けた紙に大きく。
 //
@@ -286,7 +286,7 @@ struct ImasCallMatrix: View {
         let selectable = cell.kind == .member
         let label = Text(cell.text ?? "—")
             .font(.imasScaled(11, weight: cell.kind == .firstPerson || isSelected ? .heavy : .medium))
-            .foregroundStyle(cell.kind == .firstPerson ? DS.boardInk : (cell.text == nil ? DS.ink3 : DS.ink))
+            .foregroundStyle(cell.kind == .firstPerson ? DS.onSys : (cell.text == nil ? DS.ink3 : DS.ink))
             .lineLimit(3)
             .minimumScaleFactor(0.75)
             .multilineTextAlignment(.center)
@@ -294,7 +294,8 @@ struct ImasCallMatrix: View {
             .frame(width: cellWidth, height: cellHeight)
             .background {
                 if cell.kind == .firstPerson {
-                    Rectangle().fill(DS.board)
+                    // 墨の塗り (ダークでは生成り)。掲示板の色はダークの面とほぼ同じで対角線が沈むため。
+                    Rectangle().fill(DS.sys)
                 } else if isSelected {
                     Rectangle().fill(DS.surface)
                 }
@@ -335,7 +336,7 @@ struct ImasCallMatrix: View {
     private var legend: some View {
         HStack(spacing: DS.Space.gapLoose) {
             HStack(spacing: DS.sp2) {
-                Rectangle().fill(DS.board).frame(width: 12, height: 12)
+                Rectangle().fill(DS.sys).frame(width: 12, height: 12)
                 Text("一人称")
             }
             HStack(spacing: DS.sp2) {
