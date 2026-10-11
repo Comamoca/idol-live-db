@@ -1,32 +1,5 @@
 {
  "unconfirmed": "オーナー未確認の 3 人。2026-10-12 に公式画像を見て決まった 7 人は appearance_image_20261012.json に移した。残りは各行の note の理由 (髪色が赤/茶・金/茶の境目) で値が決まらない。確認できたら appearance_20261010.json と同じ形のファイルに移して投入する。",
  "_note": "調査の表 data/research/appearance_20261010/idol_appearance_review_20261010.csv のうち確認済みの 234 行に入っていない 111 行。 2026-10-12: 86 人を appearance_20261012.json に移した。 2026-10-12 (2 回目): Web 検索で 15 人を appearance_unconfirmed_resolved_20261012.json に移した。 2026-10-12 (3 回目): 公式画像の目視で 7 人を appearance_image_20261012.json に移した。",
- "idol_hairstyles": [
-  {
-   "idol_id": "cg_相葉夕美",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "茶",
-   "hair_length": "ショート",
-   "source": [
-    "https://mzh.moegirl.org.cn/%E7%9B%B8%E8%91%89%E5%A4%95%E7%BE%8E",
-    "https://dic.nicovideo.jp/a/%E7%9B%B8%E8%91%89%E5%A4%95%E7%BE%8E"
-   ],
-   "source_note": "萌娘百科は金发、別情報は茶/金で割れる。薄い茶〜金の境目で要確認",
-   "note": "確認待ちに残す理由 (2026-10-12 公式画像で目視): 古賀小春とほぼ同じ亜麻色 (立ち絵の地 RGB 223,175,118)。立ち絵・カード 1_1 は薄い茶に見えるが、カード 2_1 は夕日の光で金に見える。金と茶の中間で決まらない。長さはショートで一致"
-  },
-  {
-   "idol_id": "cg_古賀小春",
-   "label": "基本",
-   "is_main": true,
-   "hair_color": "金",
-   "hair_length": "ボブ〜ミディアム",
-   "source": [
-    "https://mzh.moegirl.org.cn/%E5%8F%A4%E8%B3%80%E5%B0%8F%E6%98%A5",
-    "https://dic.nicovideo.jp/a/%E5%8F%A4%E8%B3%80%E5%B0%8F%E6%98%A5"
-   ],
-   "source_note": "萌娘百科: 金发、短发・M形刘海。淡い金/茶の境目 / 2026-10-12 公式画像: 長さ ショート→ボブ〜ミディアム",
-   "note": "確認待ちに残す理由 (2026-10-12 公式画像で目視): 髪色は 3 枚とも同じ亜麻色 (立ち絵の地 RGB 216,178,120)。金 (城ヶ崎莉嘉・櫻井桃華の黄色い金髪) より暗くくすみ、茶 (喜多見柚) より明るく黄みが強い。金と茶の中間でどちらとも言えない。長さは 3 枚とも顎〜首までのボブなので ボブ〜ミディアム に直した"
-  }
- ]
+ "idol_hairstyles": []
 }

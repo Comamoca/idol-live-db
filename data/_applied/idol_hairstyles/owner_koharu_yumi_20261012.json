@@ -1,0 +1,23 @@
+{
+ "source": "owner",
+ "idol_hairstyles": [
+  {
+   "idol_id": "cg_相葉夕美",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "金",
+   "hair_length": "ショート",
+   "source": "owner",
+   "source_note": "オーナー確認: 金髪"
+  },
+  {
+   "idol_id": "cg_古賀小春",
+   "label": "基本",
+   "is_main": true,
+   "hair_color": "茶",
+   "hair_length": "ボブ〜ミディアム",
+   "source": "owner",
+   "source_note": "オーナー確認: 明るめのブラウン"
+  }
+ ]
+}
