@@ -2899,7 +2899,7 @@ INSERT INTO "idol_voice_actors" VALUES('gakuen_白草四音__田中美海','gaku
 INSERT INTO "idol_voice_actors" VALUES('gakuen_白草月花__芹澤優','gakuen_白草月花','芹澤優','2024-12-12',NULL);
 INSERT INTO "idol_voice_actors" VALUES('sidem_姫野かのん__伊能幸輝','sidem_姫野かのん','伊能幸輝','2026-08-28',NULL);
 CREATE TABLE idols (id TEXT PRIMARY KEY NOT NULL, brand_id TEXT NOT NULL, name TEXT NOT NULL, name_kana TEXT, name_romaji TEXT, color TEXT, sort_order INTEGER NOT NULL, birthday TEXT, blood_type TEXT, height REAL, weight REAL, birth_place TEXT, age INTEGER, bust REAL, waist REAL, hip REAL, constellation TEXT, hobbies TEXT, talents TEXT, description TEXT, gender TEXT, handedness TEXT, family_name TEXT, given_name TEXT, nickname TEXT, debut_date TEXT, attribute TEXT, is_external INTEGER NOT NULL DEFAULT 0, aliases TEXT, sub_attribute TEXT);
-INSERT INTO "idols" VALUES('sidem_花園百々人','sidem','花園百々人','はなぞのももひと',NULL,'#A2D55E',6048,'--06-30','A',177.0,58.0,'東京',17,NULL,NULL,NULL,'蟹座','なし','人に愛されること❤','柔和で人懐っこい人気者だが自分のことを話したがらない男性アイドル。C.FIRSTメンバー。CV: 宮﨑雅也。','male',NULL,'花園','百々人',NULL,'2014-07-17','mental',0,NULL,NULL);
+INSERT INTO "idols" VALUES('sidem_花園百々人','sidem','花園百々人','はなぞのももひと',NULL,'#A2D55E',6048,'--06-30','A',177.0,58.0,'東京',17,NULL,NULL,NULL,'蟹座','なし','人に愛されること❤','柔和で人懐っこい人気者だが自分のことを話したがらない男性アイドル。C.FIRSTメンバー。CV: 宮﨑雅也。','male',NULL,'花園','百々人',NULL,'2021-10-06','mental',0,NULL,NULL);
 INSERT INTO "idols" VALUES('sidem_華村翔真','sidem','華村翔真','はなむらしょうま',NULL,'#7664A0',6037,'--08-24','AB',174.0,55.0,'新潟',27,NULL,NULL,NULL,'乙女座','メイド喫茶巡り','和太鼓演奏','元歌舞伎の女形で女性のような口調で話す27歳の男性アイドル。彩メンバー。CV: バレッタ裕。','male','left','華村','翔真',NULL,'2014-07-17','mental',0,NULL,NULL);
 INSERT INTO "idols" VALUES('sidem_冬美旬','sidem','冬美旬','ふゆみじゅん',NULL,'#1845B9',6040,'--01-02','B',158.0,49.0,'山梨',16,NULL,NULL,NULL,'山羊座','読書','ピアノ','ピアノの才能を認められたが左手を負傷した男性アイドル。本気になれずにいる、High×Jokerメンバー。CV: 永塚拓馬。','male','right','冬美','旬',NULL,'2014-07-17','intelli',0,NULL,NULL);
 INSERT INTO "idols" VALUES('sidem_清澄九郎','sidem','清澄九郎','きよすみくろう',NULL,'#79A5DF',6021,'--07-03','A',178.0,67.0,'鎌倉',19,NULL,NULL,NULL,'蟹座','いろいろな入浴剤収集','投扇興、競技かるた','茶道の名家出身のストイックな男性アイドル。彩メンバー。CV: 中田祐矢。','male','right','清澄','九郎',NULL,'2014-07-17','mental',0,NULL,NULL);
@@ -106737,11 +106737,9 @@ INSERT INTO "song_artists" VALUES('cg_キミのそばでずっと','cg_神谷奈
 INSERT INTO "song_artists" VALUES('cg_キミのそばでずっと','cg_鷺沢文香','original');
 INSERT INTO "song_artists" VALUES('ml_ゲキテキムテキ恋したい','ml_伴田路子','original');
 INSERT INTO "song_artists" VALUES('ml_サンリズムオーケストラ','ml_伴田路子','original');
-INSERT INTO "song_artists" VALUES('ml_サンリズムオーケストラ','ml_桜守歌織','original');
 INSERT INTO "song_artists" VALUES('765as_紅白応援v_ビクトリー','765as_双海亜美','original');
 INSERT INTO "song_artists" VALUES('765as_紅白応援v_ビクトリー','765as_双海真美','original');
 INSERT INTO "song_artists" VALUES('765as_紅白応援v_ビクトリー','765as_秋月律子','original');
-INSERT INTO "song_artists" VALUES('ml_brave_harmony','ml_白石紬','original');
 INSERT INTO "song_artists" VALUES('ml_リフレインキス','ml_田中琴葉','original');
 INSERT INTO "song_artists" VALUES('ml_starry_melody','ml_田中琴葉','original');
 INSERT INTO "song_artists" VALUES('ml_fairytaleじゃいられない','ml_二階堂千鶴','original');
@@ -106796,8 +106794,6 @@ INSERT INTO "song_artists" VALUES('sc_multicolored_sky','sc_郁田はるき','or
 INSERT INTO "song_artists" VALUES('sc_multicolored_sky','sc_鈴木羽那','original');
 INSERT INTO "song_artists" VALUES('sc_multicolored_sky','sc_黛冬優子','original');
 INSERT INTO "song_artists" VALUES('sidem_lets_go','sidem_アスランbbⅱ世','original');
-INSERT INTO "song_artists" VALUES('sidem_lets_go','sidem_眉見鋭心','original');
-INSERT INTO "song_artists" VALUES('sidem_friendly_smile','sidem_花園百々人','original');
 INSERT INTO "song_artists" VALUES('sc_lets_get_a_chance','sc_七草にちか','original');
 INSERT INTO "song_artists" VALUES('sc_lets_get_a_chance','sc_和泉愛依','original');
 INSERT INTO "song_artists" VALUES('sc_lets_get_a_chance','sc_市川雛菜','original');
@@ -106810,7 +106806,6 @@ INSERT INTO "song_artists" VALUES('sc_lets_get_a_chance','sc_芹沢あさひ','o
 INSERT INTO "song_artists" VALUES('sc_lets_get_a_chance','sc_郁田はるき','original');
 INSERT INTO "song_artists" VALUES('sc_lets_get_a_chance','sc_鈴木羽那','original');
 INSERT INTO "song_artists" VALUES('sc_lets_get_a_chance','sc_黛冬優子','original');
-INSERT INTO "song_artists" VALUES('sidem_poker_faith_-ポーカーフェイス-','sidem_天峰秀','original');
 INSERT INTO "song_artists" VALUES('sc_snow_flakes_memories','sc_七草にちか','original');
 INSERT INTO "song_artists" VALUES('sc_snow_flakes_memories','sc_和泉愛依','original');
 INSERT INTO "song_artists" VALUES('sc_snow_flakes_memories','sc_市川雛菜','original');
@@ -106885,11 +106880,6 @@ INSERT INTO "song_artists" VALUES('sc_dye_the_sky','sc_緋田美琴','original')
 INSERT INTO "song_artists" VALUES('sc_dye_the_sky','sc_郁田はるき','original');
 INSERT INTO "song_artists" VALUES('sc_dye_the_sky','sc_鈴木羽那','original');
 INSERT INTO "song_artists" VALUES('sidem_delicious_delivery','sidem_アスランbbⅱ世','original');
-INSERT INTO "song_artists" VALUES('sc_プラニスフィア_planisphere','sc_緋田美琴','original');
-INSERT INTO "song_artists" VALUES('sc_プラニスフィア_planisphere','sc_鈴木羽那','original');
-INSERT INTO "song_artists" VALUES('sc_リフレクトサイン','sc_斑鳩ルカ','original');
-INSERT INTO "song_artists" VALUES('sc_solar_way','sc_七草にちか','original');
-INSERT INTO "song_artists" VALUES('sc_solar_way','sc_郁田はるき','original');
 INSERT INTO "song_artists" VALUES('sc_resonance','sc_斑鳩ルカ','original');
 INSERT INTO "song_artists" VALUES('sc_resonance','sc_郁田はるき','original');
 INSERT INTO "song_artists" VALUES('sc_resonance','sc_鈴木羽那','original');

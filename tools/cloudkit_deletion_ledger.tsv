@@ -36,3 +36,4 @@ pending_cloudkit_deletions_setlist_performers_20261009_sc3rd_tokyo.tsv	2026-10-0
 pending_cloudkit_deletions_setlist_performers_20261009_full_audit.tsv	2026-10-09	done	2026-10-10	0/75	全公演の再精査で外した歌唱者 70 行・出演者 5 行
 pending_cloudkit_deletions_setlist_performers_20261010_sidem_stage.tsv	2026-10-10	done	2026-10-11	0/1064	ドラマチックライブステージ SideM の全曲 49 人の歌唱者
 pending_cloudkit_deletions_show_cast_20261011_popn_toybox.tsv	2026-10-11	done	2026-10-11	0/112	Pop'n ToyBox!! (2026-08) の出演外の show_cast 22 人 (公式特設 cg_ptb の出演アイドル欄に無い)
+pending_cloudkit_deletions_late_joiner_originals_20261012.tsv	2026-10-12	done	2026-10-12	0/10	加入前に出た曲の原唱者に入っていた後から加入のメンバー 10 行 (属性曲の C.FIRST 3 人・39 Project チーム曲・283 Team 曲)

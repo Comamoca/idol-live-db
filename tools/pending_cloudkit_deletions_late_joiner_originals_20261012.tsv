@@ -1,0 +1,12 @@
+# 加入前に出た曲の原唱者に、後から加入したメンバーが入っていた行 (ユニットの今の構成員から埋めた誤り)
+# 使い方: python3 tools/seed_cloudkit.py --delete-file tools/pending_cloudkit_deletions_late_joiner_originals_20261012.tsv --production
+SongArtist	song_artists-ml_brave_harmony-ml_白石紬-original
+SongArtist	song_artists-ml_サンリズムオーケストラ-ml_桜守歌織-original
+SongArtist	song_artists-sc_solar_way-sc_七草にちか-original
+SongArtist	song_artists-sc_solar_way-sc_郁田はるき-original
+SongArtist	song_artists-sc_プラニスフィア_planisphere-sc_緋田美琴-original
+SongArtist	song_artists-sc_プラニスフィア_planisphere-sc_鈴木羽那-original
+SongArtist	song_artists-sc_リフレクトサイン-sc_斑鳩ルカ-original
+SongArtist	song_artists-sidem_lets_go-sidem_眉見鋭心-original
+SongArtist	song_artists-sidem_friendly_smile-sidem_花園百々人-original
+SongArtist	song_artists-sidem_poker_faith_-ポーカーフェイス--sidem_天峰秀-original
