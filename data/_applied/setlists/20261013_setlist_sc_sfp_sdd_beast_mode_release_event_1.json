@@ -1,0 +1,10 @@
+{
+ "title": "Song for Prism SUPER DUPER DREAMER / BEAST MODE 発売記念イベント 第一回のセトリ",
+ "author": "daily-data-crawl (issue #273)",
+ "source": "アプリからの修正リクエスト GitHub issue #273 (公式のセトリ告知は見つからず投稿どおり)。ミニライブ 1 曲・両回同一曲は https://shinycolors.lantis.jp/event/260312_1/",
+ "show_id": "sh_the_idolm@ster_shiny_colors_song_for_prism_super_duper_dreamer_beast_mode_発売記念イベント_1",
+ "all_performers": ["sc_芹沢あさひ","sc_樋口円香","sc_緋田美琴","sc_斑鳩ルカ","sc_西城樹里","sc_田中摩美々"],
+ "songs": [
+  {"position": 1, "song_id": "sc_super_duper_dreamer", "performers": "all"}
+ ]
+}
