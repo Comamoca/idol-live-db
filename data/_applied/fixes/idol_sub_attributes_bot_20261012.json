@@ -1,5 +1,4 @@
 {
-  "unconfirmed": "CloudKit の Idol.subAttribute が Production に未反映。スキーマを反映したらこの行を消して --apply --push する (db/master.sql には入れてある)",
   "source": "https://idolmaster-official.jp/news/01_15862",
   "fixes": [
     {
