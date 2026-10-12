@@ -674,18 +674,23 @@ enum ImasRubyText {
     }
 }
 
-/// 読み仮名の付いた歌詞の見本 (投稿画面)。記法 (親字《よみ》) の入った本文のうち、読み仮名のある行だけを
-/// 歌詞の画面と同じく親字の上に読みを載せて並べる。記法そのものは見せない。
+/// 投稿する歌詞の見本。記法 (親字《よみ》) の入った本文を 1 行ずつ大きめの字で並べ、
+/// 読み仮名は歌詞の画面と同じく親字の上に載せる。記法そのものは見せない。
+/// 写真から読んだ字の見間違い (嵐→風 など) に送る前に気付けるよう、読み仮名の無い行も全部出す。
+/// 空行は塊の切れ目として間を空ける。
 struct ImasRubyPreview: View {
     let text: String
 
     var body: some View {
         VStack(alignment: .leading, spacing: DS.Space.gapTight) {
-            ForEach(Array(text.split(separator: "\n").map(String.init).filter(ImasRubyText.hasRuby).enumerated()),
-                    id: \.offset) { _, line in
-                ImasRubyLabel(attributed: ImasRubyText.attributed(
-                    line, font: Font.imasScaledUIFont(17, weight: .medium, proportional: true),
-                    color: UIColor(DS.ink), lineSpacing: 2))
+            ForEach(Array(text.components(separatedBy: "\n").enumerated()), id: \.offset) { _, line in
+                if line.trimmingCharacters(in: .whitespaces).isEmpty {
+                    Color.clear.frame(height: DS.Space.gap)
+                } else {
+                    ImasRubyLabel(attributed: ImasRubyText.attributed(
+                        line, font: Font.imasScaledUIFont(22, weight: .medium, proportional: true),
+                        color: UIColor(DS.ink), lineSpacing: 2))
+                }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

@@ -83,6 +83,7 @@ struct LyricSubmissionSheet: View {
                 rubySection
                 ocrButtons
                 issueNotes
+                previewSection
 
                 ImasFormCard {
                     ImasFormToggle(label: "確認", imprint: "CHECK", title: "投稿ガイドラインを読み、それに沿って入力しました",
@@ -175,7 +176,7 @@ struct LyricSubmissionSheet: View {
         }
     }
 
-    /// 付けた読み仮名の一覧 (外せる) と、送ったときの見た目の見本。記法は見せない。
+    /// 付けた読み仮名の一覧 (外せる)。記法は見せない。
     @ViewBuilder
     private var rubySection: some View {
         if !rubies.isEmpty {
@@ -201,8 +202,23 @@ struct LyricSubmissionSheet: View {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    /// 送ったときの見た目の見本。全行を大きめの字で出し、写真から読んだ字の見間違いを送る前に見つけてもらう。
+    @ViewBuilder
+    private var previewSection: some View {
+        if isDirty {
+            ImasFormCard {
                 ImasFormField(label: "見本", imprint: "PREVIEW", systemImage: "eye") {
-                    ImasRubyPreview(text: markup)
+                    VStack(alignment: .leading, spacing: DS.Space.note) {
+                        ImasRubyPreview(text: markup)
+                        Text("写真から読んだ字は、形の似た別の字 (嵐→風 など) になっていることがあります。送る前に 1 行ずつ見直してください。")
+                            .font(.imasFootnote)
+                            .foregroundStyle(DS.ink3)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
                 }
             }
         }

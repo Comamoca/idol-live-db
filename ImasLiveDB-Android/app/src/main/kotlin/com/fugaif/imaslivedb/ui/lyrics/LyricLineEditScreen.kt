@@ -163,7 +163,7 @@ fun LyricLineEditScreen(songId: String, line: LyricLine, onSaved: () -> Unit, on
             ImasFormPage {
                 ImasFormCard {
                     ImasFormTextField(label = "この行", text = plain, onTextChange = { plain = it }, imprint = "LINE", icon = Icons.Filled.TextFields)
-                    if (original.marks.isNotEmpty()) {
+                    if (plain.isNotBlank()) {
                         ImasFormField(label = "見本", imprint = "PREVIEW", icon = Icons.Filled.RemoveRedEye) {
                             ImasRubyPreview(text = markup)
                         }

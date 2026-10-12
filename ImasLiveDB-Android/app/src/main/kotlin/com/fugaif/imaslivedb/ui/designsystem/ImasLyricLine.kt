@@ -1213,21 +1213,26 @@ fun ImasRubyFlowText(
 }
 
 /**
- * 読み仮名の付いた歌詞の見本 (投稿画面。iOS `ImasRubyPreview` の移植)。記法 (親字《よみ》) の入った
- * 本文のうち、読み仮名のある行だけを歌詞の画面と同じく親字の上に読みを載せて並べる。記法そのものは
- * 見せない。
+ * 投稿する歌詞の見本 (iOS `ImasRubyPreview` の移植)。記法 (親字《よみ》) の入った本文を 1 行ずつ
+ * 大きめの字で並べ、読み仮名は歌詞の画面と同じく親字の上に載せる。記法そのものは見せない。
+ * 写真から読んだ字の見間違い (嵐→風 など) に送る前に気付けるよう、読み仮名の無い行も全部出す。
+ * 空行は塊の切れ目として間を空ける。
  */
 @Composable
 fun ImasRubyPreview(text: String, modifier: Modifier = Modifier) {
-    val lines = remember(text) { text.split("\n").filter(ImasRubyText::hasRuby) }
+    val lines = remember(text) { text.split("\n") }
     Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(DS.Space.gapTight)) {
         lines.forEach { line ->
-            ImasRubyFlowText(
-                text = line,
-                style = ImasType.text(17.sp, FontWeight.Medium),
-                color = DS.ink,
-                modifier = Modifier.fillMaxWidth()
-            )
+            if (line.isBlank()) {
+                Box(Modifier.height(DS.Space.gap))
+            } else {
+                ImasRubyFlowText(
+                    text = line,
+                    style = ImasType.text(22.sp, FontWeight.Medium),
+                    color = DS.ink,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
         }
     }
 }

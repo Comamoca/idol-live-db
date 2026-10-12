@@ -52,7 +52,7 @@ struct LyricLineEditSheet: View {
             ImasFormPage {
                 ImasFormCard {
                     ImasFormTextField(label: "この行", imprint: "LINE", systemImage: "text.quote", text: $plain)
-                    if !original.marks.isEmpty {
+                    if !plain.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                         ImasFormField(label: "見本", imprint: "PREVIEW", systemImage: "eye") {
                             ImasRubyPreview(text: markup)
                         }

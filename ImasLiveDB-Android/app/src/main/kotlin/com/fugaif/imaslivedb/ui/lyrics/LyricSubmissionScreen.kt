@@ -218,7 +218,7 @@ fun LyricSubmissionScreen(song: Song, onDismiss: () -> Unit) {
                     )
                 }
 
-                RubySection(songId = song.id, text = text, markup = markup, rubies = rubies)
+                RubySection(songId = song.id, text = text, rubies = rubies)
 
                 OcrButtons(
                     canUseCamera = cardCameraAvailable(context),
@@ -230,6 +230,8 @@ fun LyricSubmissionScreen(song: Song, onDismiss: () -> Unit) {
                 )
 
                 IssueNotes(song.id, check.lineCount, check.charCount, check.issues, draft.doubtfulLines)
+
+                PreviewSection(text = text, markup = markup)
 
                 ImasFormCard {
                     ImasFormToggle(
@@ -418,10 +420,10 @@ private fun LyricsRubyFields(text: String, onTextChange: (String) -> Unit, onAdd
 }
 
 /**
- * 付けた読み仮名の一覧 (外せる) と、送ったときの見た目の見本。記法は見せない (iOS `rubySection` の移植)。
+ * 付けた読み仮名の一覧 (外せる)。記法は見せない (iOS `rubySection` の移植)。
  */
 @Composable
-private fun RubySection(songId: String, text: String, markup: String, rubies: List<RubyMark>) {
+private fun RubySection(songId: String, text: String, rubies: List<RubyMark>) {
     if (rubies.isEmpty()) return
     ImasFormCard {
         ImasFormField(label = "読み仮名", imprint = "RUBY", icon = Icons.Filled.TextFields) {
@@ -448,8 +450,26 @@ private fun RubySection(songId: String, text: String, markup: String, rubies: Li
                 }
             }
         }
+    }
+}
+
+/**
+ * 送ったときの見た目の見本 (iOS `previewSection` の移植)。全行を大きめの字で出し、写真から読んだ字の
+ * 見間違いを送る前に見つけてもらう。
+ */
+@Composable
+private fun PreviewSection(text: String, markup: String) {
+    if (text.isBlank()) return
+    ImasFormCard {
         ImasFormField(label = "見本", imprint = "PREVIEW", icon = Icons.Filled.Visibility) {
-            ImasRubyPreview(text = markup)
+            Column(verticalArrangement = Arrangement.spacedBy(DS.Space.note)) {
+                ImasRubyPreview(text = markup)
+                ImasText(
+                    "写真から読んだ字は、形の似た別の字 (嵐→風 など) になっていることがあります。送る前に 1 行ずつ見直してください。",
+                    ImasTextRole.NOTE,
+                    color = DS.ink3
+                )
+            }
         }
     }
 }
