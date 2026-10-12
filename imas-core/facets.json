@@ -698,6 +698,63 @@
       }
     },
     {
+      "auto": "no",
+      "category": "relations",
+      "key": "sub_attribute",
+      "kind": "single",
+      "label": "チーム (BATTLE OF THEATER)",
+      "note": "属性をさらに分けたサブ属性。今はミリシタ BATTLE OF THEATER の 6 チーム (ML・765AS)。属性と食い違う値・チームの無い子は項目ごと無い",
+      "store": "idol_facets",
+      "taggable": false,
+      "vocab": [
+        "PRINCESS PRETTY",
+        "PRINCESS GIRLY",
+        "FAIRY MYSTICAL",
+        "FAIRY BREAKER",
+        "ANGEL SWEETIE",
+        "ANGEL CHARMING"
+      ],
+      "vocab_aliases": {
+        "ANGEL CHARMING": [
+          "CHARMING",
+          "チャーミング",
+          "エンジェル チャーミング",
+          "charming"
+        ],
+        "ANGEL SWEETIE": [
+          "SWEETIE",
+          "スウィーティ",
+          "スウィーティー",
+          "エンジェル スウィーティ",
+          "sweetie"
+        ],
+        "FAIRY BREAKER": [
+          "BREAKER",
+          "ブレイカー",
+          "フェアリー ブレイカー",
+          "breaker"
+        ],
+        "FAIRY MYSTICAL": [
+          "MYSTICAL",
+          "ミスティカル",
+          "フェアリー ミスティカル",
+          "mystical"
+        ],
+        "PRINCESS GIRLY": [
+          "GIRLY",
+          "ガーリー",
+          "プリンセス ガーリー",
+          "girly"
+        ],
+        "PRINCESS PRETTY": [
+          "PRETTY",
+          "プリティ",
+          "プリンセス プリティ",
+          "pretty"
+        ]
+      }
+    },
+    {
       "auto": "exact",
       "category": "relations",
       "key": "agency",

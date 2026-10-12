@@ -84,6 +84,7 @@
 | `brand` ブランド | 単一値 | 自由 | 自動 |  |
 | `agency` 所属事務所・学園 | 単一値 | 自由 | 自動 | 確定 |
 | `attribute` 属性 | 単一値 | 語彙 | 公式 | 別名あり |
+| `sub_attribute` チーム (BATTLE OF THEATER) | 単一値 | 語彙 | 公式 | 別名あり |
 | `unit_count` ユニットの数 | 数値 | 自由 | 自動 |  |
 | `representative_units` 代表的なユニット | 複数値 | 自由 | 自動 |  |
 | `units` 所属ユニット (全件) | 複数値 | 自由 | 自動 | 全件 |
@@ -113,6 +114,8 @@
   (赤・オレンジ・黄・黄緑・緑・水色・青・紫・ピンク・茶・白・グレー・黒)。`agency` はブランドから (765 / ML → 765プロダクション、CG → 346、SideM → 315、SC → 283、学マス → 初星学園)。
 - `attribute` (属性): マスタの `idols.attribute` のうち語彙にある値だけ。CG はキュート (Cu) / クール (Co) / パッション (Pa)、ML・765AS はプリンセス (Pr) / フェアリー (Fa) / エンジェル (An)、SC はソール / ルーナ / ステラ、SideM はフィジカル / インテリ / メンタル。
   略称・英語は `vocab_aliases`。公式の呼び名は CG「属性」、ML・SideM「タイプ」などブランドで違うが、見出しは「属性」に統一した。学園の「1年」などは学年なので属性にせず `grade`、空 (876・その他) は項目ごと出さない。
+- `sub_attribute` (サブ属性): マスタの `idols.sub_attribute` (属性をさらに分けた区分) を語彙の名前にしたもの。今はミリシタ「BATTLE OF THEATER」の 6 チーム (PRINCESS PRETTY / PRINCESS GIRLY / FAIRY MYSTICAL / FAIRY BREAKER / ANGEL SWEETIE / ANGEL CHARMING。ML と 765AS)。
+  `PRETTY`・`スウィーティ` のような後ろ半分だけ・カタカナ・小文字は `vocab_aliases`。属性と食い違う値 (フェアリーの子に PRINCESS GIRLY) はプロフィールの表示 (`attribute_display`) と同じく出さず、チームの無い子は項目ごと出さない。値の表は `idol_attributes.rs` が唯一の正。
 - `birthplace` は「県・府・都」を落とした形に揃える。
 
 ### 数が多い項目: まとめと全件

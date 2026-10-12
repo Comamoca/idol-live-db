@@ -249,6 +249,26 @@ pub fn attribute_label(raw: &str) -> Option<&'static str> {
         _ => return None,
     })
 }
+/// 属性をさらに分けたサブ属性 (`idols.sub_attribute`)。今はミリシタ「BATTLE OF THEATER」の 6 チーム
+/// (Princess / Fairy / Angel をそれぞれ 2 つに分けたもの。ML と 765AS)。値は公式のチーム名の表記。
+pub const SUB_ATTRIBUTES: &[&str] =
+    &["PRINCESS PRETTY", "PRINCESS GIRLY", "FAIRY MYSTICAL", "FAIRY BREAKER", "ANGEL SWEETIE", "ANGEL CHARMING"];
+/// マスタの `idols.sub_attribute` の値 → 語彙。表に無い値や、属性 (`idols.attribute`) と食い違う値は出さない
+/// (プロフィールの表示 [`crate::domain::idol_attributes::attribute_display`] と同じ扱い)。
+pub fn sub_attribute_label(raw: &str, attribute: Option<&str>) -> Option<&'static str> {
+    if crate::domain::idol_attributes::sub_attribute_attribute(raw)? != attribute? {
+        return None;
+    }
+    Some(match raw {
+        "pretty" => "PRINCESS PRETTY",
+        "girly" => "PRINCESS GIRLY",
+        "mystical" => "FAIRY MYSTICAL",
+        "breaker" => "FAIRY BREAKER",
+        "sweetie" => "ANGEL SWEETIE",
+        "charming" => "ANGEL CHARMING",
+        _ => return None,
+    })
+}
 pub const HAIR_COLORS: &[&str] =
     &["黒", "茶", "金", "白・銀", "赤", "オレンジ", "ピンク", "緑", "青", "水色", "紫"];
 pub const HAIR_LENGTHS: &[&str] = &["ロング", "ボブ〜ミディアム", "ショート"];
@@ -352,6 +372,15 @@ pub const FACETS: &[FacetDef] = &[
             ("フィジカル", &["physical"]),
             ("インテリ", &["intelli"]),
             ("メンタル", &["mental"]),
+        ]),
+    f("sub_attribute", Category::Relations, Kind::Single, Some(SUB_ATTRIBUTES), "チーム (BATTLE OF THEATER)", "属性をさらに分けたサブ属性。今はミリシタ BATTLE OF THEATER の 6 チーム (ML・765AS)。属性と食い違う値・チームの無い子は項目ごと無い")
+        .aliases(&[
+            ("PRINCESS PRETTY", &["PRETTY", "プリティ", "プリンセス プリティ", "pretty"]),
+            ("PRINCESS GIRLY", &["GIRLY", "ガーリー", "プリンセス ガーリー", "girly"]),
+            ("FAIRY MYSTICAL", &["MYSTICAL", "ミスティカル", "フェアリー ミスティカル", "mystical"]),
+            ("FAIRY BREAKER", &["BREAKER", "ブレイカー", "フェアリー ブレイカー", "breaker"]),
+            ("ANGEL SWEETIE", &["SWEETIE", "スウィーティ", "スウィーティー", "エンジェル スウィーティ", "sweetie"]),
+            ("ANGEL CHARMING", &["CHARMING", "チャーミング", "エンジェル チャーミング", "charming"]),
         ]),
     f("agency", Category::Relations, Kind::Single, None, "所属事務所・学園", "ブランドから自動").auto(Auto::Exact).computed(),
     f("unit_count", Category::Relations, Kind::Number, None, "ユニットの数", "").unit("組").computed(),
@@ -845,6 +874,9 @@ pub fn build_idol_facts(snap: &Snapshot, idol_id: &str, persona: &PersonaInput, 
 
     if let Some(a) = idol.attribute.as_deref().and_then(attribute_label) {
         c.push(cand("attribute", a));
+    }
+    if let Some(t) = idol.sub_attribute.as_deref().and_then(|t| sub_attribute_label(t, idol.attribute.as_deref())) {
+        c.push(cand("sub_attribute", t));
     }
 
     // --- appearance ---
@@ -1768,5 +1800,58 @@ mod tests {
         for l in ["プリンセス", "フェアリー", "エンジェル"] {
             assert!(seen.contains(&("ml".to_string(), l)), "ml {l}");
         }
+    }
+
+    /// サブ属性 (BATTLE OF THEATER のチーム) を入れた実データの写し。同梱の db/master.sql にはまだ値が無いので、
+    /// 一時ファイルに写して ML のエンジェル 2 人と 765AS のプリンセス 1 人に入れ、1 人には属性と食い違う値を入れる。
+    fn snapshot_with_sub_attributes() -> (Snapshot, [String; 4]) {
+        let dir = std::env::temp_dir().join(format!("imas_facets_sub_attribute_{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let path = dir.join("master.sqlite");
+        std::fs::copy(crate::test_support::bundle_path(), &path).unwrap();
+        let conn = rusqlite::Connection::open(&path).unwrap();
+        let pick = |brand: &str, attr: &str, skip: i64| -> String {
+            conn.query_row(
+                "SELECT id FROM idols WHERE brand_id = ?1 AND attribute = ?2 ORDER BY sort_order, id LIMIT 1 OFFSET ?3",
+                rusqlite::params![brand, attr, skip],
+                |r| r.get(0),
+            )
+            .unwrap()
+        };
+        let ids = [pick("ml", "angel", 0), pick("ml", "angel", 1), pick("765as", "princess", 0), pick("ml", "fairy", 0)];
+        for (id, t) in ids.iter().zip(["sweetie", "charming", "pretty", "girly"]) {
+            conn.execute("UPDATE idols SET sub_attribute = ?1 WHERE id = ?2", rusqlite::params![t, id]).unwrap();
+        }
+        drop(conn);
+        let snap = crate::outbound::sqlite_loader::load_snapshot(path.to_str().unwrap()).unwrap();
+        let _ = std::fs::remove_dir_all(&dir);
+        (snap, ids)
+    }
+
+    /// ミリオン・765AS のアイドルにはチームが語彙の名前で出る。チームの無い子・属性と食い違うチームの子には項目が無い。
+    #[test]
+    fn sub_attribute_is_team_name_and_absent_without_team() {
+        let (snap, [sweetie, charming, pretty, mismatched]) = snapshot_with_sub_attributes();
+        let team = |id: &str| build_idol_facts(&snap, id, &PersonaInput::default(), &[]).unwrap()["categories"]["relations"].get("sub_attribute").cloned();
+        assert_eq!(team(&sweetie).unwrap()["value"], "ANGEL SWEETIE");
+        assert_eq!(team(&sweetie).unwrap()["source"], "official");
+        assert_eq!(team(&charming).unwrap()["value"], "ANGEL CHARMING");
+        assert_eq!(team(&pretty).unwrap()["value"], "PRINCESS PRETTY");
+        // フェアリーの子に PRINCESS GIRLY は出さない
+        assert!(team(&mismatched).is_none(), "{mismatched}");
+        for i in snap.idols.iter().filter(|i| i.sub_attribute.is_none()) {
+            assert!(team(&i.id).is_none(), "{}", i.id);
+        }
+        for v in SUB_ATTRIBUTES {
+            assert!(FACETS.iter().find(|d| d.key == "sub_attribute").unwrap().vocab.unwrap().contains(v));
+        }
+    }
+
+    #[test]
+    fn sub_attribute_label_needs_matching_attribute() {
+        assert_eq!(sub_attribute_label("sweetie", Some("angel")), Some("ANGEL SWEETIE"));
+        assert_eq!(sub_attribute_label("sweetie", Some("princess")), None);
+        assert_eq!(sub_attribute_label("sweetie", None), None);
+        assert_eq!(sub_attribute_label("unknown", Some("angel")), None);
     }
 }
