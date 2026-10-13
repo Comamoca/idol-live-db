@@ -1280,6 +1280,7 @@ mod tests {
     fn songs_by_idol_are_release_date_desc_with_roles() {
         let s = bundle_snapshot();
         let total_links: usize = s.songs_by_idol.iter().map(Vec::len).sum();
+        // performer (ライブ歌唱歴) はセトリから組む。bundle_conn の song_artists は同じ形の一時ビュー。
         let sql_links: usize = bundle_conn()
             .query_row("SELECT COUNT(*) FROM song_artists", [], |r| r.get::<_, i64>(0))
             .unwrap() as usize;
@@ -1295,6 +1296,20 @@ mod tests {
                 (None, None) => true,
             }));
         }
+    }
+
+    #[test]
+    fn performer_artists_come_from_setlists_not_the_stale_table() {
+        // 表の performer 行は古いまま (Crossing! はロコ 1 人だけ) だった。
+        // セトリから組むので、披露のある全体曲には大勢が並ぶ。
+        let s = bundle_snapshot();
+        let names: Vec<&str> = s
+            .song_artists("ml_crossing", Some("performer"))
+            .iter()
+            .map(|i| i.id.as_str())
+            .collect();
+        assert!(names.len() > 10, "Crossing! のライブ歌唱歴: {names:?}");
+        assert!(names.contains(&"ml_春日未来"));
     }
 
     #[test]

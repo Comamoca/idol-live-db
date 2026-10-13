@@ -42,7 +42,7 @@ pub fn table_names() -> Vec<String> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::test_support::bundle_conn;
+    use crate::test_support::bundle_conn_raw as bundle_conn;
     use rusqlite::Connection;
     use std::collections::BTreeMap;
 

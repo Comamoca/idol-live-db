@@ -1,0 +1,627 @@
+{
+ "title": "名義表記から読み落としていた原唱者を足す (ロコ・先頭の 1 人など)",
+ "author": "Claude",
+ "source": "derived:songs.singer_label (名義表記)。「ロコ」が伴田路子に結び付いていなかったのと、「765 MILLION ALLSTARS 天海春香、…」のようにグループ名の直後の 1 人目、[ や「 で始まる括弧の 1 人目を読み落としていた",
+ "fixes": [
+  {
+   "table": "songs",
+   "id": "765as_crystloud",
+   "add_original_singers": [
+    "sc_八宮めぐる"
+   ],
+   "note": "CRYST@LOUD。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「天海春香、渋谷凛、伊吹翼、天道輝、八宮めぐる」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_ever_rising",
+   "add_original_singers": [
+    "961_奥空心白"
+   ],
+   "note": "EVER RISING。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「奥空心白、亜夜」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_grtitude",
+   "add_original_singers": [
+    "961_奥空心白"
+   ],
+   "note": "GR@TITUDE。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「Project LUMINOUS（天海春香、如月千早、星井美希、萩原雪歩、高槻やよい、秋月律子、三浦あずさ、水瀬伊織、菊地真、双海亜美、双海真美、四条貴音、我那覇響、安部菜々、神崎蘭子、城ヶ崎美嘉、双葉杏、諸星きらり、春日未来、最上静香、伊…」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_idol_power_rainbow",
+   "add_original_singers": [
+    "ml_伊吹翼"
+   ],
+   "note": "IDOL POWER RAINBOW。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「天海春香、如月千早、星井美希、島村卯月、渋谷凛、本田未央、春日未来、最上静香、伊吹翼」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_kawaii_ウォーズ",
+   "add_original_singers": [
+    "961_奥空心白"
+   ],
+   "note": "KAWAII ウォーズ。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「田中琴葉、天海春香、菊地真、水瀬伊織、我那覇響、双葉杏、安部菜々、春日未来、大崎甘奈、大崎甜花、詩花、奥空心白」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_light_year_song",
+   "add_original_singers": [
+    "765as_双海亜美"
+   ],
+   "note": "Light Year Song。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「高槻やよい、菊地真、双海亜美/真美、我那覇響」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_session",
+   "add_original_singers": [
+    "961_奥空心白"
+   ],
+   "note": "SESSION!。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「Project LUMINOUS（天海春香、水瀬伊織、菊地真、我那覇響、安部菜々、双葉杏、春日未来、大崎甘奈、大崎甜花、奥空心白）」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_なんどでも笑おう",
+   "add_original_singers": [
+    "765as_天海春香"
+   ],
+   "note": "なんどでも笑おう。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「THE IDOLM@STER FIVE STARS!!!!! 天海春香、如月千早、星井美希、島村卯月、渋谷凛、本田未央、春日未来、最上静香、伊吹翼、天道輝、桜庭薫、柏木翼、櫻木真乃、風野灯織、八宮めぐる」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_アイシテの呪縛je_vous_aime",
+   "add_original_singers": [
+    "961_奥空心白"
+   ],
+   "note": "アイシテの呪縛〜Je vous aime〜。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「Project LUMINOUS（如月千早、三浦あずさ、秋月律子、四条貴音、神崎蘭子、最上静香、白石紬、白瀬咲耶、杜野凛世、奥空心白）」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_ダンスダンスダンス",
+   "add_original_singers": [
+    "961_奥空心白"
+   ],
+   "note": "ダンス・ダンス・ダンス。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「高垣楓、如月千早、秋月律子、三浦あずさ、四条貴音、神崎蘭子、最上静香、白石紬、白瀬咲耶、杜野凛世、奥空心白、玲音」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_全力ドリーミングガールズ",
+   "add_original_singers": [
+    "961_奥空心白"
+   ],
+   "note": "全力★ドリーミングガールズ。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「田中摩美々、萩原雪歩、高槻やよい、双海亜美、双海真美、星井美希、諸星きらり、城ヶ崎美嘉、伊吹翼、桜守歌織、小宮果穂、奥空心白、亜夜」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_団結",
+   "add_original_singers": [
+    "765as_秋月律子"
+   ],
+   "note": "団結。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「IM@S ALLSTARS、星井美希、如月千早、高槻やよい、萩原雪歩、菊地真、双海亜美／真美、水瀬伊織、三浦あずさ、秋月律子」"
+  },
+  {
+   "table": "songs",
+   "id": "765as_異次元bigbang",
+   "add_original_singers": [
+    "lovelive_上原歩夢",
+    "lovelive_日野下花帆",
+    "lovelive_澁谷かのん",
+    "lovelive_高海千歌"
+   ],
+   "note": "異次元★♥BIGBANG。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「島村卯月、最上静香、月岡恋鐘、高海千歌、上原歩夢、澁谷かのん、日野下花帆」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_goin",
+   "add_original_singers": [
+    "cg_アナスタシア",
+    "cg_島村卯月"
+   ],
+   "note": "GOIN'!!!。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「CINDERELLA PROJECT [島村卯月、渋谷凛、本田未央、双葉杏、三村かな子、城ヶ崎莉嘉、神崎蘭子、前川みく、諸星きらり、多田李衣菜、赤城みりあ、新田美波、緒方智絵里、アナスタシア」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_hungry_bambi",
+   "add_original_singers": [
+    "cg_佐々木千枝",
+    "cg_遊佐こずえ"
+   ],
+   "note": "Hungry Bambi。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「キュリオスター「佐々木千枝、市原仁奈、橘ありす、龍崎薫、棟方愛海、遊佐こずえ」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_mgic",
+   "add_original_singers": [
+    "cg_アナスタシア",
+    "cg_島村卯月"
+   ],
+   "note": "M@GIC☆。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「CINDERELLA PROJECT [島村卯月、渋谷凛、本田未央、双葉杏、三村かな子、城ヶ崎莉嘉、神崎蘭子、前川みく、諸星きらり、多田李衣菜、赤城みりあ、新田美波、緒方智絵里、アナスタシア」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_secret_daybreak_-石濱翔_remix-",
+   "add_original_singers": [
+    "cg_新田美波",
+    "cg_速水奏"
+   ],
+   "note": "Secret Daybreak -石濱翔 Remix-。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「デア・アウローラ（速水奏、新田美波）」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_shine",
+   "add_original_singers": [
+    "cg_アナスタシア",
+    "cg_島村卯月"
+   ],
+   "note": "Shine!!。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「CINDERELLA PROJECT [島村卯月、渋谷凛、本田未央、双葉杏、三村かな子、城ヶ崎莉嘉、神崎蘭子、前川みく、諸星きらり、多田李衣菜、赤城みりあ、新田美波、緒方智絵里、アナスタシア」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_star",
+   "add_original_singers": [
+    "cg_アナスタシア",
+    "cg_島村卯月"
+   ],
+   "note": "Star!!。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「CINDERELLA PROJECT [島村卯月、渋谷凛、本田未央、双葉杏、三村かな子、城ヶ崎莉嘉、神崎蘭子、前川みく、諸星きらり、多田李衣菜、赤城みりあ、新田美波、緒方智絵里、アナスタシア」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_tulip_-taku_inoue_remix-",
+   "add_original_singers": [
+    "cg_一ノ瀬志希",
+    "cg_城ヶ崎美嘉",
+    "cg_塩見周子",
+    "cg_宮本フレデリカ",
+    "cg_速水奏"
+   ],
+   "note": "Tulip -TAKU INOUE Remix-。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「LiPPS（速水奏、塩見周子、城ヶ崎美嘉、宮本フレデリカ、一ノ瀬志希）」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_were_the_friends",
+   "add_original_singers": [
+    "cg_高森藍子"
+   ],
+   "note": "We're the friends!。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「THE IDOLM@STER CINDERELLA GIRLS!!、鷺沢文香、高垣楓、安部菜々、緒方智絵里、島村卯月、本田未央、姫川友紀、高森藍子」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_夕映えプレゼント",
+   "add_original_singers": [
+    "cg_アナスタシア",
+    "cg_島村卯月"
+   ],
+   "note": "夕映えプレゼント。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「CINDERELLA PROJECT [島村卯月、渋谷凛、本田未央、双葉杏、三村かな子、城ヶ崎莉嘉、神崎蘭子、前川みく、諸星きらり、多田李衣菜、赤城みりあ、新田美波、緒方智絵里、アナスタシア」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_夢色ハーモニー",
+   "add_original_singers": [
+    "cg_アナスタシア",
+    "cg_島村卯月"
+   ],
+   "note": "夢色ハーモニー。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「CINDERELLA PROJECT [島村卯月、渋谷凛、本田未央、双葉杏、三村かな子、城ヶ崎莉嘉、神崎蘭子、前川みく、諸星きらり、多田李衣菜、赤城みりあ、新田美波、緒方智絵里、アナスタシア」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_輝く世界の魔法",
+   "add_original_singers": [
+    "cg_渋谷凛"
+   ],
+   "note": "輝く世界の魔法。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「THE IDOLM@STER CINDERELLA GIRLS!、アナスタシア、高垣楓、輿水幸子、渋谷凛」"
+  },
+  {
+   "table": "songs",
+   "id": "cg_輝く世界の魔法_-magical_step_forward_remix-",
+   "add_original_singers": [
+    "cg_アナスタシア",
+    "cg_渋谷凛",
+    "cg_輿水幸子",
+    "cg_高垣楓"
+   ],
+   "note": "輝く世界の魔法　-Magical Step Forward Remix-。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「THE IDOLM@STER CINDERELLA GIRLS!、アナスタシア、高垣楓、輿水幸子、渋谷凛」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_alternate",
+   "add_original_singers": [
+    "lovelive_平安名すみれ",
+    "lovelive_澁谷かのん",
+    "lovelive_米女メイ"
+   ],
+   "note": "オルタネイト。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「CatChu!（澁谷かのん、平安名すみれ、米女メイ）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_audrey",
+   "add_original_singers": [
+    "lovelive_桜坂しずく"
+   ],
+   "note": "オードリー。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「桜坂しずく（前田佳織里）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_butterfly",
+   "add_original_singers": [
+    "lovelive_近江彼方"
+   ],
+   "note": "Butterfly。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「近江彼方（鬼頭明里）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_chase",
+   "add_original_singers": [
+    "lovelive_優木せつ菜"
+   ],
+   "note": "CHASE!。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「優木せつ菜（林鼓子）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_dancing_raspberry",
+   "add_original_singers": [
+    "lovelive_嵐千砂都",
+    "lovelive_桜小路きな子",
+    "lovelive_若菜四季",
+    "lovelive_鬼塚冬毬",
+    "lovelive_鬼塚夏美"
+   ],
+   "note": "Dancing Raspberry。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「5yncri5e!（鬼塚冬毬、桜小路きな子、嵐千砂都、若菜四季、鬼塚夏美）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_do_do_do",
+   "add_original_singers": [
+    "lovelive_大沢瑠璃乃",
+    "lovelive_藤島慈"
+   ],
+   "note": "ド！ド！ド！。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「みらくらぱーく！（大沢瑠璃乃、藤島慈）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_dream_with_you",
+   "add_original_singers": [
+    "lovelive_上原歩夢"
+   ],
+   "note": "Dream with You。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「上原歩夢（大西亜玖璃）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_eutopia",
+   "add_original_singers": [
+    "lovelive_鐘嵐珠"
+   ],
+   "note": "Eutopia。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「鐘嵐珠（法元明菜）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_fukashina_blue",
+   "add_original_singers": [
+    "lovelive_唐可可",
+    "lovelive_葉月恋"
+   ],
+   "note": "不可視なブルー。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「KALEIDOSCORE（ウィーン・マルガレーテ、唐可可、葉月恋）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_genyou_yakou",
+   "add_original_singers": [
+    "lovelive_乙宗梢",
+    "lovelive_日野下花帆"
+   ],
+   "note": "眩耀夜行。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「スリーズブーケ（日野下花帆、乙宗梢）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_holiday_holiday",
+   "add_original_singers": [
+    "lovelive_乙宗梢",
+    "lovelive_日野下花帆"
+   ],
+   "note": "Holiday∞Holiday。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「スリーズブーケ（日野下花帆、乙宗梢）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_ketsui_no_hikari",
+   "add_original_singers": [
+    "lovelive_三船栞子"
+   ],
+   "note": "決意の光。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「三船栞子（小泉萌香）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_knot",
+   "add_original_singers": [
+    "lovelive_夕霧綴理",
+    "lovelive_村野さやか"
+   ],
+   "note": "KNOT。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「DOLLCHESTRA（夕霧綴理、村野さやか）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_meccha_going",
+   "add_original_singers": [
+    "lovelive_宮下愛"
+   ],
+   "note": "めっちゃGoing!!。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「宮下愛（村上奈津実）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_muteki_kyu_believer",
+   "add_original_singers": [
+    "lovelive_中須かすみ"
+   ],
+   "note": "無敵級*ビリーバー。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「中須かすみ（相良茉優）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_nonfiction_hero_show",
+   "add_original_singers": [
+    "lovelive_大沢瑠璃乃",
+    "lovelive_藤島慈"
+   ],
+   "note": "ノンフィクションヒーローショー。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「みらくらぱーく！（大沢瑠璃乃、藤島慈）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_tragic_drops",
+   "add_original_singers": [
+    "lovelive_夕霧綴理",
+    "lovelive_村野さやか"
+   ],
+   "note": "Tragic Drops。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「DOLLCHESTRA（夕霧綴理、村野さやか）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_tsunagaru_connect",
+   "add_original_singers": [
+    "lovelive_天王寺璃奈"
+   ],
+   "note": "ツナガルコネクト。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「天王寺璃奈（田中ちえ美）」"
+  },
+  {
+   "table": "songs",
+   "id": "ll_vivid_world",
+   "add_original_singers": [
+    "lovelive_朝香果林"
+   ],
+   "note": "VIVID WORLD。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「朝香果林（久保田未夢）」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_brand_new_theater",
+   "add_original_singers": [
+    "765as_天海春香",
+    "ml_伴田路子"
+   ],
+   "note": "Brand New Theater!。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLION ALLSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大神環、我那…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_fairy_daysは絶え間ない",
+   "add_original_singers": [
+    "ml_伴田路子"
+   ],
+   "note": "Fairy Daysは絶え間ない。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「ロコ、四条貴音、如月千早、二階堂千鶴、最上静香」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_flyers",
+   "add_original_singers": [
+    "765as_天海春香",
+    "ml_伴田路子"
+   ],
+   "note": "Flyers!!!。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLION ALLSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_get_lol_get_lol_song",
+   "add_original_singers": [
+    "ml_望月杏奈",
+    "ml_木下ひなた"
+   ],
+   "note": "Get lol! Get lol! SONG。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「ピコピコプラネッツ [木下ひなた、箱崎星梨花、大神環、望月杏奈」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_glow_map",
+   "add_original_singers": [
+    "765as_天海春香",
+    "ml_伴田路子"
+   ],
+   "note": "Glow Map。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLION ALLSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_harmony_4_you",
+   "add_original_singers": [
+    "765as_天海春香",
+    "ml_伴田路子"
+   ],
+   "note": "Harmony 4 You。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLION ALLSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_iv",
+   "add_original_singers": [
+    "ml_伴田路子"
+   ],
+   "note": "I.V.。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「真壁瑞希、七尾百合子、最上静香、百瀬莉緒、ロコ」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_pomegranate",
+   "add_original_singers": [
+    "ml_伴田路子"
+   ],
+   "note": "Pomegranate。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「二階堂千鶴、桜守歌織、島原エレナ、箱崎星梨花、ロコ」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_thank_you_giga_remix",
+   "add_original_singers": [
+    "765as_天海春香"
+   ],
+   "note": "Thank You! (Giga Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLIONSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大神環、我…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_thank_you_teddyloid_remix",
+   "add_original_singers": [
+    "765as_天海春香"
+   ],
+   "note": "Thank You! (TeddyLoid Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLIONSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大神環、我…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_thank_yousnails_house_remix",
+   "add_original_singers": [
+    "765as_天海春香"
+   ],
+   "note": "Thank You! (Snail's House Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLIONSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大神環、我…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_thank_youtaku_takahashi_remix",
+   "add_original_singers": [
+    "765as_天海春香"
+   ],
+   "note": "Thank You! (☆Taku Takahashi Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLIONSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大神環、我…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_thank_youy0c1e_remix",
+   "add_original_singers": [
+    "765as_天海春香"
+   ],
+   "note": "Thank You! (y0c1e Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLIONSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大神環、我…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_thank_youチバニャン_remix",
+   "add_original_singers": [
+    "765as_天海春香"
+   ],
+   "note": "Thank You! (チバニャン Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLIONSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大神環、我…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_union",
+   "add_original_singers": [
+    "765as_天海春香",
+    "ml_伴田路子"
+   ],
+   "note": "UNION!!。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLION ALLSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_welcome",
+   "add_original_singers": [
+    "765as_天海春香",
+    "ml_伴田路子"
+   ],
+   "note": "Welcome!!。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLION ALLSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_welcome_giga_remix",
+   "add_original_singers": [
+    "765as_天海春香",
+    "ml_伴田路子"
+   ],
+   "note": "Welcome!! (Giga Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLION ALLSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_welcome_snails_house_remix",
+   "add_original_singers": [
+    "765as_天海春香",
+    "ml_伴田路子"
+   ],
+   "note": "Welcome!! (Snail's House Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLION ALLSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_welcome_teddyloid_tofubeats_remix",
+   "add_original_singers": [
+    "765as_天海春香",
+    "ml_伴田路子"
+   ],
+   "note": "Welcome!! (TeddyLoid & tofubeats Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLION ALLSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_welcome_チバニャン_remix",
+   "add_original_singers": [
+    "765as_天海春香",
+    "ml_伴田路子"
+   ],
+   "note": "Welcome!! (チバニャン Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLION ALLSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_welcomey0c1e_remix",
+   "add_original_singers": [
+    "765as_天海春香",
+    "ml_伴田路子"
+   ],
+   "note": "Welcome!! (y0c1e Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「765 MILLION ALLSTARS 天海春香、春日未来、如月千早、木下ひなた、四条貴音、ジュリア、高山紗代子、田中琴葉、天空橋朋花、箱崎星梨花、松田亜利沙、三浦あずさ、水瀬伊織、最上静香、望月杏奈、矢吹可奈、エミリー スチュアート、大…」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_エンダーエンダー",
+   "add_original_singers": [
+    "ml_伴田路子"
+   ],
+   "note": "エンダーエンダー。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「北上麗花、ロコ、伊吹翼、箱崎星梨花、舞浜歩」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_ココロがかえる場所ケンモチヒデフミ_remix",
+   "add_original_singers": [
+    "ml_伴田路子"
+   ],
+   "note": "ココロがかえる場所 (ケンモチヒデフミ Remix)。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「萩原雪歩、周防桃子、二階堂千鶴、ロコ」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_ピコピコiiko_インベーダー",
+   "add_original_singers": [
+    "ml_望月杏奈",
+    "ml_木下ひなた"
+   ],
+   "note": "ピコピコIIKO! インベーダー。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「ピコピコプラネッツ [木下ひなた、箱崎星梨花、大神環、望月杏奈」"
+  },
+  {
+   "table": "songs",
+   "id": "ml_産声とクラブ",
+   "add_original_singers": [
+    "ml_伴田路子"
+   ],
+   "note": "産声とクラブ。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「箱崎星梨花、三浦あずさ、高坂海美、ロコ」"
+  },
+  {
+   "table": "songs",
+   "id": "sidem_glorious_rod",
+   "add_original_singers": [
+    "sidem_伊瀬谷四季",
+    "sidem_天ヶ瀬冬馬",
+    "sidem_山下次郎",
+    "sidem_榊夏来",
+    "sidem_渡辺みのり",
+    "sidem_硲道夫",
+    "sidem_蒼井享介",
+    "sidem_蒼井悠介",
+    "sidem_鷹城恭二"
+   ],
+   "note": "GLORIOUS RO@D。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「315 STARS（DRAMATIC STARS（天道輝、桜庭薫、柏木翼、Beit[鷹城恭二、ピエール、渡辺みのり、S.E.M[硲道夫、舞田類、山下次郎、High×Joker[伊瀬谷四季、秋山隼人、若里春名、冬美旬、榊夏来、Ｗ[蒼井享介、蒼…」"
+  },
+  {
+   "table": "songs",
+   "id": "sidem_冬の日のエトランゼ",
+   "add_original_singers": [
+    "sidem_鷹城恭二"
+   ],
+   "note": "冬の日のエトランゼ。名義表記 (songs.singer_label) に載っているのに原唱者に無かった: 「DRAMATIC STARS（天道輝、桜庭薫、柏木翼、Beit[鷹城恭二、ピエール、渡辺みのり）」"
+  }
+ ]
+}

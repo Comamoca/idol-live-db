@@ -7,7 +7,7 @@
 //!
 //! 並び順の規約は `domain/snapshot.rs` の各フィールド doc が正。
 
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{BTreeMap, HashMap, HashSet};
 
 use crate::domain::snapshot::{
     Anniversary, Brand, BrandMemberLink, Costume, CostumeWear, Creator, Event, EventRelease, Idol,
@@ -16,6 +16,9 @@ use crate::domain::snapshot::{
     IdolFacetRow, IdolHairstyleRow, ShowArchiveRow, TicketSaleRow, Unit, Venue, VenueHall, VenueName,
 };
 use crate::domain::text_search_index::TextSearchIndex;
+
+/// song_artists.role のうち、ライブ歌唱歴を表す値。表の行は読まずセトリから組む (`build`)。
+const PERFORMER_ROLE: &str = "performer";
 
 /// `Snapshot` を組むのに要る生テーブル一式。
 ///
@@ -126,26 +129,27 @@ pub fn build(raw: RawTables) -> Snapshot {
     // domain/snapshot.rs の各フィールド doc が正。ここでは同じ順序でソートを払う。
 
     // song_artists → 双方向リンク。
+    //
+    // **role = 'performer' (ライブ歌唱歴) の行は読まない。** セトリの出演者
+    // (setlist_performers) から下で組み直す。表の performer 行は誰も更新しておらず、
+    // セトリを足しても直しても古いまま残っていた (2026-10-13 時点で 1,713 曲・7,276 行の
+    // 抜けと、出演者を直した後の 53 行の残骸。Crossing! の歌唱歴がロコだけ、など)。
     let mut artists_by_song: Vec<Vec<SongArtistLink>> = vec![Vec::new(); songs.len()];
     let mut songs_by_idol: Vec<Vec<IdolSongLink>> = vec![Vec::new(); idols.len()];
     {
         for (song_id, idol_id, role) in song_artists {
+            let role = role.unwrap_or_default();
+            if role == PERFORMER_ROLE {
+                continue;
+            }
             let (Some(&si), Some(&ii)) =
                 (song_index_by_id.get(&song_id), idol_index_by_id.get(&idol_id))
             else {
                 continue;
             };
-            let role = role.unwrap_or_default();
             artists_by_song[si as usize].push(SongArtistLink { idol: ii, role: role.clone() });
             songs_by_idol[ii as usize].push(IdolSongLink { song: si, role });
         }
-    }
-    for links in &mut artists_by_song {
-        links.sort_by_key(|l| idol_sort_key(&idols, l.idol));
-    }
-    for links in &mut songs_by_idol {
-        // release_date DESC (NULL 末尾)。同日は song 添字で決定的に。
-        links.sort_by_key(|l| (release_desc_key(&songs, l.song), l.song));
     }
 
     // shows_by_event: (date ASC, sort_order ASC)。
@@ -234,6 +238,29 @@ pub fn build(raw: RawTables) -> Snapshot {
     }
     for list in &mut performers_by_item {
         list.sort_by_key(|&i| idol_sort_key(&idols, i));
+    }
+
+    // ライブ歌唱歴 (role = 'performer') = 披露に数えるセトリ行の出演者の和集合。
+    // 上映会・配信だけの行は setlist_items_by_song に入っていないので、ここでも数えない。
+    for (si, items) in setlist_items_by_song.iter().enumerate() {
+        let mut seen: HashSet<u32> = HashSet::new();
+        for &item in items {
+            for &ii in &performers_by_item[item as usize] {
+                if seen.insert(ii) {
+                    artists_by_song[si]
+                        .push(SongArtistLink { idol: ii, role: PERFORMER_ROLE.to_string() });
+                    songs_by_idol[ii as usize]
+                        .push(IdolSongLink { song: si as u32, role: PERFORMER_ROLE.to_string() });
+                }
+            }
+        }
+    }
+    for links in &mut artists_by_song {
+        links.sort_by_key(|l| idol_sort_key(&idols, l.idol));
+    }
+    for links in &mut songs_by_idol {
+        // release_date DESC (NULL 末尾)。同日は song 添字で決定的に。
+        links.sort_by_key(|l| (release_desc_key(&songs, l.song), l.song));
     }
     for list in &mut performed_items_by_idol {
         list.sort_by_key(|&i| history_key(i));
