@@ -63,4 +63,10 @@ struct CoreStatsRepository: StatsReading {
             song: CoreRecordMapping.song(from: record.song), playCount: Int(record.playCount),
             frequency: record.frequency, frequencyLabel: record.frequencyLabel)
     }
+
+    func lyricCoverage(publishedSongIds: [String]) async throws -> LyricCoverageRecord {
+        try await snapshot.withStore { store in
+            try store.lyricCoverage(publishedSongIds: publishedSongIds)
+        }
+    }
 }

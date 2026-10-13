@@ -569,6 +569,7 @@ declare_and_call_checksums! {
     uniffi_imas_core_checksum_method_snapshotstore_latest_show,
     uniffi_imas_core_checksum_method_snapshotstore_listable_song_records_by_ids,
     uniffi_imas_core_checksum_method_snapshotstore_load,
+    uniffi_imas_core_checksum_method_snapshotstore_lyric_coverage,
     uniffi_imas_core_checksum_method_snapshotstore_meta_value,
     uniffi_imas_core_checksum_method_snapshotstore_notification_plan,
     uniffi_imas_core_checksum_method_snapshotstore_now_playing_bar,

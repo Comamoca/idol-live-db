@@ -474,6 +474,11 @@ struct ProduceTabView: View {
                         ImasShortcutTile(systemImage: "hands.clap", label: "コールガイド", seed: pickBrandSeed)
                     }
                 }
+                if LyricsFeature.acceptsSubmissions {
+                    NavigationLink { LyricCoverageView() } label: {
+                        ImasShortcutTile(systemImage: "text.quote", label: "歌詞の投稿状況", seed: pickBrandSeed)
+                    }
+                }
                 // 開催中のお題が無いと上の「ほかのお題」が出ないので、そのときだけここに置く。
                 if activePoll == nil {
                     NavigationLink(value: PollRoute.list) {

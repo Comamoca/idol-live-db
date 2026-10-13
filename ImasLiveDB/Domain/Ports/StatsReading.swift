@@ -24,4 +24,6 @@ protocol StatsReading: Sendable {
     func collectionDashboard(
         collectedSongIds: Set<String>, pickIdolIds: Set<String>, today: String, chanceLimit: Int
     ) async throws -> CollectionDashboard
+    /// 歌詞の投稿状況 (全体とブランド別)。`publishedSongIds` はサーバの公開曲 id。
+    func lyricCoverage(publishedSongIds: [String]) async throws -> LyricCoverageRecord
 }
