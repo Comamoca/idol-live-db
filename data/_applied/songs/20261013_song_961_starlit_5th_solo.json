@@ -1,0 +1,30 @@
+{
+ "title": "スタマス 5 周年で制作決定の奥空心白・亜夜のソロ曲 2 曲",
+ "source": "https://x.com/imas_official/status/2109974479984353367 (2026/10/13 アイドルマスター公式 X「#スタマス5周年 特大情報！ 奥空心白・亜夜 ソロ楽曲制作決定！「雪」「夜」」。告知画像: 「雪」作詞 yura 歌唱 奥空 心白 / 「夜」作詞 yura Dark 歌唱 亜夜)",
+ "songs": [
+  {
+   "id": "961_雪",
+   "title": "雪",
+   "title_kana": "ゆき",
+   "brand_id": "961",
+   "song_type": "solo",
+   "release_date": "",
+   "lyricist": "yura",
+   "singer_label": "奥空心白",
+   "note": "スタマス 5 周年記念で制作決定 (2026-10-13 告知)",
+   "original_singers": ["961_奥空心白"]
+  },
+  {
+   "id": "961_夜",
+   "title": "夜",
+   "title_kana": "よる",
+   "brand_id": "961",
+   "song_type": "solo",
+   "release_date": "",
+   "lyricist": "yura Dark",
+   "singer_label": "亜夜",
+   "note": "スタマス 5 周年記念で制作決定 (2026-10-13 告知)",
+   "original_singers": ["765as_亜夜"]
+  }
+ ]
+}
