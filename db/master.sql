@@ -107280,7 +107280,6 @@ INSERT INTO "song_artists" VALUES('sidem_drive_a_live','sidem_蒼井悠介','ori
 INSERT INTO "song_artists" VALUES('sidem_drive_a_live','sidem_水嶋咲','original');
 INSERT INTO "song_artists" VALUES('sidem_drive_a_live','sidem_ピエール','original');
 INSERT INTO "song_artists" VALUES('sidem_drive_a_live','sidem_兜大吾','original');
-INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_花園百々人','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_華村翔真','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_木村龍','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_冬美旬','original');
@@ -107300,7 +107299,6 @@ INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_都築圭','orig
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_紅井朱雀','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_舞田類','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_蒼井享介','original');
-INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_天峰秀','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_秋山隼人','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_山下次郎','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_大河タケル','original');
@@ -107315,7 +107313,6 @@ INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_秋月涼','orig
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_鷹城恭二','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_猫柳キリオ','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_牙崎漣','original');
-INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_眉見鋭心','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_桜庭薫','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_渡辺みのり','original');
 INSERT INTO "song_artists" VALUES('sidem_meet_the_world','sidem_姫野かのん','original');

@@ -1,0 +1,5 @@
+# MEET THE WORLD! (2021-02 発売) の原唱者から、発売後にデビューした C.FIRST 3 人を外す (音源に合わせる、オーナー判断 2026-10-13)
+# 使い方: python3 tools/seed_cloudkit.py --delete-file tools/pending_cloudkit_deletions_meet_the_world_cfirst_20261013.tsv --production
+SongArtist	song_artists-sidem_meet_the_world-sidem_天峰秀-original
+SongArtist	song_artists-sidem_meet_the_world-sidem_花園百々人-original
+SongArtist	song_artists-sidem_meet_the_world-sidem_眉見鋭心-original
