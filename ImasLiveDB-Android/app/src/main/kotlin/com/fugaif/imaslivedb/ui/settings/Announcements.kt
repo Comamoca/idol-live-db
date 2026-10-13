@@ -8,6 +8,7 @@ import androidx.compose.material.icons.filled.AddAPhoto
 import androidx.compose.material.icons.filled.Apartment
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.BarChart
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.FormatQuote
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.LibraryMusic
@@ -48,6 +49,25 @@ enum class AnnouncementLink { WIDGET_HOW_TO }
 object AnnouncementCatalog {
     /** 新しいものほど上 (表示順)。 */
     val all: List<Announcement> = listOf(
+        Announcement(
+            id = "v2.7.0_profile",
+            date = "2026-10-14",
+            title = "アイドルの見た目・話し方・呼び方",
+            summary = "プロフィールに見た目・話し方・呼び方、ユニットに呼称表を足し、歌唱歴と公演の演者の出し方を直しました。",
+            body = listOf(
+                "プロフィール: アイドルの見た目 (髪色・髪型・前髪・目の色など)、話し方 (一人称と P の呼び方)、ほかのアイドルの呼び方を出します。髪型の札を押すと、同じ髪型のアイドルを一覧できます。",
+                "ユニットの画面に「呼称表」を足しました。メンバーどうしの呼び方を表で見られます。",
+                "ミリオンライブの BATTLE OF THEATER のチームをプロフィールに出し、アイドルの絞り込みにも使えます。",
+                "曲のライブ歌唱歴をセトリの出演者から組み直しました。Crossing! などの全体曲で、歌った人が全員出ます。",
+                "公演の演者を、その公演日の担当声優で出します。声優が交代したアイドルは当時の声優の名前に、舞台は俳優の名前になります。新しい演者で初めて歌った曲には「(演者名)で初披露」の札が付きます。",
+                "歌詞: タイミング編集で記録する行を選んだり、途中から押し直したりできます。パート分けもタイミング編集にまとめ、曲に付いていかない一覧でも塗れます。投稿の見本は全行を大きめの字で出します。",
+                "タグを選ぶ画面で、検索の文字を消しても一覧が戻らない不具合を直し、カテゴリ別に見られるようにしました。",
+                "歌詞を投稿する画面で、入力欄がキーボードに隠れる・スクロールすると選んだ字が外れる不具合を直しました。",
+            ),
+            icon = Icons.Filled.Face,
+            tint = "#8C52B3",
+            link = null
+        ),
         Announcement(
             id = "v2.6.0_spotify",
             date = "2026-10-10",

@@ -53,8 +53,8 @@ android {
         applicationId = "site.fugaapp.imaslivedb"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 13
-        versionName = "2.6.0"
+        versionCode = 14
+        versionName = "2.7.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
