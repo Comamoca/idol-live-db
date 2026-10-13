@@ -84409,6 +84409,9 @@ INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimat
 INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_玲音','member');
 INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_詩花','member');
 INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','961_奥空心白','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','cg_神崎蘭子','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','ml_春日未来','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','sc_小宮果穂','member');
 INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_2','765as_三浦あずさ','member');
 INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_2','765as_双海亜美','member');
 INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_2','765as_双海真美','member');

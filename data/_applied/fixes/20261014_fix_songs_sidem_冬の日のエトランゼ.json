@@ -1,0 +1,14 @@
+{
+ "title": "冬の日のエトランゼ のユニット名義と原唱者 (issue #290)",
+ "author": "daily-data-crawl",
+ "source": "https://itunes.apple.com/lookup?id=1782814358&country=jp (artistName: DRAMATIC STARS & Beit)",
+ "fixes": [
+  {
+   "table": "songs",
+   "id": "sidem_冬の日のエトランゼ",
+   "fields": {"unit_name": "DRAMATIC STARS＆Beit"},
+   "add_original_singers": ["sidem_鷹城恭二"],
+   "note": "Apple Music の名義は DRAMATIC STARS & Beit。同シリーズの S.E.M＆Jupiter に表記を揃えた。Beit の鷹城恭二だけ原唱者から漏れていた (singer_label には記載あり)"
+  }
+ ]
+}

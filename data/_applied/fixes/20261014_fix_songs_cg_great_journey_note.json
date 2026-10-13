@@ -1,0 +1,13 @@
+{
+ "title": "Great Journey の補足 (issue #287)",
+ "author": "daily-data-crawl",
+ "source": "https://x.com/priconne_redive/status/1241333911730286592",
+ "fixes": [
+  {
+   "table": "songs",
+   "id": "cg_great_journey",
+   "fields": {"note": "プリンセスコネクト！Re:Dive コラボ楽曲"},
+   "note": "プリコネR 公式 X: デレステとのコラボストーリーイベント「スターライトプリンセス Re:M@STER！」の ED に [ニュージェネレーションズ] の新曲「Great Journey」"
+  }
+ ]
+}
