@@ -39,6 +39,12 @@
     "DISCORD_ANNOUNCE_CHANNEL_ID": "1530435001974526074",
     "DISCORD_DEV_CHANNEL_ID": "1552866674783559751",
     "DISCORD_MOD_CHANNEL_ID": "1552706011444412497",
+    // 問い合わせ・不具合報告の窓口フォーラムを、5 分 cron で非公開リポジトリの issue にする
+    // (discord_inquiries.ts)。2 つとも入れるまで何もしない。INQUIRY_GITHUB_REPO は必ず非公開。
+    // GITHUB_TOKEN (secret) にそのリポジトリの Issues と Contents (画像を写す) の書き込み権が要る。
+    // Bot は Developer Portal で Message Content Intent を有効にしておく (無いと本文が空で届く)。
+    // "DISCORD_INQUIRY_CHANNEL_ID": "<窓口フォーラムのチャンネル ID>",
+    // "INQUIRY_GITHUB_REPO": "fuga-if/idol-live-db-inbox",
     // GitHub OAuth App (コントリビューター申請で、マージ済み PR があるかを確かめる)。
     "GITHUB_OAUTH_CLIENT_ID": "Ov23lio6NtB4KRE8A4St"
   },

@@ -29,6 +29,7 @@ export interface Env {
   // マスタ修正リクエストの GitHub issue 化用 (secret: wrangler secret put GITHUB_TOKEN)。
   GITHUB_TOKEN?: string;
   GITHUB_REPO?: string;            // "owner/repo" 省略時 "fuga-if/idol-live-db"
+  INQUIRY_GITHUB_REPO?: string;    // Discord の問い合わせを issue にする先。必ず非公開リポジトリ (discord_inquiries.ts)
   // Discord (routes/discord.ts のロール受け取りと、discord_digest.ts の更新通知)。
   // ID と公開鍵は秘密ではないので vars、Bot トークンと OAuth のシークレットは secret。
   // どれかが欠けていれば、その機能だけ止まる (ロール受け取りは 503、通知は投稿しない)。
@@ -44,6 +45,7 @@ export interface Env {
   DISCORD_ANNOUNCE_CHANNEL_ID?: string;   // #お知らせ (App Store のリリース)
   DISCORD_DEV_CHANNEL_ID?: string;        // #開発中 (毎週月曜の開発まとめ)
   DISCORD_MOD_CHANNEL_ID?: string;        // #運営 (非公開。歌詞の報告をすぐ知らせる)
+  DISCORD_INQUIRY_CHANNEL_ID?: string;    // 問い合わせ・不具合報告の窓口フォーラム (discord_inquiries.ts)
   DISCORD_BOT_TOKEN?: string;      // secret
   DISCORD_CLIENT_SECRET?: string;  // secret
   // コントリビューターの確認 (GitHub OAuth App)。

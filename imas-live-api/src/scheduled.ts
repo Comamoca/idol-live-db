@@ -12,6 +12,7 @@ import { jstWeekStart, SHOW_VIEW_WEEKS_KEPT } from "./contribution_feedback";
 import { postDiscordDigest, postPlaylistDigest } from "./discord_digest";
 import { postPollResults } from "./discord_poll_results";
 import { createLiveThreads } from "./discord_live_threads";
+import { syncDiscordInquiries } from "./discord_inquiries";
 import { postAppRelease, postDevWeekly } from "./discord_releases";
 import type { Env } from "./env";
 
@@ -88,6 +89,11 @@ const EVERY_RUN: CronTask[] = [
     name: "discord_app_release",
     // App Store に新しいバージョンが出たら #お知らせ へ (discord_releases.ts)。D1 は位置 1 行だけ。
     run: postAppRelease,
+  },
+  {
+    name: "discord_inquiries",
+    // 窓口フォーラムの新しいスレッドを非公開リポジトリの issue に (discord_inquiries.ts)。D1 は位置 1 行だけ。
+    run: syncDiscordInquiries,
   },
 ];
 
