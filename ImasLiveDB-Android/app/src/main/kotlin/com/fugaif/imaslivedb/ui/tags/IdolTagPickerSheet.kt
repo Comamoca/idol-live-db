@@ -110,7 +110,7 @@ fun IdolTagPickerSheet(
                 ),
                 title = "タグを追加"
             )
-            ImasFormPage {
+            ImasFormPage(Modifier.weight(1f)) {
                 ImasSearchField(prompt = "タグを検索 / 新規作成", text = query, onTextChange = { query = it })
 
                 if (trimmedQuery.isNotEmpty() && !exactMatchExists) {

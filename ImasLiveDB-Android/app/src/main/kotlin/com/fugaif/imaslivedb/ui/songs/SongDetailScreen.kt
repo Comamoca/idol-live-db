@@ -1,6 +1,7 @@
 package com.fugaif.imaslivedb.ui.songs
 
 import com.fugaif.imaslivedb.data.lyrics.LyricsFeature
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.imasResetScrollOnTabChange
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -62,7 +63,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
 import coil3.compose.SubcomposeAsyncImage
@@ -356,10 +356,7 @@ fun SongDetailScreen(
     // 編集フォームはフルスクリーン Dialog に載せる (RecentEditsScreen → SetlistEditScreen と同じ)。
     val editingSong = uiState.song
     if (showSongEdit && editingSong != null) {
-        Dialog(
-            onDismissRequest = { showSongEdit = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showSongEdit = false }) {
             SongEditScreen(
                 original = editingSong,
                 onDismiss = { showSongEdit = false },
@@ -369,10 +366,7 @@ fun SongDetailScreen(
     }
 
     if (showNoteEdit && editingSong != null) {
-        Dialog(
-            onDismissRequest = { showNoteEdit = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showNoteEdit = false }) {
             SongNoteEditScreen(
                 song = editingSong,
                 onDismiss = { showNoteEdit = false },
@@ -382,10 +376,7 @@ fun SongDetailScreen(
     }
 
     if (showLyricSubmission && editingSong != null) {
-        Dialog(
-            onDismissRequest = { showLyricSubmission = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showLyricSubmission = false }) {
             com.fugaif.imaslivedb.ui.lyrics.LyricSubmissionScreen(
                 song = editingSong,
                 onDismiss = { showLyricSubmission = false }

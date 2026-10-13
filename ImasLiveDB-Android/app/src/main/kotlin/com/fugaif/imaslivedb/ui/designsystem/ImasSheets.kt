@@ -1,5 +1,7 @@
 package com.fugaif.imaslivedb.ui.designsystem
 
+import android.view.ViewTreeObserver
+import android.view.WindowManager
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -9,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -34,8 +37,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -52,6 +57,7 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -70,6 +76,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.window.DialogWindowProvider
 import com.fugaif.imaslivedb.ui.theme.DS
 import com.fugaif.imaslivedb.ui.theme.ImasBackdrop
 import com.fugaif.imaslivedb.ui.theme.ImasNumeralSize
@@ -256,6 +265,48 @@ private fun SheetButton(
                 )
             }
         }
+    }
+}
+
+// MARK: - 画面いっぱいのシート
+
+/**
+ * 画面いっぱいに出すシート (編集・投稿・詳細などを今の画面の上に重ねる)。
+ *
+ * Compose の `Dialog` を画面いっぱいにすると、窓は状態バーの下から始まるのに中身は画面の高さで
+ * 組まれ、下端がその分だけ画面の外に切れる。キーボードが出ても窓をずらす (adjustPan) だけで、
+ * 押した行やカーソルがキーボードに隠れる。ここでは窓をキーボードの分だけ縮め、実際に見えている
+ * 範囲 (状態バー・ナビゲーションバー・キーボードを除いた所) からはみ出す分を中身の余白にする。
+ * Dialog の中には WindowInsets (imePadding など) が届かないので、見えている範囲は窓から直に読む。
+ */
+@Composable
+fun ImasFullScreenDialog(onDismissRequest: () -> Unit, content: @Composable () -> Unit) {
+    Dialog(onDismissRequest = onDismissRequest, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        val view = LocalView.current
+        val window = (view.parent as? DialogWindowProvider)?.window
+        var hiddenTop by remember { mutableIntStateOf(0) }
+        var hiddenBottom by remember { mutableIntStateOf(0) }
+        DisposableEffect(view, window) {
+            @Suppress("DEPRECATION")
+            window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+            val visible = android.graphics.Rect()
+            val onScreen = IntArray(2)
+            val measure = ViewTreeObserver.OnGlobalLayoutListener {
+                view.getWindowVisibleDisplayFrame(visible)
+                view.getLocationOnScreen(onScreen)
+                hiddenTop = (visible.top - onScreen[1]).coerceAtLeast(0)
+                hiddenBottom = (onScreen[1] + view.height - visible.bottom).coerceAtLeast(0)
+            }
+            view.viewTreeObserver.addOnGlobalLayoutListener(measure)
+            measure.onGlobalLayout()
+            onDispose { view.viewTreeObserver.removeOnGlobalLayoutListener(measure) }
+        }
+        val density = LocalDensity.current
+        Box(
+            Modifier
+                .fillMaxSize()
+                .padding(top = with(density) { hiddenTop.toDp() }, bottom = with(density) { hiddenBottom.toDp() })
+        ) { content() }
     }
 }
 

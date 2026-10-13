@@ -30,13 +30,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import com.fugaif.imaslivedb.data.lyrics.LyricsFeature
 import com.fugaif.imaslivedb.data.model.Song
 import com.fugaif.imaslivedb.di.AppModule
 import com.fugaif.imaslivedb.player.AudioPreviewManager
 import com.fugaif.imaslivedb.player.LyricsSession
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconButton
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconButtonStyle
 import com.fugaif.imaslivedb.ui.designsystem.ImasPartStripe
@@ -165,7 +164,7 @@ fun NowPlayingBar(onSongClick: (String) -> Unit, modifier: Modifier = Modifier) 
             }
         }
         if (showsLyricsPlayer) {
-            Dialog(onDismissRequest = { showsLyricsPlayer = false }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+            ImasFullScreenDialog(onDismissRequest = { showsLyricsPlayer = false }) {
                 LyricsPlayerScreen(
                     song = fullEntry.song, seed = fullEntry.seed, artistLine = fullEntry.artistLine,
                     lyrics = fullEntry.lyrics, likeCounts = likeCounts,
@@ -216,7 +215,7 @@ fun NowPlayingBar(onSongClick: (String) -> Unit, modifier: Modifier = Modifier) 
             }
         }
         if (showsNoLyricsPlayer) {
-            Dialog(onDismissRequest = { showsNoLyricsPlayer = false }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+            ImasFullScreenDialog(onDismissRequest = { showsNoLyricsPlayer = false }) {
                 NoLyricsFullPlayerScreen(song = noLyrics, playback = lyricsPlayback, onClose = { showsNoLyricsPlayer = false })
             }
         }

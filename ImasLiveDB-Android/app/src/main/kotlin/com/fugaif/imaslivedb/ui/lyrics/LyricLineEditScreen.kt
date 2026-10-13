@@ -27,8 +27,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import com.fugaif.imaslivedb.data.lyrics.LyricLine
 import com.fugaif.imaslivedb.di.AppModule
 import com.fugaif.imaslivedb.ui.designsystem.ImasButton
@@ -40,6 +38,7 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasFormLink
 import com.fugaif.imaslivedb.ui.designsystem.ImasFormPage
 import com.fugaif.imaslivedb.ui.designsystem.ImasFormTextField
 import com.fugaif.imaslivedb.ui.designsystem.ImasFormToggle
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasRubyPreview
 import com.fugaif.imaslivedb.ui.designsystem.ImasSavingOverlay
 import com.fugaif.imaslivedb.ui.designsystem.ImasSheetToolbar
@@ -160,7 +159,7 @@ fun LyricLineEditScreen(songId: String, line: LyricLine, onSaved: () -> Unit, on
                 ),
                 title = "この行を直す"
             )
-            ImasFormPage {
+            ImasFormPage(Modifier.weight(1f)) {
                 ImasFormCard {
                     ImasFormTextField(label = "この行", text = plain, onTextChange = { plain = it }, imprint = "LINE", icon = Icons.Filled.TextFields)
                     if (plain.isNotBlank()) {
@@ -211,7 +210,7 @@ fun LyricLineEditScreen(songId: String, line: LyricLine, onSaved: () -> Unit, on
     ImasErrorAlert(message = ocrMessage, onDismiss = { ocrMessage = null }, title = "文字を読み取れませんでした")
 
     if (showGuide) {
-        Dialog(onDismissRequest = { showGuide = false }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        ImasFullScreenDialog(onDismissRequest = { showGuide = false }) {
             LyricSubmissionGuideScreen(onBack = { showGuide = false })
         }
     }

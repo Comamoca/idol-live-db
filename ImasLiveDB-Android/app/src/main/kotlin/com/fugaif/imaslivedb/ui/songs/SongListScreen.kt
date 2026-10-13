@@ -1,6 +1,7 @@
 package com.fugaif.imaslivedb.ui.songs
 
 import com.fugaif.imaslivedb.ui.theme.MasteryPalette
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasSwipeKind
 import com.fugaif.imaslivedb.ui.designsystem.ImasSwipeAction
 import com.fugaif.imaslivedb.ui.designsystem.ImasSwipe
@@ -34,7 +35,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.fugaif.imaslivedb.data.auth.showEditAffordance
 import com.fugaif.imaslivedb.data.auth.startCommunityEdit
@@ -259,10 +259,7 @@ fun SongListScreen(
 
     // 編集フォームはフルスクリーン Dialog に載せる (RecentEditsScreen → SetlistEditScreen と同じ)。
     if (showSongCreate) {
-        Dialog(
-            onDismissRequest = { showSongCreate = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showSongCreate = false }) {
             SongEditScreen(
                 // 1 ブランドに絞り込んでいる時だけ初期値にする (その文脈で追加するのが普通なので)。
                 // 複数ブランドを選んでいる時は決め打てないので未指定のまま出す。

@@ -66,8 +66,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -87,6 +85,7 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasButtonRole
 import com.fugaif.imaslivedb.ui.designsystem.ImasButtonSize
 import com.fugaif.imaslivedb.ui.designsystem.ImasFilterChip
 import com.fugaif.imaslivedb.ui.designsystem.ImasFormBackdrop
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconTile
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconTileSize
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconTileTone
@@ -302,40 +301,19 @@ fun SettingsScreen(
     }
 
     when (infoScreen) {
-        SettingsInfoScreen.HELP -> Dialog(
-            onDismissRequest = { infoScreen = null },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) { HelpScreen(onBack = { infoScreen = null }) }
+        SettingsInfoScreen.HELP -> ImasFullScreenDialog(onDismissRequest = { infoScreen = null }) { HelpScreen(onBack = { infoScreen = null }) }
 
-        SettingsInfoScreen.INBOX -> Dialog(
-            onDismissRequest = { infoScreen = null },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) { InboxScreen(onBack = { infoScreen = null }) }
+        SettingsInfoScreen.INBOX -> ImasFullScreenDialog(onDismissRequest = { infoScreen = null }) { InboxScreen(onBack = { infoScreen = null }) }
 
-        SettingsInfoScreen.SPOTIFY -> Dialog(
-            onDismissRequest = { infoScreen = null },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) { SpotifySettingsScreen(onBack = { infoScreen = null }) }
+        SettingsInfoScreen.SPOTIFY -> ImasFullScreenDialog(onDismissRequest = { infoScreen = null }) { SpotifySettingsScreen(onBack = { infoScreen = null }) }
 
-        SettingsInfoScreen.BRAND_ROLES -> Dialog(
-            onDismissRequest = { infoScreen = null },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) { BrandRoleSettingsScreen(onBack = { infoScreen = null }) }
+        SettingsInfoScreen.BRAND_ROLES -> ImasFullScreenDialog(onDismissRequest = { infoScreen = null }) { BrandRoleSettingsScreen(onBack = { infoScreen = null }) }
 
-        SettingsInfoScreen.PRIVACY -> Dialog(
-            onDismissRequest = { infoScreen = null },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) { PrivacyPolicyScreen(onBack = { infoScreen = null }) }
+        SettingsInfoScreen.PRIVACY -> ImasFullScreenDialog(onDismissRequest = { infoScreen = null }) { PrivacyPolicyScreen(onBack = { infoScreen = null }) }
 
-        SettingsInfoScreen.TERMS -> Dialog(
-            onDismissRequest = { infoScreen = null },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) { TermsOfServiceScreen(onBack = { infoScreen = null }) }
+        SettingsInfoScreen.TERMS -> ImasFullScreenDialog(onDismissRequest = { infoScreen = null }) { TermsOfServiceScreen(onBack = { infoScreen = null }) }
 
-        SettingsInfoScreen.SUPPORT -> Dialog(
-            onDismissRequest = { infoScreen = null },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        SettingsInfoScreen.SUPPORT -> ImasFullScreenDialog(onDismissRequest = { infoScreen = null }) {
             SupportScreen(
                 onBack = { infoScreen = null },
                 onOpenGithubIssue = {
@@ -344,10 +322,7 @@ fun SettingsScreen(
             )
         }
 
-        SettingsInfoScreen.LICENSES -> Dialog(
-            onDismissRequest = { infoScreen = null },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) { OssLicensesScreen(onBack = { infoScreen = null }) }
+        SettingsInfoScreen.LICENSES -> ImasFullScreenDialog(onDismissRequest = { infoScreen = null }) { OssLicensesScreen(onBack = { infoScreen = null }) }
 
         null -> {}
     }

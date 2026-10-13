@@ -29,6 +29,7 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasButtonRole
 import com.fugaif.imaslivedb.ui.designsystem.ImasButtonSize
 import com.fugaif.imaslivedb.ui.designsystem.ImasEmptyState
 import com.fugaif.imaslivedb.ui.designsystem.ImasFormBackdrop
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconTile
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconTileSize
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconTileTone
@@ -134,10 +135,7 @@ private fun AnnouncementDetail(
     onBack: () -> Unit,
     onOpenWidgetHowTo: (() -> Unit)?
 ) {
-    androidx.compose.ui.window.Dialog(
-        onDismissRequest = onBack,
-        properties = androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth = false)
-    ) {
+    ImasFullScreenDialog(onDismissRequest = onBack) {
         Scaffold(
             topBar = {
                 TopAppBar(

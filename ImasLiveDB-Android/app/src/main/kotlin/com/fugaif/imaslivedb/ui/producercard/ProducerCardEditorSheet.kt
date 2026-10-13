@@ -14,6 +14,7 @@ import androidx.compose.ui.geometry.Offset
 import com.fugaif.imaslivedb.data.producercard.XAvatarFetcher
 import com.fugaif.imaslivedb.data.producercard.FavoriteSongSource
 import com.fugaif.imaslivedb.data.local.BrandRoleStore
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasNavRow
 import com.fugaif.imaslivedb.ui.settings.BrandRoleSettingsScreen
 import androidx.compose.material.icons.automirrored.filled.QueueMusic
@@ -21,8 +22,6 @@ import androidx.compose.material.icons.filled.RadioButtonChecked
 import androidx.compose.material.icons.filled.RecentActors
 import uniffi.imas_core.producerCardOshiPicks
 import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import uniffi.imas_core.BrandRole
 import uniffi.imas_core.ProfileSongInput
 import uniffi.imas_core.favoriteSongPicks
@@ -824,18 +823,12 @@ fun ProducerCardEditorSheet(
         )
     }
     if (showingSongPicker) {
-        Dialog(
-            onDismissRequest = { showingSongPicker = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showingSongPicker = false }) {
             FavoriteSongPickerScreen(chosen = songs, onChange = { songs = it }, onBack = { showingSongPicker = false })
         }
     }
     if (showingOshiPicker) {
-        Dialog(
-            onDismissRequest = { showingOshiPicker = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showingOshiPicker = false }) {
             CardOshiPickerScreen(
                 chosen = oshiChoice, oshi = oshiEntries, idols = oshiIdols,
                 onChange = { oshiChoice = it }, onBack = { showingOshiPicker = false }
@@ -843,10 +836,7 @@ fun ProducerCardEditorSheet(
         }
     }
     if (showingBrandSettings) {
-        Dialog(
-            onDismissRequest = { showingBrandSettings = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) { BrandRoleSettingsScreen(onBack = { showingBrandSettings = false }) }
+        ImasFullScreenDialog(onDismissRequest = { showingBrandSettings = false }) { BrandRoleSettingsScreen(onBack = { showingBrandSettings = false }) }
     }
     cropping?.let { draft ->
         CardPhotoCropSheet(

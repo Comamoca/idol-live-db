@@ -117,7 +117,7 @@ fun PollCreateSheet(
                 kind = ImasSheetToolbarKind.Submit(canSubmit = canSubmit, isSubmitting = state.isSubmitting, onCancel = onDismiss, onSubmit = ::submit),
                 title = "お題を投稿"
             )
-            ImasFormPage {
+            ImasFormPage(Modifier.weight(1f)) {
                 ImasNote("お題を作って、みんなに推しを投票してもらおう。期間中は誰でも${voteLimitPerTarget()}票まで投票できます。")
 
                 ImasFormCard {

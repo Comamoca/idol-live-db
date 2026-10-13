@@ -51,8 +51,6 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.fugaif.imaslivedb.data.auth.shouldPromptLogin
 import com.fugaif.imaslivedb.data.auth.showEditAffordance
@@ -76,6 +74,7 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasEmptyState
 import com.fugaif.imaslivedb.ui.designsystem.ImasEmptyStateKind
 import com.fugaif.imaslivedb.ui.designsystem.ImasErrorAlert
 import com.fugaif.imaslivedb.ui.designsystem.ImasFilterChip
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconTileTone
 import com.fugaif.imaslivedb.ui.designsystem.ImasInlineLoading
 import com.fugaif.imaslivedb.ui.designsystem.ImasListSection
@@ -253,10 +252,7 @@ fun RecentEditsScreen(onBack: (() -> Unit)?, viewModel: RecentEditsViewModel = v
     // 編集フォームはフルスクリーン Dialog に載せる (セトリ編集と同じ出し方)。
     // 中身は必ず Scaffold なので、システムバーに保存ボタンが潜り込むことはない。
     if (showSongCreate) {
-        Dialog(
-            onDismissRequest = { showSongCreate = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showSongCreate = false }) {
             SongEditScreen(
                 onDismiss = { showSongCreate = false },
                 onSaved = { showSongCreate = false; viewModel.refresh() }
@@ -265,10 +261,7 @@ fun RecentEditsScreen(onBack: (() -> Unit)?, viewModel: RecentEditsViewModel = v
     }
 
     if (showEventCreate) {
-        Dialog(
-            onDismissRequest = { showEventCreate = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showEventCreate = false }) {
             EventEditScreen(
                 onDismiss = { showEventCreate = false },
                 onSaved = { showEventCreate = false; viewModel.refresh() }
@@ -285,10 +278,7 @@ fun RecentEditsScreen(onBack: (() -> Unit)?, viewModel: RecentEditsViewModel = v
 
     val currentEditingShow = editingShow
     if (currentEditingShow != null) {
-        Dialog(
-            onDismissRequest = { editingShow = null },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { editingShow = null }) {
             SetlistEditScreen(
                 show = currentEditingShow.toShow(),
                 eventName = currentEditingShow.eventName,

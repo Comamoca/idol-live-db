@@ -87,7 +87,7 @@ fun TagEditSheet(
                 kind = ImasSheetToolbarKind.Edit(canSave = !isSaving, isSaving = isSaving, onCancel = onDismiss, onSave = ::submit),
                 title = "「${tag.name}」を編集"
             )
-            ImasFormPage {
+            ImasFormPage(Modifier.weight(1f)) {
                 ImasFormCard {
                     ImasFormTextArea(
                         label = "説明文",

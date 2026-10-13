@@ -36,8 +36,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import com.fugaif.imaslivedb.data.lyrics.LyricSubmissionDrafts
 import com.fugaif.imaslivedb.data.lyrics.LyricsApi
 import com.fugaif.imaslivedb.data.model.Song
@@ -54,6 +52,7 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasFormLink
 import com.fugaif.imaslivedb.ui.designsystem.ImasFormPage
 import com.fugaif.imaslivedb.ui.designsystem.ImasFormSelectableTextArea
 import com.fugaif.imaslivedb.ui.designsystem.ImasFormToggle
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconButton
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconButtonSize
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconButtonStyle
@@ -182,7 +181,7 @@ fun LyricSubmissionScreen(song: Song, onDismiss: () -> Unit) {
                 ),
                 title = "歌詞を投稿"
             )
-            ImasFormPage {
+            ImasFormPage(Modifier.weight(1f), dismissKeyboardOnScroll = false) {
                 ImasFormCard {
                     ImasFormField(label = "曲", imprint = "SONG", icon = Icons.Filled.MusicNote) {
                         Column(verticalArrangement = Arrangement.spacedBy(DS.Space.gapTight)) {
@@ -268,7 +267,7 @@ fun LyricSubmissionScreen(song: Song, onDismiss: () -> Unit) {
     )
 
     if (showGuide) {
-        Dialog(onDismissRequest = { showGuide = false }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        ImasFullScreenDialog(onDismissRequest = { showGuide = false }) {
             LyricSubmissionGuideScreen(onBack = { showGuide = false })
         }
     }

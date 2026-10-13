@@ -12,8 +12,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.platform.LocalContext
 import com.fugaif.imaslivedb.data.edit.EditApi
 import com.fugaif.imaslivedb.data.edit.putClearable
@@ -22,6 +20,7 @@ import com.fugaif.imaslivedb.data.model.Event
 import com.fugaif.imaslivedb.data.model.Vocab
 import com.fugaif.imaslivedb.di.AppModule
 import com.fugaif.imaslivedb.ui.designsystem.ImasActionRow
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasNote
 import com.fugaif.imaslivedb.ui.designsystem.ImasRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasRowDensity
@@ -186,7 +185,7 @@ fun EventEditScreen(
 
     val eventId = original?.id
     if (creatingSale && eventId != null) {
-        Dialog(onDismissRequest = { creatingSale = false }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        ImasFullScreenDialog(onDismissRequest = { creatingSale = false }) {
             TicketSaleEditScreen(
                 eventId = eventId,
                 suggestedSortOrder = ticketSales.size,
@@ -198,7 +197,7 @@ fun EventEditScreen(
 
     val currentEditingSale = editingSale
     if (currentEditingSale != null && eventId != null) {
-        Dialog(onDismissRequest = { editingSale = null }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        ImasFullScreenDialog(onDismissRequest = { editingSale = null }) {
             TicketSaleEditScreen(
                 eventId = eventId,
                 original = currentEditingSale,

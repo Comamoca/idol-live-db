@@ -53,8 +53,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import com.fugaif.imaslivedb.data.lyrics.CallEmphasis
 import com.fugaif.imaslivedb.data.lyrics.LyricJoiner
 import com.fugaif.imaslivedb.data.lyrics.LyricLine
@@ -80,6 +78,7 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasClapGlyph
 import com.fugaif.imaslivedb.ui.designsystem.ImasEmptyState
 import com.fugaif.imaslivedb.ui.designsystem.ImasEmptyStateKind
 import com.fugaif.imaslivedb.ui.designsystem.ImasErrorAlert
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconButton
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconButtonSize
 import com.fugaif.imaslivedb.ui.designsystem.ImasIconButtonStyle
@@ -338,7 +337,7 @@ fun SongLyricsTab(
     }
 
     if (showPlayer && lyrics != null) {
-        Dialog(onDismissRequest = { showPlayer = false }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        ImasFullScreenDialog(onDismissRequest = { showPlayer = false }) {
             LyricsPlayerScreen(
                 song = song, seed = seed, artistLine = artistLine, lyrics = lyrics,
                 likeCounts = likeCounts, onLikeCountChanged = { id, count -> likeCounts = likeCounts + (id to count) },
@@ -349,7 +348,7 @@ fun SongLyricsTab(
     }
     val activeRecorder = recorder
     if (activeRecorder != null && lyrics != null) {
-        Dialog(onDismissRequest = {}, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        ImasFullScreenDialog(onDismissRequest = {}) {
             LyricTimingEditorScreen(
                 song = song, seed = seed, lyrics = lyrics, recorder = activeRecorder,
                 onSaved = onReload, onClose = { recorder = null }, cast = partCast
@@ -358,7 +357,7 @@ fun SongLyricsTab(
     }
     val editTarget = lineEditTarget
     if (editTarget != null) {
-        Dialog(onDismissRequest = { lineEditTarget = null }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        ImasFullScreenDialog(onDismissRequest = { lineEditTarget = null }) {
             com.fugaif.imaslivedb.ui.lyrics.LyricLineEditScreen(
                 songId = song.id, line = editTarget,
                 onSaved = onReload, onDismiss = { lineEditTarget = null }

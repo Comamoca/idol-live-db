@@ -2,6 +2,7 @@ package com.fugaif.imaslivedb.ui.events
 
 import androidx.compose.ui.platform.LocalContext
 import com.fugaif.imaslivedb.di.AppModule
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasValueRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasSectionHeaderStyle
 import com.fugaif.imaslivedb.ui.designsystem.ImasSection
@@ -83,8 +84,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.fugaif.imaslivedb.data.community.SetlistLikeService
 import com.fugaif.imaslivedb.data.auth.canEdit
@@ -488,10 +487,7 @@ fun SetlistScreen(
 
     val editingShow = uiState.show
     if (showEditDialog && editingShow != null) {
-        Dialog(
-            onDismissRequest = { showEditDialog = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showEditDialog = false }) {
             SetlistEditScreen(
                 show = editingShow,
                 eventName = uiState.eventName,

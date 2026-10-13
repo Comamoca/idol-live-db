@@ -59,8 +59,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.fugaif.imaslivedb.data.auth.showEditAffordance
 import com.fugaif.imaslivedb.data.auth.startCommunityEdit
@@ -79,6 +77,7 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasBadgeKind
 import com.fugaif.imaslivedb.ui.designsystem.ImasCard
 import com.fugaif.imaslivedb.ui.designsystem.ImasCardList
 import com.fugaif.imaslivedb.ui.designsystem.ImasEmptyState
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasLabeledRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasLoadingState
 import com.fugaif.imaslivedb.ui.designsystem.ImasMarkBar
@@ -300,10 +299,7 @@ fun EventDetailScreen(
     // 編集フォームはフルスクリーン Dialog に載せる (RecentEditsScreen → SetlistEditScreen と同じ)。
     val editingEvent = eventRecord
     if (showEventEdit && editingEvent != null) {
-        Dialog(
-            onDismissRequest = { showEventEdit = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showEventEdit = false }) {
             EventEditScreen(
                 original = editingEvent,
                 onDismiss = { showEventEdit = false },
@@ -313,10 +309,7 @@ fun EventDetailScreen(
     }
 
     if (showCreate) {
-        Dialog(
-            onDismissRequest = { showCreate = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showCreate = false }) {
             ShowEditScreen(
                 eventId = eventId,
                 // 既存公演数を初期の並び順にする (末尾に足すのが普通なので)。
@@ -329,10 +322,7 @@ fun EventDetailScreen(
 
     val currentEditingShow = editingShow
     if (currentEditingShow != null) {
-        Dialog(
-            onDismissRequest = { editingShow = null },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { editingShow = null }) {
             ShowEditScreen(
                 original = currentEditingShow,
                 eventId = currentEditingShow.eventId,

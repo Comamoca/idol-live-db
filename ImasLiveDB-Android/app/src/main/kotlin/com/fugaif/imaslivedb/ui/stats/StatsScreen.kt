@@ -26,8 +26,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.fugaif.imaslivedb.ui.components.BrandFilterChips
 import com.fugaif.imaslivedb.ui.components.BrandFilterItem
@@ -43,6 +41,7 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasCardList
 import com.fugaif.imaslivedb.ui.designsystem.ImasChip
 import com.fugaif.imaslivedb.ui.designsystem.ImasChipStyle
 import com.fugaif.imaslivedb.ui.designsystem.ImasEmptyState
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.ImasInlineLoading
 import com.fugaif.imaslivedb.ui.designsystem.ImasLoadingState
 import com.fugaif.imaslivedb.ui.designsystem.ImasMetric
@@ -231,7 +230,7 @@ fun StatsScreen(viewModel: StatsViewModel = viewModel()) {
     }
 
     selectedSongId?.let { id ->
-        Dialog(onDismissRequest = { selectedSongId = null }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        ImasFullScreenDialog(onDismissRequest = { selectedSongId = null }) {
             SongDetailScreen(
                 songId = id,
                 onBack = { selectedSongId = null },
@@ -242,7 +241,7 @@ fun StatsScreen(viewModel: StatsViewModel = viewModel()) {
         }
     }
     selectedShowId?.let { id ->
-        Dialog(onDismissRequest = { selectedShowId = null }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        ImasFullScreenDialog(onDismissRequest = { selectedShowId = null }) {
             SetlistScreen(
                 showId = id,
                 onBack = { selectedShowId = null },

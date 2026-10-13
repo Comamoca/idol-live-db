@@ -1,5 +1,6 @@
 package com.fugaif.imaslivedb.ui.designsystem
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,6 +20,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -42,9 +45,11 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -52,6 +57,7 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
@@ -62,6 +68,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.SubcomposeLayout
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -73,6 +80,7 @@ import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -126,19 +134,26 @@ import kotlin.math.roundToInt
 /**
  * 編集シートの本体 (iOS `ImasFormPage`)。地・左右の余白・欄のまとまりの間隔を持つ。中身は縦に並べる。
  * 指で引いてスクロールし始めたらキーボードを閉じる (iOS `.scrollDismissesKeyboard(.interactively)`)。
+ * 見えている高さ (キーボードが出ると縮む) を [LocalFormViewportHeight] で欄に渡し、欄はカーソルを
+ * 見える所へ寄せ直す。キーボードの分だけ縮むのは載せる側 ([ImasFullScreenDialog] / Activity の adjustResize)。
+ *
+ * @param dismissKeyboardOnScroll 長い文を上下を見ながら直す欄 (歌詞) は false。閉じると入力も選んだ範囲も
+ *   外れ、字を選んだまま下のボタンまで行けない。
  */
 @Composable
 fun ImasFormPage(
     modifier: Modifier = Modifier,
     scrollState: ScrollState = rememberScrollState(),
+    dismissKeyboardOnScroll: Boolean = true,
     content: @Composable ColumnScope.() -> Unit
 ) {
     val keyboard = LocalSoftwareKeyboardController.current
     val focus = LocalFocusManager.current
-    val dismissOnDrag = remember(keyboard, focus) {
+    var viewportHeight by remember { mutableIntStateOf(0) }
+    val dismissOnDrag = remember(keyboard, focus, dismissKeyboardOnScroll) {
         object : NestedScrollConnection {
             override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
-                if (source == NestedScrollSource.UserInput && abs(available.y) > 0f) {
+                if (dismissKeyboardOnScroll && source == NestedScrollSource.UserInput && abs(available.y) > 0f) {
                     keyboard?.hide()
                     focus.clearFocus()
                 }
@@ -146,8 +161,8 @@ fun ImasFormPage(
             }
         }
     }
-    CompositionLocalProvider(LocalImasBackdrop provides ImasBackdrop.GROUPED) {
-        Box(modifier.fillMaxSize().background(DS.bg)) {
+    CompositionLocalProvider(LocalImasBackdrop provides ImasBackdrop.GROUPED, LocalFormViewportHeight provides viewportHeight) {
+        Box(modifier.fillMaxSize().background(DS.bg).onSizeChanged { viewportHeight = it.height }) {
             ReadableWidth { readable ->
                 Column(
                     Modifier
@@ -164,6 +179,12 @@ fun ImasFormPage(
         }
     }
 }
+
+/**
+ * [ImasFormPage] の見えている高さ (px)。キーボードが出て窓が縮むと変わる。欄はこれが変わったら
+ * カーソルを見える所へ寄せ直す (フォーカスした時点ではまだキーボードが上がりきっていない)。
+ */
+private val LocalFormViewportHeight = staticCompositionLocalOf { 0 }
 
 // MARK: - 欄のまとまり
 
@@ -255,6 +276,7 @@ fun ImasFormField(
 }
 
 /** 欄の入力の地 (飾りの無い 1 行・複数行の入力)。誘いの文は入力が空のときだけ灰色で出す。 */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun FormInput(
     value: TextFieldValue,
@@ -268,10 +290,31 @@ private fun FormInput(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default
 ) {
     val ink = DS.ink
+    // 複数行の欄は、カーソル (選んでいる範囲の終わり) が見える所までページを送る。Compose の欄は
+    // フォーカスした時しか送らないので、改行・矢印キーで下へ進むとキーボードの下に潜り、
+    // キーボードが上がりきって見える高さが縮んだ時にも隠れたままになる。
+    val bringIntoView = remember { BringIntoViewRequester() }
+    var layout by remember { mutableStateOf<TextLayoutResult?>(null) }
+    var isFocused by remember { mutableStateOf(false) }
+    val viewportHeight = LocalFormViewportHeight.current
+    if (!singleLine) {
+        LaunchedEffect(isFocused, value.selection, layout, viewportHeight) {
+            val textLayout = layout
+            if (!isFocused || textLayout == null) return@LaunchedEffect
+            val end = value.selection.end.coerceIn(0, textLayout.layoutInput.text.length)
+            val cursor = textLayout.getCursorRect(end)
+            // 前後 1 行ずつ余白を持たせ、カーソルの行が見える範囲の縁に貼り付かないようにする。
+            bringIntoView.bringIntoView(cursor.copy(top = cursor.top - cursor.height, bottom = cursor.bottom + cursor.height))
+        }
+    }
     BasicTextField(
         value = value,
         onValueChange = onValueChange,
-        modifier = modifier.semantics { contentDescription = label },
+        modifier = modifier
+            .bringIntoViewRequester(bringIntoView)
+            .onFocusChanged { isFocused = it.hasFocus }
+            .semantics { contentDescription = label },
+        onTextLayout = { layout = it },
         textStyle = style.copy(color = ink),
         singleLine = singleLine,
         minLines = minLines,

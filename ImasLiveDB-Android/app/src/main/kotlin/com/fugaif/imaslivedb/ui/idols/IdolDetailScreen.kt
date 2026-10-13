@@ -1,5 +1,6 @@
 package com.fugaif.imaslivedb.ui.idols
 
+import com.fugaif.imaslivedb.ui.designsystem.ImasFullScreenDialog
 import com.fugaif.imaslivedb.ui.designsystem.imasResetScrollOnTabChange
 import uniffi.imas_core.groupIndicesByYearDesc
 import com.fugaif.imaslivedb.ui.designsystem.ImasDateHeader
@@ -29,8 +30,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
@@ -297,10 +296,7 @@ fun IdolDetailScreen(
     // 編集フォームはフルスクリーン Dialog に載せる (RecentEditsScreen → SetlistEditScreen と同じ)。
     val editingIdol = idol
     if (showIdolEdit && editingIdol != null) {
-        Dialog(
-            onDismissRequest = { showIdolEdit = false },
-            properties = DialogProperties(usePlatformDefaultWidth = false)
-        ) {
+        ImasFullScreenDialog(onDismissRequest = { showIdolEdit = false }) {
             IdolEditScreen(
                 original = editingIdol,
                 onDismiss = { showIdolEdit = false },

@@ -124,7 +124,7 @@ fun TagCreateSheet(
                 kind = ImasSheetToolbarKind.Edit(canSave = isValid && !isSaving, isSaving = isSaving, onCancel = onDismiss, onSave = ::submit),
                 title = "新規タグ作成"
             )
-            ImasFormPage {
+            ImasFormPage(Modifier.weight(1f)) {
                 ImasFormCard {
                     ImasFormTextField(
                         label = "タグ名(1〜${nameLimit}文字)",
