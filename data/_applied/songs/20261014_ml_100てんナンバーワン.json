@@ -1,0 +1,23 @@
+{
+ "title": "100てん☆ナンバーワン! (MILLION BATTLE OF THE@TER 09) の追加",
+ "author": "daily-data-crawl",
+ "source": "Apple Music lookup id=6806177436 (THE IDOLM@STER MILLION BATTLE OF THE@TER 09 100てん☆ナンバーワン! - Single)。初出はミリシタ「プラチナスターツアービンゴ～100てん☆ナンバーワン！～」開始日 2026-05-18 15:00 (https://gamerch.com/imasml-theater/986173)",
+ "songs": [
+  {
+   "id": "ml_100てんナンバーワン",
+   "title": "100てん☆ナンバーワン!",
+   "title_kana": "ひゃくてんなんばーわん",
+   "brand_id": "ml",
+   "song_type": "unit",
+   "release_date": "2026-05-18",
+   "streaming_date": "2026-05-27",
+   "cd_series": "THE IDOLM@STER MILLION BATTLE OF THE@TER 09 100てん☆ナンバーワン! - Single",
+   "singer_label": "中谷育、水瀬伊織、我那覇響、高槻やよい、大神環、周防桃子",
+   "apple_music_id": "6806177436",
+   "apple_music_album_id": "6806177435",
+   "artwork_url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/10/11/ac/1011ac28-5f78-3c40-358b-95c84daed69e/4540774252893.png/600x600bb.jpg",
+   "original_singers": ["ml_中谷育","765as_水瀬伊織","765as_我那覇響","765as_高槻やよい","ml_大神環","ml_周防桃子"],
+   "note": "作詞・作曲・編曲は公式で確認できず空欄"
+  }
+ ]
+}
