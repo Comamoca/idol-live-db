@@ -1905,6 +1905,7 @@ INSERT INTO "events" VALUES('ev_283_production_musical_performance_騎士団の�
 INSERT INTO "events" VALUES('ev_283_production_xxxx_performance_xxx_sn-gul4r1ty','sc','283 Production XXXX Performance XXX= S/N-GUL4R1TY','live',1,1,'live',NULL,NULL,'https://idolmaster-official.jp/live_event/283_XXX/',NULL,NULL,NULL);
 INSERT INTO "events" VALUES('ev_the_idolmster_shiny_colors_7th_live_tour_螺旋_-halo_around-_the_origin_on_the_a','sc','THE IDOLM@STER SHINY COLORS 7th LIVE TOUR 螺旋 -Halo around- “The origin on the axes”','anniversary',0,1,'live',NULL,NULL,'https://idolmaster-official.jp/live_event/shinycolors_7th_rasen/',NULL,NULL,'らせん');
 INSERT INTO "events" VALUES('ev_the_idolmster_side_m_1st_stagestrting_夜moon_side','sidem','THE IDOLM@STER SideM 1st STAGE～ST@RTING!～','anniversary',0,1,'live',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO "events" VALUES('ev_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier','765as','MIKI HOSHII SOLO SHOWCASE「THE FUTURE SPOTLIGHT」in Comic Frontier','live',0,0,'live',NULL,NULL,NULL,NULL,NULL,NULL);
 CREATE TABLE idol_brands (idol_id TEXT NOT NULL, brand_id TEXT NOT NULL, is_primary INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (idol_id, brand_id));
 INSERT INTO "idol_brands" VALUES('cg_大石泉','cg',1);
 INSERT INTO "idol_brands" VALUES('cg_双葉杏','cg',1);
@@ -3337,7 +3338,7 @@ INSERT INTO "idols" VALUES('ml_高山紗代子','ml','高山紗代子','たか�
 INSERT INTO "idols" VALUES('sidem_花園百々人','sidem','花園百々人','はなぞのももひと',NULL,'#A2D55E',6048,'--06-30','A',177.0,58.0,'東京',17,NULL,NULL,NULL,'蟹座','なし','人に愛されること❤','柔和で人懐っこい人気者だが自分のことを話したがらない男性アイドル。C.FIRSTメンバー。CV: 宮﨑雅也。','male',NULL,'花園','百々人',NULL,'2021-10-06','mental',0,NULL,NULL);
 CREATE TABLE meta (key TEXT PRIMARY KEY NOT NULL, value TEXT);
 INSERT INTO "meta" VALUES('schema_version','1');
-INSERT INTO "meta" VALUES('data_version','101');
+INSERT INTO "meta" VALUES('data_version','102');
 INSERT INTO "meta" VALUES('migration_v14_idol_is_external','applied');
 INSERT INTO "meta" VALUES('content_hash','2aa7a46f3715a4a1ef87214b4fffccbd4137a8edc8d49048d0e084df00c7a2ce');
 CREATE TABLE setlist_items (id TEXT PRIMARY KEY NOT NULL, show_id TEXT NOT NULL, song_id TEXT NOT NULL, position INTEGER NOT NULL, section TEXT, notes TEXT, unit_name TEXT, UNIQUE(show_id, position));
@@ -84402,16 +84403,6 @@ INSERT INTO "show_cast" VALUES('sh_283_production_live_performance_noctchill_4',
 INSERT INTO "show_cast" VALUES('sh_283_production_live_performance_noctchill_4','sc_樋口円香','member');
 INSERT INTO "show_cast" VALUES('sh_283_production_live_performance_noctchill_4','sc_浅倉透','member');
 INSERT INTO "show_cast" VALUES('sh_283_production_live_performance_noctchill_4','sc_福丸小糸','member');
-INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_亜夜','member');
-INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_四条貴音','member');
-INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_我那覇響','member');
-INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_星井美希','member');
-INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_玲音','member');
-INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_詩花','member');
-INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','961_奥空心白','member');
-INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','cg_神崎蘭子','member');
-INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','ml_春日未来','member');
-INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','sc_小宮果穂','member');
 INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_2','765as_三浦あずさ','member');
 INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_2','765as_双海亜美','member');
 INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_2','765as_双海真美','member');
@@ -86245,6 +86236,17 @@ INSERT INTO "show_cast" VALUES('sh_cinderella_girls_concept_xr_live_pop_n_toybox
 INSERT INTO "show_cast" VALUES('sh_cinderella_girls_concept_xr_live_pop_n_toybox_6','cg_高橋礼子','member');
 INSERT INTO "show_cast" VALUES('sh_cinderella_girls_concept_xr_live_pop_n_toybox_6','cg_鷹富士茄子','member');
 INSERT INTO "show_cast" VALUES('sh_cinderella_girls_concept_xr_live_pop_n_toybox_6','cg_黒川千秋','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_亜夜','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_四条貴音','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_我那覇響','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_星井美希','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_玲音','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','765as_詩花','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','961_奥空心白','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','cg_神崎蘭子','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','ml_春日未来','member');
+INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','sc_小宮果穂','member');
+INSERT INTO "show_cast" VALUES('sh_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier_1','765as_星井美希','member');
 CREATE TABLE show_cast_performers (
             show_id TEXT NOT NULL,
             idol_id TEXT NOT NULL,
@@ -88967,6 +88969,7 @@ INSERT INTO "shows" VALUES('sh_L1059','ev_life_like_a_live9_エピソードi第�
 INSERT INTO "shows" VALUES('sh_L1060','ev_life_like_a_live9_エピソードi第一公演','夜公演','2025-03-16','リアルタイム配信・Z-aN',NULL,NULL,1,'cast',NULL,NULL,'リアルタイム配信・Z-aN','online');
 INSERT INTO "shows" VALUES('sh_L0317','ev_アイドルマスター_sidem_ラジオ_315プロnight_ドラマチックミーティング_vol2_moon_side','昼の部','2016-07-17','東京・ラフォーレミュージアム六本木',NULL,NULL,1,'cast','venue_ラフォーレミュージアム六本木',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L0318','ev_アイドルマスター_sidem_ラジオ_315プロnight_ドラマチックミーティング_vol2_moon_side','夜の部','2016-07-17','東京・ラフォーレミュージアム六本木',NULL,NULL,1,'cast','venue_ラフォーレミュージアム六本木',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier_1','ev_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier','MIKI HOSHII SOLO SHOWCASE「THE FUTURE SPOTLIGHT」in Comic Frontier','2026-11-01','ICE (Indonesia Convention Exhibition) BSD (インドネシア)',NULL,NULL,0,'cast',NULL,NULL,NULL,NULL);
 CREATE TABLE song_artists (song_id TEXT NOT NULL, idol_id TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'original', PRIMARY KEY (song_id, idol_id, role));
 INSERT INTO "song_artists" VALUES('765as_shining_star彡','765as_天海春香','original');
 INSERT INTO "song_artists" VALUES('765as_shining_star彡','765as_如月千早','original');
@@ -116615,18 +116618,10 @@ INSERT INTO "song_artists" VALUES('sidem_ワンホールワンダーランド','
 INSERT INTO "song_artists" VALUES('sidem_ワンホールワンダーランド','sidem_卯月巻緒','performer');
 INSERT INTO "song_artists" VALUES('sidem_今宵笑むように','sidem_華村翔真','original');
 INSERT INTO "song_artists" VALUES('sidem_今宵笑むように','sidem_華村翔真','performer');
-INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_ピエール','original');
 INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_ピエール','performer');
-INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_天道輝','original');
 INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_天道輝','performer');
-INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_柏木翼','original');
-INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_柏木翼','performer');
-INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_桜庭薫','original');
 INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_桜庭薫','performer');
-INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_渡辺みのり','original');
 INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_渡辺みのり','performer');
-INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_鷹城恭二','original');
-INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_鷹城恭二','performer');
 INSERT INTO "song_artists" VALUES('sidem_千客万来ニーハオサァカス','sidem_兜大吾','original');
 INSERT INTO "song_artists" VALUES('sidem_千客万来ニーハオサァカス','sidem_兜大吾','performer');
 INSERT INTO "song_artists" VALUES('sidem_千客万来ニーハオサァカス','sidem_大河タケル','original');
@@ -116971,6 +116966,20 @@ INSERT INTO "song_artists" VALUES('sidem_青春サティスファクション','
 INSERT INTO "song_artists" VALUES('sidem_青春サティスファクション','sidem_若里春名','performer');
 INSERT INTO "song_artists" VALUES('sidem_魔法のステアー','sidem_ピエール','original');
 INSERT INTO "song_artists" VALUES('sidem_魔法のステアー','sidem_ピエール','performer');
+INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_ピエール','original');
+INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_天道輝','original');
+INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_柏木翼','original');
+INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_柏木翼','performer');
+INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_桜庭薫','original');
+INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_渡辺みのり','original');
+INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_鷹城恭二','original');
+INSERT INTO "song_artists" VALUES('sidem_冬の日のエトランゼ','sidem_鷹城恭二','performer');
+INSERT INTO "song_artists" VALUES('ml_100てんナンバーワン','765as_我那覇響','original');
+INSERT INTO "song_artists" VALUES('ml_100てんナンバーワン','765as_水瀬伊織','original');
+INSERT INTO "song_artists" VALUES('ml_100てんナンバーワン','765as_高槻やよい','original');
+INSERT INTO "song_artists" VALUES('ml_100てんナンバーワン','ml_中谷育','original');
+INSERT INTO "song_artists" VALUES('ml_100てんナンバーワン','ml_周防桃子','original');
+INSERT INTO "song_artists" VALUES('ml_100てんナンバーワン','ml_大神環','original');
 CREATE TABLE song_units (
   song_id TEXT NOT NULL,
   unit_id TEXT NOT NULL,
@@ -118892,7 +118901,6 @@ INSERT INTO "songs" VALUES('cg_gaze_and_gaze','Gaze and Gaze','げいずあん�
 INSERT INTO "songs" VALUES('cg_gemstone','GEMSTONE','じぇむすとーん','cg','solo','2022-04-08',NULL,'出口遼','出口遼','出口遼、飯田涼太','THE IDOLM@STER CINDERELLA GIRLS U149 ANIMATION MASTER 04 ゼロトゥワン!!',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/b5/e8/53/b5e85338-f2ab-b879-a0c2-bb6971610776/COKM-44344.jpg/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/41/bb/3c/41bb3ce3-b2f9-7dfa-aaab-01e61686003e/mzaf_5667851498170304394.plus.aac.p.m4a','1676894032','1691222340','','https://www.uta-net.com/song/339152/',NULL,'的場梨沙',NULL,NULL,'ANIMATION MASTER',NULL,NULL,NULL,0,0,NULL,'2023-03-31',NULL,NULL);
 INSERT INTO "songs" VALUES('cg_go_just_go','Go Just Go!','ごーじゃすとごー','cg','unit','2020-08-31',NULL,'田中秀和(MONACA)','八城雄太','TAKU INOUE','THE IDOLM@STER CINDERELLA GIRLS STARLIGHT MASTER GOLD RUSH! 01 Go Just Go!',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/04/6e/ee/046eeed4-c70d-9d46-6993-d1890b50e139/COCC-17831.jpg/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview124/v4/b2/91/d7/b291d7c8-1775-5705-b437-ae7d074111a9/mzaf_6906458919921302732.plus.aac.p.m4a','1530753293','1530753292','','https://www.uta-net.com/song/291535/',NULL,'夢見りあむ、大槻唯、北条加蓮、佐藤心、一ノ瀬志希、鷹富士茄子、棟方愛海、川島瑞樹、五十嵐響子',NULL,NULL,'STARLIGHT MASTER GOLD RUSH!',NULL,NULL,NULL,0,0,NULL,'2020-09-16',NULL,NULL);
 INSERT INTO "songs" VALUES('cg_gossip_club','Gossip Club','ごしっぷくらぶ','cg','unit','2019-09-04',NULL,'俊龍','俊龍','Sizuk','THE IDOLM@STER CINDERELLA GIRLS STARLIGHT MASTER for the NEXT! SERIES GAME VERSION',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/d9/c7/b0/d9c7b046-014b-0d7b-f623-a008a1cf1f13/COKM-44253.jpg/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/b0/e7/dd/b0e7dd97-ec04-44c1-ca34-4b6cf11b833d/mzaf_16124878119656935369.plus.aac.p.m4a','1670044212','1670044208','','https://www.uta-net.com/song/277736/',NULL,'セクシーギャルズ（大槻唯、藤本里奈、城ヶ崎美嘉）','セクシーギャルズ','セクシーギャルズ','STARLIGHT MASTER',NULL,NULL,NULL,0,0,NULL,'2019-11-20',NULL,NULL);
-INSERT INTO "songs" VALUES('cg_great_journey','Great Journey','ぐれいとじゃーにー','cg','unit','2020-02-16',NULL,'内田哲也(Cygames)','磯谷佳江','内田哲也(Cygames), ストリングスアレンジ：東大路憲太','THE IDOLM@STER CINDERELLA GIRLS STARLIGHT MASTER COLLABORATION! Great Journey',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/c0/be/f6/c0bef6b6-800b-05bf-445c-a19dfd102bf9/COKM-44257.jpg/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/cf/4a/0a/cf4a0acc-7161-b2f7-7389-60618f86bd87/mzaf_5194151138469507153.plus.aac.p.m4a','1670043941','1555396600','','https://www.uta-net.com/song/300090/',NULL,'new generations（島村卯月、渋谷凛、本田未央）','new generations','unit_new_generations','STARLIGHT MASTER',NULL,NULL,NULL,0,0,NULL,'2021-03-03',NULL,NULL);
 INSERT INTO "songs" VALUES('cg_halloween_game','HALLOWEEN GAME','はろうぃんげーむ','cg','unit','2023-10-19',NULL,'TAKT(TRYTONELABO)','TAKT(TRYTONELABO)','TAKT(TRYTONELABO)','THE IDOLM@STER CINDERELLA GIRLS STARLIGHT MASTER HEART TICKER! 03 HALLOWEEN GAME',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/1b/58/15/1b5815f5-e5e5-f41f-7d17-4d7171396053/COCC-18173.jpg/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/0d/84/60/0d8460b3-8ca7-c178-01b9-faf295804066/mzaf_10430388327720610563.plus.aac.p.m4a','1730876288','1730876278','','https://www.uta-net.com/song/350454/',NULL,'パンプキンプリン（姫川友紀、中野有香、堀裕子、上条春菜、白雪千夜）','パンプキンプリン','unit_パンプキンプリン','STARLIGHT MASTER',NULL,NULL,NULL,0,0,NULL,'2023-10-20',NULL,NULL);
 INSERT INTO "songs" VALUES('cg_halloweencode','Halloween♥Code','はろうぃんこーど','cg','unit','2017-10-18',NULL,'岡野裕次郎(TRYTONELABO)','磯谷佳江','岡野裕次郎(TRYTONELABO)、TAKT(TRYTONELABO)','THE IDOLM@STER CINDERELLA GIRLS MASTER SEASONS AUTUMN!',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/56/27/24/562724de-9c25-1059-1ca4-d6ffc33bd284/COKM-44258.jpg/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/a8/ea/89/a8ea894e-3d9c-667b-a335-3b7d35356eed/mzaf_12935078798199945796.plus.aac.p.m4a','1670047941','1483894402','','https://www.uta-net.com/song/238054/',NULL,'安部菜々、乙倉悠貴、前川みく',NULL,NULL,'MASTER SEASONS',NULL,NULL,NULL,0,0,NULL,'2023-02-28',NULL,NULL);
 INSERT INTO "songs" VALUES('cg_happy2_days','Happy×2 Days','はっぴーはっぴーでいず','cg','unit','2015-03-14',NULL,'木村有希','木村有希','岡野裕次郎（TRYTONELABO）','THE IDOLM@STER CINDERELLA GIRLS STARLIGHT BEST 02',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/c7/d6/26/c7d6265d-0cb6-f357-3213-83a1664fba42/COKM-44338.jpg/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/f1/ec/87/f1ec874a-8933-b709-b575-65fb7dea8d80/mzaf_13059531337340330014.plus.aac.p.m4a','1676896288','1052624277','','https://www.uta-net.com/song/184174/',NULL,'CANDY ISLAND（双葉杏）','CANDY ISLAND','unit_candy_island','ANIMATION PROJECT',NULL,NULL,NULL,0,0,NULL,'2023-03-31',NULL,NULL);
@@ -120845,7 +120853,9 @@ INSERT INTO "songs" VALUES('ml_ココロがかえる場所ケンモチヒデフ�
 INSERT INTO "songs" VALUES('ml_ピコピコiiko_インベーダー','ピコピコIIKO! インベーダー','ぴこぴこいいこいんべーだー','ml','unit','2019-03-19',NULL,'AstroNoteS','松井洋平','AstroNoteS','THE IDOLM@STER MILLION THE@TER GENERATION 16 ピコピコプラネッツ - Single',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/13/80/ef/1380ef59-be27-7f94-66e4-385341b00a7f/4540774148264.jpg/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/a1/92/ae/a192ae9e-37a6-71db-e8c7-68817b824feb/mzaf_3459605143792950411.plus.aac.p.m4a','1717730036','1717730035','','https://www.uta-net.com/song/266690/',NULL,'ピコピコプラネッツ [木下ひなた、箱崎星梨花、大神環、望月杏奈',NULL,NULL,'MILLION THE@TER GENERATION',NULL,NULL,NULL,0,1,NULL,'2019-04-24',NULL,NULL);
 INSERT INTO "songs" VALUES('ml_産声とクラブ','産声とクラブ','うぶごえとくらぶ','ml','unit','2021-11-16',NULL,'佐高陵平(Hifumi,inc.)','佐高陵平(Hifumi,inc.)','佐高陵平(Hifumi,inc.)','THE IDOLM@STER MILLION THE@TER SEASON CLEVER CLOVER - EP',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/77/ee/a6/77eea670-80d3-1f35-03d9-df7609789be8/4540774159352.jpg/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/26/db/1f/26db1f78-bc3e-0ed4-afce-ad0bff6381f0/mzaf_8385834219872276389.plus.aac.p.m4a','1718903409','1718903407','','https://www.uta-net.com/song/314904/',NULL,'箱崎星梨花、三浦あずさ、高坂海美、ロコ',NULL,NULL,'MILLION THE@TER',NULL,NULL,NULL,0,0,NULL,'2021-11-26',NULL,NULL);
 INSERT INTO "songs" VALUES('sidem_glorious_rod','GLORIOUS RO@D','ぐろーりあすろーど','sidem','unit','2017-12-30',NULL,'渡辺拓也','松井洋平','渡辺拓也','THE IDOLM@STER SideM 5th ANNIVERSARY 01 PRIDE STAR - EP',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/9e/ea/29/9eea299a-ef12-2f50-6016-c63bf81ed99b/4540774158065.jpg/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/76/61/a5/7661a501-291e-910d-7824-72181ba938cc/mzaf_17845095093138886352.plus.aac.p.m4a','1731792672','1731792667','','https://www.uta-net.com/song/243329/',NULL,'315 STARS（DRAMATIC STARS（天道輝、桜庭薫、柏木翼、Beit[鷹城恭二、ピエール、渡辺みのり、S.E.M[硲道夫、舞田類、山下次郎、High×Joker[伊瀬谷四季、秋山隼人、若里春名、冬美旬、榊夏来、Ｗ[蒼井享介、蒼井悠介、Jupiter[天ヶ瀬冬馬、御手洗翔太、伊集院北斗）','315 STARS','unit_315_stars','5th ANNIVERSARY',NULL,NULL,NULL,0,0,NULL,'2019-12-18',NULL,NULL);
-INSERT INTO "songs" VALUES('sidem_冬の日のエトランゼ','冬の日のエトランゼ','ふゆのひのえとらんぜ','sidem','unit','2017-12-27',NULL,'遠藤直弥','真崎エリカ','遠藤直弥','THE IDOLM@STER SideM 315 St@rry Collaboration',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/00/43/63/004363d0-e696-8126-9d2a-da3cf4308170/4540774743261.png/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ad/58/83/ad58835f-7dbc-81a2-cfba-c653de5f1f9d/mzaf_12579843814261322555.plus.aac.p.m4a','1782814358','1782814357','',NULL,NULL,'DRAMATIC STARS（天道輝、桜庭薫、柏木翼、Beit[鷹城恭二、ピエール、渡辺みのり）','DRAMATIC STARS','dramaticstars','315 St@rry Collaboration',NULL,NULL,NULL,0,0,NULL,'2025-01-01',NULL,NULL);
+INSERT INTO "songs" VALUES('cg_great_journey','Great Journey','ぐれいとじゃーにー','cg','unit','2020-02-16',NULL,'内田哲也(Cygames)','磯谷佳江','内田哲也(Cygames), ストリングスアレンジ：東大路憲太','THE IDOLM@STER CINDERELLA GIRLS STARLIGHT MASTER COLLABORATION! Great Journey',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/c0/be/f6/c0bef6b6-800b-05bf-445c-a19dfd102bf9/COKM-44257.jpg/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/cf/4a/0a/cf4a0acc-7161-b2f7-7389-60618f86bd87/mzaf_5194151138469507153.plus.aac.p.m4a','1670043941','1555396600','','https://www.uta-net.com/song/300090/',NULL,'new generations（島村卯月、渋谷凛、本田未央）','new generations','unit_new_generations','STARLIGHT MASTER',NULL,NULL,NULL,0,0,'プリンセスコネクト！Re:Dive コラボ楽曲','2021-03-03',NULL,NULL);
+INSERT INTO "songs" VALUES('sidem_冬の日のエトランゼ','冬の日のエトランゼ','ふゆのひのえとらんぜ','sidem','unit','2017-12-27',NULL,'遠藤直弥','真崎エリカ','遠藤直弥','THE IDOLM@STER SideM 315 St@rry Collaboration',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/00/43/63/004363d0-e696-8126-9d2a-da3cf4308170/4540774743261.png/600x600bb.jpg','https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/ad/58/83/ad58835f-7dbc-81a2-cfba-c653de5f1f9d/mzaf_12579843814261322555.plus.aac.p.m4a','1782814358','1782814357','',NULL,NULL,'DRAMATIC STARS（天道輝、桜庭薫、柏木翼、Beit[鷹城恭二、ピエール、渡辺みのり）','DRAMATIC STARS＆Beit','dramaticstars','315 St@rry Collaboration',NULL,NULL,NULL,0,0,NULL,'2025-01-01',NULL,NULL);
+INSERT INTO "songs" VALUES('ml_100てんナンバーワン','100てん☆ナンバーワン!','ひゃくてんなんばーわん','ml','unit','2026-05-18',NULL,NULL,NULL,NULL,'THE IDOLM@STER MILLION BATTLE OF THE@TER 09 100てん☆ナンバーワン! - Single',NULL,'https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/10/11/ac/1011ac28-5f78-3c40-358b-95c84daed69e/4540774252893.png/600x600bb.jpg',NULL,'6806177436','6806177435',NULL,NULL,NULL,'中谷育、水瀬伊織、我那覇響、高槻やよい、大神環、周防桃子',NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,'2026-05-27',NULL,NULL);
 CREATE TABLE staff (
     id TEXT PRIMARY KEY NOT NULL,
     brand_id TEXT NOT NULL REFERENCES brands(id),
@@ -121001,6 +121011,7 @@ INSERT INTO "ticket_sales" VALUES('ts_a97e0d95b8ba','ev_レトラ_birthday_onlin
 INSERT INTO "ticket_sales" VALUES('ts_3b12b8465b80','ev_レトラ_birthday_online_live_2026',NULL,'first_come','配信チケット','2026-10-12 12:00','2026-12-13 18:00',NULL,'https://asobistage.asobistore.jp/event/valiv_bd2026_letora/ticket','ASOBI STAGE 5,000円(税込・機能利用料込)。プレゼント用視聴チケットあり。配信特典: 終演後のアフタートーク配信','https://idolmaster-official.jp/news/01_20100.html',1);
 INSERT INTO "ticket_sales" VALUES('ts_14518c9f5b01','ev_灯里愛夏_birthday_online_live_2026',NULL,'lottery','限定グッズ付き現地ライブビューイングチケット 先行抽選','2026-09-21','2026-10-04 23:59','2026-10-06','https://livepocket.jp/e/va-liv_manaka_bd2026_re','ユナイテッド・シネマ アクアシティお台場 [3番スクリーン]。入金期間 10/6〜10/11 23:59、お一人様 2 枚まで','https://idolmaster-official.jp/news/01_19896.html',0);
 INSERT INTO "ticket_sales" VALUES('ts_2aa1df8eead9','ev_灯里愛夏_birthday_online_live_2026',NULL,'first_come','配信チケット','2026-09-21','2026-11-29 18:00',NULL,'https://asobistage.asobistore.jp/event/valiv_bd2026_manaka/ticket','ASOBI STAGE 5,000円(税込・機能利用料込)。プレゼント用視聴チケットあり。配信特典: 終演後のアフタートーク配信。7/1 公演分の購入者はそのまま視聴可','https://idolmaster-official.jp/news/01_19896.html',1);
+INSERT INTO "ticket_sales" VALUES('ts_ce9b13eef9b3','ev_灯里愛夏_birthday_online_live_2026',NULL,'first_come','限定グッズ付き現地ライブビューイングチケット 一般先着','2026-10-17 12:00','2026-10-28 18:00',NULL,'https://livepocket.jp/e/va-liv_manaka_bd2026_re','ユナイテッド・シネマ アクアシティお台場 [3番スクリーン]。全席指定 9,000円(税込)。コンビニ決済は 10/26 23:59 まで、お一人様 2 枚まで','https://idolmaster-official.jp/news/01_20111.html',2);
 CREATE TABLE unit_members (unit_id TEXT NOT NULL, idol_id TEXT NOT NULL, PRIMARY KEY (unit_id, idol_id));
 INSERT INTO "unit_members" VALUES('オリジナル_カラーズ_feat_和','cg_成宮由愛');
 INSERT INTO "unit_members" VALUES('オリジナル_カラーズ_feat_和','cg_的場梨沙');
