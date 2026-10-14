@@ -27,7 +27,6 @@ struct ContentView: View {
     @State private var crossTab = CrossTabSearch.shared
     /// 設定・マイページ sheet (全タブ共通)。
     @State private var showSettings = false
-    @State private var showAssistant = false
     /// deeplink (Universal Links / imaslivedb://) で開く詳細 sheet。
     @State private var deeplinkDestination: DetailDestination?
     /// 他の sheet 提示中などで即時提示できなかった deeplink 遷移先。
@@ -111,12 +110,6 @@ struct ContentView: View {
         .spotifyPlaybackAlert()
         .onReceive(NotificationCenter.default.publisher(for: .openSettings)) { _ in
             showSettings = true
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .openAssistant)) { _ in
-            showAssistant = true
-        }
-        .sheet(isPresented: $showAssistant) {
-            AssistantChatView()
         }
         // 参加を付けた直後の「チケット代を記録しますか」。参加登録の入口は
         // 一覧のスワイプ・公演の参加シート・セトリ画面と複数あるので、
@@ -333,7 +326,6 @@ struct DestinationScreen: View {
         case .communityActivity: NavigationStack { RecentEditsView() }.bottomBarsInset()
         case .tagActivity: NavigationStack { TagActivityView() }.bottomBarsInset()
         case .games: NavigationStack { GamesHubView() }.bottomBarsInset()
-        case .assistant: AssistantChatView(showsClose: false).bottomBarsInset()
         }
     }
 }

@@ -35,11 +35,11 @@ import uniffi.imas_core.tabBarChoices
  */
 @Composable
 fun TabBarSettingsSection() {
-    val choices = remember { tabBarChoices(lyricsAvailable = false, assistantAvailable = false) }
+    val choices = remember { tabBarChoices(lyricsAvailable = false) }
     val max = remember { maxTabBarCount().toInt() }
-    val tabs = normalizeTabBarKeys(lyricsAvailable = false, assistantAvailable = false, tabKeys = AppPreferences.tabBarKeys)
+    val tabs = normalizeTabBarKeys(lyricsAvailable = false, tabKeys = AppPreferences.tabBarKeys)
     fun save(keys: List<String>) =
-        AppPreferences.setTabBarKeys(normalizeTabBarKeys(lyricsAvailable = false, assistantAvailable = false, tabKeys = keys))
+        AppPreferences.setTabBarKeys(normalizeTabBarKeys(lyricsAvailable = false, tabKeys = keys))
     fun item(key: String) = choices.firstOrNull { it.analyticsKey == key }
 
     Column {

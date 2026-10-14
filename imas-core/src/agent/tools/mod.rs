@@ -16,16 +16,12 @@
 //! 歌詞本文は JASRAC の許諾が「D1 に置き、ダウンロードさせない」形で下りている。
 //! ここから本文を返すとその前提を外れるので、扱うのは作品コードと掲載有無まで。
 
-pub mod assistant;
 pub mod browse;
 pub mod lookup;
-pub mod persona;
-pub mod personal;
 pub mod publish;
 pub mod predict;
 pub mod scope;
 pub mod speech;
-pub mod timeline;
 pub mod vocab;
 
 use crate::domain::snapshot::Snapshot;

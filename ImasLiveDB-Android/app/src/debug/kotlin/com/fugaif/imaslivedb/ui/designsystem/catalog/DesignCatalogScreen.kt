@@ -352,7 +352,6 @@ enum class DesignCatalogPage(val id: String, val title: String) {
     FORM("form", "編集シートの型"),
     SETUP("setup", "ゲームの設定・読みもの"),
     COMMUNITY("community", "コミュニティ (タグ・記録)"),
-    CHAT("chat", "AI チャット"),
     STAGE("stage", "あそぶ (ステージ)"),
 
     /** Android だけ: iOS のカタログに載っていない部品 (行を引く・横に払う・値を選ぶ・絞り込みの帯ほか)。 */
@@ -455,7 +454,6 @@ fun DesignCatalogScreen(
                     DesignCatalogPage.FORM -> FormTemplatePage()
                     DesignCatalogPage.SETUP -> SetupPage()
                     DesignCatalogPage.COMMUNITY -> CommunityPage()
-                    DesignCatalogPage.CHAT -> ChatPage()
                     DesignCatalogPage.STAGE -> StagePage()
                     DesignCatalogPage.EXTRAS -> ExtrasPage()
                 }
@@ -2164,20 +2162,6 @@ private fun CommunityPage() {
                 }
             }
         }
-    }
-}
-
-// MARK: - AI チャット
-
-@Composable
-private fun ChatPage() {
-    CatalogPage {
-        ImasNotice(
-            ImasNoticeKind.INFO,
-            "AI チャット (ChatGPT 連携・キャラとのトーク) の画面は Android にまだ無いので、吹き出し・入力欄 " +
-                "(iOS の ImasChatBubble・ImasChatComposer・ImasChatToolChip) は写していない。機能を Android に持ってくるときに写す。",
-            title = "Android には無い部品"
-        )
     }
 }
 

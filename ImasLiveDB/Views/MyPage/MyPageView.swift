@@ -382,10 +382,6 @@ struct MyPageView: View {
     @ViewBuilder
     private var settingsSection: some View {
         helpSection
-        // 試作。開発ビルドだけに出す (審査の端末も TestFlight と同じレシートなので、配布ビルドには出さない)。
-        if ChatGPTPlanSession.isPrototypeVisible {
-            chatGPTPlanSection
-        }
         generalSettingsSection
         collectionSettingsSection
         masterySection
@@ -400,23 +396,6 @@ struct MyPageView: View {
             ImasActionRow(title: "使い方を見る", systemImage: "questionmark.circle.fill") {
                 AppAnalytics.tap("my_page.open_help")
                 showHelp = true
-            }
-        }
-    }
-
-    /// Sign in with ChatGPT の試作。ChatGPT Plus / Pro のプランで AI を呼ぶ。
-    @ViewBuilder
-    private var chatGPTPlanSection: some View {
-        ImasListSection {
-            NavigationLink {
-                ChatGPTPlanLabView()
-            } label: {
-                ImasNavRow(
-                    title: "ChatGPT 連携 (試作)",
-                    systemImage: "sparkles",
-                    value: ChatGPTPlanSession.shared.isSignedIn ? "連携中" : "Continue with ChatGPT",
-                    showsChevron: false
-                )
             }
         }
     }

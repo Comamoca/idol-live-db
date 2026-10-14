@@ -77,11 +77,6 @@ struct ProduceTabView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     SettingsToolbarButton()
                 }
-                if ChatGPTPlanSession.isPrototypeVisible {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        AssistantToolbarButton()
-                    }
-                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         AppAnalytics.tap("produce_tab.open_inbox")

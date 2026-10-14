@@ -131,7 +131,7 @@ fun AppNavigation() {
     // Android には歌詞 (コールガイド) と AI チャットが無いので両方 false。
     val tabKeys = AppPreferences.tabBarKeys
     val sections = remember(tabKeys) {
-        appNavigationSectionsWithTabs(lyricsAvailable = false, assistantAvailable = false, tabKeys = tabKeys)
+        appNavigationSectionsWithTabs(lyricsAvailable = false, tabKeys = tabKeys)
     }
     val tabItems = remember(sections) { sections.flatMap { it.items }.filter { it.inTabBar } }
     val wide = LocalConfiguration.current.screenWidthDp >= WIDE_SCREEN_MIN_DP
@@ -234,8 +234,6 @@ private fun DestinationNavHost(destination: AppDestination, navController: NavHo
         AppDestination.GAMES -> TabNavHost(navController, NavRoutes.GamesHub.route) { produceNavGraph(navController) }
         // Android には歌詞が無いのでコアがこの行き先を返さない。
         AppDestination.CALL_GUIDE -> Unit
-        // Android には AI チャットが無いのでコアがこの行き先を返さない。
-        AppDestination.ASSISTANT -> Unit
     }
 }
 

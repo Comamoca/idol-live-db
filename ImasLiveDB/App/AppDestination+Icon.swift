@@ -17,14 +17,13 @@ extension AppDestination {
         case .communityActivity: return "person.2.fill"
         case .tagActivity: return "flame.fill"
         case .games: return "gamecontroller.fill"
-        case .assistant: return "sparkles"
         }
     }
 
     var label: String { AppDestination.labels[self] ?? "" }
     var analyticsKey: String { AppDestination.analyticsKeys[self] ?? "" }
 
-    private static let items = tabBarChoices(lyricsAvailable: true, assistantAvailable: true)
+    private static let items = tabBarChoices(lyricsAvailable: true)
     private static let labels = Dictionary(uniqueKeysWithValues: items.map { ($0.destination, $0.label) })
     private static let analyticsKeys = Dictionary(uniqueKeysWithValues: items.map { ($0.destination, $0.analyticsKey) })
 }

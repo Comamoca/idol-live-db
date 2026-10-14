@@ -115,7 +115,7 @@
 
 ### 2.7 設定 `SettingsScreen`
 **組み方** `List(.insetGrouped)` + `ImasListSection`。行は `ImasNavRow`・`ImasToggleRow`・`ImasMenuRow`・`ImasValueRow`・`ImasActionRow`。
-**実例** 設定 (マイページ)、アプリについて、習熟度の段階、ChatGPT 連携。
+**実例** 設定 (マイページ)、アプリについて、習熟度の段階。
 
 ### 2.8 読みもの `DocumentScreen`
 **組み方** `ScrollView` + `ImasProse` (見出し・段落・箇条書き・手順 `ImasStepList`・画像)。
@@ -386,14 +386,6 @@ ImasSection("ライブ歌唱曲", count: "42曲", action: .seeAll { ... }, foote
 - **構成** 色の丸 (`ImasSwatch`、色が無ければ出さない) + 名前 + カテゴリの札 (任意) + 説明文 (無ければ「説明なし」)。
 - **状態** カテゴリは「色で意味を分けない」のですべて同じ `.neutral` の札にする。
 - **置き換えるもの** 曲・アイドル・ユニットのタグ詳細 3 画面がそれぞれ手書きしていた、カテゴリごとに色を塗り分ける一字一句同一のコード。
-
-### 6.12 AI チャットの部品 `ImasChatBubble` / `ImasChatComposer` / `ImasChatToolChip`
-- **用途** ChatGPT 連携の質問チャット・将来のキャラクターとのトークで共通して使う会話画面の部品。
-- **`ImasChatBubble`** 発言 1 つ。相手 (AI・キャラ) は左、自分は右。相手は通常文 (`.text`) / 生成中 (`.streaming`、空文字なら点滅ドット) / 失敗 (`.failed`、「もう一度」の `ImasNotice`) の 3 状態。
-  相手に実体色 (`seed`) を渡すと吹き出しの地がその色に薄く染まる (キャラとのトーク)。`avatar`/`partnerName` を渡すと相手側にアイコンと名前を添える。
-- **`ImasChatComposer`** 入力欄。複数行のテキストフィールドと、送信⇄停止を切り替える丸い記号ボタン (`isRunning` で切り替え、`canSend` で送信を無効化)。`footer` に利用プランの注記などを添えられる。
-- **`ImasChatToolChip`** ツール実行中であることを示す小さな札 (「曲を検索中…」)。生成中の吹き出しの上に置く。
-- **使わない** 通常の一覧・詳細の会話以外の表示 → 他の行・カード部品。
 
 ### 6.13 `ImasProducerCard` P名刺 / `ImasMeishiFront` / `ImasMeishiBack` / `ImasProducerCardDetails` / `ImasCardFace` / `ImasQRCode` / `ImasCameraFrame` / `ImasCardPortrait` / `ImasCardDesignPicker`
 - **用途** P名刺 (会場での名刺交換)。自分の名刺・受け取った名刺・受け取りの確認で同じ部品と同じ組み (名刺 → 名刺の下の詳細)。
@@ -840,7 +832,6 @@ ImasSection("ライブ歌唱曲", count: "42曲", action: .seeAll { ... }, foote
 | マイタグを追加する | `ImasChipInputField` |
 | タグの詳細を見せる | `ImasTagHeaderCard` |
 | 一覧の絞り込み結果からその場で提案する | `ImasSuggestionBar` |
-| AI と話す | `ImasChatBubble` / `ImasChatComposer` |
 | 手順・特徴を示す | `ImasStepList` / `ImasPointList` |
 | ゲームの表彰台・対戦結果を見せる | `ImasPodium` / `ImasStageVersusResult` |
 | ティアー表を組む | `ImasTierBoard` + `ImasTierRow` / `ImasTierChip` / `ImasTierMoveBar` |

@@ -1,6 +1,5 @@
 //! FFI 面: #[uniffi::export] はこの層にだけ置く (domain への薄い委譲)。
 
-pub mod assistant_tools;
 pub mod attendance;
 pub mod backup_import_summary;
 pub mod backup_summary;

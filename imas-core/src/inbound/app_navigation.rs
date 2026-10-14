@@ -11,26 +11,25 @@ pub fn app_navigation_sections(lyrics_available: bool) -> Vec<NavSection> {
 }
 
 /// ユーザーが選んだタブバー (計測キーの並び。空なら既定) で、行き先を見出しごとに返す。
-/// 先頭 (見出しなし) がタブバー、タブから外した主な画面と AI チャットは「そのほか」。
+/// 先頭 (見出しなし) がタブバー、タブから外した主な画面は「そのほか」。
 #[uniffi::export]
 pub fn app_navigation_sections_with_tabs(
     lyrics_available: bool,
-    assistant_available: bool,
     tab_keys: Vec<String>,
 ) -> Vec<NavSection> {
-    app_navigation::app_navigation_with_tabs(lyrics_available, assistant_available, &tabs_from_keys(&tab_keys))
+    app_navigation::app_navigation_with_tabs(lyrics_available, &tabs_from_keys(&tab_keys))
 }
 
 /// タブバーに選べる行き先 (このビルドで出せるものすべて)。
 #[uniffi::export]
-pub fn tab_bar_choices(lyrics_available: bool, assistant_available: bool) -> Vec<NavItem> {
-    app_navigation::tab_bar_choices(lyrics_available, assistant_available)
+pub fn tab_bar_choices(lyrics_available: bool) -> Vec<NavItem> {
+    app_navigation::tab_bar_choices(lyrics_available)
 }
 
 /// 選んだタブバーを出せる形に整えて、計測キーの並びで返す (保存する値)。空なら既定。
 #[uniffi::export]
-pub fn normalize_tab_bar_keys(lyrics_available: bool, assistant_available: bool, tab_keys: Vec<String>) -> Vec<String> {
-    app_navigation::normalize_tab_bar(&tabs_from_keys(&tab_keys), lyrics_available, assistant_available)
+pub fn normalize_tab_bar_keys(lyrics_available: bool, tab_keys: Vec<String>) -> Vec<String> {
+    app_navigation::normalize_tab_bar(&tabs_from_keys(&tab_keys), lyrics_available)
         .into_iter()
         .map(|d| d.analytics_key().to_string())
         .collect()
