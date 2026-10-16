@@ -1,0 +1,14 @@
+{
+ "title": "Bloomy! の CD 発売日 (#308)",
+ "author": "daily-data-crawl",
+ "source": "https://github.com/fuga-if/idol-live-db/issues/308",
+ "fixes": [
+  {
+   "table": "songs",
+   "id": "sc_bloomy",
+   "fields": {"cd_release_date": "2019-08-21"},
+   "source": "https://music.apple.com/jp/album/bloomy/1734551173?i=1734551176",
+   "note": "THE IDOLM@STER SHINY COLORS FR@GMENT WING 05 (2019-08-21)。投稿は新規作成だったが sc_bloomy として登録済み。配信日 2018-08-07・作曲者の表記替えは出典なしで不採用"
+  }
+ ]
+}
