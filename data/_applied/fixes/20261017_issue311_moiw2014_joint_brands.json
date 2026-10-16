@@ -1,0 +1,14 @@
+{
+ "title": "M@STERS OF IDOL WORLD!!2014 の合同ブランドに 876 を足す (#311)",
+ "author": "daily-data-crawl",
+ "source": "https://github.com/fuga-if/idol-live-db/issues/311",
+ "fixes": [
+  {
+   "table": "events",
+   "id": "ev_the_idolmster_msters_of_idol_world2014",
+   "fields": {"joint_brand_ids": "cg,ml,876"},
+   "source": "https://github.com/fuga-if/idol-live-db/issues/311",
+   "note": "DAY2 (2014-02-23) の出演者に 876 の日高愛が登録済み。ほかの項目は現行と同じ"
+  }
+ ]
+}
