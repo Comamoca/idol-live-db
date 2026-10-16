@@ -39,6 +39,7 @@
           # 全プラットフォーム向け共通ツール
           commonPkgs = with pkgs; [
             nodejs
+            bun                                                # imas-live-api のテスト (vitest) 実行に使う
             python3
             sqlite
             nixd
@@ -55,6 +56,7 @@
               echo "🍀 ImasLiveDB devShell activated"
               echo "   Platform : ${pkgs.stdenv.system}"
               echo "   Node.js  : $(node --version 2>/dev/null || echo 'N/A')"
+              echo "   Bun      : $(bun --version 2>/dev/null || echo 'N/A')"
               echo "   Python   : $(python3 --version 2>/dev/null || echo 'N/A')"
               echo "   SQLite   : $(sqlite3 --version 2>/dev/null || echo 'N/A')"
               echo "   Swift    : $(swift --version 2>/dev/null | head -1 || echo 'N/A')"
