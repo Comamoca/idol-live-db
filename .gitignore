@@ -142,3 +142,6 @@ target-shared/
 
 # 空文字列正規化作業の一時ファイル (再生成できる)
 .normalize-empty-strings/
+
+# uv が作る仮想環境 (pyproject.toml / uv.lock が正)
+.venv/

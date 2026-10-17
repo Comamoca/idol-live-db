@@ -42,10 +42,11 @@ jobs:
           ref: develop
           persist-credentials: false
 
-      - uses: actions/setup-python@v5
+      # 依存は標準ライブラリだけ (urllib) だが、Python の版は他の workflow と同じく
+      # .python-version / uv.lock で固定する。
+      - uses: astral-sh/setup-uv@v10.3.0
         with:
-          python-version: "3.12"
-      # 依存は標準ライブラリだけ (urllib)。pip install は要らない。
+          enable-cache: true
 
       - name: Check secret
         id: gate
@@ -64,7 +65,7 @@ jobs:
         env:
           CLOUDFLARE_OBSERVABILITY_TOKEN: ${{ secrets.CLOUDFLARE_OBSERVABILITY_TOKEN }}
         run: |
-          python3 tools/lyrics/collect_request_logs.py --days "${{ inputs.days || '3' }}"
+          uv run --frozen python tools/lyrics/collect_request_logs.py --days "${{ inputs.days || '3' }}"
 
       - name: Commit if changed
         if: steps.gate.outputs.ok == 'true'

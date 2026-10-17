@@ -18,6 +18,24 @@
 - binary `master.sqlite` は **gitignore**。`db/master.sql` から各自再生成 (`tools/build_db.sh`、または apply ツールが自動生成)。
 - だから**コントリビューターは clone するだけで最新データに対して `--check` できる**。
 
+## Python 環境 (uv)
+
+`tools/` の依存はリポジトリ直下の `pyproject.toml` / `uv.lock` で固定している (`requests` / `ecdsa`)。
+
+```bash
+uv sync --frozen                      # 依存を .venv に入れる (Python は .python-version の 3.12)
+uv run python tools/apply_data.py --check
+```
+
+- CloudKit や Apple Music を叩くスクリプト (`seed_cloudkit.py` / `export_cloudkit.py` /
+  `sync_song_apple_music.py` 等) は `requests` / `ecdsa` が必要なので `uv run python` で動かす。
+- 標準ライブラリだけで動くもの (`apply_data.py --check` / `check_fk_integrity.py` /
+  `pick_simulator.py`) は素の `python3` でも動く。以下の例は `python3` と書いてあるが
+  `uv run python` に読み替えてよい。
+- CI も同じ `uv.lock` を使う (`astral-sh/setup-uv` + `uv sync --frozen`)。
+- `tools/build_db.sh` は `PYTHON` 環境変数で起動コマンドを差し替えられる
+  (CI は `PYTHON="uv run --frozen python"`)。
+
 ## データ投入は `tools/apply_data.py` 一本
 
 追加も修正も同じツールで扱う。`data/` 配下を読んで検証 → master.sqlite に反映 → CloudKit へ push する。

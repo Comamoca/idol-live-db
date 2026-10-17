@@ -48,13 +48,14 @@ jobs:
           ref: develop
           persist-credentials: false
 
-      - uses: actions/setup-python@v5
+      # Python 依存は pyproject.toml / uv.lock で固定し、uv で再現可能に入れる。
+      - uses: astral-sh/setup-uv@v10.3.0
         with:
-          python-version: "3.12"
+          enable-cache: true
 
       # 鍵を扱うジョブなので、入れるものの版を固定する。
       - name: Install deps
-        run: pip install requests==2.32.5 ecdsa==0.19.2
+        run: uv sync --frozen
 
       - name: Write CloudKit key
         env:
@@ -66,7 +67,7 @@ jobs:
         env:
           CLOUDKIT_KEY_ID: ${{ secrets.CLOUDKIT_KEY_ID }}
         run: |
-          python3 tools/export_cloudkit.py --production --key-file tools/eckey.pem
+          uv run --frozen python tools/export_cloudkit.py --production --key-file tools/eckey.pem
 
       - name: Remove CloudKit key
         if: always()
@@ -94,9 +95,13 @@ jobs:
           ref: develop
           persist-credentials: false
 
-      - uses: actions/setup-python@v5
+      # Python 依存は pyproject.toml / uv.lock で固定し、uv で再現可能に入れる。
+      - uses: astral-sh/setup-uv@v10.3.0
         with:
-          python-version: "3.12"
+          enable-cache: true
+
+      - name: Install deps
+        run: uv sync --frozen
 
       - uses: actions/download-artifact@v4
         with:
@@ -111,6 +116,8 @@ jobs:
       # 同梱される master.sqlite を生成し、外部キー整合性を検証する。
       # FK 違反があると初回起動 reseed が全ロールバックし、ユーザーに無言で旧データが残る。
       - name: FK integrity gate
+        env:
+          PYTHON: uv run --frozen python
         run: bash tools/build_db.sh
 
       # build_db.sh は落ちると DB を消すので、一覧は別の一時 DB で取り直す。
@@ -122,7 +129,7 @@ jobs:
             echo '## db/master.sql の検査に落ちた'
             echo 'bot/data-refresh-broken に保存した (bot/data-refresh には載せない)。CloudKit 側を直してから取り込む。'
             echo '```'
-            python3 tools/check_fk_integrity.py "$RUNNER_TEMP/check.sqlite" || true
+            uv run --frozen python tools/check_fk_integrity.py "$RUNNER_TEMP/check.sqlite" || true
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
@@ -224,10 +231,14 @@ jobs:
         with:
           node-version: 24
 
-      - uses: actions/setup-python@v5
+      - uses: astral-sh/setup-uv@v10.3.0
         if: steps.gate.outputs.enabled == 'true'
         with:
-          python-version: "3.12"
+          enable-cache: true
+
+      - name: Install deps
+        if: steps.gate.outputs.enabled == 'true'
+        run: uv sync --frozen
 
       - name: Install wrangler
         if: steps.gate.outputs.enabled == 'true'
@@ -237,7 +248,7 @@ jobs:
       # meta.version は「日付 + 組んだ SQL の内容ハッシュ」なので、中身が変わればキャッシュ鍵が切り替わる。
       - name: Sync to D1 imas-master-db
         if: steps.gate.outputs.enabled == 'true'
-        run: python3 tools/sync_master_d1.py --remote --yes --master-sql db/master.sql
+        run: uv run --frozen python tools/sync_master_d1.py --remote --yes --master-sql db/master.sql
 
       - name: Summary
         if: steps.gate.outputs.enabled == 'true'
