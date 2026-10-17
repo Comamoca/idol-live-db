@@ -37,14 +37,15 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      # Python の版は .python-version / uv.lock で固定する (依存は標準ライブラリだけ)。
+      - uses: astral-sh/setup-uv@v10
         with:
-          python-version: "3.12"
+          enable-cache: true
 
       - name: Check ckdb is additive only
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        run: python3 tools/check_ckdb_schema.py --base "$BASE_SHA" --summary "$GITHUB_STEP_SUMMARY"
+        run: uv run --frozen python tools/check_ckdb_schema.py --base "$BASE_SHA" --summary "$GITHUB_STEP_SUMMARY"
 
   # develop に入ったら、オーナーが本番へ反映するまでの TODO を Issue にする。
   # 反映そのものは人がやる (上の理由)。忘れて「ckdb に足したから済み」にならないように。
@@ -62,9 +63,10 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      # Python の版は .python-version / uv.lock で固定する (依存は標準ライブラリだけ)。
+      - uses: astral-sh/setup-uv@v10
         with:
-          python-version: "3.12"
+          enable-cache: true
 
       - name: Summarize the change
         env:
@@ -77,7 +79,7 @@ jobs:
             echo "前のコミット ($BEFORE) が無いので比較しない"; exit 0
           fi
           if ! git diff --quiet "$BEFORE" "$SHA" -- tools/cloudkit_schema.ckdb; then
-            python3 tools/check_ckdb_schema.py --base "$BEFORE" --summary body.md
+            uv run --frozen python tools/check_ckdb_schema.py --base "$BEFORE" --summary body.md
           fi
           added=$(git diff --name-only --diff-filter=A "$BEFORE" "$SHA" -- 'imas-live-api/migrations/*.sql')
           if [ -n "$added" ]; then

@@ -86,6 +86,12 @@ jobs:
           cache: npm
           cache-dependency-path: web/package-lock.json
 
+      # コールガイドの写し (tools/export_calls_dashboard.py) 用。runner の system python に
+      # 任せず、.python-version / uv.lock で版を固定する (依存は標準ライブラリだけ)。
+      - uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
+
       # cargo export (npm run export) より前に上げる (Simplifier 指摘 Altitude-11)。
       # 以降の cargo/wasm-pack 呼び出しは npm script 経由に統一する。
       - name: npm ci
@@ -132,7 +138,7 @@ jobs:
       # 焼き、警告だけ出す (Worker 側の不調で「今日」の更新まで止めない)。
       - name: Refresh call-guide snapshot
         run: |
-          python3 tools/export_calls_dashboard.py \
+          uv run --frozen python tools/export_calls_dashboard.py \
             || echo "::warning::コールガイドの写しを取れなかったので db/calls_dashboard.json (git 管理分) のまま焼きます"
 
       # web/package.json の "export" スクリプトをそのまま呼ぶ (cargo のコマンド文字列を

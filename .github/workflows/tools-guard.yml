@@ -29,17 +29,18 @@ jobs:
         with:
           persist-credentials: false
 
-      # refresh-data.yml と同じ版。手元 (macOS の 3.9) で動くかは構文検査の側で見る。
-      - uses: actions/setup-python@v5
+      # Python の版と依存は pyproject.toml / uv.lock で固定する (.python-version が 3.12)。
+      # 手元 (macOS の 3.9) で動くかは構文検査の側で見る。
+      - uses: astral-sh/setup-uv@v10
         with:
-          python-version: "3.12"
+          enable-cache: true
 
-      # export_cloudkit / seed_cloudkit のテストが requests を import する。版は refresh-data.yml と揃える。
+      # export_cloudkit / seed_cloudkit のテストが requests を import する。
       - name: Install deps
-        run: pip install requests==2.32.5 ecdsa==0.19.2
+        run: uv sync --frozen
 
       - name: Syntax check
-        run: python3 tools/check_python_syntax.py
+        run: uv run --frozen python tools/check_python_syntax.py
 
       # test_*.py を置いたディレクトリを全部拾う。ディレクトリを足したときに
       # ここへの書き足しを忘れて「テストはあるのに CI で走らない」に戻らないように。
@@ -47,6 +48,6 @@ jobs:
         run: |
           for dir in $(git ls-files -- ':(glob)tools/**/test_*.py' | xargs -n1 dirname | sort -u); do
             echo "::group::$dir"
-            python3 -m unittest discover -s "$dir" -p 'test_*.py'
+            uv run --frozen python -m unittest discover -s "$dir" -p 'test_*.py'
             echo "::endgroup::"
           done
