@@ -125,6 +125,7 @@ import com.fugaif.imaslivedb.ui.components.PersonalTagsSection
 import com.fugaif.imaslivedb.ui.designsystem.ImasTicket
 import com.fugaif.imaslivedb.ui.filtered.IdolFilterKind
 import com.fugaif.imaslivedb.ui.tags.IdolTagPickerSheet
+import com.fugaif.imaslivedb.ui.tags.TagRemovalConfirm
 import com.fugaif.imaslivedb.ui.theme.DS
 import com.fugaif.imaslivedb.ui.theme.ImasNumeralSize
 import com.fugaif.imaslivedb.ui.theme.ImasThemeProvider
@@ -183,6 +184,7 @@ fun IdolDetailScreen(
     val idol = editedIdol ?: state.idol
     var segment by rememberSaveable(idolId) { mutableIntStateOf(0) }
     var showTagPicker by rememberSaveable { mutableStateOf(false) }
+    var removingTag by remember { mutableStateOf<CommunityApi.IdolTag?>(null) }
     var showLoginPrompt by rememberSaveable { mutableStateOf(false) }
     var showMenu by remember { mutableStateOf(false) }
     var showIdolEdit by remember { mutableStateOf(false) }
@@ -261,10 +263,10 @@ fun IdolDetailScreen(
                             authState = authState,
                             similarTagIdols = state.similarTagIdols,
                             similarSharedTags = state.similarSharedTags,
-                            // 外す方向はゲートしない (iOS も自分が付けたタグの取り消しは素通し)。
+                            // 外す方向はゲートしないが、誤タップで外れないよう確認を挟む。
                             // 付ける方向はタグ投票の書き込みなので共通ゲートを通す。
                             onToggleTag = { tag ->
-                                if (tag.mine) viewModel.toggleTag(tag)
+                                if (tag.mine) removingTag = tag
                                 else startCommunityEdit { viewModel.toggleTag(tag) }
                             },
                             onOpenTagPicker = { startCommunityEdit { showTagPicker = true } },
@@ -283,6 +285,12 @@ fun IdolDetailScreen(
             }
         }
     }
+
+    TagRemovalConfirm(
+        tag = removingTag, name = { it.name },
+        onDismiss = { removingTag = null },
+        onConfirm = viewModel::toggleTag
+    )
 
     if (showTagPicker && idol != null) {
         IdolTagPickerSheet(
