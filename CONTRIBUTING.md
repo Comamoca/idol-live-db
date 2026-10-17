@@ -56,6 +56,8 @@ ImasLiveDB は**非公式ファンメイドの非商用プロジェクト**で�
 | **集計系コミュニティ** (タグ / 投票 等) | Worker (D1) 経由。レート制限・device 重複排除あり |
 
 - PR で出す時は送信前に `python3 tools/apply_data.py --check` で自己検証できる (鍵不要)。`--check` は出典の無い投稿を落とす。
+  `tools/` の Python 依存は `pyproject.toml` / `uv.lock` で固定済みなので、`uv sync --frozen` →
+  `uv run python tools/apply_data.py --check` でも同じ (nix devShell には `uv` が入っている)。
 - 各エントリに**出典URL (一次ソース) 必須**。オーナーがレビュー後 `--apply --push` で master.sqlite → CloudKit に一括反映。反映済みのファイルは `data/_applied/<種類>/` へ移される (`apply_data.py` はそこを読まない。PR 履歴と合わせた監査ログ)。
 
 - マスタの事実情報 (アイドル名・楽曲情報など) を直す時は、**必ず公式サイトを確認してから**修正する (推測で書き換えて別キャラの情報になる事故を防ぐ)。

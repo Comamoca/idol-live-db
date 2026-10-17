@@ -2,6 +2,9 @@
 # db/master.sql から binary master.sqlite を再生成する (binary は gitignore・各自生成)。
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# Python の起動コマンド。CI では uv で依存ごと固定するため PYTHON="uv run python" を渡す。
+# ローカルは devShell の python3 のまま動く (このスクリプトの Python は標準ライブラリのみ)。
+PYTHON="${PYTHON:-python3}"
 DUMP="$ROOT/db/master.sql"
 DB="$ROOT/ImasLiveDB/Resources/master.sqlite"
 [ -f "$DUMP" ] || { echo "db/master.sql が無い"; exit 1; }
@@ -13,7 +16,7 @@ sqlite3 "$DB" < "$DUMP"
 # アプリ初回起動の reseed が単一トランザクションで全ロールバックし、ユーザーには無言で
 # 旧データのまま継続してしまう (docs/DATA_PIPELINE.md / AppDatabase.reseedMasterTablesIfNeeded)。
 # ここで検知して生成を失敗させ、壊れた DB が同梱されるのを防ぐ。
-python3 "$ROOT/tools/check_fk_integrity.py" "$DB" || {
+$PYTHON "$ROOT/tools/check_fk_integrity.py" "$DB" || {
   echo "✗ 外部キー違反を検出。master.sqlite の同梱を中止 (db/master.sql を修正して再生成)。" >&2
   rm -f "$DB"
   exit 1
@@ -23,7 +26,7 @@ python3 "$ROOT/tools/check_fk_integrity.py" "$DB" || {
 # 同梱側に指紋が無いときの代わりに比べる (imas-core domain/sync_planning.rs reseed_needed)。
 # 設定画面の「データバージョン」もこの値。meta が欠けた master.sqlite は bundle=0 と読まれ、
 # 指紋の無い経路では reseed が二度と発火しない (FK ゲートでは検知できない)。
-python3 - "$DB" <<'PY' || { rm -f "$DB"; exit 1; }
+$PYTHON - "$DB" <<'PY' || { rm -f "$DB"; exit 1; }
 import sqlite3, sys
 conn = sqlite3.connect(sys.argv[1])
 row = conn.execute("SELECT value FROM meta WHERE key = 'data_version'").fetchone()

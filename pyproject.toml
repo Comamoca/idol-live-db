@@ -1,0 +1,14 @@
+[project]
+# tools/ の Python スクリプト群が使う依存をまとめるだけのプロジェクト。
+# 配布物ではないので package = false (ビルドしない)。
+name = "imas-live-db-tools"
+version = "0.0.0"
+description = "ImasLiveDB の data pipeline スクリプト (tools/) の依存定義"
+requires-python = ">=3.12"
+dependencies = [
+  "requests>=2.32",   # CloudKit Web Services / Apple Music / im@sparql への HTTP
+  "ecdsa>=0.19",      # CloudKit server-to-server 認証の ECDSA 署名
+]
+
+[tool.uv]
+package = false
