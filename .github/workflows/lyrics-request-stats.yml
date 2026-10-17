@@ -44,7 +44,7 @@ jobs:
 
       # 依存は標準ライブラリだけ (urllib) だが、Python の版は他の workflow と同じく
       # .python-version / uv.lock で固定する。
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.3.0
         with:
           enable-cache: true
 

@@ -49,7 +49,7 @@ jobs:
           persist-credentials: false
 
       # Python 依存は pyproject.toml / uv.lock で固定し、uv で再現可能に入れる。
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.3.0
         with:
           enable-cache: true
 
@@ -96,7 +96,7 @@ jobs:
           persist-credentials: false
 
       # Python 依存は pyproject.toml / uv.lock で固定し、uv で再現可能に入れる。
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.3.0
         with:
           enable-cache: true
 
@@ -231,7 +231,7 @@ jobs:
         with:
           node-version: 24
 
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.3.0
         if: steps.gate.outputs.enabled == 'true'
         with:
           enable-cache: true

@@ -61,7 +61,10 @@ jobs:
 
       # tools/ の Python スクリプトは uv (pyproject.toml / uv.lock) で実行する。
       # runner の system python に依存しないので、Python の入れ替えで CI が壊れない。
-      - uses: astral-sh/setup-uv@v10
+      #
+      # setup-uv は他の action と違い浮動 major タグ (v10) が打たれていないので、
+      # 実在するフルバージョンで固定する (v10 を指すと action の解決自体で落ちる)。
+      - uses: astral-sh/setup-uv@v10.3.0
         with:
           enable-cache: true
 

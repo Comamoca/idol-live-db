@@ -31,7 +31,7 @@ jobs:
 
       # Python の版と依存は pyproject.toml / uv.lock で固定する (.python-version が 3.12)。
       # 手元 (macOS の 3.9) で動くかは構文検査の側で見る。
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.3.0
         with:
           enable-cache: true
 
