@@ -1,0 +1,27 @@
+{
+ "title": "PROJECT IM@S vα-liv 3rdLIVE & MEETING -QONNECT AS ONE- (2027-01 名古屋・2027-03 東京) を追加",
+ "author": "Claude (daily-data-crawl)",
+ "source": ["https://idolmaster-official.jp/news/01_20181", "https://idolmaster-official.jp/va-liv/event/3rd_live"],
+ "note": "2026-10-17 発表。名古屋 (愛知県芸術劇場 大ホール) と東京 (日本工学院アリーナ) の 2 都市・6 公演。PRODUCER MEETING と 3rdLIVE は公式の公演名が一つ (3rdLIVE & MEETING) なので 1 イベントにした。会場名は特設の表記 (ニュースは「愛知芸術劇場」)。愛知県芸術劇場は venues に無いので venue_id は空。",
+ "events": [
+  {
+   "id": "ev_project_imas_valiv_3rdlive_meeting_qonnect_as_one",
+   "brand_id": "876",
+   "name": "PROJECT IM@S vα-liv 3rdLIVE & MEETING -QONNECT AS ONE-",
+   "name_kana": "ぷろじぇくとあいますゔいあらいぶさーどらいぶあんどみーてぃんぐこねくとあずわん",
+   "event_type": "live",
+   "kind": "live",
+   "is_streaming": 0,
+   "is_solo": 0,
+   "ticket_url": "https://idolmaster-official.jp/va-liv/event/3rd_live",
+   "shows": [
+    {"id": "sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_1", "name": "PRODUCER MEETING in NAGOYA", "date": "2027-01-30", "venue": "愛知県芸術劇場", "venue_city": "名古屋", "hall": "大ホール", "start_time": "17:00", "performer_type": "cast", "sort_order": 0},
+    {"id": "sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_2", "name": "3rdLIVE in NAGOYA 昼公演", "date": "2027-01-31", "venue": "愛知県芸術劇場", "venue_city": "名古屋", "hall": "大ホール", "start_time": "14:00", "performer_type": "cast", "sort_order": 1},
+    {"id": "sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_3", "name": "3rdLIVE in NAGOYA 夜公演", "date": "2027-01-31", "venue": "愛知県芸術劇場", "venue_city": "名古屋", "hall": "大ホール", "start_time": "18:00", "performer_type": "cast", "sort_order": 2},
+    {"id": "sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_4", "name": "PRODUCER MEETING in TOKYO", "date": "2027-03-21", "venue": "日本工学院アリーナ", "venue_id": "venue_日本工学院アリーナ", "start_time": "14:30", "performer_type": "cast", "sort_order": 3},
+    {"id": "sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_5", "name": "3rdLIVE in TOKYO Day1", "date": "2027-03-21", "venue": "日本工学院アリーナ", "venue_id": "venue_日本工学院アリーナ", "start_time": "18:30", "performer_type": "cast", "sort_order": 4},
+    {"id": "sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_6", "name": "3rdLIVE in TOKYO Day2", "date": "2027-03-22", "venue": "日本工学院アリーナ", "venue_id": "venue_日本工学院アリーナ", "start_time": "16:30", "performer_type": "cast", "sort_order": 5}
+   ]
+  }
+ ]
+}

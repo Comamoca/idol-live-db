@@ -1,0 +1,14 @@
+{
+ "title": "依田芳乃の属性を passion に (#312 #314)",
+ "author": "daily-data-crawl",
+ "source": ["https://github.com/fuga-if/idol-live-db/issues/312", "https://github.com/fuga-if/idol-live-db/issues/314"],
+ "fixes": [
+  {
+   "table": "idols",
+   "id": "cg_依田芳乃",
+   "fields": {"attribute": "passion"},
+   "source": "https://sparql.crssnky.xyz/spql/imas/query (imas:Type=Pa)",
+   "note": "DB は cute だったが、シンデレラガールズでの属性はパッション。#314 の色 #C4BCB7 は im@sparql の C7BAB4 (現行値) と合わないので不採用。#313 は現行と同じ (cute) で変更なし"
+  }
+ ]
+}

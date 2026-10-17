@@ -1,0 +1,18 @@
+{
+ "title": "vα-liv 3rdLIVE & MEETING 現地チケット アソビストア一般会員先行抽選",
+ "author": "Claude (daily-data-crawl)",
+ "ticket_sales": [
+  {
+   "event_id": "ev_project_imas_valiv_3rdlive_meeting_qonnect_as_one",
+   "kind": "lottery",
+   "name": "現地チケット アソビストア一般会員先行抽選",
+   "starts_at": "2026-10-17 21:30",
+   "ends_at": "2026-11-15 23:59",
+   "result_at": "2026-11-28 13:00",
+   "url": "https://asobiticket2.asobistore.jp/receptions/a911b189-ae4a-4bc6-9f15-729201d4ff7c",
+   "note": "入金 11/28 13:00〜12/2 23:59。各公演 2 枚まで・複数公演申込可。早期限定のグッズ付きチケットあり",
+   "source_url": "https://idolmaster-official.jp/news/01_20181",
+   "sort_order": 0
+  }
+ ]
+}
