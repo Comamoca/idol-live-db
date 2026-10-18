@@ -1,0 +1,36 @@
+{
+ "title": "会場 4 つを追加 (愛知県芸術劇場・ICE BSD・Gabin Art Hall・Edmonton Convention Centre)",
+ "author": "Claude",
+ "note": "venue_id が空のままだった公演の会場。キャパは出典が取れた愛知県芸術劇場 大ホールだけ。",
+ "venues": [
+  {
+   "id": "venue_愛知県芸術劇場",
+   "name": "愛知県芸術劇場",
+   "name_kana": "あいちけんげいじゅつげきじょう",
+   "prefecture": "愛知",
+   "aliases": "愛知芸術劇場",
+   "source": ["https://www-stage.aac.pref.aichi.jp/facility/main.html", "https://idolmaster-official.jp/va-liv/event/3rd_live"],
+   "note": "大ホールの総席数 2,480 は施設案内の「客席 総席数」。ヴイアラのニュースは「愛知芸術劇場」と書いているので別名に",
+   "halls": [{"name": "大ホール", "capacity": 2480}]
+  },
+  {
+   "id": "venue_iceindonesiaconventionexhibitionbsd",
+   "name": "ICE (Indonesia Convention Exhibition) BSD",
+   "name_kana": "あいすいんどねしあこんべんしょんえきしびしょんびーえすでぃー",
+   "aliases": "ICE BSD",
+   "source": "https://idolmaster-official.jp/news/01_20133"
+  },
+  {
+   "id": "venue_gabinarthall",
+   "name": "Gabin Art Hall",
+   "name_kana": "がびんあーとほーる",
+   "source": "https://idolmaster-official.jp/news/01_19478"
+  },
+  {
+   "id": "venue_edmontonconventioncentre",
+   "name": "Edmonton Convention Centre",
+   "name_kana": "えどもんとんこんべんしょんせんたー",
+   "source": "https://idolmaster-official.jp/news/01_19371"
+  }
+ ]
+}

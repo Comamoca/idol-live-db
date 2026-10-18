@@ -1,0 +1,201 @@
+{
+ "title": "venue_id が空の公演を会場に紐付ける (配信の BD ライブは stream_platform)",
+ "author": "Claude",
+ "fixes": [
+  {
+   "table": "shows",
+   "id": "sh_e656e30e-e4a6-4f8e-84fe-ab83bc7f7eb8",
+   "fields": {
+    "venue_id": "venue_toyotaarenatokyo"
+   },
+   "source": "derived:venues の TOYOTA ARENA TOKYO と同名"
+  },
+  {
+   "table": "shows",
+   "id": "sh_animethon_2026_musicfes_アイドルマスター_シャイニーカラーズ出演_1",
+   "fields": {
+    "venue_id": "venue_edmontonconventioncentre"
+   },
+   "source": "https://idolmaster-official.jp/news/01_19371"
+  },
+  {
+   "table": "shows",
+   "id": "sh_miki_hoshii_solo_showcase_the_future_spotlight_in_korea_1",
+   "fields": {
+    "venue_id": "venue_gabinarthall"
+   },
+   "source": "https://idolmaster-official.jp/news/01_19478"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_karma_naraku_発売記念イベント_1",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_karma_naraku_発売記念イベント_2",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_project_imas_valiv_producer_meeting_2024_from_now_on_1",
+   "fields": {
+    "venue_id": "venue_garden新木場factory"
+   },
+   "source": "derived:venues の GARDEN 新木場FACTORY と同名"
+  },
+  {
+   "table": "shows",
+   "id": "sh_project_imas_valiv_producer_meeting_2024_from_now_on_2",
+   "fields": {
+    "venue_id": "venue_garden新木場factory"
+   },
+   "source": "derived:venues の GARDEN 新木場FACTORY と同名"
+  },
+  {
+   "table": "shows",
+   "id": "sh_上水流宇宙_birthday_online_live_2026_1",
+   "fields": {
+    "stream_platform": "ASOBI STAGE"
+   },
+   "source": "derived:shows.venue の「配信：ASOBI STAGE」",
+   "note": "配信は会場ではない (data/venues/README)。2025 年の BD ライブと同じ持ち方"
+  },
+  {
+   "table": "shows",
+   "id": "sh_灯里愛夏_birthday_online_live_2026_1",
+   "fields": {
+    "stream_platform": "ASOBI STAGE"
+   },
+   "source": "derived:shows.venue の「配信：ASOBI STAGE」",
+   "note": "配信は会場ではない (data/venues/README)。2025 年の BD ライブと同じ持ち方"
+  },
+  {
+   "table": "shows",
+   "id": "sh_レトラ_birthday_online_live_2026_1",
+   "fields": {
+    "stream_platform": "ASOBI STAGE"
+   },
+   "source": "derived:shows.venue の「配信：ASOBI STAGE」",
+   "note": "配信は会場ではない (data/venues/README)。2025 年の BD ライブと同じ持ち方"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_ring_ring_ringの魔法_街角メランコリー_発売記念イベント_1",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_ring_ring_ringの魔法_街角メランコリー_発売記念イベント_2",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_super_duper_dreamer_beast_mode_発売記念イベント_1",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_super_duper_dreamer_beast_mode_発売記念イベント_2",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_tokyo自由系_ガール_my_time_発売記念イベント_1",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_tokyo自由系_ガール_my_time_発売記念イベント_2",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_ボーダーレス_ノンストレス_oh_yeah_発売記念イベント_1",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_ボーダーレス_ノンストレス_oh_yeah_発売記念イベント_2",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_散花-sanka-_紅花-benibana-_発売記念イベント_1",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_the_idolm@ster_shiny_colors_song_for_prism_散花-sanka-_紅花-benibana-_発売記念イベント_2",
+   "fields": {
+    "venue_id": "venue_都内某所"
+   },
+   "source": "derived:既存の公演と同じ「都内某所」"
+  },
+  {
+   "table": "shows",
+   "id": "sh_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier_1",
+   "fields": {
+    "venue_id": "venue_iceindonesiaconventionexhibitionbsd"
+   },
+   "source": "https://idolmaster-official.jp/news/01_20133"
+  },
+  {
+   "table": "shows",
+   "id": "sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_1",
+   "fields": {
+    "venue_id": "venue_愛知県芸術劇場"
+   },
+   "source": "https://idolmaster-official.jp/va-liv/event/3rd_live"
+  },
+  {
+   "table": "shows",
+   "id": "sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_2",
+   "fields": {
+    "venue_id": "venue_愛知県芸術劇場"
+   },
+   "source": "https://idolmaster-official.jp/va-liv/event/3rd_live"
+  },
+  {
+   "table": "shows",
+   "id": "sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_3",
+   "fields": {
+    "venue_id": "venue_愛知県芸術劇場"
+   },
+   "source": "https://idolmaster-official.jp/va-liv/event/3rd_live"
+  }
+ ]
+}
