@@ -1,8 +1,0 @@
-{
- "title": "876 PRODUCTION FES. DAY1 / DAY2 の開演時刻",
- "source": "https://idolmaster-official.jp/va-liv/event/876profes",
- "fixes": [
-  { "table": "shows", "id": "sh_L1238", "fields": { "start_time": "18:00" }, "note": "DAY1 開場17:00／開演18:00" },
-  { "table": "shows", "id": "sh_L1239", "fields": { "start_time": "17:00" }, "note": "DAY2 開場16:00／開演17:00" }
- ]
-}

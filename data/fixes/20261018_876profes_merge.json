@@ -1,0 +1,60 @@
+{
+ "title": "876 PRODUCTION FES. を 1 つのライブにまとめる",
+ "_help": "公式は「THE IDOLM@STER 20th Anniversary 876 PRODUCTION FES.」1 つに DAY1〜DAY3 (全4公演) の構成だが、DB では日ごとのタイトルで 3 ライブに分かれていて、フェス名で検索すると 0 件だった (2026-10-18 fuga 承認)。DAY1 のライブ (id はそのまま) をフェスに改名し、DAY2・DAY3 の公演を移す。公演 id は変えないのでセトリ・出演者・チケット料金・参戦記録はそのまま付いてくる。空になる旧ライブ 2 件の削除は tools/pending_cloudkit_deletions_876profes_merge_20261018.tsv。name_kana はかなで引けない略称「876プロフェス」「プロダクションフェス」用。",
+ "source": "https://idolmaster-official.jp/va-liv/event/876profes",
+ "fixes": [
+  {
+   "table": "events",
+   "id": "ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_-",
+   "fields": {
+    "name": "THE IDOLM@STER 20th Anniversary 876 PRODUCTION FES.",
+    "name_kana": "876ぷろふぇす ぷろだくしょんふぇす",
+    "event_type": "anniversary"
+   },
+   "note": "公演名: THE IDOLM@STER 20th Anniversary 876 PRODUCTION FES."
+  },
+  {
+   "table": "shows",
+   "id": "sh_L1238",
+   "fields": {
+    "name": "DAY1 PROJECT IM@S vα-liv 2ndLIVE -BEYOND THE CUSTOM !!!-",
+    "start_time": "18:00",
+    "sort_order": 1
+   },
+   "note": "DAY1 2026年2月21日(土) 開場17:00／開演18:00"
+  },
+  {
+   "table": "shows",
+   "id": "sh_L1239",
+   "fields": {
+    "event_id": "ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_-",
+    "name": "DAY2 THE IDOLM@STER Dearly Stars -Dearly, Dearly MEETING !!!-",
+    "start_time": "17:00",
+    "sort_order": 2
+   },
+   "note": "DAY2 2026年2月22日(日) 開場16:00／開演17:00"
+  },
+  {
+   "table": "shows",
+   "id": "sh_L1240",
+   "fields": {
+    "event_id": "ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_-",
+    "name": "DAY3 昼公演 Dearly Stars×vα-liv LIVE -UNDER ONE SKY !!!!!!-",
+    "start_time": "14:00",
+    "sort_order": 3
+   },
+   "note": "DAY3 2026年2月23日(月・祝) 昼公演13:00開場/14:00開演"
+  },
+  {
+   "table": "shows",
+   "id": "sh_L1241",
+   "fields": {
+    "event_id": "ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_-",
+    "name": "DAY3 夜公演 Dearly Stars×vα-liv LIVE -UNDER ONE SKY !!!!!!-",
+    "start_time": "17:30",
+    "sort_order": 4
+   },
+   "note": "DAY3 夜公演16:30開場/17:30開演"
+  }
+ ]
+}
