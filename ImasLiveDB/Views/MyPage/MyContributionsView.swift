@@ -1,27 +1,31 @@
 import SwiftUI
 
 /// 自分の投稿累計の内訳ビュー。プロデュースタブ「投稿」タイル → ここに飛ぶ。
-/// ローカル LocalContributionLog のカウントを内訳として並べる。
+/// 件数と内訳はサーバ (`GET /users/:id/badges`) の値をそのまま出す。端末には持たない。
 /// 上には、サーバから取った手応え (届いた Good・先週セトリが見られた数) を出す。
 /// 個別履歴 (どのライブのセトリ編集か等) は将来の拡張 — 今は累計表示で割り切る。
 struct MyContributionsView: View {
-    @State private var log = LocalContributionLog.shared
+    /// サーバの編集の件数と種類別の内訳。未ログイン・未取得は nil。
+    @State private var badges: UserBadges?
     @State private var feedbackStore = ContributionFeedbackStore.shared
     /// 公開された歌詞の曲名 (端末のマスタから引く)。
     @State private var lyricSongTitles: [String: String] = [:]
 
     var body: some View {
         ImasPage {
-            ImasStatTile(systemImage: "square.and.pencil", value: "\(log.total)", unit: "件",
+            ImasStatTile(systemImage: "square.and.pencil", value: "\(badges?.editCount ?? 0)", unit: "件",
                          label: "コミュニティへの投稿累計")
 
             feedbackSections
 
-            ImasSection("内訳", style: .small) {
-                ImasStatGrid(columns: 2) {
-                    ForEach(LocalContributionLog.Kind.allCases, id: \.rawValue) { kind in
-                        ImasStatTile(systemImage: kind.systemImage, value: "\(log.count(of: kind))",
-                                     unit: "件", label: kind.label)
+            if !breakdown.isEmpty {
+                ImasSection("内訳", style: .small,
+                            footer: "1 回の編集がいくつもの種類にまたがるときは、それぞれに数えます。") {
+                    ImasStatGrid(columns: 2) {
+                        ForEach(breakdown, id: \.type) { item in
+                            ImasStatTile(systemImage: EditFeedFormat.recordTypeIcon(item.type), value: "\(item.count)",
+                                         unit: "件", label: EditFeedFormat.recordTypeLabel(item.type))
+                        }
                     }
                 }
             }
@@ -37,12 +41,13 @@ struct MyContributionsView: View {
             }
             .buttonStyle(.plain)
 
-            ImasNote("セトリ編集・動画追加・タグ追加が累計に含まれます。再インストールするとカウントはリセットされます (端末ローカル記録)。")
+            ImasNote("アプリから入れた編集の件数です。取り消された編集も数えます。")
         }
         .navigationTitle("マイ投稿")
         .navigationBarTitleDisplayMode(.inline)
         .trackScreen("my_contributions")
         .task {
+            badges = await BadgeService.shared.currentUserBadges(forceReload: true)
             await feedbackStore.refresh(force: true)
             let ids = feedbackStore.feedback?.lyrics?.published.map(\.songId) ?? []
             if !ids.isEmpty, let songs = try? await AppContainer.shared.songReading.songs(ids: ids) {
@@ -51,6 +56,14 @@ struct MyContributionsView: View {
         }
         // 開いている間は NEW を見せたまま、閉じたときに既読にする。
         .onDisappear { feedbackStore.markGoodsSeen() }
+    }
+
+    /// 種類別の件数。多い順、同数は種類名の順。
+    private var breakdown: [(type: String, count: Int)] {
+        (badges?.categories ?? [:])
+            .filter { $0.value > 0 }
+            .map { (type: $0.key, count: $0.value) }
+            .sorted { $0.count != $1.count ? $0.count > $1.count : $0.type < $1.type }
     }
 
     /// 届いた Good と、先週セトリが見られた数。ログインしていて取れたときだけ。

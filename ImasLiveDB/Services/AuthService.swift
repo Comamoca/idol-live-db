@@ -146,10 +146,10 @@ final class AuthService {
         // 残すとサインアウト後/別アカウント切替後に前ユーザーの状態が最大 TTL 分漏れる。
         SetlistLikeService.shared.clearCache()
         PredictionService.shared.clearCache()
-        // ローカル永続の投票履歴・投稿履歴も user 依存。残すと別アカウント切替後に
-        // 前ユーザーの投票済み/投稿累計が漏れるので破棄する。
+        // ローカル永続の投票履歴も user 依存。残すと別アカウント切替後に
+        // 前ユーザーの投票済みが漏れるので破棄する。投稿の件数はサーバの値のキャッシュを捨てる。
         LocalPollVoteLog.shared.clear()
-        LocalContributionLog.shared.clear()
+        BadgeService.shared.invalidateAll()
         ContributionFeedbackStore.shared.resetForSignOut()
     }
 

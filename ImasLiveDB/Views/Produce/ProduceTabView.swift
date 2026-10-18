@@ -19,6 +19,8 @@ struct ProduceTabView: View {
     // あなたの活動サマリ。
     @State private var attendedCount: Int = 0
     @State private var predictionCount: Int = 0
+    /// 自分の編集の件数 (サーバ `editCount`)。未ログインなら 0。
+    @State private var contributionCount: Int = 0
     @State private var favoriteCount: Int = 0    // 曲+アイドル+ライブの合計
     @State private var collectedCount: Int = 0
     /// 習熟度を 1 段でも付けた曲数 (タイルの数字)。集計は core、ここは件数だけ。
@@ -31,7 +33,6 @@ struct ProduceTabView: View {
     // ローカル履歴 (投稿・投票) は @Observable で参照するだけでカウントが見える。
     @State private var voteLog = LocalPollVoteLog.shared
     @State private var imageService = CustomImageService.shared
-    @State private var contributionLog = LocalContributionLog.shared
     /// 自分の編集に付いた Good の新着と、自分が入れたセトリの先週の閲覧数。
     @State private var feedbackStore = ContributionFeedbackStore.shared
 
@@ -234,7 +235,7 @@ struct ProduceTabView: View {
                     ImasStatTile(systemImage: "star.fill", value: numberString(favoriteCount), label: "お気に入り", seed: pickBrandSeed, tappable: true)
                 }
                 statTileLink(route: .myContributions) {
-                    ImasStatTile(systemImage: "square.and.pencil", value: numberString(contributionLog.total), label: "投稿", seed: pickBrandSeed, tappable: true)
+                    ImasStatTile(systemImage: "square.and.pencil", value: numberString(contributionCount), label: "投稿", seed: pickBrandSeed, tappable: true)
                 }
                 statTileLink(route: .myVotes) {
                     ImasStatTile(systemImage: "chart.bar.doc.horizontal", value: numberString(voteLog.votedPollCount), label: "投票", seed: pickBrandSeed, tappable: true)
@@ -658,16 +659,19 @@ struct ProduceTabView: View {
         }
     }
 
-    /// サーバー指標 (予想数)。未ログインなら 0。
-    /// 編集数 / 受Good は UI 上で出さなくなったため取得を停止 (badges API は別画面で必要なら再開)。
+    /// サーバー指標 (予想数・編集の件数)。未ログインなら 0。
     private func loadServerActivity() async {
         await feedbackStore.refresh()
         guard AuthService.shared.isSignedIn else {
             predictionCount = 0
+            contributionCount = 0
             return
         }
         if let predictions = try? await PredictionService.shared.myPredictions() {
             predictionCount = predictions.count
+        }
+        if let badges = await BadgeService.shared.currentUserBadges() {
+            contributionCount = badges.editCount
         }
     }
 }
