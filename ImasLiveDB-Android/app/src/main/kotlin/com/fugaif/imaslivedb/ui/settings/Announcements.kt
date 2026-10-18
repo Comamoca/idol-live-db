@@ -2,6 +2,7 @@ package com.fugaif.imaslivedb.ui.settings
 
 import android.content.Context
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Abc
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.AddAPhoto
@@ -49,6 +50,21 @@ enum class AnnouncementLink { WIDGET_HOW_TO }
 object AnnouncementCatalog {
     /** 新しいものほど上 (表示順)。 */
     val all: List<Announcement> = listOf(
+        Announcement(
+            id = "v2.8.0_share_to_x",
+            date = "2026-10-19",
+            title = "X へのシェアが画像付きに",
+            summary = "投票の結果や「今日は何の日？」を、画像と一言を付けて X に投稿できるようになりました。",
+            body = listOf(
+                "「X にポスト」はブラウザでなく、X アプリの投稿画面を開くようにしました。X アプリでログインしているアカウントからそのまま投稿できます (X アプリが無いときはブラウザで開きます)。",
+                "みんなの投票: 「結果を画像でシェア」から共有すると、結果の画像に「お題「〇〇」の結果」の一言が付きます。共有先で X を選ぶと、画像と一言の入った投稿画面になります。",
+                "今日は何の日？: シェアのメニューに「画像を付けてシェア」を足しました。写真から選んだ画像と、その日の出来事の一言を一緒に共有できます。",
+                "設定と回収ダッシュボードに戻る矢印を付け、今のタブを押し直すと最初の画面へ戻るようにしました。自分が付けたタグを外す前に確認を出します。",
+            ),
+            icon = Icons.AutoMirrored.Filled.Send,
+            tint = "#3373BF",
+            link = null
+        ),
         Announcement(
             id = "v2.7.0_profile",
             date = "2026-10-14",
