@@ -1272,7 +1272,6 @@ INSERT INTO "events" VALUES('ev_nhk総合music_japan収録放送11月16日深夜
 INSERT INTO "events" VALUES('ev_nhk総合naomiの部屋','sidem','NHK総合『NAOMIの部屋』','broadcast',1,1,'live',NULL,NULL,NULL,NULL,NULL,'そうごうのへや');
 INSERT INTO "events" VALUES('ev_nhk総合シブヤノオト生放送','cg','NHK総合『シブヤノオト』(生放送)','broadcast',1,1,'live',NULL,NULL,NULL,NULL,NULL,'そうごうしぶやのおとなまほうそう');
 INSERT INTO "events" VALUES('ev_project_ims_vα-liv_1stlive_-here_we_are-','876','PROJECT IM@S vα-liv 1stLIVE -HERE WE ARE!!!-','anniversary',0,1,'live',NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO "events" VALUES('ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_-','876','PROJECT IM@S vα-liv 2ndLIVE -BEYOND THE CUSTOM !!!-','anniversary',0,1,'live',NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('ev_project_ims_vα-liv_live_-the_last_statement-','876','PROJECT IM@S vα-liv LIVE -THE LAST STATEMENT!!!-','live',1,1,'live',NULL,NULL,NULL,NULL,NULL,NULL);
 INSERT INTO "events" VALUES('ev_reanimation-rave_in_新宿歌舞伎町-vol4','765as','Re:animation-Rave In 新宿歌舞伎町-Vol.4','external_event',0,1,'live',NULL,NULL,NULL,NULL,NULL,'しんじゅくかぶきちょう');
 INSERT INTO "events" VALUES('ev_sanrio_virtual_festival_2026_215sun','876','SANRIO VIRTUAL FESTIVAL (2026) 2/15(sun)','external_event',1,1,'live',NULL,NULL,NULL,NULL,NULL,NULL);
@@ -1906,6 +1905,8 @@ INSERT INTO "events" VALUES('ev_the_idolmster_sidem_passionable_reading_show_魂
 INSERT INTO "events" VALUES('ev_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier','765as','MIKI HOSHII SOLO SHOWCASE「THE FUTURE SPOTLIGHT」in Comic Frontier','live',0,0,'live',NULL,NULL,'https://comifuro.net/',NULL,NULL,NULL);
 INSERT INTO "events" VALUES('ev_劇場版the_idolmster_movie輝きの向こう側へスペシャルイベント','other','劇場版『THE IDOLM＠STER MOVIE～輝きの向こう側へ!～』スペシャルイベント','live',0,1,'live',NULL,NULL,'https://idolmaster.jp/blog/?p=615',NULL,NULL,'げきじょうばんーかがやきのむこうがわへーすぺしゃるいべんと');
 INSERT INTO "events" VALUES('ev_the_idolmster_msters_of_idol_world2014','765as','THE IDOLM@STER M@STERS OF IDOL WORLD!!2014','live',0,1,'live',NULL,NULL,NULL,'cg,ml,876',NULL,NULL);
+INSERT INTO "events" VALUES('ev_project_imas_valiv_3rdlive_meeting_qonnect_as_one','876','PROJECT IM@S vα-liv 3rdLIVE & MEETING -QONNECT AS ONE-','live',0,0,'live',NULL,NULL,'https://idolmaster-official.jp/va-liv/event/3rd_live',NULL,NULL,'ぷろじぇくとあいますゔいあらいぶさーどらいぶあんどみーてぃんぐこねくとあずわん');
+INSERT INTO "events" VALUES('ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_-','876','THE IDOLM@STER 20th Anniversary 876 PRODUCTION FES.','anniversary',0,1,'live',NULL,NULL,NULL,NULL,NULL,'876ぷろふぇす ぷろだくしょんふぇす');
 CREATE TABLE idol_brands (idol_id TEXT NOT NULL, brand_id TEXT NOT NULL, is_primary INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (idol_id, brand_id));
 INSERT INTO "idol_brands" VALUES('cg_大石泉','cg',1);
 INSERT INTO "idol_brands" VALUES('cg_双葉杏','cg',1);
@@ -3067,7 +3068,6 @@ INSERT INTO "idols" VALUES('cg_仙崎恵磨','cg','仙崎恵磨','せんざき�
 INSERT INTO "idols" VALUES('cg_伊集院惠','cg','伊集院惠','いじゅういんめぐみ',NULL,'#521078',4018,'--09-24','O',160.0,44.0,'東京',21,86.0,56.0,81.0,'天秤座','一人旅',NULL,'一人旅が趣味の落ち着いた21歳アイドル。腰まで伸びる長髪をひとつにまとめている。','female','left','伊集院','惠',NULL,'2011-11-28','cute',0,NULL,NULL);
 INSERT INTO "idols" VALUES('cg_佐々木千枝','cg','佐々木千枝','ささきちえ',NULL,'#006AB6',4075,'--06-07','AB',139.0,33.0,'富山',11,73.0,49.0,73.0,'双子座','裁縫',NULL,'11歳の気配り上手な富山出身アイドル。手作りのうさぎ髪飾りがトレードマーク、裁縫が趣味。CV: 今井麻夏。','female','left','佐々木','千枝',NULL,'2011-11-28','cute',0,NULL,NULL);
 INSERT INTO "idols" VALUES('cg_佐久間まゆ','cg','佐久間まゆ','さくままゆ',NULL,'#D1197B',4073,'--09-07','B',153.0,40.0,'仙台',16,78.0,54.0,80.0,'乙女座','お料理、編み物',NULL,'「プロデューサーさんだけのアイドル」と語る重愛系のアイドル。手芸や料理が得意な16歳。CV: 牧野由依。','female','both','佐久間','まゆ',NULL,'2012-06-26','cute',0,NULL,NULL);
-INSERT INTO "idols" VALUES('cg_依田芳乃','cg','依田芳乃','よりたよしの',NULL,'#C7BAB4',4185,'--07-03','O',151.0,40.0,'鹿児島',16,73.0,53.0,73.0,'蟹座','失せ物探し、悩み事解決、石ころ集め',NULL,'人々の願いを叶えるのが好きな16歳の神秘的アイドル。古めかしい語尾で話す純粋無垢な性格。CV: 高田憂希。','female','right','依田','芳乃',NULL,'2014-05-28','cute',0,NULL,NULL);
 INSERT INTO "idols" VALUES('cg_八神マキノ','cg','八神マキノ','やがみまきの',NULL,'#A9A3E1',4175,'--11-07','B',160.0,45.0,'岐阜',18,85.0,56.0,83.0,'蠍座','諜報活動',NULL,'頭の回転が早くスマートな18歳アイドル。趣味は諜報活動で、甘いものに弱い。CV: 二ノ宮ゆい。','female','right','八神','マキノ',NULL,'2013-07-17','cool',0,NULL,NULL);
 INSERT INTO "idols" VALUES('cg_兵藤レナ','cg','兵藤レナ','ひょうどうれな',NULL,'#D8076B',4135,'--10-03','O',167.0,48.0,'東京',27,92.0,56.0,84.0,'天秤座','トランプ',NULL,'元カジノディーラーの27歳アイドル。勝負好きで負けず嫌い、ビリヤードや麻雀も得意。','female','left','兵藤','レナ',NULL,'2011-11-28','cool',0,NULL,NULL);
 INSERT INTO "idols" VALUES('cg_冴島清美','cg','冴島清美','さえじまきよみ',NULL,'#F6BD30',4070,'--09-26','A',153.0,43.0,'沖縄',15,76.0,58.0,78.0,'天秤座','掃除、整理整頓、腕章作り',NULL,'沖縄出身の15歳「超☆風紀委員」アイドル。アイドルが正しい行いをしているか調べるため転身。','female','right','冴島','清美',NULL,'2013-07-17','cool',0,NULL,NULL);
@@ -3336,9 +3336,10 @@ INSERT INTO "idols" VALUES('ml_馬場このみ','ml','馬場このみ','ばば�
 INSERT INTO "idols" VALUES('ml_高坂海美','ml','高坂海美','こうさかうみ',NULL,'#E9739B',5008,'--08-10','O',155.0,45.0,'千葉',16,82.0,57.0,84.0,'獅子座','ボルダリング','常人にできないポージングができる','いつもじっとしていられない！ 明るく元気でアクティブな女の子！ CV: 上田麗奈。','female','right','高坂','海美',NULL,'2013-02-27','princess',0,NULL,'girly');
 INSERT INTO "idols" VALUES('ml_高山紗代子','ml','高山紗代子','たかやまさよこ',NULL,'#7F6575',5016,'--12-29','A',156.0,42.0,'茨城',17,82.0,55.0,80.0,'山羊座','ハリネズミの飼育、日記','一晩寝ると元気になれる','憧れのトップアイドル目指して、 全力で前へ進み続ける熱血系アイドル！ CV: 駒形友梨。','female','right','高山','紗代子',NULL,'2013-02-27','princess',0,NULL,'girly');
 INSERT INTO "idols" VALUES('sidem_花園百々人','sidem','花園百々人','はなぞのももひと',NULL,'#A2D55E',6048,'--06-30','A',177.0,58.0,'東京',17,NULL,NULL,NULL,'蟹座','なし','人に愛されること❤','柔和で人懐っこい人気者だが自分のことを話したがらない男性アイドル。C.FIRSTメンバー。CV: 宮﨑雅也。','male',NULL,'花園','百々人',NULL,'2021-10-06','mental',0,NULL,NULL);
+INSERT INTO "idols" VALUES('cg_依田芳乃','cg','依田芳乃','よりたよしの',NULL,'#C7BAB4',4185,'--07-03','O',151.0,40.0,'鹿児島',16,73.0,53.0,73.0,'蟹座','失せ物探し、悩み事解決、石ころ集め',NULL,'人々の願いを叶えるのが好きな16歳の神秘的アイドル。古めかしい語尾で話す純粋無垢な性格。CV: 高田憂希。','female','right','依田','芳乃',NULL,'2014-05-28','passion',0,NULL,NULL);
 CREATE TABLE meta (key TEXT PRIMARY KEY NOT NULL, value TEXT);
 INSERT INTO "meta" VALUES('schema_version','1');
-INSERT INTO "meta" VALUES('data_version','105');
+INSERT INTO "meta" VALUES('data_version','106');
 INSERT INTO "meta" VALUES('migration_v14_idol_is_external','applied');
 INSERT INTO "meta" VALUES('content_hash','2aa7a46f3715a4a1ef87214b4fffccbd4137a8edc8d49048d0e084df00c7a2ce');
 CREATE TABLE setlist_items (id TEXT PRIMARY KEY NOT NULL, show_id TEXT NOT NULL, song_id TEXT NOT NULL, position INTEGER NOT NULL, section TEXT, notes TEXT, unit_name TEXT, UNIQUE(show_id, position));
@@ -86247,6 +86248,24 @@ INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimat
 INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','ml_春日未来','member');
 INSERT INTO "show_cast" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','sc_小宮果穂','member');
 INSERT INTO "show_cast" VALUES('sh_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier_1','765as_星井美希','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_1','876_サラ_レトラ_オリヴェイラ_ウタガワ','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_1','876_上水流宇宙','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_1','876_灯里愛夏','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_2','876_サラ_レトラ_オリヴェイラ_ウタガワ','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_2','876_上水流宇宙','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_2','876_灯里愛夏','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_3','876_サラ_レトラ_オリヴェイラ_ウタガワ','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_3','876_上水流宇宙','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_3','876_灯里愛夏','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_4','876_サラ_レトラ_オリヴェイラ_ウタガワ','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_4','876_上水流宇宙','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_4','876_灯里愛夏','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_5','876_サラ_レトラ_オリヴェイラ_ウタガワ','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_5','876_上水流宇宙','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_5','876_灯里愛夏','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_6','876_サラ_レトラ_オリヴェイラ_ウタガワ','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_6','876_上水流宇宙','member');
+INSERT INTO "show_cast" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_6','876_灯里愛夏','member');
 CREATE TABLE show_cast_performers (
             show_id TEXT NOT NULL,
             idol_id TEXT NOT NULL,
@@ -87728,7 +87747,6 @@ INSERT INTO "show_tickets" VALUES('tkt_sh_the_idolm@ster_20th_anniversary_more_r
 INSERT INTO "show_tickets" VALUES('tkt_sh_the_idolm@ster_20th_anniversary_more_re@lity_live_idol_world_super_festival_2026_3_stream_stream_1b4b53','sh_the_idolm@ster_20th_anniversary_more_re@lity_live_idol_world_super_festival_2026_3','stream','【全景定点】配信視聴チケット',2500,0,'税込・機能料込。現地の定点カメラ映像のみ / 出典: https://idolmaster-official.jp/live_event/mr_idolworld2026/',3,NULL,NULL);
 INSERT INTO "show_tickets" VALUES('tkt_sh_the_idolm@ster_20th_anniversary_more_re@lity_live_idol_world_super_festival_2026_3_live_viewing_seat_5cd289','sh_the_idolm@ster_20th_anniversary_more_re@lity_live_idol_world_super_festival_2026_3','live_viewing','全席指定',5000,0,'全国の映画館 / 出典: https://idolmaster-official.jp/live_event/mr_idolworld2026/',1,NULL,NULL);
 CREATE TABLE shows (id TEXT PRIMARY KEY NOT NULL, event_id TEXT NOT NULL, name TEXT NOT NULL, date TEXT NOT NULL, venue TEXT, venue_city TEXT, start_time TEXT, sort_order INTEGER NOT NULL, performer_type TEXT DEFAULT 'cast', venue_id TEXT, hall TEXT, stream_platform TEXT, venue_mode TEXT);
-INSERT INTO "shows" VALUES('sh_e656e30e-e4a6-4f8e-84fe-ab83bc7f7eb8','ev_e8a2e8ce-261b-43f6-829f-d4b041ddf000','リスアニ！LIVE on TOKYO ANIME MUSIC','2026-06-09','TOYOTA ARENA TOKYO','東京都江東区青海１丁目３−３−１','19:00',0,'cast',NULL,NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L0003','ev_アイドルマスター6911時の回13時の回15時30分の回','アイドルマスター6/9（11時の回、13時の回、15時30分の回）','2005-02-19','千葉・幕張メッセ国際展示場',NULL,NULL,1,'cast','venue_幕張メッセ','国際展示場',NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L0005','ev_the_idolmster_masterpieceシリーズ発売記念シークレットイベント','「THE IDOLM@STER MASTERPIECE」シリーズ発売記念シークレットイベント','2006-01-21','東京・赤羽会館',NULL,NULL,1,'cast','venue_赤羽会館',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L0006','ev_the_idolmster_1st_anniversary_live','THE IDOLM@STER 1st ANNIVERSARY LIVE','2006-07-23','東京・新木場STUDIO COAST',NULL,NULL,1,'cast','venue_新木場studiocoast',NULL,NULL,NULL);
@@ -88757,10 +88775,6 @@ INSERT INTO "shows" VALUES('sh_L1232','ev_bandai_namco_music_live_festival_x_ani
 INSERT INTO "shows" VALUES('sh_L1233','ev_涼風しとらレトラ_虛擬線下演唱會_in_開拓動漫祭_fancy_frontier46','涼風しとら×レトラ 虛擬線下演唱會 in 開拓動漫祭 Fancy Frontier46','2026-02-08','台北・花博爭豔館',NULL,NULL,1,'cast','venue_台北・花博爭豔館',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L1235','ev_the_idolmster_shiny_colors_シャニマス大感謝祭_283スポーツフェスティバル','DAY1','2026-02-14','東京・京王アリーナTOKYO',NULL,NULL,1,'cast','venue_京王アリーナtokyo',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L1236','ev_the_idolmster_shiny_colors_シャニマス大感謝祭_283スポーツフェスティバル','DAY2','2026-02-15','東京・京王アリーナTOKYO',NULL,NULL,2,'cast','venue_京王アリーナtokyo',NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_L1238','ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_-','PROJECT IM@S vα-liv 2ndLIVE -BEYOND THE CUSTOM !!!-','2026-02-21','東京・日本工学院アリーナ',NULL,NULL,1,'cast','venue_日本工学院アリーナ',NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_L1239','ev_the_idolmster_dearly_stars_-dearly_dearly_meeting_-','THE IDOLM@STER Dearly Stars -Dearly, Dearly MEETING !!!-','2026-02-22','東京・日本工学院アリーナ',NULL,NULL,1,'cast','venue_日本工学院アリーナ',NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_L1240','ev_dearly_starsvα-liv_live_-under_one_sky_-','昼公演','2026-02-23','東京・日本工学院アリーナ',NULL,NULL,1,'cast','venue_日本工学院アリーナ',NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_L1241','ev_dearly_starsvα-liv_live_-under_one_sky_-','夜公演','2026-02-23','東京・日本工学院アリーナ',NULL,NULL,2,'cast','venue_日本工学院アリーナ',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L1244','ev_315_winter_passion_ステージ_climax','315 WINTER PASSION ステージ ～CLimax～','2026-03-01','神奈川・アクアミュージアム4F「ライブスタジアム」',NULL,NULL,1,'cast','venue_アクアミュージアム4f「ライブスタジアム」',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L1246','ev_姫崎莉波_生誕ミニライブ2026','姫崎莉波 生誕ミニライブ2026','2026-03-05','アイドルマスターチャンネル(YouTube 公式チャンネル)',NULL,NULL,1,'cast',NULL,NULL,'アイドルマスターチャンネル(YouTube 公式チャンネル)',NULL);
 INSERT INTO "shows" VALUES('sh_L_ml_11th_day1','ev_the_idolmster_million_live_11thlive','DAY1 Atelier ROCOMOTION!!','2026-03-14','北九州メッセ',NULL,NULL,1,'cast','venue_西日本総合展示場',NULL,NULL,NULL);
@@ -88811,10 +88825,6 @@ INSERT INTO "shows" VALUES('sh_学園アイドルマスター_live_tour_-標-_�
 INSERT INTO "shows" VALUES('sh_283_production_solo_live_collection_-master_showpiece-_1','ev_283_production_solo_live_collection_-master_showpiece-','DAY1','2026-09-26','京王アリーナ TOKYO',NULL,NULL,0,'cast','venue_京王アリーナtokyo',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_283_production_solo_live_collection_-master_showpiece-_2','ev_283_production_solo_live_collection_-master_showpiece-','DAY2','2026-09-27','京王アリーナ TOKYO',NULL,NULL,1,'cast','venue_京王アリーナtokyo',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_kimchikura_fes_26_1','ev_kimchikura_fes_26','KIMCHIKURA Fes ''26','2026-08-08','Grand Peace Palace (慶熙大学, ソウル / 韓国)',NULL,NULL,0,'cast','venue_grandpeacepalace(慶熙大学,ソウル/韓国)',NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_animethon_2026_musicfes_アイドルマスター_シャイニーカラーズ出演_1','ev_animethon_2026_musicfes_アイドルマスター_シャイニーカラーズ出演','Animethon 2026 MusicFes（アイドルマスター シャイニーカラーズ出演）','2026-08-08','Edmonton Convention Centre (エドモントン, アルバータ州 / カナダ)',NULL,NULL,0,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_miki_hoshii_solo_showcase_the_future_spotlight_in_korea_1','ev_miki_hoshii_solo_showcase_the_future_spotlight_in_korea','MIKI HOSHII SOLO SHOWCASE「THE FUTURE SPOTLIGHT」in KOREA','2026-08-09','Gabin Art Hall (ソウル / 韓国)',NULL,NULL,0,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_karma_naraku_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_karma_naraku_発売記念イベント','第一回','2026-08-23','都内某所 ※当選者のみ告知',NULL,NULL,0,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_karma_naraku_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_karma_naraku_発売記念イベント','第二回','2026-08-23','都内某所 ※当選者のみ告知',NULL,NULL,1,'cast',NULL,NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_アイドルマスター_ミリオンライブ_シアターデイズ_10周年記念ライブ_1','ev_アイドルマスター_ミリオンライブ_シアターデイズ_10周年記念ライブ','DAY1','2027-06-26','Kアリーナ横浜',NULL,NULL,0,'cast','venue_kアリーナ横浜',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_アイドルマスター_ミリオンライブ_シアターデイズ_10周年記念ライブ_2','ev_アイドルマスター_ミリオンライブ_シアターデイズ_10周年記念ライブ','DAY2','2027-06-27','Kアリーナ横浜',NULL,NULL,1,'cast','venue_kアリーナ横浜',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_765_production_×_961_production_idol_ultimate_once_and_for_all_1','ev_765_production_×_961_production_idol_ultimate_once_and_for_all','第一公演 TO:STARLIT OF PROMISE','2027-07-24','京王アリーナ TOKYO',NULL,'18:00',0,'cast','venue_京王アリーナtokyo',NULL,NULL,NULL);
@@ -88826,8 +88836,6 @@ INSERT INTO "shows" VALUES('sh_cinderella_girls_musical_第2弾_2','ev_cinderell
 INSERT INTO "shows" VALUES('sh_the_idolm@ster_20th_anniversary_more_re@lity_live_idol_world_super_festival_2026_1','ev_the_idolm@ster_20th_anniversary_more_re@lity_live_idol_world_super_festival_2026','DAY1 -YAKUDOU- (ダンス)','2026-07-24','京王アリーナ TOKYO',NULL,NULL,0,'cast','venue_京王アリーナtokyo',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_the_idolm@ster_20th_anniversary_more_re@lity_live_idol_world_super_festival_2026_2','ev_the_idolm@ster_20th_anniversary_more_re@lity_live_idol_world_super_festival_2026','DAY2 -ZESSYOU- (生バンド)','2026-07-25','京王アリーナ TOKYO',NULL,NULL,1,'cast','venue_京王アリーナtokyo',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_the_idolm@ster_20th_anniversary_more_re@lity_live_idol_world_super_festival_2026_3','ev_the_idolm@ster_20th_anniversary_more_re@lity_live_idol_world_super_festival_2026','DAY3 -KYOUMEI- (コール&レスポンス/フィナーレ)','2026-07-26','京王アリーナ TOKYO',NULL,NULL,2,'cast','venue_京王アリーナtokyo',NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_project_imas_valiv_producer_meeting_2024_from_now_on_1','ev_project_imas_valiv_producer_meeting_2024_from_now_on','昼の部','2024-09-28','東京・GARDEN 新木場FACTORY',NULL,'14:30',1,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_project_imas_valiv_producer_meeting_2024_from_now_on_2','ev_project_imas_valiv_producer_meeting_2024_from_now_on','夜の部','2024-09-28','東京・GARDEN 新木場FACTORY',NULL,'18:30',2,'cast',NULL,NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_x_vorder_runway_1','ev_x_vorder_runway','X VORDER RUNWAY','2026-09-27','幕張メッセ','千葉県千葉市','15:30',1,'cast','venue_幕張メッセ','国際展示場1〜3ホール','SPWN',NULL);
 INSERT INTO "shows" VALUES('sh_L1242','ev_学園アイドルマスター_初星音楽祭','DAY1','2026-02-28','東京・京王アリーナTOKYO',NULL,NULL,1,'cast','venue_京王アリーナtokyo',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L1243','ev_学園アイドルマスター_初星音楽祭','DAY2','2026-03-01','東京・京王アリーナTOKYO',NULL,NULL,2,'cast','venue_京王アリーナtokyo',NULL,NULL,NULL);
@@ -88896,7 +88904,6 @@ INSERT INTO "shows" VALUES('sh_L0662','ev_フジテレビこの指とまれseaso
 INSERT INTO "shows" VALUES('sh_L0671','ev_ミリシタ感謝祭_20202021_online','ミリシタ感謝祭 2020～2021 ONLINE','2021-01-23','リアルタイム配信(配信：ニコニコ生放送、YouTube、Periscope、ミリシタアプリ内／会場：千葉・森のホール21？)',NULL,NULL,1,'cast',NULL,NULL,'リアルタイム配信(配信：ニコニコ生放送、YouTube、Periscope、ミリシタアプリ内／会場：千葉・森のホール21？)','closed');
 INSERT INTO "shows" VALUES('sh_L1186','ev_レトラ_birthday_online_live_2025','レトラ BIRTHDAY ONLINE LIVE 2025','2025-11-11','配信：ASOBI STAGE、LV会場：東京・アニメイトシアター',NULL,NULL,1,'cast','venue_アニメイトシアター',NULL,'ASOBI STAGE','online');
 INSERT INTO "shows" VALUES('sh_L1153','ev_上水流宇宙_birthday_online_live_2025','上水流宇宙 BIRTHDAY ONLINE LIVE 2025','2025-09-12','配信：ASOBI STAGE、LV会場：東京・アニメイトシアター',NULL,NULL,1,'cast','venue_アニメイトシアター',NULL,'ASOBI STAGE','online');
-INSERT INTO "shows" VALUES('sh_上水流宇宙_birthday_online_live_2026_1','ev_上水流宇宙_birthday_online_live_2026','上水流宇宙 BIRTHDAY ONLINE LIVE 2026','2026-09-12','配信：ASOBI STAGE、LV会場：東京・ユナイテッド・シネマ アクアシティお台場 [3番スクリーン]',NULL,NULL,0,'cast',NULL,NULL,NULL,'online');
 INSERT INTO "shows" VALUES('sh_L0660','ev_僕らのidol_fairthe_idolmster_cinderella_girls_live_broadcast_24magic_シンデレラたちの24時','僕らのIDOL FAIR(THE IDOLM@STER CINDERELLA GIRLS Live Broadcast 24magic 〜シンデレラたちの24時間生放送！〜)','2020-09-06','生配信番組',NULL,NULL,1,'cast',NULL,NULL,'生配信番組','online');
 INSERT INTO "shows" VALUES('sh_L1207','ev_如月千早_-_msterpiece_the_first_take','如月千早 - M@STERPIECE / THE FIRST TAKE','2025-12-10','THE FIRST TAKE (YouTubeチャンネル)',NULL,NULL,1,'cast',NULL,NULL,'THE FIRST TAKE (YouTubeチャンネル)','online');
 INSERT INTO "shows" VALUES('sh_L1197','ev_如月千早_-_約束_the_first_take','如月千早 - 約束 / THE FIRST TAKE','2025-11-28','THE FIRST TAKE (YouTubeチャンネル)',NULL,NULL,1,'cast',NULL,NULL,'THE FIRST TAKE (YouTubeチャンネル)','online');
@@ -88922,7 +88929,6 @@ INSERT INTO "shows" VALUES('sh_学園アイドルマスター_live_tour_-標-_k�
 INSERT INTO "shows" VALUES('sh_学園アイドルマスター_live_tour_-標-_kアリーナ横浜公演_final_2','ev_学園アイドルマスター_live_tour_-標-_kアリーナ横浜公演_final','DAY2','2026-11-08','Kアリーナ横浜',NULL,'17:00',1,'cast','venue_kアリーナ横浜',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_the_idolm@ster_cinderella_girls_×_million_live_clash_m@tch_1','ev_the_idolm@ster_cinderella_girls_×_million_live_clash_m@tch','DAY1','2027-02-27','IGアリーナ (愛知)',NULL,'17:00',0,'cast','venue_igアリーナ',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_the_idolm@ster_cinderella_girls_×_million_live_clash_m@tch_2','ev_the_idolm@ster_cinderella_girls_×_million_live_clash_m@tch','DAY2','2027-02-28','IGアリーナ (愛知)',NULL,'17:00',1,'cast','venue_igアリーナ',NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_灯里愛夏_birthday_online_live_2026_1','ev_灯里愛夏_birthday_online_live_2026','灯里愛夏 BIRTHDAY ONLINE LIVE 2026','2026-10-28','配信：ASOBI STAGE、LV会場：東京・ユナイテッド・シネマ アクアシティお台場 [3番スクリーン]',NULL,'19:00',0,'cast',NULL,NULL,NULL,'online');
 INSERT INTO "shows" VALUES('sh_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~_1','ev_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~','長野公演 DAY1 昼公演','2026-12-26','ホクト文化ホール (長野県県民文化会館) 大ホール',NULL,'12:00',0,'cast','venue_ホクト文化ホール(長野県県民文化会館)','大ホール',NULL,NULL);
 INSERT INTO "shows" VALUES('sh_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~_2','ev_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~','長野公演 DAY2 昼公演','2026-12-27','ホクト文化ホール (長野県県民文化会館) 大ホール',NULL,'12:00',2,'cast','venue_ホクト文化ホール(長野県県民文化会館)','大ホール',NULL,NULL);
 INSERT INTO "shows" VALUES('sh_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~_3','ev_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~','幕張公演 DAY1 昼公演','2027-01-23','幕張メッセ イベントホール',NULL,NULL,4,'cast','venue_幕張メッセ','幕張イベントホール',NULL,NULL);
@@ -88931,7 +88937,6 @@ INSERT INTO "shows" VALUES('sh_315_production_presents_f@ntastic_battle_fes_~wan
 INSERT INTO "shows" VALUES('sh_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~_6','ev_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~','長野公演 DAY2 夜公演','2026-12-27','ホクト文化ホール (長野県県民文化会館) 大ホール',NULL,'17:00',3,'cast','venue_ホクト文化ホール(長野県県民文化会館)','大ホール',NULL,NULL);
 INSERT INTO "shows" VALUES('sh_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~_7','ev_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~','幕張公演 DAY1 夜公演','2027-01-23','幕張メッセ イベントホール',NULL,'',5,'cast','venue_幕張メッセ','幕張イベントホール',NULL,NULL);
 INSERT INTO "shows" VALUES('sh_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~_8','ev_315_production_presents_f@ntastic_battle_fes_~wanna_step_in~','幕張公演 DAY2 夜公演','2027-01-24','幕張メッセ イベントホール',NULL,'',7,'cast','venue_幕張メッセ','幕張イベントホール',NULL,NULL);
-INSERT INTO "shows" VALUES('sh_レトラ_birthday_online_live_2026_1','ev_レトラ_birthday_online_live_2026','レトラ BIRTHDAY ONLINE LIVE 2026','2026-11-11','配信：ASOBI STAGE、LV会場：東京・ユナイテッド・シネマ アクアシティお台場 [3番スクリーン]',NULL,'19:00',0,'cast',NULL,NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L0420','ev_the_idolmster_sidem_3rdlive_tour_glorious_stge_仙台公演','1日目','2018-02-24','宮城・ゼビオアリーナ仙台',NULL,NULL,1,'cast','venue_ゼビオアリーナ仙台',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L0421','ev_the_idolmster_sidem_3rdlive_tour_glorious_stge_仙台公演','2日目','2018-02-25','宮城・ゼビオアリーナ仙台',NULL,NULL,2,'cast','venue_ゼビオアリーナ仙台',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L0417','ev_the_idolmster_sidem_3rdlive_tour_glorious_stge_幕張公演','1日目','2018-02-03','千葉・幕張メッセイベントホール',NULL,NULL,1,'cast','venue_幕張メッセ','幕張イベントホール',NULL,NULL);
@@ -88944,16 +88949,6 @@ INSERT INTO "shows" VALUES('sh_xr_live_revival_1','ev_xr_live_revival','菊地 �
 INSERT INTO "shows" VALUES('sh_xr_live_revival_2','ev_xr_live_revival','菊地 真・萩原 雪歩 twin live “はんげつであえたら” [～悲藍～]','2026-12-12','オリックス劇場',NULL,'15:30',1,'cast','venue_オリックス劇場',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_xr_live_revival_3','ev_xr_live_revival','菊地 真・萩原 雪歩 twin live “はんげつであえたら” [～純藍～]','2026-12-12','オリックス劇場',NULL,'19:00',2,'cast','venue_オリックス劇場',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_xr_live_revival_4','ev_xr_live_revival','Pop’n ToyBox!! もういっかい！ [夕方公演]','2026-12-13','オリックス劇場',NULL,'16:00',3,'cast','venue_オリックス劇場',NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_ring_ring_ringの魔法_街角メランコリー_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_ring_ring_ringの魔法_街角メランコリー_発売記念イベント','第一回','2026-11-21','都内某所 ※当選者のみ告知',NULL,'16:00',0,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_ring_ring_ringの魔法_街角メランコリー_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_ring_ring_ringの魔法_街角メランコリー_発売記念イベント','第二回','2026-11-21','都内某所 ※当選者のみ告知',NULL,'18:30',1,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_super_duper_dreamer_beast_mode_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_super_duper_dreamer_beast_mode_発売記念イベント','第一回','2026-10-11','都内某所 ※当選者のみ告知',NULL,'15:00',0,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_super_duper_dreamer_beast_mode_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_super_duper_dreamer_beast_mode_発売記念イベント','第二回','2026-10-11','都内某所 ※当選者のみ告知',NULL,'17:30',1,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_tokyo自由系_ガール_my_time_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_tokyo自由系_ガール_my_time_発売記念イベント','第一回','2026-11-22','都内某所 ※当選者のみ告知',NULL,'15:00',0,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_tokyo自由系_ガール_my_time_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_tokyo自由系_ガール_my_time_発売記念イベント','第二回','2026-11-22','都内某所 ※当選者のみ告知',NULL,'17:30',1,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_ボーダーレス_ノンストレス_oh_yeah_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_ボーダーレス_ノンストレス_oh_yeah_発売記念イベント','第一回','2026-11-14','都内某所 ※当選者のみ告知',NULL,'16:00',0,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_ボーダーレス_ノンストレス_oh_yeah_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_ボーダーレス_ノンストレス_oh_yeah_発売記念イベント','第二回','2026-11-14','都内某所 ※当選者のみ告知',NULL,'18:30',1,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_散花-sanka-_紅花-benibana-_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_散花-sanka-_紅花-benibana-_発売記念イベント','第一回','2026-10-17','都内某所 ※当選者のみ告知',NULL,'15:00',0,'cast',NULL,NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_散花-sanka-_紅花-benibana-_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_散花-sanka-_紅花-benibana-_発売記念イベント','第二回','2026-10-17','都内某所 ※当選者のみ告知',NULL,'17:30',1,'cast',NULL,NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L1219','ev_283_production_musical_performance_騎士団のヴェール_veil_of_order_abnegatio_i_','283 Production MUSICAL Performance 騎士団のヴェール – Veil of Order – – Abnegatio (I) –','2025-12-27','愛知・Niterra日本特殊陶業市民会館 フォレストホール',NULL,NULL,1,'cast','venue_niterra日本特殊陶業市民会館フォレストホール',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L1220','ev_283_production_musical_performance_騎士団のヴェール_veil_of_order_abnegatio_i_','283 Production MUSICAL Performance 騎士団のヴェール – Veil of Order – – Odium (II) –','2025-12-28','愛知・Niterra日本特殊陶業市民会館 フォレストホール',NULL,NULL,1,'cast','venue_niterra日本特殊陶業市民会館フォレストホール',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L1221','ev_283_production_musical_performance_騎士団のヴェール_veil_of_order_abnegatio_i_','283 Production MUSICAL Performance 騎士団のヴェール – Veil of Order – – Cupiditas (III) –','2025-12-28','愛知・Niterra日本特殊陶業市民会館 フォレストホール',NULL,NULL,1,'cast','venue_niterra日本特殊陶業市民会館フォレストホール',NULL,NULL,NULL);
@@ -88969,7 +88964,37 @@ INSERT INTO "shows" VALUES('sh_L1059','ev_life_like_a_live9_エピソードi第�
 INSERT INTO "shows" VALUES('sh_L1060','ev_life_like_a_live9_エピソードi第一公演','夜公演','2025-03-16','リアルタイム配信・Z-aN',NULL,NULL,1,'cast',NULL,NULL,'リアルタイム配信・Z-aN','online');
 INSERT INTO "shows" VALUES('sh_L0317','ev_アイドルマスター_sidem_ラジオ_315プロnight_ドラマチックミーティング_vol2_moon_side','昼の部','2016-07-17','東京・ラフォーレミュージアム六本木',NULL,NULL,1,'cast','venue_ラフォーレミュージアム六本木',NULL,NULL,NULL);
 INSERT INTO "shows" VALUES('sh_L0318','ev_アイドルマスター_sidem_ラジオ_315プロnight_ドラマチックミーティング_vol2_moon_side','夜の部','2016-07-17','東京・ラフォーレミュージアム六本木',NULL,NULL,1,'cast','venue_ラフォーレミュージアム六本木',NULL,NULL,NULL);
-INSERT INTO "shows" VALUES('sh_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier_1','ev_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier','MIKI HOSHII SOLO SHOWCASE「THE FUTURE SPOTLIGHT」in Comic Frontier','2026-11-01','ICE (Indonesia Convention Exhibition) BSD (インドネシア)',NULL,NULL,0,'cast',NULL,NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_animethon_2026_musicfes_アイドルマスター_シャイニーカラーズ出演_1','ev_animethon_2026_musicfes_アイドルマスター_シャイニーカラーズ出演','Animethon 2026 MusicFes（アイドルマスター シャイニーカラーズ出演）','2026-08-08','Edmonton Convention Centre (エドモントン, アルバータ州 / カナダ)',NULL,NULL,0,'cast','venue_edmontonconventioncentre',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_e656e30e-e4a6-4f8e-84fe-ab83bc7f7eb8','ev_e8a2e8ce-261b-43f6-829f-d4b041ddf000','リスアニ！LIVE on TOKYO ANIME MUSIC','2026-06-09','TOYOTA ARENA TOKYO','東京都江東区青海１丁目３−３−１','19:00',0,'cast','venue_toyotaarenatokyo',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier_1','ev_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier','MIKI HOSHII SOLO SHOWCASE「THE FUTURE SPOTLIGHT」in Comic Frontier','2026-11-01','ICE (Indonesia Convention Exhibition) BSD (インドネシア)',NULL,NULL,0,'cast','venue_iceindonesiaconventionexhibitionbsd',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_miki_hoshii_solo_showcase_the_future_spotlight_in_korea_1','ev_miki_hoshii_solo_showcase_the_future_spotlight_in_korea','MIKI HOSHII SOLO SHOWCASE「THE FUTURE SPOTLIGHT」in KOREA','2026-08-09','Gabin Art Hall (ソウル / 韓国)',NULL,NULL,0,'cast','venue_gabinarthall',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_1','ev_project_imas_valiv_3rdlive_meeting_qonnect_as_one','PRODUCER MEETING in NAGOYA','2027-01-30','愛知県芸術劇場','名古屋','17:00',0,'cast','venue_愛知県芸術劇場','大ホール',NULL,NULL);
+INSERT INTO "shows" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_2','ev_project_imas_valiv_3rdlive_meeting_qonnect_as_one','3rdLIVE in NAGOYA 昼公演','2027-01-31','愛知県芸術劇場','名古屋','14:00',1,'cast','venue_愛知県芸術劇場','大ホール',NULL,NULL);
+INSERT INTO "shows" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_3','ev_project_imas_valiv_3rdlive_meeting_qonnect_as_one','3rdLIVE in NAGOYA 夜公演','2027-01-31','愛知県芸術劇場','名古屋','18:00',2,'cast','venue_愛知県芸術劇場','大ホール',NULL,NULL);
+INSERT INTO "shows" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_4','ev_project_imas_valiv_3rdlive_meeting_qonnect_as_one','PRODUCER MEETING in TOKYO','2027-03-21','日本工学院アリーナ',NULL,'14:30',3,'cast','venue_日本工学院アリーナ',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_5','ev_project_imas_valiv_3rdlive_meeting_qonnect_as_one','3rdLIVE in TOKYO Day1','2027-03-21','日本工学院アリーナ',NULL,'18:30',4,'cast','venue_日本工学院アリーナ',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_project_imas_valiv_3rdlive_meeting_qonnect_as_one_6','ev_project_imas_valiv_3rdlive_meeting_qonnect_as_one','3rdLIVE in TOKYO Day2','2027-03-22','日本工学院アリーナ',NULL,'16:30',5,'cast','venue_日本工学院アリーナ',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_project_imas_valiv_producer_meeting_2024_from_now_on_1','ev_project_imas_valiv_producer_meeting_2024_from_now_on','昼の部','2024-09-28','東京・GARDEN 新木場FACTORY',NULL,'14:30',1,'cast','venue_garden新木場factory',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_project_imas_valiv_producer_meeting_2024_from_now_on_2','ev_project_imas_valiv_producer_meeting_2024_from_now_on','夜の部','2024-09-28','東京・GARDEN 新木場FACTORY',NULL,'18:30',2,'cast','venue_garden新木場factory',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_karma_naraku_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_karma_naraku_発売記念イベント','第一回','2026-08-23','都内某所 ※当選者のみ告知',NULL,NULL,0,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_karma_naraku_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_karma_naraku_発売記念イベント','第二回','2026-08-23','都内某所 ※当選者のみ告知',NULL,NULL,1,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_ring_ring_ringの魔法_街角メランコリー_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_ring_ring_ringの魔法_街角メランコリー_発売記念イベント','第一回','2026-11-21','都内某所 ※当選者のみ告知',NULL,'16:00',0,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_ring_ring_ringの魔法_街角メランコリー_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_ring_ring_ringの魔法_街角メランコリー_発売記念イベント','第二回','2026-11-21','都内某所 ※当選者のみ告知',NULL,'18:30',1,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_super_duper_dreamer_beast_mode_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_super_duper_dreamer_beast_mode_発売記念イベント','第一回','2026-10-11','都内某所 ※当選者のみ告知',NULL,'15:00',0,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_super_duper_dreamer_beast_mode_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_super_duper_dreamer_beast_mode_発売記念イベント','第二回','2026-10-11','都内某所 ※当選者のみ告知',NULL,'17:30',1,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_tokyo自由系_ガール_my_time_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_tokyo自由系_ガール_my_time_発売記念イベント','第一回','2026-11-22','都内某所 ※当選者のみ告知',NULL,'15:00',0,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_tokyo自由系_ガール_my_time_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_tokyo自由系_ガール_my_time_発売記念イベント','第二回','2026-11-22','都内某所 ※当選者のみ告知',NULL,'17:30',1,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_ボーダーレス_ノンストレス_oh_yeah_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_ボーダーレス_ノンストレス_oh_yeah_発売記念イベント','第一回','2026-11-14','都内某所 ※当選者のみ告知',NULL,'16:00',0,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_ボーダーレス_ノンストレス_oh_yeah_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_ボーダーレス_ノンストレス_oh_yeah_発売記念イベント','第二回','2026-11-14','都内某所 ※当選者のみ告知',NULL,'18:30',1,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_散花-sanka-_紅花-benibana-_発売記念イベント_1','ev_the_idolm@ster_shiny_colors_song_for_prism_散花-sanka-_紅花-benibana-_発売記念イベント','第一回','2026-10-17','都内某所 ※当選者のみ告知',NULL,'15:00',0,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_the_idolm@ster_shiny_colors_song_for_prism_散花-sanka-_紅花-benibana-_発売記念イベント_2','ev_the_idolm@ster_shiny_colors_song_for_prism_散花-sanka-_紅花-benibana-_発売記念イベント','第二回','2026-10-17','都内某所 ※当選者のみ告知',NULL,'17:30',1,'cast','venue_都内某所',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_レトラ_birthday_online_live_2026_1','ev_レトラ_birthday_online_live_2026','レトラ BIRTHDAY ONLINE LIVE 2026','2026-11-11','配信：ASOBI STAGE、LV会場：東京・ユナイテッド・シネマ アクアシティお台場 [3番スクリーン]',NULL,'19:00',0,'cast',NULL,NULL,'ASOBI STAGE',NULL);
+INSERT INTO "shows" VALUES('sh_上水流宇宙_birthday_online_live_2026_1','ev_上水流宇宙_birthday_online_live_2026','上水流宇宙 BIRTHDAY ONLINE LIVE 2026','2026-09-12','配信：ASOBI STAGE、LV会場：東京・ユナイテッド・シネマ アクアシティお台場 [3番スクリーン]',NULL,NULL,0,'cast',NULL,NULL,'ASOBI STAGE','online');
+INSERT INTO "shows" VALUES('sh_灯里愛夏_birthday_online_live_2026_1','ev_灯里愛夏_birthday_online_live_2026','灯里愛夏 BIRTHDAY ONLINE LIVE 2026','2026-10-28','配信：ASOBI STAGE、LV会場：東京・ユナイテッド・シネマ アクアシティお台場 [3番スクリーン]',NULL,'19:00',0,'cast',NULL,NULL,'ASOBI STAGE','online');
+INSERT INTO "shows" VALUES('sh_L1238','ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_-','DAY1 PROJECT IM@S vα-liv 2ndLIVE -BEYOND THE CUSTOM !!!-','2026-02-21','東京・日本工学院アリーナ',NULL,'18:00',1,'cast','venue_日本工学院アリーナ',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_L1239','ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_-','DAY2 THE IDOLM@STER Dearly Stars -Dearly, Dearly MEETING !!!-','2026-02-22','東京・日本工学院アリーナ',NULL,'17:00',2,'cast','venue_日本工学院アリーナ',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_L1240','ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_-','DAY3 昼公演 Dearly Stars×vα-liv LIVE -UNDER ONE SKY !!!!!!-','2026-02-23','東京・日本工学院アリーナ',NULL,'14:00',3,'cast','venue_日本工学院アリーナ',NULL,NULL,NULL);
+INSERT INTO "shows" VALUES('sh_L1241','ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_-','DAY3 夜公演 Dearly Stars×vα-liv LIVE -UNDER ONE SKY !!!!!!-','2026-02-23','東京・日本工学院アリーナ',NULL,'17:30',4,'cast','venue_日本工学院アリーナ',NULL,NULL,NULL);
 CREATE TABLE song_artists (song_id TEXT NOT NULL, idol_id TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'original', PRIMARY KEY (song_id, idol_id, role));
 INSERT INTO "song_artists" VALUES('765as_shining_star彡','765as_天海春香','original');
 INSERT INTO "song_artists" VALUES('765as_shining_star彡','765as_如月千早','original');
@@ -121014,6 +121039,7 @@ INSERT INTO "ticket_sales" VALUES('ts_9019da745cdd','ev_the_idolm@ster_cinderell
 INSERT INTO "ticket_sales" VALUES('ts_a97e0d95b8ba','ev_レトラ_birthday_online_live_2026',NULL,'lottery','限定グッズ付き現地ライブビューイングチケット 先行抽選','2026-10-01','2026-10-11 23:59','2026-10-13','https://livepocket.jp/e/va-liv_letora_bd2026','ユナイテッド・シネマ アクアシティお台場。入金期間 10/13〜10/18 23:59、お一人様 2 枚まで','https://idolmaster-official.jp/news/01_20045.html',0);
 INSERT INTO "ticket_sales" VALUES('ts_3b12b8465b80','ev_レトラ_birthday_online_live_2026',NULL,'first_come','配信チケット','2026-10-12 12:00','2026-12-13 18:00',NULL,'https://asobistage.asobistore.jp/event/valiv_bd2026_letora/ticket','ASOBI STAGE 5,000円(税込・機能利用料込)。プレゼント用視聴チケットあり。配信特典: 終演後のアフタートーク配信','https://idolmaster-official.jp/news/01_20100.html',1);
 INSERT INTO "ticket_sales" VALUES('ts_d0b88f03beac','ev_レトラ_birthday_online_live_2026',NULL,'lottery','限定グッズ付き現地ライブビューイングチケット 先行抽選二次','2026-10-16','2026-10-30 23:59','2026-10-31','https://livepocket.jp/e/va-liv_letora_bd2026','ユナイテッド・シネマ アクアシティお台場。9,000円(税込)。入金期間 10/31〜11/3 23:59、お一人様 2 枚まで','https://idolmaster-official.jp/news/01_20161.html',2);
+INSERT INTO "ticket_sales" VALUES('ts_d72fcf728ae6','ev_project_imas_valiv_3rdlive_meeting_qonnect_as_one',NULL,'lottery','現地チケット アソビストア一般会員先行抽選','2026-10-17 21:30','2026-11-15 23:59','2026-11-28 13:00','https://asobiticket2.asobistore.jp/receptions/a911b189-ae4a-4bc6-9f15-729201d4ff7c','入金 11/28 13:00〜12/2 23:59。各公演 2 枚まで・複数公演申込可。早期限定のグッズ付きチケットあり','https://idolmaster-official.jp/news/01_20181',0);
 CREATE TABLE unit_members (unit_id TEXT NOT NULL, idol_id TEXT NOT NULL, PRIMARY KEY (unit_id, idol_id));
 INSERT INTO "unit_members" VALUES('オリジナル_カラーズ_feat_和','cg_成宮由愛');
 INSERT INTO "unit_members" VALUES('オリジナル_カラーズ_feat_和','cg_的場梨沙');
@@ -127877,6 +127903,7 @@ INSERT INTO "venue_halls" VALUES('venue_石丸電気ソフトワン__イベン�
 INSERT INTO "venue_halls" VALUES('venue_西日本総合展示場__いいちこグリーンステージ','venue_西日本総合展示場','いいちこグリーンステージ',NULL);
 INSERT INTO "venue_halls" VALUES('venue_西日本総合展示場__新館','venue_西日本総合展示場','新館',NULL);
 INSERT INTO "venue_halls" VALUES('venue_西日本総合展示場__新館ABC','venue_西日本総合展示場','新館ABC',NULL);
+INSERT INTO "venue_halls" VALUES('venue_愛知県芸術劇場__大ホール','venue_愛知県芸術劇場','大ホール',2480);
 CREATE TABLE venue_names (
             id TEXT PRIMARY KEY NOT NULL, venue_id TEXT NOT NULL, name TEXT NOT NULL,
             valid_from TEXT, valid_to TEXT
@@ -128116,6 +128143,10 @@ INSERT INTO "venue_names" VALUES('venue_関内ホール__関内ホール','venue
 INSERT INTO "venue_names" VALUES('venue_香港・香港會議展覽中心__香港・香港會議展覽中心','venue_香港・香港會議展覽中心','香港・香港會議展覽中心',NULL,NULL);
 INSERT INTO "venue_names" VALUES('venue_駒場公園テンペストステージ__駒場公園 テンペストステージ','venue_駒場公園テンペストステージ','駒場公園 テンペストステージ',NULL,NULL);
 INSERT INTO "venue_names" VALUES('venue_駒場公園ファントムステージ__駒場公園 ファントムステージ','venue_駒場公園ファントムステージ','駒場公園 ファントムステージ',NULL,NULL);
+INSERT INTO "venue_names" VALUES('venue_edmontonconventioncentre__Edmonton Convention Centre','venue_edmontonconventioncentre','Edmonton Convention Centre',NULL,NULL);
+INSERT INTO "venue_names" VALUES('venue_gabinarthall__Gabin Art Hall','venue_gabinarthall','Gabin Art Hall',NULL,NULL);
+INSERT INTO "venue_names" VALUES('venue_iceindonesiaconventionexhibitionbsd__ICE (Indonesia Convention Exhibition) BSD','venue_iceindonesiaconventionexhibitionbsd','ICE (Indonesia Convention Exhibition) BSD',NULL,NULL);
+INSERT INTO "venue_names" VALUES('venue_愛知県芸術劇場__愛知県芸術劇場','venue_愛知県芸術劇場','愛知県芸術劇場',NULL,NULL);
 CREATE TABLE venues (
             id TEXT PRIMARY KEY NOT NULL, name TEXT NOT NULL, name_kana TEXT,
             prefecture TEXT, city TEXT, aliases TEXT, capacity INTEGER,
@@ -128356,6 +128387,10 @@ INSERT INTO "venues" VALUES('venue_駒場公園テンペストステージ','駒
 INSERT INTO "venues" VALUES('venue_駒場公園ファントムステージ','駒場公園 ファントムステージ','こまばこうえんふぁんとむすてーじ','長野',NULL,NULL,598,232);
 INSERT INTO "venues" VALUES('venue_movix日吉津','ＭＯＶＩＸ日吉津','むーびっくすひえづ','鳥取',NULL,NULL,NULL,233);
 INSERT INTO "venues" VALUES('venue_igアリーナ','IGアリーナ','あいじーありーな','愛知',NULL,'IG Arena,愛知国際アリーナ',17000,234);
+INSERT INTO "venues" VALUES('venue_edmontonconventioncentre','Edmonton Convention Centre','えどもんとんこんべんしょんせんたー',NULL,NULL,NULL,NULL,238);
+INSERT INTO "venues" VALUES('venue_gabinarthall','Gabin Art Hall','がびんあーとほーる',NULL,NULL,NULL,NULL,237);
+INSERT INTO "venues" VALUES('venue_iceindonesiaconventionexhibitionbsd','ICE (Indonesia Convention Exhibition) BSD','あいすいんどねしあこんべんしょんえきしびしょんびーえすでぃー',NULL,NULL,'ICE BSD',NULL,236);
+INSERT INTO "venues" VALUES('venue_愛知県芸術劇場','愛知県芸術劇場','あいちけんげいじゅつげきじょう','愛知',NULL,'愛知芸術劇場',NULL,235);
 CREATE INDEX idx_show_tickets_show ON show_tickets(show_id);
 CREATE INDEX idx_songs_brand ON songs(brand_id);
 CREATE INDEX idx_shows_event ON shows(event_id);
