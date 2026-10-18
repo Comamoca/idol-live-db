@@ -35,6 +35,7 @@ master.sqlite → CloudKit に一括反映します（直接 CloudKit に書く�
 | `data/idols/` | アイドル | `id` `name` `brand_id` `brands[]` |
 | `data/units/` | ユニット | `id` `name` `brand_id` `members[]` |
 | `data/creators/` | 作詞・作曲・編曲の作家 | `id` `name` `name_kana` |
+| `data/venues/` | 会場（施設）。公演の `venue_id` は `data/fixes/` の shows で付ける | `id` (`venue_` で始める) `name` `name_kana` + 任意で `prefecture` `aliases`（カンマ区切り） `capacity` `halls[]`（`name` + 任意で `capacity`） |
 | `data/unit_versions/` | ユニットのバージョン | `id` `unit_id` `name` (+ `code` `catchphrase` `valid_from` `valid_to`) |
 | `data/costumes/` | ライブ衣装と、着た公演 | `id` `name` `wears[]`（`show_id` + 任意で `setlist_item_id` / `idol_id`） |
 | `data/idol_hairstyles/` `data/idol_facets/` | アイドルの髪型・項目 | 下の「アイドルの項目」 |

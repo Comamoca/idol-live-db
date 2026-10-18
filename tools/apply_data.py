@@ -30,6 +30,7 @@ import sys
 from collections import defaultdict
 from datetime import datetime
 import time
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -72,6 +73,9 @@ KIND_TABLES = {
     "units": ["units", "unit_members"],
     "unit_versions": ["unit_versions"],
     "creators": ["creators"],
+    # 会場 (施設)。名前 (venue_names) とホール (venue_halls) も一緒に作る。公演の venue_id は
+    # data/fixes/ の shows で付ける。
+    "venues": ["venues", "venue_names", "venue_halls"],
     "costumes": ["costumes", "costume_wears"],
     # チケット受付 (旧 events.ticket_open_date/ticket_deadline/ticket_lottery_date の後継)。
     # id は事前に振らず、event_id + name から決定的に作る (wear_id と同じ考え方)。
@@ -380,6 +384,69 @@ def load(kind):
     return out
 
 
+def fold_venue_name(name):
+    """会場名の同一判定用 (全角半角・空白・大小を畳む)。"""
+    return re.sub(r"\s+", "", unicodedata.normalize("NFKC", name)).lower()
+
+
+def venue_problems(tag, v, conn, vcol, known_names):
+    """新しい会場 1 件の検査。既にある施設を別 id で作ると、公演の串刺しが割れる。"""
+    problems = []
+    vid = v.get("id") or ""
+    if not vid.startswith("venue_"):
+        problems.append(f"{tag}: id は venue_ で始める ({vid!r})")
+    elif exists(conn, "venues", vid):
+        problems.append(f"{tag}: id '{vid}' は既に存在 (新規追加のみ。直すのは data/fixes/)")
+    if not v.get("name") or not v.get("name_kana"):
+        problems.append(f"{tag}: name / name_kana は必須")
+    elif not re.fullmatch(r"[\u3041-\u309fー]+", v["name_kana"]):
+        problems.append(f"{tag}: name_kana はひらがなで書く ({v['name_kana']!r})")
+    elif fold_venue_name(v["name"]) in known_names:
+        problems.append(f"{tag}: 会場「{v['name']}」は既にある (venues か venue_names)。公演は既存の id に付ける")
+    cap = v.get("capacity")
+    if cap is not None and (not isinstance(cap, int) or cap <= 0):
+        problems.append(f"{tag}: capacity は正の整数か省く")
+    halls = v.get("halls", [])
+    if not isinstance(halls, list):
+        problems.append(f"{tag}: halls は配列")
+        halls = []
+    hall_names = [h.get("name") for h in halls if isinstance(h, dict)]
+    if len(hall_names) != len(halls) or not all(hall_names):
+        problems.append(f"{tag}: halls の各要素に name が要る")
+    elif len(set(hall_names)) != len(hall_names):
+        problems.append(f"{tag}: halls の name が重複")
+    for h in halls:
+        if isinstance(h, dict):
+            hcap = h.get("capacity")
+            if hcap is not None and (not isinstance(hcap, int) or hcap <= 0):
+                problems.append(f"{tag}: ホール「{h.get('name')}」の capacity は正の整数か省く")
+            for k in h:
+                if k not in ("name", "capacity", *ANNOTATION_KEYS):
+                    problems.append(f"{tag}: halls に未知の列 '{k}'")
+    for k in v:
+        if k not in vcol and k not in ("halls", *ANNOTATION_KEYS):
+            problems.append(f"{tag}: venues に未知の列 '{k}'")
+    return problems
+
+
+def insert_venue(conn, v, vcol):
+    """施設・その正式名・ホールを入れて、施設の id を返す。"""
+    v = dict(v)
+    halls = v.pop("halls", [])
+    v.pop("note", None)
+    if v.get("sort_order") is None:
+        (last,) = conn.execute("SELECT IFNULL(MAX(sort_order), -1) FROM venues").fetchone()
+        v["sort_order"] = last + 1
+    vid = v["id"]
+    insert_row(conn, "venues", {k: val for k, val in v.items() if k in vcol})
+    # 正式名も venue_names に持つ (既存の施設と同じ形。改名の履歴はここに足していく)。
+    insert_row(conn, "venue_names", {"id": f"{vid}__{v['name']}", "venue_id": vid, "name": v["name"]})
+    for h in halls:
+        insert_row(conn, "venue_halls", {"id": f"{vid}__{h['name']}", "venue_id": vid,
+                                         "name": h["name"], "capacity": h.get("capacity")})
+    return vid
+
+
 def resolve_song(conn, brand_id, song_id, title, pending=()):
     """song_id 優先。無ければ brand 内でタイトル完全一致を試みる。
 
@@ -556,6 +623,14 @@ def validate(conn):
             for k in c:
                 if k not in ccol and k not in ANNOTATION_KEYS:
                     problems.append(f"{tag}: creators に未知の列 '{k}'")
+
+    known_venue_names = {fold_venue_name(n) for (n,) in conn.execute(
+        "SELECT name FROM venues UNION SELECT name FROM venue_names")}
+    for path, data in load("venues"):
+        vcol = cols(conn, "venues")
+        for i, v in enumerate(data.get("venues", [])):
+            problems += venue_problems(f"venues/{path.name}[{i}]", v, conn, vcol, known_venue_names)
+            known_venue_names.add(fold_venue_name(v.get("name") or ""))
 
     for path, data in load("unit_versions"):
         vcol = cols(conn, "unit_versions")
@@ -885,6 +960,15 @@ def apply_all(conn):
             insert_row(conn, "creators", {k: v for k, v in c.items() if k in ccol})
             affected["creators"]  # 絞る列が無いので全件
         print(f"  ✓ creators/{path.name}: {len(data['creators'])} 件")
+
+    # 会場は events / shows より先 (同じ回の公演が venue_id で指せるように)。
+    vcol = cols(conn, "venues")
+    for path, data in load("venues"):
+        for v in data["venues"]:
+            vid = insert_venue(conn, v, vcol)
+            for table in KIND_TABLES["venues"]:
+                affected[table].add(vid)
+        print(f"  ✓ venues/{path.name}: {len(data['venues'])} 件")
 
     # 版は songs より先に入れる。songs.unit_version_id の参照先になるため。
     vcol = cols(conn, "unit_versions")
