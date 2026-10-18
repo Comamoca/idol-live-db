@@ -1,0 +1,17 @@
+{
+ "title": "シンデレラの演奏会 アソビストアプレミアム会員2次先行",
+ "ticket_sales": [
+  {
+   "event_id": "ev_the_idolm@ster_cinderella_girls_15th_anniversary_orchestra_concert_~_シンデレラの演奏会_~",
+   "kind": "lottery",
+   "name": "アソビストアプレミアム会員2次先行",
+   "starts_at": "2026-10-14 12:00",
+   "ends_at": "2026-10-25 23:59",
+   "result_at": "2026-11-07 13:00",
+   "url": "https://asobiticket2.asobistore.jp/receptions/3fe939f3-266b-41cb-98b5-54f64d0c4e7b",
+   "note": "1公演2枚まで(複数公演申込可)。入金期間11/7 13:00〜11/11 23:59。対象席種はS席スペシャルシート/A席全席指定。",
+   "source_url": "https://idolmaster-official.jp/news/01_20141.html",
+   "sort_order": 1
+  }
+ ]
+}

@@ -7,6 +7,7 @@ import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.runtime.Composable
 import com.fugaif.imaslivedb.data.community.CommunityApi
 import com.fugaif.imaslivedb.data.model.Vocab
+import com.fugaif.imaslivedb.ui.designsystem.ImasConfirmDestructive
 import com.fugaif.imaslivedb.ui.designsystem.ImasFilterChip
 import com.fugaif.imaslivedb.ui.theme.hexToColor
 import uniffi.imas_core.TagCategoryGroup
@@ -95,5 +96,23 @@ fun TagSelectChip(tag: CommunityApi.CommunityTag, isApplied: Boolean, isSelected
         tintColor = tag.color?.let { hexToColor(it) },
         icon = icon,
         isDisabled = isApplied
+    )
+}
+
+/**
+ * 自分が付けたタグを外す前の確認。タグのチップはタップで投票トグルなので、
+ * 確認なしだと付けた直後の誤タップで簡単に外れてしまう。付ける方向は確認しない。
+ * [tag] が null の間は出さない。
+ */
+@Composable
+fun <T> TagRemovalConfirm(tag: T?, name: (T) -> String, onDismiss: () -> Unit, onConfirm: (T) -> Unit) {
+    // ImasConfirmDestructive は onDismiss → onConfirm の順に呼ぶ。閉じた後も対象を失わないよう先に掴む。
+    val target = tag ?: return
+    ImasConfirmDestructive(
+        title = "「${name(target)}」を外しますか？",
+        isPresented = true,
+        onDismiss = onDismiss,
+        onConfirm = { onConfirm(target) },
+        actionTitle = "外す"
     )
 }

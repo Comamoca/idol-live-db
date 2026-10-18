@@ -48,13 +48,13 @@ enum BadgeTier: String, Codable, Sendable, CaseIterable {
 
 // MARK: - UserBadges
 
-/// バッジ集計 (`GET /users/:id/badges`)。
+/// バッジ集計 (`GET /users/me/badges`)。
 ///
 /// 貢献度は 2 指標を「個別集計」する (合成しない。確定契約 §3):
 ///   - `editCount`     = 編集件数 (tier 判定の主指標。cloudkit_ok=1 かつ source='app')
 ///   - `goodsReceived` = 自分の編集が受けた Good 累計
 ///
-/// `categories` は record_type 別の編集件数 (source='app' 限定)。
+/// `categories` は record_type 別の編集件数 (source='app' 限定。batch を数え、セトリの行は `ShowSetlist` にまとめる)。
 ///
 /// 契約 §1/§3: サーバは素の camelCase (`editCount` / `goodsReceived`) を直返しする。
 /// 旧キー (`total_approved` / `contribution_count`) は廃止されたため別名フォールバックは持たない。

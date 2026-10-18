@@ -339,7 +339,7 @@ private fun ShortcutsSection(
         // タブバーから外した主な画面 (並べ方はコア)。
         val tabKeys = AppPreferences.tabBarKeys
         val others = remember(tabKeys) {
-            appNavigationSectionsWithTabs(lyricsAvailable = false, assistantAvailable = false, tabKeys = tabKeys)
+            appNavigationSectionsWithTabs(lyricsAvailable = false, tabKeys = tabKeys)
                 .firstOrNull { it.title == "そのほか" }?.items.orEmpty()
         }
         if (others.isNotEmpty()) {

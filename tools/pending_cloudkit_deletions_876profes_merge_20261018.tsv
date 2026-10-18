@@ -1,0 +1,5 @@
+# 876 PRODUCTION FES. を 1 ライブにまとめたあと空になる旧ライブ 2 件 (2026-10-18, fuga 承認)。
+# 公演 sh_L1239 / sh_L1240 / sh_L1241 は data/fixes/20261018_876profes_merge.json で
+# ev_project_ims_vα-liv_2ndlive_-beyond_the_custom_- に移した。配下の公演は 0 件になってから消す。
+Event	ev_the_idolmster_dearly_stars_-dearly_dearly_meeting_-
+Event	ev_dearly_starsvα-liv_live_-under_one_sky_-

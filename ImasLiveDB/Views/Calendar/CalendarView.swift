@@ -131,11 +131,6 @@ struct CalendarView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     SettingsToolbarButton()
                 }
-                if ChatGPTPlanSession.isPrototypeVisible {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        AssistantToolbarButton()
-                    }
-                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         AppAnalytics.tap("calendar.daily_pick")

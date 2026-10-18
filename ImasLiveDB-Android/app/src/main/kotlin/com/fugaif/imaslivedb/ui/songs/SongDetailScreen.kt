@@ -123,6 +123,7 @@ import com.fugaif.imaslivedb.ui.designsystem.ImasTabs
 import com.fugaif.imaslivedb.ui.designsystem.ImasToolbarButton
 import com.fugaif.imaslivedb.ui.designsystem.ImasValueRow
 import com.fugaif.imaslivedb.ui.tags.SongTagPickerSheet
+import com.fugaif.imaslivedb.ui.tags.TagRemovalConfirm
 import com.fugaif.imaslivedb.ui.tags.TagDetailScreen
 import com.fugaif.imaslivedb.ui.theme.AppPreferences
 import com.fugaif.imaslivedb.ui.theme.DS
@@ -172,6 +173,7 @@ fun SongDetailScreen(
     val context = LocalContext.current
     val uiState by viewModel.uiState.collectAsState()
     var showTagPicker by rememberSaveable { mutableStateOf(false) }
+    var removingTag by remember { mutableStateOf<com.fugaif.imaslivedb.data.community.CommunityApi.SongTag?>(null) }
     var showPenlightSheet by rememberSaveable { mutableStateOf(false) }
     var currentSongId by rememberSaveable(songId) { mutableStateOf(songId) }
     var tagDetailId by rememberSaveable { mutableStateOf<String?>(null) }
@@ -304,11 +306,11 @@ fun SongDetailScreen(
                 onSongClick = { id -> currentSongId = id },
                 onToggleFavorite = viewModel::toggleFavorite,
                 onToggleCardOwned = viewModel::toggleCardOwned,
-                // 外す方向はゲートしない (iOS も自分が付けたタグの取り消しは contextMenu で素通し)。
+                // 外す方向はゲートしないが、誤タップで外れないよう確認を挟む。
                 // 付ける方向だけ共通ゲートを通す — チップのタップはタグ投票の書き込みなので、
                 // ボタンを隠すだけでは未ログイン/BAN 済みが投票し続けられてしまう。
                 onToggleTag = { tag ->
-                    if (tag.mine) viewModel.toggleTag(tag) else startCommunityEdit { viewModel.toggleTag(tag) }
+                    if (tag.mine) removingTag = tag else startCommunityEdit { viewModel.toggleTag(tag) }
                 },
                 onOpenTagPicker = { startCommunityEdit { showTagPicker = true } },
                 onTagDetailClick = { tagDetailId = it },
@@ -325,6 +327,12 @@ fun SongDetailScreen(
             )
         }
     }
+
+    TagRemovalConfirm(
+        tag = removingTag, name = { it.name },
+        onDismiss = { removingTag = null },
+        onConfirm = viewModel::toggleTag
+    )
 
     if (showTagPicker) {
         SongTagPickerSheet(

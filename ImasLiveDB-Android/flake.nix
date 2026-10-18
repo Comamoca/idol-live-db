@@ -35,6 +35,7 @@
               pkgs.jdk17
               androidSdk.androidsdk
               pkgs.kotlin-language-server
+              pkgs.sqlite                                        # generateSeedDb (app/build.gradle.kts) が sqlite3 コマンドを呼ぶ
             ];
 
             CLOUDKIT_API_TOKEN = "";

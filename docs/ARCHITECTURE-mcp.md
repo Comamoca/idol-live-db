@@ -31,13 +31,11 @@
 - **本番データへ直接書かない。** 新規登録は `data/` に JSON ドラフトを置いて `--check` を通すところまで (§5)。
 - **LLM を呼ばない。** これは LLM に**呼ばれる**側。サーバ (このリポジトリが持つ経路) から
   推論を呼ぶと「ランニングコスト 0」の制約に反する。
-  - **アプリ内の AI は例外ではなく、この制約の内側にある。** 2026-10-01 に Sign in with ChatGPT
-    (OSS 向けの ChatGPT プラン利用フロー) で、推論の費用を**利用者本人の ChatGPT プラン**が持つ形が
-    取れるようになった (iOS で実機確認済み)。アプリが利用者の端末から直接 Responses API を呼び、
-    こちらのサーバも課金も通らないので、ランニングコストは 0 のまま。以前の「アプリにチャット機能を
-    作らない」は、推論費をこちらが持つ前提での判断だった。
-  - アプリ内の AI に渡すツールは**このツール面そのもの** (`agent::tools::assistant`)。
-    Swift / Kotlin でツールを書き直さない — 書き直すと「MCP とアプリで同じ質問に違う答え」が出る。
+  - アプリ内の AI 会話 (Sign in with ChatGPT で利用者の ChatGPT プランから Responses API を呼ぶ
+    質問チャット・キャラ会話・キャラのタイムライン) は 2026-10-01 に試作し、公開しないまま
+    2026-10-14 にオーナーの判断で削除した (iOS の画面・サービス、コアの `assistant` / `persona` /
+    `personal` / `timeline` と FFI、行き先の「AIチャット」)。アプリで AI を使う機能を作り直すときも、
+    ツールはこのツール面を使い、Swift / Kotlin で書き直さない。
 
 ## 2. 絶対制約
 
@@ -50,17 +48,13 @@
    返った JSON を書き出すだけ。**これを崩すと、アプリ・Web・LLM で「同じ質問に違う答え」が出る。**
 3. **照合規則はコア一本**。検索の畳み込みは `imas-text-fold` / `domain::text_search_index` /
    `fuzzy_search` が唯一の実体。ツール面で `contains` や `to_lowercase` を書かない。
-4. **アプリに出すのはツール面だけ**。`agent::tools` (読み取りツールと、アプリ内アシスタント向けの
-   `assistant` / 本人の記録を読む `personal`) は常にコンパイルされ、`inbound::assistant_tools` で FFI に出る
-   (`assistant_instructions` / `assistant_tools_json` / `SnapshotStore::assistant_call_tool`、
-   画面の文言の `assistant_tool_progress_label` / `assistant_example_prompts`) (`tests/ffi_surface.rs` に登録済み)。ツールを足しても FFI は増えない
-   (名前と引数 JSON で呼ぶ汎用の入口なので)。入出力のアダプタ (`mcp` / `stdio` / `cli` / `proposal_io`)・
+4. **アプリに出すものは無い**。`agent::tools` (読み取りツールと公開 API の文書) は常にコンパイルされるが
+   (`web_export::data_api` が使う)、FFI には出していない。入出力のアダプタ (`mcp` / `stdio` / `cli` / `proposal_io`)・
    書き込み (`proposal`)・歌詞検索 (`lyrics_*`、HTTP を叩く) と bin は既定 off の `feature = "agent"` で、
    iOS/Android のビルドには入らない。
-   - 2026-10-01 までは「FFI 面は不変、`#[uniffi::export]` を足さない」だった。アプリ内 AI
-     (§1 の Sign in with ChatGPT) でツール面をアプリから使う必要ができたため、ツール面だけを外に出した。
-     歌詞本文・`lyrics_url`・`preview_url` を返さない制約 (§1) はアプリ内 AI でもそのまま効く
-     (同じツール面を通るので)。
+   - 2026-10-01〜10-14 はアプリ内 AI のためにツール面を `inbound::assistant_tools` で FFI に出していた
+     (§1)。AI 会話の削除で外した。また出すときも、歌詞本文・`lyrics_url`・`preview_url` を返さない
+     制約 (§1) は同じツール面を通るのでそのまま効く。
 5. **出典なしの登録を構造で禁じる**。書き込みツールは `source` (一次ソースの URL) を必須引数にする。
 
 ## 3. 依存方向

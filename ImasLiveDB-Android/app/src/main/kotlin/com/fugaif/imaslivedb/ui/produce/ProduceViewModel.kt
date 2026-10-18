@@ -120,7 +120,6 @@ class ProduceViewModel(app: Application) : AndroidViewModel(app) {
                 collectedCount = module.songRepository.fetchCollectedSongIds().size,
                 masteryCount = marks.masteryLevels().size,
                 voteCount = module.localPollVoteLog.allEntries().size,
-                contributionCount = module.localContributionLog.total,
                 recents = resolveRecents(),
                 ledgerTotalLabel = formatYen(ledgerTotal),
                 cardCaseCount = module.producerCardRepository.receivedCount(),
@@ -128,6 +127,11 @@ class ProduceViewModel(app: Application) : AndroidViewModel(app) {
             )
         }
         viewModelScope.launch { loadFeaturedPoll() }
+        // 自分の編集の件数はサーバにだけある。未ログイン・取れなければ 0。
+        viewModelScope.launch {
+            val count = module.badgeService.myBadges()?.editCount ?: 0
+            _uiState.value = _uiState.value.copy(contributionCount = count)
+        }
     }
 
     /**

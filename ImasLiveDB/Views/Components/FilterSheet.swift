@@ -58,7 +58,7 @@ struct EventFilterSheet: View {
                     NavigationLink {
                         VenuePickerView(directory: venueDirectory, selected: $localVenue)
                     } label: {
-                        ImasNavRow(title: "会場", value: selectedVenueLabel)
+                        ImasNavRow(title: "会場", value: selectedVenueLabel, showsChevron: false)
                     }
                 }
 

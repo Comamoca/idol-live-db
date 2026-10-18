@@ -5,23 +5,18 @@ import SwiftUI
 enum TabBarSettings {
     static let storageKey = "tab_bar_order"
 
-    /// AI チャットを出せるビルドか (試作。開発ビルドだけ)。
-    @MainActor static var assistantAvailable: Bool { ChatGPTPlanSession.isPrototypeVisible }
-
     static func keys(_ raw: String) -> [String] {
         raw.split(separator: ",").map(String.init)
     }
 
-    /// 行き先を見出しごとに。先頭 (見出しなし) がタブバー、タブから外した主な画面と AI チャットは「そのほか」。
+    /// 行き先を見出しごとに。先頭 (見出しなし) がタブバー、タブから外した主な画面は「そのほか」。
     @MainActor static func sections(_ raw: String) -> [NavSection] {
-        appNavigationSectionsWithTabs(lyricsAvailable: LyricsFeature.isAvailable,
-                                      assistantAvailable: assistantAvailable, tabKeys: keys(raw))
+        appNavigationSectionsWithTabs(lyricsAvailable: LyricsFeature.isAvailable, tabKeys: keys(raw))
     }
 
     /// 整えた並び (保存する値)。
     @MainActor static func normalized(_ keys: [String]) -> [String] {
-        normalizeTabBarKeys(lyricsAvailable: LyricsFeature.isAvailable,
-                            assistantAvailable: assistantAvailable, tabKeys: keys)
+        normalizeTabBarKeys(lyricsAvailable: LyricsFeature.isAvailable, tabKeys: keys)
     }
 }
 
@@ -35,7 +30,7 @@ struct TabBarSettingsView: View {
 
     private var tabs: [String] { TabBarSettings.normalized(TabBarSettings.keys(raw)) }
     private var choices: [NavItem] {
-        tabBarChoices(lyricsAvailable: LyricsFeature.isAvailable, assistantAvailable: TabBarSettings.assistantAvailable)
+        tabBarChoices(lyricsAvailable: LyricsFeature.isAvailable)
     }
     private var maxCount: Int { Int(maxTabBarCount()) }
 

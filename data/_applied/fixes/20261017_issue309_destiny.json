@@ -1,0 +1,23 @@
+{
+ "title": "765as_destiny を OFA の「Destiny」の情報に直す (#309)",
+ "author": "daily-data-crawl",
+ "source": "https://github.com/fuga-if/idol-live-db/issues/309",
+ "fixes": [
+  {
+   "table": "songs",
+   "id": "765as_destiny",
+   "fields": {
+    "title": "Destiny",
+    "cd_series": "THE IDOLM@STER MASTER ARTIST 3 FINALE Destiny",
+    "cd_title": "THE IDOLM@STER MASTER ARTIST 3 FINALE Destiny",
+    "lyricist": "白瀬彩",
+    "composer": "BNSI(渡辺量)",
+    "arranger": "BNSI(渡辺量)",
+    "cd_release_date": "2016-02-17",
+    "singer_label": "765PRO ALLSTARS"
+   },
+   "source": "https://joshinweb.jp/dp/4988001790716.html",
+   "note": "披露公演 (MOIW2015・初星宴舞・SYMPHONY OF FIVE STARS ほか) と原唱者 765PRO ALLSTARS はワンフォーオールの Destiny。メタだけ VOCAL MASTER (たかはし智秋) の別曲の値が入っていた。COZC-1142/3 2016-02-17"
+  }
+ ]
+}

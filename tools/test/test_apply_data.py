@@ -642,6 +642,61 @@ class TicketSalesApplyRequiresTableTest(PostFixture):
             conn.close()
 
 
+class VenuesTest(PostFixture):
+    """data/venues/: 施設・正式名・ホールを作り、その施設の行だけを押す。"""
+
+    def venue(self, **extra):
+        return dict({"id": "venue_テスト劇場", "name": "テスト劇場", "name_kana": "てすとげきじょう",
+                     "prefecture": "愛知", "source": "https://example.com/hall",
+                     "halls": [{"name": "大ホール", "capacity": 2480}]}, **extra)
+
+    def problems(self, *venues):
+        support.write_json(self.data / "venues" / "post.json", {"venues": list(venues)})
+        conn = sqlite3.connect(str(self.db))
+        try:
+            return apply_data.validate(conn)
+        finally:
+            conn.close()
+
+    def test_a_new_venue_passes(self):
+        self.assertEqual(self.problems(self.venue()), [])
+
+    def test_the_same_name_twice_is_rejected(self):
+        conn = sqlite3.connect(str(self.db))
+        conn.execute("INSERT INTO venues (id, name, sort_order) VALUES ('venue_x', 'ＴＥＳＴ ホール', 0)")
+        conn.commit()
+        conn.close()
+        [problem] = self.problems(self.venue(id="venue_y", name="TEST ホール", name_kana="てすとほーる"))
+        self.assertIn("既にある", problem)
+        [problem] = self.problems(self.venue(), self.venue(id="venue_z"))
+        self.assertIn("[1]", problem)
+
+    def test_kana_id_and_halls_are_checked(self):
+        self.assertEqual(len(self.problems(self.venue(name_kana="テストゲキジョウ"))), 1)
+        self.assertEqual(len(self.problems(self.venue(id="テスト劇場"))), 1)
+        self.assertEqual(len(self.problems(self.venue(halls=[{"capacity": 10}]))), 1)
+        self.assertEqual(len(self.problems(self.venue(capacity="2,480"))), 1)
+
+    def test_apply_inserts_venue_name_and_hall_scoped_to_the_venue(self):
+        support.write_json(self.data / "venues" / "post.json", {"venues": [self.venue()]})
+        conn = sqlite3.connect(str(self.db))
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                affected = apply_data.apply_all(conn)
+            self.assertEqual(conn.execute("SELECT name, prefecture, capacity FROM venues").fetchall(),
+                             [("テスト劇場", "愛知", None)])
+            self.assertEqual(conn.execute("SELECT id, venue_id FROM venue_names").fetchall(),
+                             [("venue_テスト劇場__テスト劇場", "venue_テスト劇場")])
+            self.assertEqual(conn.execute("SELECT id, name, capacity FROM venue_halls").fetchall(),
+                             [("venue_テスト劇場__大ホール", "大ホール", 2480)])
+            for table in ("venues", "venue_names", "venue_halls"):
+                self.assertEqual(affected[table], {"venue_テスト劇場"})
+                self.assertEqual(apply_data.scope_id(conn, table, conn.execute(
+                    f"SELECT id FROM {table}").fetchone()[0]), "venue_テスト劇場")
+        finally:
+            conn.close()
+
+
 class AppliedPostsTest(unittest.TestCase):
     def test_posts_moved_to_applied_are_not_read(self):
         with tempfile.TemporaryDirectory() as tmp:

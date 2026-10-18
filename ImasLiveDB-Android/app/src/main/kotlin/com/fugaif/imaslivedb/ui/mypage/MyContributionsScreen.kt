@@ -3,8 +3,6 @@ package com.fugaif.imaslivedb.ui.mypage
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.EditNote
-import androidx.compose.material.icons.filled.Movie
-import androidx.compose.material.icons.filled.Sell
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -17,9 +15,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import com.fugaif.imaslivedb.data.community.LocalContributionLog
+import com.fugaif.imaslivedb.data.community.BadgeService
 import com.fugaif.imaslivedb.di.AppModule
 import com.fugaif.imaslivedb.ui.designsystem.ImasNote
 import com.fugaif.imaslivedb.ui.designsystem.ImasPage
@@ -46,15 +43,19 @@ import uniffi.imas_core.relativeTimes
 
 /**
  * 自分の投稿累計の内訳画面。プロデュースタブ「投稿」タイル → ここに飛ぶ。
- * ローカル LocalContributionLog のカウントを内訳として並べる (iOS MyContributionsView の移植)。
+ * 件数と内訳はサーバ (`GET /users/me/badges`) の値をそのまま出す。端末には持たない (iOS MyContributionsView の移植)。
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyContributionsScreen(onBack: () -> Unit) {
     val context = LocalContext.current
-    val log = remember { AppModule.from(context).localContributionLog }
-    val counts by log.counts.collectAsState()
-    val total = counts.values.sum()
+    var badges by remember { mutableStateOf<BadgeService.Badges?>(null) }
+    LaunchedEffect(Unit) { badges = AppModule.from(context).badgeService.myBadges(force = true) }
+    // 種類別の件数。多い順、同数は種類名の順。
+    val breakdown = badges?.categories.orEmpty()
+        .filterValues { it > 0 }
+        .entries
+        .sortedWith(compareByDescending<Map.Entry<String, Int>> { it.value }.thenBy { it.key })
     val feedbackService = remember { AppModule.from(context).contributionFeedbackService }
     val feedback by feedbackService.feedback.collectAsState()
     var lyricTitles by remember { mutableStateOf<Map<String, String>>(emptyMap()) }
@@ -82,27 +83,33 @@ fun MyContributionsScreen(onBack: () -> Unit) {
         ImasPage(modifier = Modifier.padding(padding)) {
             ImasStatTile(
                 icon = Icons.Filled.EditNote,
-                value = "$total",
+                value = "${badges?.editCount ?: 0}",
                 unit = "件",
                 label = "コミュニティへの投稿累計"
             )
 
             feedback?.let { FeedbackSections(it, lyricTitles) }
 
-            ImasSection("内訳", style = ImasSectionHeaderStyle.SMALL) {
-                ImasStatGrid(columns = 2) {
-                    LocalContributionLog.Kind.entries.forEach { kind ->
-                        ImasStatTile(
-                            icon = kind.icon(),
-                            value = "${counts[kind] ?: 0}",
-                            unit = "件",
-                            label = kind.label
-                        )
+            if (breakdown.isNotEmpty()) {
+                ImasSection(
+                    "内訳",
+                    style = ImasSectionHeaderStyle.SMALL,
+                    footer = "1 回の編集がいくつもの種類にまたがるときは、それぞれに数えます。"
+                ) {
+                    ImasStatGrid(columns = 2) {
+                        breakdown.forEach { (type, count) ->
+                            ImasStatTile(
+                                icon = EditFeedFormat.recordTypeIcon(type),
+                                value = "$count",
+                                unit = "件",
+                                label = EditFeedFormat.recordTypeLabel(type)
+                            )
+                        }
                     }
                 }
             }
 
-            ImasNote("セトリ編集・動画追加・タグ追加が累計に含まれます。再インストールするとカウントはリセットされます (端末ローカル記録)。")
+            ImasNote("アプリから入れた編集の件数です。取り消された編集も数えます。")
         }
     }
 }
@@ -166,10 +173,4 @@ private fun FeedbackSections(feedback: ContributionFeedbackService.Feedback, lyr
             }
         }
     }
-}
-
-private fun LocalContributionLog.Kind.icon(): ImageVector = when (this) {
-    LocalContributionLog.Kind.SETLIST_EDIT -> Icons.Filled.EditNote
-    LocalContributionLog.Kind.VIDEO -> Icons.Filled.Movie
-    LocalContributionLog.Kind.TAG -> Icons.Filled.Sell
 }

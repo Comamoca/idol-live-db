@@ -78,6 +78,7 @@ import uniffi.imas_core.UnitCallCellKind
 import com.fugaif.imaslivedb.ui.components.PersonalTagsSection
 import com.fugaif.imaslivedb.ui.polls.PollAchievementBadges
 import com.fugaif.imaslivedb.ui.tags.UnitTagPickerSheet
+import com.fugaif.imaslivedb.ui.tags.TagRemovalConfirm
 import com.fugaif.imaslivedb.ui.theme.DS
 import com.fugaif.imaslivedb.ui.theme.imasRowPress
 
@@ -125,6 +126,7 @@ fun UnitDetailScreen(
         mutableStateOf(ImasCallMatrixSelection(0, 1))
     }
     var showTagPicker by rememberSaveable { mutableStateOf(false) }
+    var removingTag by remember { mutableStateOf<CommunityApi.UnitTag?>(null) }
     var showLoginPrompt by rememberSaveable { mutableStateOf(false) }
     val authState by AppModule.from(context).authService.state.collectAsState()
 
@@ -180,10 +182,10 @@ fun UnitDetailScreen(
                             authState = authState,
                             similarUnits = state.similarUnits,
                             similarSharedTags = state.similarSharedTags,
-                            // 外す方向はゲートしない (iOS も自分が付けたタグの取り消しは素通し)。
+                            // 外す方向はゲートしないが、誤タップで外れないよう確認を挟む。
                             // 付ける方向はタグ投票の書き込みなので共通ゲートを通す。
                             onToggleTag = { tag ->
-                                if (tag.mine) viewModel.toggleTag(tag)
+                                if (tag.mine) removingTag = tag
                                 else startCommunityEdit { viewModel.toggleTag(tag) }
                             },
                             onOpenTagPicker = { startCommunityEdit { showTagPicker = true } },
@@ -202,6 +204,12 @@ fun UnitDetailScreen(
             }
         }
     }
+
+    TagRemovalConfirm(
+        tag = removingTag, name = { it.name },
+        onDismiss = { removingTag = null },
+        onConfirm = viewModel::toggleTag
+    )
 
     if (showTagPicker && unit != null) {
         UnitTagPickerSheet(

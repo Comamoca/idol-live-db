@@ -1,0 +1,14 @@
+{
+ "title": "#298 SideM PASSIONABLE READING SHOW ～魂環の人形～ の特設 URL",
+ "source": "https://idolmaster-official.jp/live_event/sidem_prs2026/",
+ "fixes": [
+  {
+   "table": "events",
+   "id": "ev_the_idolmster_sidem_passionable_reading_show_魂環の人形",
+   "fields": {
+    "ticket_url": "https://idolmaster-official.jp/live_event/sidem_prs2026/"
+   },
+   "note": "issue #298。公式特設ページ (title: PASSIONABLE READING SHOW ～魂環の人形(マリオネット)～) を確認"
+  }
+ ]
+}

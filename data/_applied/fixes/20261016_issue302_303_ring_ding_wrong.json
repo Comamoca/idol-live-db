@@ -1,0 +1,14 @@
+{
+ "title": "修正リクエスト #302 #303 の反映 (Ring Ding Wrong を配信可能な Single 版の id に)",
+ "author": "daily-data-crawl",
+ "source": "https://itunes.apple.com/lookup?id=6788236374&country=jp",
+ "fixes": [
+  {"table": "songs", "id": "sidem_ring_ding_wrong", "fields": {
+    "apple_music_id": "6788236374",
+    "apple_music_album_id": "6788236373",
+    "artwork_url": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/1f/dc/16/1fdc16f3-67f6-41be-3a9d-c013e40776db/4540774749843.png/600x600bb.jpg",
+    "preview_url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/67/16/b7/6716b724-301f-2f40-8c15-22e5b53a3f7d/mzaf_16734581815459465621.plus.aac.p.m4a"
+   },
+   "note": "#302 は album id だけ・#303 は track id だけを Single 版 (TRANSCENDENT T@LES 11 - Single, isStreamable=true) に替えていた。現行の EP 版 track 6788236812 は isStreamable=false なので、track・album・ジャケ・試聴を Single 版で揃える。cd_series は系列キーなので触らない"}
+ ]
+}

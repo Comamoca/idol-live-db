@@ -10,7 +10,7 @@ import SwiftUI
 
 enum DesignCatalogPage: String, CaseIterable, Identifiable {
     case venue, venueRows, application, buttons, chips, rows, rows2, sections, heroSong, heroIdol, heroIdolColor, idolProfile, hub, hubColor,
-         feedback, setlist, list, form, setup, community, chat, stage
+         feedback, setlist, list, form, setup, community, stage
 
     var id: String { rawValue }
 
@@ -36,7 +36,6 @@ enum DesignCatalogPage: String, CaseIterable, Identifiable {
         case .form: return "編集シートの型"
         case .setup: return "ゲームの設定・読みもの"
         case .community: return "コミュニティ (タグ・記録)"
-        case .chat: return "AI チャット"
         case .stage: return "あそぶ (ステージ)"
         }
     }
@@ -78,7 +77,6 @@ struct DesignCatalogPageView: View {
             case .form: FormTemplatePage()
             case .setup: SetupPage()
             case .community: CommunityPage()
-            case .chat: ChatPage()
             case .stage: StagePage()
             }
         }
@@ -1363,41 +1361,6 @@ private struct CommunityPage: View {
                 }
             }
         }
-    }
-}
-
-// MARK: - AI チャット
-
-private struct ChatPage: View {
-    @State private var input = ""
-
-    private func aiAvatar(seed: String? = nil) -> some View {
-        ImasAvatar(label: "AI", seed: seed, size: 30, reservesPickRing: false)
-    }
-
-    var body: some View {
-        VStack(spacing: 0) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: DS.Space.card) {
-                    ImasChatBubble(role: .assistant, content: .text("どんな曲を探していますか？")) { aiAvatar() }
-                    ImasChatBubble(role: .user, content: .text("夏に聴きたいアップテンポな曲"))
-                    ImasChatToolChip(label: "曲を検索中…")
-                    ImasChatBubble(role: .assistant, content: .streaming("候補が")) { aiAvatar() }
-                    ImasChatBubble(role: .assistant, content: .failed(message: nil, onRetry: {})) { aiAvatar() }
-                    ImasChatBubble(role: .assistant, content: .text("学マスの新曲だよ！"), partnerName: "藤田ことね", seed: Sample.saki) {
-                        aiAvatar(seed: Sample.saki)
-                    }
-                }
-                .padding(.horizontal, DS.Space.screen)
-                .padding(.top, DS.Space.gapLoose)
-                .padding(.bottom, DS.Space.gap)
-            }
-            ImasChatComposer(text: $input, placeholder: "質問を入力", isRunning: false, canSend: !input.isEmpty,
-                             onSend: {}, onStop: {}) {
-                Text("1 日 10 回まで利用できます。").imasText(.note)
-            }
-        }
-        .background(DS.bg)
     }
 }
 

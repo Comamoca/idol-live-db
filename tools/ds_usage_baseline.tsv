@@ -51,7 +51,6 @@ ImasLiveDB/Views/Admin/PlayabilityCheckView.swift	2
 ImasLiveDB/Views/Calendar/CalendarEntry+Display.swift	2
 ImasLiveDB/Views/Calendar/MonthCalendarView.swift	2
 ImasLiveDB/Views/Calendar/WeekTimeGridView.swift	2
-ImasLiveDB/Views/ChatGPTPlan/CharacterTalkViews.swift	1
 ImasLiveDB/Views/Community/PenlightVoteSheet.swift	2
 ImasLiveDB/Views/Components/CallGuide/CallEditorSheet.swift	1
 ImasLiveDB/Views/Components/CallGuide/CallGuideLineViews.swift	7

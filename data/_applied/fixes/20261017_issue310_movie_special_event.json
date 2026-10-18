@@ -1,0 +1,14 @@
+{
+ "title": "劇場版スペシャルイベント (キリン×ローソンキャンペーン) の告知 URL (#310)",
+ "author": "daily-data-crawl",
+ "source": "https://idolmaster.jp/blog/?p=615",
+ "fixes": [
+  {
+   "table": "events",
+   "id": "ev_劇場版the_idolmster_movie輝きの向こう側へスペシャルイベント",
+   "fields": {"ticket_url": "https://idolmaster.jp/blog/?p=615"},
+   "source": "https://idolmaster.jp/blog/?p=615",
+   "note": "投稿は新規イベントだったが、告知の出演者 5 人が既存の 2014-03-09 山野ホールの公演と一致する同じ催し"
+  }
+ ]
+}

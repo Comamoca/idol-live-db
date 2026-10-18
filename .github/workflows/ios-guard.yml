@@ -59,9 +59,23 @@ jobs:
       - name: Build imas-core (iOS only)
         run: bash imas-core/build.sh --ios-only
 
+      # tools/ の Python スクリプトは uv (pyproject.toml / uv.lock) で実行する。
+      # runner の system python に依存しないので、Python の入れ替えで CI が壊れない。
+      #
+      # setup-uv は他の action と違い浮動 major タグ (v10) が打たれていないので、
+      # 実在するフルバージョンで固定する (v10 を指すと action の解決自体で落ちる)。
+      - uses: astral-sh/setup-uv@v10.3.0
+        with:
+          enable-cache: true
+
+      - name: Install Python deps
+        run: uv sync --frozen
+
       # 同梱 master.sqlite は gitignore で各自生成する運用 (docs/DATA_PIPELINE.md)。
       # FK 整合性ゲートも兼ねるので CI でも同じ手順で作る。
       - name: Build master.sqlite from db/master.sql
+        env:
+          PYTHON: uv run --frozen python
         run: bash tools/build_db.sh
 
       # GoogleService-Info.plist は Firebase の秘匿ファイルで gitignore 対象。
@@ -96,7 +110,7 @@ jobs:
         id: sim
         run: |
           xcrun simctl list devices available --json > /tmp/sims.json
-          python3 tools/pick_simulator.py /tmp/sims.json >> "$GITHUB_OUTPUT"
+          uv run --frozen python tools/pick_simulator.py /tmp/sims.json >> "$GITHUB_OUTPUT"
           cat "$GITHUB_OUTPUT"
 
       # シミュレータを先に起動しきっておく。冷えた状態で `xcodebuild test` を始めると、

@@ -39,7 +39,9 @@
           # 全プラットフォーム向け共通ツール
           commonPkgs = with pkgs; [
             nodejs
+            bun                                                # imas-live-api のテスト (vitest) 実行に使う
             python3
+            uv              # tools/ の Python 依存 (pyproject.toml / uv.lock) を管理。`uv run python ...` で実行
             sqlite
             nixd
             typescript-language-server
@@ -55,7 +57,9 @@
               echo "🍀 ImasLiveDB devShell activated"
               echo "   Platform : ${pkgs.stdenv.system}"
               echo "   Node.js  : $(node --version 2>/dev/null || echo 'N/A')"
+              echo "   Bun      : $(bun --version 2>/dev/null || echo 'N/A')"
               echo "   Python   : $(python3 --version 2>/dev/null || echo 'N/A')"
+              echo "   uv       : $(uv --version 2>/dev/null || echo 'N/A')"
               echo "   SQLite   : $(sqlite3 --version 2>/dev/null || echo 'N/A')"
               echo "   Swift    : $(swift --version 2>/dev/null | head -1 || echo 'N/A')"
               ${pkgs.lib.optionalString pkgs.stdenv.isDarwin ''

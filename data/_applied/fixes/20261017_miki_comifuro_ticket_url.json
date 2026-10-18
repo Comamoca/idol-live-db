@@ -1,0 +1,16 @@
+{
+ "title": "MIKI HOSHII SOLO SHOWCASE in Comic Frontier の特設 URL を埋める",
+ "author": "daily-data-crawl",
+ "source": "https://idolmaster-official.jp/news/01_20133.html",
+ "fixes": [
+  {
+   "table": "events",
+   "id": "ev_miki_hoshii_solo_showcase_the_future_spotlight_in_comic_frontier",
+   "fields": {
+    "ticket_url": "https://comifuro.net/"
+   },
+   "source": "https://idolmaster-official.jp/news/01_20133.html",
+   "note": "公式ニュースの「チケット販売」が Comic Frontier 23 公式サイトを案内 (Anime Central 公演の acen.org と同じ形)"
+  }
+ ]
+}

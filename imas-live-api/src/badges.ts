@@ -38,15 +38,19 @@ export interface BadgeInfo {
   editCount: number;
   /** 自分の編集が累計で受け取った Good 数 (編集件数とは別集計)。 */
   goodsReceived: number;
-  /** record_type 別の編集件数内訳 (source='app' に限定)。 */
+  /**
+   * record_type 別の編集件数内訳 (source='app' に限定)。op 行ではなく batch を数える。
+   * セトリの行 (SetlistItem / SetlistPerformer) は ShowSetlist にまとめる。
+   * 1 batch が複数の種類にまたがるとそれぞれに数えるので、合計は editCount 以上になりうる。
+   */
   categories: Record<string, number>;
 }
 
 /**
  * ユーザーの貢献バッジを集計する (確定契約 §3: 全て source='app' に限定)。
  *   - 編集件数 = cloudkit_ok=1 かつ source='app' の edit_batch 件数 (revert/seed は除外。revert 済みは通算維持)
- *   - record_type 別内訳 = edit_history を batch JOIN し record_type で GROUP BY (source='app' 限定)
- *     (1 batch が複数 record_type を含む setlist 一括編集もあるため、内訳は op 行ベース)
+ *   - record_type 別内訳 = edit_history を batch JOIN し、record_type ごとに batch を数える (source='app' 限定)
+ *     (セトリの行は ShowSetlist にまとめる。セトリ 1 回の編集を行の数だけ数えないため)
  *   - 受け取った Good = 自分が editor の編集 (source='app') batch に付いた edit_good の総数
  */
 export async function fetchBadges(
@@ -62,11 +66,13 @@ export async function fetchBadges(
       .first<{ cnt: number }>(),
     db
       .prepare(
-        `SELECT eh.record_type AS rt, COUNT(*) AS cnt
+        `SELECT CASE WHEN eh.record_type IN ('SetlistItem', 'SetlistPerformer') THEN 'ShowSetlist'
+                     ELSE eh.record_type END AS rt,
+                COUNT(DISTINCT eh.batch_id) AS cnt
            FROM edit_history eh
            JOIN edit_batch eb ON eb.id = eh.batch_id
           WHERE eb.editor_id = ? AND eb.cloudkit_ok = 1 AND eb.source = 'app'
-          GROUP BY eh.record_type`
+          GROUP BY rt`
       )
       .bind(userId)
       .all<{ rt: string; cnt: number }>(),

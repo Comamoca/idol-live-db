@@ -159,7 +159,7 @@ struct SongFilterView: View {
                     NavigationLink {
                         ListPickerView(title: "シリーズ", items: seriesGroupList, selected: $selectedSeriesGroup)
                     } label: {
-                        ImasNavRow(title: "シリーズ", value: selectedSeriesGroup ?? "選択なし")
+                        ImasNavRow(title: "シリーズ", value: selectedSeriesGroup ?? "選択なし", showsChevron: false)
                     }
                 }
 
@@ -168,7 +168,7 @@ struct SongFilterView: View {
                     NavigationLink {
                         ListPickerView(title: "CDシリーズ", items: cdSeriesList, selected: $selectedCdSeries)
                     } label: {
-                        ImasNavRow(title: "CDシリーズ", value: selectedCdSeries ?? "選択なし")
+                        ImasNavRow(title: "CDシリーズ", value: selectedCdSeries ?? "選択なし", showsChevron: false)
                     }
                 }
 
@@ -177,7 +177,7 @@ struct SongFilterView: View {
                     NavigationLink {
                         ListPickerView(title: "ライブ", items: eventNames, selected: $selectedEventName)
                     } label: {
-                        ImasNavRow(title: "ライブ", value: selectedEventName ?? "選択なし")
+                        ImasNavRow(title: "ライブ", value: selectedEventName ?? "選択なし", showsChevron: false)
                     }
                 }
 
