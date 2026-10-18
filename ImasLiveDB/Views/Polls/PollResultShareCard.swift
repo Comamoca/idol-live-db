@@ -28,7 +28,7 @@ struct PollResultShareSheet: View {
                 } else {
                     ShareInk.nearBlack.frame(width: size.width, height: size.height)
                 }
-            }, isPreparingCard: card == nil)
+            }, isPreparingCard: card == nil, shareText: sharePollResultText(title: poll.title))
         }
         .task { await load() }
     }

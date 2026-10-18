@@ -1,4 +1,5 @@
 import os
+import PhotosUI
 import SwiftUI
 
 /// 「今日は何の日？」— 選んだ日と同じ月日の、過去の記念日・誕生日・ライブ・リリース。
@@ -13,6 +14,8 @@ struct OnThisDaySheet: View {
     @State var date: Date
     @State private var digest: OnThisDayDigest?
     @State private var path: [DetailDestination] = []
+    @State private var showPhotoPicker = false
+    @State private var pickedPhoto: PhotosPickerItem?
 
     private let calendar = Calendar.current
 
@@ -47,7 +50,17 @@ struct OnThisDaySheet: View {
             .toolbar {
                 if let share = digest?.day.share {
                     ToolbarItem(placement: .topBarTrailing) {
-                        SocialShareMenu(payload: share, analyticsKey: "on_this_day.share") {
+                        Menu {
+                            // ライブのキービジュアルなど、写真から選んだ画像を本文と一緒に共有する
+                            // (X を選べば画像と本文の入った投稿画面になる)。
+                            Button {
+                                AppAnalytics.tap("on_this_day.share_with_image")
+                                showPhotoPicker = true
+                            } label: {
+                                Label("画像を付けてシェア", systemImage: "photo")
+                            }
+                            SocialShareMenuItems(payload: share, analyticsKey: "on_this_day.share")
+                        } label: {
                             Image(systemName: "square.and.arrow.up")
                         }
                         .accessibilityLabel("この日をシェア")
@@ -57,6 +70,12 @@ struct OnThisDaySheet: View {
             .navigationDestination(for: DetailDestination.self) { dest in
                 DetailContentView(destination: dest) { path.append($0) }
             }
+        }
+        .photosPicker(isPresented: $showPhotoPicker, selection: $pickedPhoto, matching: .images)
+        .onChange(of: pickedPhoto) { _, item in
+            guard let item else { return }
+            pickedPhoto = nil
+            Task { await shareWithImage(item) }
         }
         .task(id: date) { await load() }
         .trackScreen("on_this_day")
@@ -185,6 +204,17 @@ struct OnThisDaySheet: View {
                 open(.event(event))
             }
         }
+    }
+
+    /// 選んだ画像と共有文をシェアシートへ。
+    private func shareWithImage(_ item: PhotosPickerItem) async {
+        guard let share = digest?.day.share,
+              let data = try? await item.loadTransferable(type: Data.self),
+              let image = UIImage(data: data) else {
+            Logger.database.error("on_this_day_share_image_load_failed")
+            return
+        }
+        SystemShare.present(items: [ShareCardImageSource(image), sharePayloadPlainText(payload: share)])
     }
 
     private func load() async {

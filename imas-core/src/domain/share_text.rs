@@ -196,6 +196,24 @@ impl SharePayload {
         }
         out
     }
+
+    /// X アプリの投稿画面を直接開く URL (`twitter://post`)。
+    ///
+    /// `x.com/intent/post` は X アプリが入っていてもアプリ内ブラウザ側に着地することがあり、
+    /// 公式アカウントでログイン済みのアプリから投稿できない。アプリが無いときだけ呼び出し側が
+    /// `x_post_url` (ブラウザ) へ落とす。この口は本文と URL を分けて渡せないので 1 本にまとめる。
+    /// `+` を空白に読むので、非予約文字 (英数と `-._~`) 以外はすべて % にする。
+    pub fn x_app_post_url(&self) -> String {
+        let mut out = String::from("twitter://post?message=");
+        for b in self.plain_text().as_bytes() {
+            if b.is_ascii_alphanumeric() || b"-._~".contains(b) {
+                out.push(*b as char);
+            } else {
+                push_percent(&mut out, *b);
+            }
+        }
+        out
+    }
 }
 
 /// 「本文 + 改行 + URL」。イベント/公演/投票のどの共有でも同じ形にそろえる。
@@ -245,6 +263,12 @@ pub fn poll_votes_payload(
         ),
         url: Some(poll_url(poll_id)),
     }
+}
+
+/// 結果の画像に添える一言 (「お題「〇〇」の結果」)。画像に見出し・順位・タグが刷ってあるので、
+/// 本文はお題名だけにする。
+pub fn poll_result_share_text(title: &str) -> String {
+    format!("お題「{title}」の結果")
 }
 
 /// お題そのもののシェア (まだ投票していない人への誘い)。
@@ -690,6 +714,23 @@ mod tests {
 
     /// 記号の扱い (Swift 実測): `&` `=` `#` `%` 空白は encode、`+` `/` `?` `:` `@` は素通し。
     /// 曲名には実際に `Q&A` `#HE4DSHOT` `100%` が存在する。
+    #[test]
+    fn x_app_post_url_encodes_everything_but_unreserved() {
+        let p = SharePayload {
+            message: "a+b&c お題".into(),
+            url: Some("https://x.test/p?1".into()),
+        };
+        assert_eq!(
+            p.x_app_post_url(),
+            "twitter://post?message=a%2Bb%26c%20%E3%81%8A%E9%A1%8C%0Ahttps%3A%2F%2Fx.test%2Fp%3F1"
+        );
+    }
+
+    #[test]
+    fn poll_result_share_text_wraps_title() {
+        assert_eq!(poll_result_share_text("ベストソング"), "お題「ベストソング」の結果");
+    }
+
     #[test]
     fn x_post_url_symbol_handling_matches_swift() {
         let p = SharePayload {

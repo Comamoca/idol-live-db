@@ -113,7 +113,7 @@ enum SystemShare {
         // シートの上から呼ばれることがあるので、 最前面まで辿ってから present する
         // (root に出すと「別のシートが出ている」と怒られて何も出ない)。
         var top = root
-        while let presented = top.presentedViewController { top = presented }
+        while let presented = top.presentedViewController, !presented.isBeingDismissed { top = presented }
 
         let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
         // iPad は popover 必須。 アンカーが無いとクラッシュする。
@@ -188,6 +188,8 @@ struct ShareCardActionPane<Card: View>: View {
     /// ジャケット画像のロード待ちなど、カードがまだ完成形でない間 true を渡すと
     /// シェアボタンが「準備中」になる (中途半端なカードが焼かれるのを防ぐ)。
     var isPreparingCard: Bool = false
+    /// 画像に添える本文。共有先 (X など) の投稿欄に画像と一緒に入る。
+    var shareText: String? = nil
 
     @State private var showRenderError = false
 
@@ -213,7 +215,9 @@ struct ShareCardActionPane<Card: View>: View {
                     showRenderError = true
                     return
                 }
-                SystemShare.present(items: [ShareCardImageSource(image)])
+                var items: [Any] = [ShareCardImageSource(image)]
+                if let shareText { items.append(shareText) }
+                SystemShare.present(items: items)
             }
             .disabled(isPreparingCard)
         }

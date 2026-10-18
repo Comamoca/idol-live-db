@@ -60,6 +60,7 @@ import uniffi.imas_core.PollCardTarget
 import uniffi.imas_core.PollResultCard
 import uniffi.imas_core.PollResultCardInput
 import uniffi.imas_core.pollResultCard
+import uniffi.imas_core.sharePollResultText
 
 // =============================================================================
 // みんなの投票の結果をシェアする画像。iOS PollResultShareCard.swift の移植。
@@ -136,6 +137,7 @@ fun PollResultShareSheet(
         ShareCardActionPane(
             ratios = listOf(ShareCardRatio.PORTRAIT),
             isPreparingCard = card == null,
+            shareText = sharePollResultText(detail.title),
             fileNamePrefix = "poll_result"
         ) { size ->
             val ready = card
