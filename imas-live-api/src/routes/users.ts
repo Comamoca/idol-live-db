@@ -2,6 +2,7 @@
 //
 //   POST   /users/me              — 表示名の変更
 //   DELETE /users/me              — 退会 (アカウントに紐づく個人データの削除)
+//   GET    /users/me/badges       — 自分の貢献バッジ (マイ投稿の件数と内訳。uid を持たない Android も引ける)
 //   GET    /users/:user_id/badges — 貢献バッジ
 
 import { lyricLikesAccountDeletionStatements } from "./lyric_likes";
@@ -31,7 +32,7 @@ const USER_REFERENCE_COLUMNS: ReadonlyArray<readonly [string, string]> = [
   ["unit_tag_description_history", "edited_by"],
 ];
 
-/** /users/me (POST・DELETE) と /users/:user_id/badges。どれでもなければ null。 */
+/** /users/me (POST・DELETE)・/users/me/badges・/users/:user_id/badges。どれでもなければ null。 */
 export async function handleUsers(ctx: RouteContext): Promise<Response | null> {
   const { request, env, path, json, error, rateLimitResponse } = ctx;
 
@@ -161,6 +162,15 @@ export async function handleUsers(ctx: RouteContext): Promise<Response | null> {
     ]);
 
     return json({ deleted: true });
+  }
+
+  // ----------------------------------------------------------------
+  // GET /users/me/badges — 自分の貢献バッジ (要ログイン)。:user_id より前に見る
+  // ----------------------------------------------------------------
+  if (path === "/users/me/badges" && request.method === "GET") {
+    const user = await getAuthUser(request, env);
+    if (!user) return error("Unauthorized", 401);
+    return json(await fetchBadges(env.DB, user.uid));
   }
 
   // ----------------------------------------------------------------
