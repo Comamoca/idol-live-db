@@ -505,6 +505,22 @@ struct PollVoteResult: Codable, Sendable {
     let myVoteCount: Int
 }
 
+/// 終了したお題がある月 (日本時間) と件数。終了タブを月ごとにさかのぼる単位。
+struct PollMonth: Codable, Hashable, Sendable {
+    /// "YYYY-MM"。`pastPolls(month:)` にそのまま渡す。
+    let month: String
+    /// 月の見出し ("2026.10")。文言はサーバが作る。
+    let label: String
+    let count: Int
+}
+
+/// 終了タブの 1 か月分。
+struct PollMonthSection: Identifiable, Sendable {
+    var id: String { month.month }
+    let month: PollMonth
+    let polls: [Poll]
+}
+
 /// 終了お題の優勝者 (殿堂/結果一覧用)。
 struct PollResult: Codable, Identifiable, Sendable {
     var id: String { pollId }
