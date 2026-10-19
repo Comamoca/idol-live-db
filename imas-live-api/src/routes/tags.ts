@@ -647,7 +647,7 @@ async function updateTag(ctx: RouteContext, pool: TagPool, rawId: string): Promi
 }
 
 /**
- * GET <master>/:id/history — 説明の編集履歴 (新しい順に 200 件)。
+ * GET <master>/:id/history — 説明の編集履歴 (新しい順に 30 件)。
  * 編集者 (端末 ID か uid) は先頭 8 文字だけ返す (maskUserRef。予想の first_voted_by と同じ)。
  */
 async function tagHistory(ctx: RouteContext, pool: TagPool, rawId: string): Promise<Response> {
@@ -659,7 +659,7 @@ async function tagHistory(ctx: RouteContext, pool: TagPool, rawId: string): Prom
             description_before,
             edited_by, edited_at
      FROM ${pool.historyTable}
-     WHERE tag_id = ? ORDER BY edited_at DESC LIMIT 200`
+     WHERE tag_id = ? ORDER BY edited_at DESC LIMIT 30`
   ).bind(tagId).all();
   return ctx.json(results.map((r) => ({ ...r, edited_by: maskUserRef(r.edited_by) })));
 }

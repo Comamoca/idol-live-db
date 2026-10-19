@@ -132,9 +132,7 @@ export async function handleDeviceAggregates(ctx: RouteContext): Promise<Respons
       // D1 の songs はコードから書かれない陳腐化ミラーで、新曲が JOIN で脱落する/
       // s.artist カラムが存在せずクエリ自体が壊れるため、ミラー依存を撤去した。
       // ブランド絞り込みと曲メタ解決は iOS local カタログ側で行う (予想機能と同方針)。
-      // 既定は上限の 1000。アプリはブランドで絞る前の全体を limit なしで取るので、
-      // 200 だと小さいブランドの曲が上位 200 から漏れてランキングに出なかった。
-      const limit = parsePositiveInt(url.searchParams.get("limit"), 1000, 1000);
+      const limit = parsePositiveInt(url.searchParams.get("limit"), 200, 1000);
 
       const { results } = await env.DB.prepare(
         `SELECT song_id, count FROM song_favorites
