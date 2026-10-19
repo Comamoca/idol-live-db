@@ -49,7 +49,9 @@ export async function handlePolls(ctx: RouteContext): Promise<Response | null> {
     // ----------------------------------------------------------------
     // active = status='active' AND ends_at > now
     // past   = status='active' AND ends_at <= now
-    // month  = 締切が日本時間でその月のものだけ (past の月送り用)。指定時は limit の既定を 100 にする
+    // month  = 締切が日本時間でその月のものだけ (past の月送り用)。
+    // limit の既定は 100 (アプリは active を limit なしで呼ぶので、20 だと締切の遅いお題が出なかった)。
+    // past で month なしだけ旧アプリ互換のため 20 のまま
     if (path === "/polls" && request.method === "GET") {
       const authUser = await getAuthUser(request, env);
       const uid = authUser?.uid ?? "";
@@ -57,7 +59,7 @@ export async function handlePolls(ctx: RouteContext): Promise<Response | null> {
       const monthParam = url.searchParams.get("month");
       const monthMatch = monthParam?.match(/^(\d{4})-(0[1-9]|1[0-2])$/);
       if (monthParam != null && !monthMatch) return error("month must be YYYY-MM", 400);
-      const limit = parsePositiveInt(url.searchParams.get("limit"), monthMatch ? 100 : 20, 100);
+      const limit = parsePositiveInt(url.searchParams.get("limit"), statusParam === "past" && !monthMatch ? 20 : 100, 100);
       const offset = parsePositiveInt(url.searchParams.get("offset"), 0, Number.MAX_SAFE_INTEGER);
 
       const isActive = statusParam !== "past";
@@ -135,7 +137,7 @@ export async function handlePolls(ctx: RouteContext): Promise<Response | null> {
              SELECT p.id AS poll_id, p.title, p.target_type,
                     CAST(strftime('%s', p.ends_at) AS INTEGER) AS ends_at,
                     pe.entity_id, pe.vote_count,
-                    RANK() OVER (PARTITION BY p.id ORDER BY pe.vote_count DESC) AS rnk
+                    ROW_NUMBER() OVER (PARTITION BY p.id ORDER BY pe.vote_count DESC, pe.entity_id) AS rnk
                FROM polls p
                JOIN poll_entries pe ON pe.poll_id = p.id
               WHERE p.status = 'active'
@@ -144,16 +146,10 @@ export async function handlePolls(ctx: RouteContext): Promise<Response | null> {
            )
           WHERE rnk = 1
           ORDER BY ends_at DESC
-          LIMIT 50`
+          LIMIT 1000`
       ).all();
-      // 同点1位は複数行返るので poll_id 単位で先頭のみ採用。
-      const seen = new Set<string>();
-      const winners = (results as any[]).filter((r) => {
-        if (seen.has(r.poll_id)) return false;
-        seen.add(r.poll_id);
-        return true;
-      });
-      return json(winners, 200, { "Cache-Control": "public, max-age=300" });
+      // 同点1位は ROW_NUMBER で 1 件に絞る (旧 LIMIT 50 は同点の行も数えたうえ、古いお題が出なかった)。
+      return json(results, 200, { "Cache-Control": "public, max-age=300" });
     }
 
     // ----------------------------------------------------------------
