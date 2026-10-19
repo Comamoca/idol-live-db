@@ -156,7 +156,8 @@ Cron (scheduled) は掃除だけ:
 
 | Method | Path | 認証 | 概要 |
 |--------|------|------|------|
-| GET | /polls | 任意 | ポール一覧 |
+| GET | /polls | 任意 | ポール一覧 (`status=past&month=YYYY-MM` で締切が日本時間でその月のものだけ) |
+| GET | /polls/months | - | 終了したポールがある月と件数 (新しい月から) |
 | GET | /polls/results | 任意 | ポール結果まとめ |
 | GET | /polls/achievements/:id | - | ポール達成バッジ |
 | GET | /polls/:id | 任意 | ポール詳細 |

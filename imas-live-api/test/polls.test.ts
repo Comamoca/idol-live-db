@@ -148,6 +148,34 @@ describe("GET /polls と GET /polls/:id", () => {
     expect(past.body.map((p: any) => p.id)).toEqual(["ended"]);
   });
 
+  it("months と month: 終了したお題を日本時間の月ごとに数え、月を指定するとその月だけ返す", async () => {
+    const at = (id: string, endsAt: string, status = "active") =>
+      exec(
+        `INSERT INTO polls (id, title, description, target_type, created_by, ends_at, status, candidate_scope)
+         VALUES (?, ?, NULL, 'song', ?, ?, ?, 'all')`,
+        id, `title-${id}`, OWNER, endsAt, status
+      );
+    await at("aug-late", "2026-08-31 14:30:00"); // 日本時間 8/31 23:30
+    await at("sep-early", "2026-08-31 15:30:00"); // 日本時間 9/1 0:30
+    await at("sep-mid", "2026-09-15 03:00:00");
+    await at("sep-removed", "2026-09-16 03:00:00", "removed");
+    await insertPoll("open", { endsIn: "+1 day" });
+
+    const months = await callJson("GET", "/polls/months");
+    expect(months.status).toBe(200);
+    expect(months.body).toEqual([
+      { month: "2026-09", label: "2026.09", count: 2 },
+      { month: "2026-08", label: "2026.08", count: 1 },
+    ]);
+
+    const sep = await callJson("GET", "/polls?status=past&month=2026-09");
+    expect(sep.body.map((p: any) => p.id)).toEqual(["sep-mid", "sep-early"]);
+    const aug = await callJson("GET", "/polls?status=past&month=2026-08");
+    expect(aug.body.map((p: any) => p.id)).toEqual(["aug-late"]);
+
+    expect((await callJson("GET", "/polls?status=past&month=2026-9")).status).toBe(400);
+  });
+
   it("is_own_poll: 呼び出した人が作ったお題だけ true。未ログインはすべて false", async () => {
     await insertPoll("mine", { createdBy: VOTER });
     await insertPoll("theirs");
