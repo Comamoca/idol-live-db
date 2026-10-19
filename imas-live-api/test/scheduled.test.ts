@@ -4,12 +4,22 @@
 //   - 日次 cron (17 15 * * *): 上に加えて前の日までの日のバケット・rate_limits の 7 日超・
 //     コール編集履歴の 180 日超を消し、song_tag_counts を数え直す。
 
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { runScheduled } from "./support/worker";
 import { exec, rows } from "./support/d1";
 
 const FIVE_MIN = "*/5 * * * *";
 const DAILY = "17 15 * * *";
+
+// seed (edge = m - 1440、ちょうど境界) から cron 実行までに分が進むと、閾値だけが
+// ずれて edge が範囲に入り消える (低頻度フレーク)。実時刻のまま止めて揃える。
+// 固定の過去日時にはしない — D1 の datetime('now') は止まらないので、JS 側だけ
+// 過去に飛ぶと seedDailyTargets が仕込む「まだ消えない」行まで古扱いで消えてしまう。
+beforeEach(() => {
+  vi.useFakeTimers({ toFake: ["Date"] });
+  vi.setSystemTime(new Date());
+});
+afterEach(() => vi.useRealTimers());
 
 const nowMinute = () => Math.floor(Date.now() / 60000);
 const today = () => -Math.floor(Date.now() / 86400000);

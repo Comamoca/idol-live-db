@@ -1,5 +1,18 @@
+import http from "node:http";
 import path from "node:path";
 import { defineWorkersConfig, readD1Migrations } from "@cloudflare/vitest-pool-workers/config";
+
+// pool-workers の isolated storage は、テストの開始時と終了時に workerd から Node 側の
+// loopback サーバへ HTTP で要求を送る。このサーバを立てる miniflare は keepAliveTimeout を
+// 設定しておらず、Node の既定 (5 秒) のままになる。開始から終了まで 5 秒を超えたテストでは、
+// 開始時に使った接続を Node が先に閉じ、workerd がそれを使い回して Network connection lost で
+// 巻き戻しが落ちる。上流の miniflare が新しい版で入れたのと同じ値 (0 = 無期限) を当てて止める。
+const createServer = http.createServer;
+http.createServer = ((...args: Parameters<typeof http.createServer>) => {
+  const server = createServer(...args);
+  server.keepAliveTimeout = 0;
+  return server;
+}) as typeof http.createServer;
 
 // テストは Workers ランタイム上で走らせる。Request/Response/crypto 等が本番と同じ実装に
 // なるので、Node の polyfill と本番で挙動が割れる事故 (署名検証・ヘッダ大小文字等) を防げる。
