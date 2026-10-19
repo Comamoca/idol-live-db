@@ -33,10 +33,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.LaunchedEffect
 import com.fugaif.imaslivedb.di.AppModule
 import com.fugaif.imaslivedb.ui.designsystem.ImasContentState
+import com.fugaif.imaslivedb.ui.designsystem.ImasDateHeader
 import com.fugaif.imaslivedb.ui.designsystem.ImasEmptyState
 import com.fugaif.imaslivedb.ui.designsystem.ImasEmptyStateKind
+import com.fugaif.imaslivedb.ui.designsystem.ImasInlineLoading
 import com.fugaif.imaslivedb.ui.designsystem.ImasRow
 import com.fugaif.imaslivedb.ui.designsystem.ImasRowPosition
 import com.fugaif.imaslivedb.ui.designsystem.ImasRowTrailing
@@ -98,9 +101,10 @@ fun PollsScreen(
                 onSelect = { viewModel.setShowActive(it == 0) },
                 modifier = Modifier.padding(horizontal = DS.Space.screen)
             )
+            val isEmpty = if (state.showActive) state.cards.isEmpty() else state.pastSections.isEmpty()
             val uiContentState = when {
                 state.isLoading -> ImasContentState.Loading
-                state.cards.isEmpty() -> ImasContentState.Empty
+                isEmpty -> ImasContentState.Empty
                 else -> ImasContentState.Loaded
             }
             ImasStateContainer(
@@ -132,12 +136,39 @@ fun PollsScreen(
                             )
                         }
                     }
-                    itemsIndexed(state.cards, key = { _, c -> c.poll.id }) { idx, card ->
-                        PollRow(
-                            card = card,
-                            onClick = { onPollClick(card.poll.id) },
-                            position = if (idx == 0) ImasRowPosition.FIRST else ImasRowPosition.FOLLOWING
-                        )
+                    if (state.showActive) {
+                        itemsIndexed(state.cards, key = { _, c -> c.poll.id }) { idx, card ->
+                            PollRow(
+                                card = card,
+                                onClick = { onPollClick(card.poll.id) },
+                                position = if (idx == 0) ImasRowPosition.FIRST else ImasRowPosition.FOLLOWING
+                            )
+                        }
+                    } else {
+                        // 終了したお題は締切の月 (日本時間) ごとに区切り、末尾まで来たら 1 か月古い月を読む。
+                        state.pastSections.forEach { section ->
+                            item(key = "month-${section.month.month}") {
+                                ImasDateHeader(
+                                    big = section.month.label,
+                                    imprint = "${section.month.count} 件",
+                                    isPast = true,
+                                    modifier = Modifier.padding(horizontal = DS.Space.screen)
+                                )
+                            }
+                            itemsIndexed(section.cards, key = { _, c -> c.poll.id }) { idx, card ->
+                                PollRow(
+                                    card = card,
+                                    onClick = { onPollClick(card.poll.id) },
+                                    position = if (idx == 0) ImasRowPosition.FIRST else ImasRowPosition.FOLLOWING
+                                )
+                            }
+                        }
+                        if (state.hasMorePast) {
+                            item(key = "load-more-past") {
+                                LaunchedEffect(state.pastSections.size) { viewModel.loadMorePast() }
+                                ImasInlineLoading(modifier = Modifier.fillMaxWidth())
+                            }
+                        }
                     }
                 }
             }
