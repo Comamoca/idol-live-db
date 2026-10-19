@@ -1,5 +1,6 @@
 package com.fugaif.imaslivedb.ui.share
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -49,9 +50,24 @@ import java.util.TimeZone
 // =============================================================================
 
 object SocialShare {
-    /** X の投稿画面を開く。X アプリ未インストールでもブラウザの投稿画面に着地する。 */
+    /** X アプリのパッケージ名。 */
+    private const val X_PACKAGE = "com.twitter.android"
+
+    /**
+     * X の投稿画面を開く。X アプリへ本文を直接渡し (ログイン中のアカウントで投稿できる)、
+     * アプリが無いときだけブラウザの投稿画面へ落とす。intent URL を先に開くとブラウザに着地しうる。
+     */
     fun postToX(context: Context, payload: SharePayload) {
-        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(sharePayloadXPostUrl(payload))))
+        val app = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, sharePayloadPlainText(payload))
+            setPackage(X_PACKAGE)
+        }
+        try {
+            context.startActivity(app)
+        } catch (e: ActivityNotFoundException) {
+            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(sharePayloadXPostUrl(payload))))
+        }
     }
 
     /** 標準シェアシートで本文 + URL を渡す。 */

@@ -106,25 +106,45 @@ struct PollListView: View {
         // NavigationLink が同時にアクティブ状態として復元されてしまい、「戻ると
         // 隣のお題も開く」現象が起きる。ScrollView ならセル概念が無いので回避できる。
         ScrollView {
-            ImasCardList {
-                ForEach(currentPolls) { poll in
-                    if poll.id != currentPolls.first?.id {
-                        ImasRowDivider(inset: DS.sp5)
+            if segmentIndex == 0 {
+                pollCards(currentPolls)
+                    .padding(.horizontal, DS.sp5)
+                    .padding(.vertical, DS.sp3)
+            } else {
+                // 終了したお題は締切の月 (日本時間) ごとに区切り、末尾まで来たら 1 か月古い月を読む。
+                LazyVStack(alignment: .leading, spacing: 0) {
+                    ForEach(vm.pastSections) { section in
+                        ImasDateHeader(big: section.month.label, imprint: "\(section.month.count) 件", isPast: true)
+                        pollCards(section.polls)
                     }
-                    NavigationLink(value: PollRoute.detail(poll.id)) {
-                        PollRowView(poll: poll)
-                    }
-                    .buttonStyle(.plain)
-                    // 一覧から直接お題を拡散できるように (詳細を開かずに誘える)。
-                    .contextMenu {
-                        SocialShareMenuItems(payload: .pollInvite(poll: poll), analyticsKey: "poll_list.share")
+                    if vm.hasMorePast {
+                        ImasInlineLoading()
+                            .onAppear { Task { await vm.loadMorePast() } }
                     }
                 }
+                .padding(.horizontal, DS.sp5)
+                .padding(.bottom, DS.sp3)
             }
-            .padding(.horizontal, DS.sp5)
-            .padding(.vertical, DS.sp3)
         }
         .scrollContentBackground(.hidden)
+    }
+
+    private func pollCards(_ polls: [Poll]) -> some View {
+        ImasCardList {
+            ForEach(polls) { poll in
+                if poll.id != polls.first?.id {
+                    ImasRowDivider(inset: DS.sp5)
+                }
+                NavigationLink(value: PollRoute.detail(poll.id)) {
+                    PollRowView(poll: poll)
+                }
+                .buttonStyle(.plain)
+                // 一覧から直接お題を拡散できるように (詳細を開かずに誘える)。
+                .contextMenu {
+                    SocialShareMenuItems(payload: .pollInvite(poll: poll), analyticsKey: "poll_list.share")
+                }
+            }
+        }
     }
 }
 

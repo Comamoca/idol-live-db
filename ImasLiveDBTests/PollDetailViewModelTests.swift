@@ -21,6 +21,21 @@ final class FakeCommunityVoting: CommunityVoting {
         return pollsByStatus[status] ?? []
     }
 
+    var monthsToReturn: [PollMonth] = []
+    var pastPollsByMonth: [String: [Poll]] = [:]
+    private(set) var pastPollMonthCalls: [String] = []
+
+    func pollMonths() async throws -> [PollMonth] {
+        if shouldThrow { throw FakeError.boom }
+        return monthsToReturn
+    }
+
+    func pastPolls(month: String) async throws -> [Poll] {
+        if shouldThrow { throw FakeError.boom }
+        pastPollMonthCalls.append(month)
+        return pastPollsByMonth[month] ?? []
+    }
+
     func poll(id: String) async throws -> PollDetail {
         if shouldThrow { throw FakeError.boom }
         guard let d = detailToReturn else { throw FakeError.boom }

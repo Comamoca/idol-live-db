@@ -1,0 +1,18 @@
+{
+ "title": "会場を追加する (例)",
+ "author": "あなたのハンドル名 (任意)",
+ "_help": "施設 1 つ = 1 件。id は venue_ + 施設名 (空白を詰めて小文字)。ホールが分かれる施設は halls に書き、公演側は shows.hall にホール名を入れる。キャパは出典が取れたものだけ (無ければ書かない)。都道府県は「東京」「愛知」のように 都・府・県 を付けない。海外は prefecture を書かない。公演の venue_id は data/fixes/ の shows で付ける。",
+ "source": "出典 (必須)。施設の公式サイトの URL など",
+ "venues": [
+  {
+   "id": "venue_example会館",
+   "name": "Example 会館",
+   "name_kana": "えぐざんぷるかいかん",
+   "prefecture": "東京",
+   "aliases": "旧名,略称",
+   "halls": [
+    {"name": "大ホール", "capacity": 2000}
+   ]
+  }
+ ]
+}

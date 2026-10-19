@@ -501,6 +501,16 @@ actor CommunityAPI {
         return try await APIClient.shared.request("GET", path: "/polls", query: ["status": status], authorized: true)
     }
 
+    func pollMonths() async throws -> [PollMonth] {
+        return try await APIClient.shared.request("GET", path: "/polls/months")
+    }
+
+    func pastPolls(month: String) async throws -> [Poll] {
+        return try await APIClient.shared.request(
+            "GET", path: "/polls", query: ["status": "past", "month": month], authorized: true
+        )
+    }
+
     func poll(id: String) async throws -> PollDetail {
         // authorized: true 必須。これが無いとサーバが利用者を識別できず myVoteCount=0 で返り、
         // 投票済みでも「残り3/3」表示 → 投票するとサーバに重複拒否されてエラーになる。

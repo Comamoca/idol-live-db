@@ -39,6 +39,14 @@ class CommunityApi(private val http: WorkerHttpClient) {
         val statusLabel: String get() = pollStatusLabel(isActive, endsAtMs)
     }
     data class PollEntry(val entityId: String, val voteCount: Int, val mine: Boolean)
+    /** 終了したお題がある月 (日本時間) と件数。終了タブを月ごとにさかのぼる単位 (iOS PollMonth の移植)。 */
+    data class PollMonth(
+        /** "YYYY-MM"。`pastPolls` にそのまま渡す。 */
+        val month: String,
+        /** 月の見出し ("2026.10")。文言はサーバが作る。 */
+        val label: String,
+        val count: Int,
+    )
     /** 終了お題の優勝者 1 件 (殿堂)。iOS PollResult の移植。 */
     data class PollResult(
         val pollId: String,
@@ -682,6 +690,25 @@ class CommunityApi(private val http: WorkerHttpClient) {
      */
     suspend fun polls(status: String = "active"): List<PollSummary>? = withContext(Dispatchers.IO) {
         val arr = getArray("/polls?status=${enc(status)}", authorized = true) ?: return@withContext null
+        (0 until arr.length()).mapNotNull { i -> parsePollSummary(arr.getJSONObject(i)) }
+    }
+
+    /**
+     * GET /polls/months — 終了したお題がある月 (日本時間、新しい月から)。認証不要。
+     * `status=past` は件数既定 20 で切れるため、終了タブはこれで月ごとにさかのぼる (iOS と同じ契約)。
+     * 通信失敗は null、「無い」は空リストで返す。
+     */
+    suspend fun pollMonths(): List<PollMonth>? = withContext(Dispatchers.IO) {
+        val arr = getArray("/polls/months") ?: return@withContext null
+        (0 until arr.length()).map { i ->
+            val o = arr.getJSONObject(i)
+            PollMonth(month = o.optString("month"), label = o.optString("label"), count = o.optInt("count"))
+        }
+    }
+
+    /** GET /polls?status=past&month= — 締切がその月 (日本時間、"YYYY-MM") の終了したお題。新しい順。 */
+    suspend fun pastPolls(month: String): List<PollSummary>? = withContext(Dispatchers.IO) {
+        val arr = getArray("/polls?status=past&month=${enc(month)}", authorized = true) ?: return@withContext null
         (0 until arr.length()).mapNotNull { i -> parsePollSummary(arr.getJSONObject(i)) }
     }
 

@@ -23,20 +23,51 @@ export async function handlePolls(ctx: RouteContext): Promise<Response | null> {
   const { request, env, url, path, json, error, rateLimitResponse } = ctx;
 
     // ----------------------------------------------------------------
-    // GET /polls?status=active|past&limit&offset — 投票一覧 (auth任意)
+    // GET /polls/months — 終了したお題がある月 (日本時間) と件数。新しい月から
+    //   ※ /polls/:id より前に置く。アプリは終了タブをこの月ごとにさかのぼって読む。
+    // ----------------------------------------------------------------
+    if (path === "/polls/months" && request.method === "GET") {
+      const { results } = await env.DB.prepare(`
+        SELECT strftime('%Y-%m', ends_at, '+9 hours') AS month, COUNT(*) AS count
+          FROM polls
+         WHERE status = 'active' AND ends_at <= datetime('now')
+         GROUP BY month
+         ORDER BY month DESC
+      `).all();
+      return json(
+        (results as any[]).map((r) => ({
+          month: r.month,
+          // 月の見出し (年月の大きい数字) の文言はここだけで作る。iOS / Android はそのまま出す。
+          label: r.month.replace("-", "."),
+          count: r.count,
+        }))
+      );
+    }
+
+    // ----------------------------------------------------------------
+    // GET /polls?status=active|past&month=YYYY-MM&limit&offset — 投票一覧 (auth任意)
     // ----------------------------------------------------------------
     // active = status='active' AND ends_at > now
     // past   = status='active' AND ends_at <= now
+    // month  = 締切が日本時間でその月のものだけ (past の月送り用)。指定時は limit の既定を 100 にする
     if (path === "/polls" && request.method === "GET") {
       const authUser = await getAuthUser(request, env);
       const uid = authUser?.uid ?? "";
       const statusParam = url.searchParams.get("status") ?? "active";
-      const limit = parsePositiveInt(url.searchParams.get("limit"), 20, 100);
+      const monthParam = url.searchParams.get("month");
+      const monthMatch = monthParam?.match(/^(\d{4})-(0[1-9]|1[0-2])$/);
+      if (monthParam != null && !monthMatch) return error("month must be YYYY-MM", 400);
+      const limit = parsePositiveInt(url.searchParams.get("limit"), monthMatch ? 100 : 20, 100);
       const offset = parsePositiveInt(url.searchParams.get("offset"), 0, Number.MAX_SAFE_INTEGER);
 
       const isActive = statusParam !== "past";
       const timeCondition = isActive ? "ends_at > datetime('now')" : "ends_at <= datetime('now')";
       const orderBy = isActive ? "ends_at ASC" : "ends_at DESC";
+      // 日本時間の月初〜翌月初を UTC に直した範囲で絞る (idx_polls_status_ends が効く形)。
+      const monthStart = monthMatch ? `${monthMatch[1]}-${monthMatch[2]}-01` : null;
+      const monthCondition = monthStart
+        ? "AND p.ends_at >= datetime(?, '-9 hours') AND p.ends_at < datetime(?, '+1 month', '-9 hours')"
+        : "";
 
       // 日付は iOS デコーダ (.secondsSince1970) に合わせ epoch 秒の数値で返す
       const { results } = await env.DB.prepare(`
@@ -59,12 +90,12 @@ export async function handlePolls(ctx: RouteContext): Promise<Response | null> {
              ORDER BY pe2.vote_count DESC LIMIT 1) AS top_entity_id
         FROM polls p
         LEFT JOIN poll_entries pe ON pe.poll_id = p.id
-        WHERE p.status = 'active' AND ${timeCondition}
+        WHERE p.status = 'active' AND ${timeCondition} ${monthCondition}
         GROUP BY p.id
         ORDER BY ${orderBy}
         LIMIT ? OFFSET ?
       `)
-        .bind(uid, limit, offset)
+        .bind(uid, ...(monthStart ? [monthStart, monthStart] : []), limit, offset)
         .all();
 
       return json(

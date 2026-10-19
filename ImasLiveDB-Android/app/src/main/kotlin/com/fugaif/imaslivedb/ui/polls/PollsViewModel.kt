@@ -19,9 +19,22 @@ data class PollCard(
     val topEntityName: String?
 )
 
+/** 終了タブの 1 か月分 (iOS PollMonthSection の移植)。 */
+data class PollMonthSection(
+    val month: CommunityApi.PollMonth,
+    val cards: List<PollCard>
+)
+
 data class PollsUiState(
+    /** 開催中タブの一覧。 */
     val cards: List<PollCard> = emptyList(),
+    /** 終了タブ: 締切の月 (日本時間) ごとのセクション (新しい月から)。 */
+    val pastSections: List<PollMonthSection> = emptyList(),
+    /** まだ読んでいない古い月があるか。 */
+    val hasMorePast: Boolean = false,
     val isLoading: Boolean = true,
+    /** 終了タブの「1 か月古い月」を読んでいる最中か。 */
+    val isLoadingMore: Boolean = false,
     /** 表示中のセグメント。true=開催中 / false=終了。 */
     val showActive: Boolean = true,
     /** 直近の取得に失敗した時の文言。既に一覧が出ている時は消さず、空の時だけ画面に出す。 */
@@ -33,6 +46,9 @@ data class PollsUiState(
  *
  * 以前はお題ごとに `GET /polls/:id` を順に取り、一覧に候補と投票のボタンまで並べていた。
  * 画面が前面に来るたびに Worker (D1) を 1+N 回読んでいたので、iOS と同じく要約だけにした。
+ *
+ * 終了タブは `status=past` の件数既定 20 で古いお題が切れるため、月 (日本時間) ごとに読む。
+ * 最初は新しい月だけ取り、末尾まで見たら 1 か月ずつさかのぼる (iOS PollListViewModel と同じ契約)。
  */
 class PollsViewModel internal constructor(
     app: Application,
@@ -48,7 +64,9 @@ class PollsViewModel internal constructor(
 
     // セグメントごとのキャッシュ。開催中/終了を往復するだけで取り直さない。
     private var activeCards: List<PollCard>? = null
-    private var pastCards: List<PollCard>? = null
+    /** 終了したお題がある月 (新しい月から)。`pastSections` の先頭から順に埋まる。 */
+    private var pastMonths: List<CommunityApi.PollMonth>? = null
+    private var pastSections: List<PollMonthSection>? = null
 
     // 初回ロードは画面側の ON_RESUME (refresh) が担う。ここでも読むと、画面に出た瞬間に
     // 同じ一覧を 2 回取りに行くことになる。
@@ -56,13 +74,20 @@ class PollsViewModel internal constructor(
     /** セグメント切替。読み込み済みならキャッシュを即出し、未読込のときだけ取りに行く。 */
     fun setShowActive(active: Boolean) {
         if (_uiState.value.showActive == active) return
-        val cached = if (active) activeCards else pastCards
-        _uiState.value = PollsUiState(
-            cards = cached.orEmpty(),
-            isLoading = cached == null,
-            showActive = active,
-        )
-        if (cached == null) load()
+        if (active) {
+            val cached = activeCards
+            _uiState.value = PollsUiState(cards = cached.orEmpty(), isLoading = cached == null, showActive = true)
+            if (cached == null) loadActive()
+        } else {
+            val cachedSections = pastSections
+            _uiState.value = PollsUiState(
+                pastSections = cachedSections.orEmpty(),
+                hasMorePast = hasMorePast(pastMonths, cachedSections),
+                isLoading = cachedSections == null,
+                showActive = false
+            )
+            if (cachedSections == null) loadPast()
+        }
     }
 
     /**
@@ -70,26 +95,95 @@ class PollsViewModel internal constructor(
      * 画面が前面に戻るたびに呼ばれる (iOS PollListView の .onAppear 再ロードと同じ意図)。
      */
     fun refresh() {
-        if (_uiState.value.showActive) activeCards = null else pastCards = null
-        load()
+        if (_uiState.value.showActive) {
+            activeCards = null
+            loadActive()
+        } else {
+            // 詳細から戻ったときの読み直しで、さかのぼった月を畳まない (loadPast が既存の件数を保つ)。
+            loadPast()
+        }
     }
 
-    private fun load() {
-        val active = _uiState.value.showActive
+    private fun loadActive() {
         viewModelScope.launch {
-            val polls = runCatching { api.polls(if (active) "active" else "past") }.getOrNull()
+            val polls = runCatching { api.polls("active") }.getOrNull()
             // 読み込み中に利用者がセグメントを切り替えていたら、こちらの結果は捨てる
             // (遅れて届いた前のセグメントの一覧で上書きしないため)。
-            val stillCurrent = { _uiState.value.showActive == active }
+            val stillCurrent = { _uiState.value.showActive }
             if (polls == null) {
                 // 取得失敗。表示中の一覧はそのまま残す (一度の通信エラーで全消えにしない)。
                 if (stillCurrent()) _uiState.value = _uiState.value.copy(isLoading = false, loadError = "通信エラー")
                 return@launch
             }
             val cards = polls.map { buildCard(it) }
-            if (active) activeCards = cards else pastCards = cards
+            activeCards = cards
             if (stillCurrent()) {
                 _uiState.value = _uiState.value.copy(cards = cards, isLoading = false, loadError = null)
+            }
+        }
+    }
+
+    private fun loadPast() {
+        viewModelScope.launch {
+            val stillCurrent = { !_uiState.value.showActive }
+            val months = runCatching { api.pollMonths() }.getOrNull()
+            if (months == null) {
+                if (stillCurrent()) _uiState.value = _uiState.value.copy(isLoading = false, loadError = "通信エラー")
+                return@launch
+            }
+            // 既に読んだ月数 (最低 1) ぶんを読み直す (詳細から戻ったときにさかのぼった月を畳まないため)。
+            val keepCount = maxOf(1, pastSections?.size ?: 0).coerceAtMost(months.size)
+            val sections = mutableListOf<PollMonthSection>()
+            for (month in months.take(keepCount)) {
+                val polls = runCatching { api.pastPolls(month.month) }.getOrNull()
+                if (polls == null) {
+                    if (stillCurrent()) _uiState.value = _uiState.value.copy(isLoading = false, loadError = "通信エラー")
+                    return@launch
+                }
+                sections.add(PollMonthSection(month, polls.map { buildCard(it) }))
+            }
+            pastMonths = months
+            pastSections = sections
+            if (stillCurrent()) {
+                _uiState.value = _uiState.value.copy(
+                    pastSections = sections,
+                    hasMorePast = hasMorePast(months, sections),
+                    isLoading = false,
+                    loadError = null
+                )
+            }
+        }
+    }
+
+    /** 終了タブの次の (1 か月古い) 月を読む。末尾の行が見えたときに呼ぶ。 */
+    fun loadMorePast() {
+        val months = pastMonths ?: return
+        val sections = pastSections ?: return
+        if (sections.size >= months.size) return
+        if (_uiState.value.isLoadingMore || _uiState.value.isLoading) return
+        val month = months[sections.size]
+        _uiState.value = _uiState.value.copy(isLoadingMore = true)
+        viewModelScope.launch {
+            val polls = runCatching { api.pastPolls(month.month) }.getOrNull()
+            // 待っている間に読み直しで中身が入れ替わっていたら付け足さない。
+            if (pastMonths !== months || pastSections !== sections) {
+                _uiState.value = _uiState.value.copy(isLoadingMore = false)
+                return@launch
+            }
+            val stillCurrent = { !_uiState.value.showActive }
+            if (polls == null) {
+                if (stillCurrent()) _uiState.value = _uiState.value.copy(isLoadingMore = false, loadError = "通信エラー")
+                return@launch
+            }
+            val newSections = sections + PollMonthSection(month, polls.map { buildCard(it) })
+            pastSections = newSections
+            if (stillCurrent()) {
+                _uiState.value = _uiState.value.copy(
+                    pastSections = newSections,
+                    hasMorePast = hasMorePast(months, newSections),
+                    isLoadingMore = false,
+                    loadError = null
+                )
             }
         }
     }
@@ -110,6 +204,9 @@ class PollsViewModel internal constructor(
         PollCard(poll, poll.topEntityId?.let { entityName(poll.targetType, it) })
 
     private companion object {
+        fun hasMorePast(months: List<CommunityApi.PollMonth>?, sections: List<PollMonthSection>?): Boolean =
+            months != null && (sections?.size ?: 0) < months.size
+
         fun localNameResolver(app: Application): suspend (String, String) -> String {
             val module = AppModule.from(app)
             return { targetType, id ->

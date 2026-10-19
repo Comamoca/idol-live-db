@@ -382,6 +382,8 @@ declare_and_call_checksums! {
     uniffi_imas_core_checksum_func_share_intro_don_text,
     uniffi_imas_core_checksum_func_share_payload_plain_text,
     uniffi_imas_core_checksum_func_share_payload_x_post_url,
+    uniffi_imas_core_checksum_func_share_payload_x_app_post_url,
+    uniffi_imas_core_checksum_func_share_poll_result_text,
     uniffi_imas_core_checksum_func_share_poll_invite_payload,
     uniffi_imas_core_checksum_func_share_poll_url,
     uniffi_imas_core_checksum_func_share_poll_votes_payload,

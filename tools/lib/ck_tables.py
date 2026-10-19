@@ -87,6 +87,10 @@ ID_FILTER_COLUMN = {
     "costume_wears": "costume_id",
     "ticket_sales": "event_id",
     "show_tickets": "id",
+    # 会場は施設の id で絞る (名前・ホールは施設にぶら下がる)。
+    "venues": "id",
+    "venue_names": "venue_id",
+    "venue_halls": "venue_id",
     "idol_facets": "idol_id",
     "idol_hairstyles": "idol_id",
 }
@@ -115,6 +119,9 @@ SCOPED_ID_SPACE = {
     "ticket_sales": "event",
     # 券種 1 行ずつ (fixes でアーカイブ期間を埋めるとき、全 1,300 行を送らない)。
     "show_tickets": "show_ticket",
+    "venues": "venue",
+    "venue_names": "venue",
+    "venue_halls": "venue",
 }
 
 

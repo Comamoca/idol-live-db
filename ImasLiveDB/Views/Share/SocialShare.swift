@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 // =============================================================================
 // テキストシェア (X 投稿 / 標準シェアシート) の共通導線
@@ -25,6 +26,23 @@ extension SharePayload {
     }
 }
 
+/// X の投稿画面を開く。X アプリの投稿画面を直接開き (ログイン中のアカウントで投稿できる)、
+/// アプリが無いときだけブラウザの投稿画面へ落とす。`x.com/intent/post` を先に開くと
+/// アプリが入っていてもブラウザ側に着地してしまう。
+enum XPost {
+    @MainActor
+    static func open(_ payload: SharePayload) {
+        let web = URL(string: sharePayloadXPostUrl(payload: payload))
+        guard let app = URL(string: sharePayloadXAppPostUrl(payload: payload)) else {
+            if let web { UIApplication.shared.open(web) }
+            return
+        }
+        UIApplication.shared.open(app) { opened in
+            if !opened, let web { UIApplication.shared.open(web) }
+        }
+    }
+}
+
 /// 「X にポスト」+「その他でシェア」の項目セット。
 /// `Menu` にも `contextMenu` にもそのまま差し込めるよう、ラベルとは切り離してある。
 struct SocialShareMenuItems: View {
@@ -32,12 +50,10 @@ struct SocialShareMenuItems: View {
     /// AppAnalytics のイベント名 (例: "setlist_prediction.share")。
     let analyticsKey: String
 
-    @Environment(\.openURL) private var openURL
-
     var body: some View {
         Button {
             AppAnalytics.tap("\(analyticsKey).x")
-            if let url = URL(string: sharePayloadXPostUrl(payload: payload)) { openURL(url) }
+            XPost.open(payload)
         } label: {
             Label("X にポスト", systemImage: "paperplane")
         }

@@ -35,6 +35,33 @@ final class PollListViewModelTests: XCTestCase {
         XCTAssertNotNil(vm.loadError)
     }
 
+    func testPastLoadsNewestMonthThenGoesBackOneMonthAtATime() async {
+        let fake = FakeCommunityVoting()
+        fake.monthsToReturn = [
+            PollMonth(month: "2026-10", label: "2026.10", count: 1),
+            PollMonth(month: "2026-09", label: "2026.09", count: 2),
+        ]
+        fake.pastPollsByMonth = [
+            "2026-10": [makePoll(id: "oct", active: false)],
+            "2026-09": [makePoll(id: "sep1", active: false), makePoll(id: "sep2", active: false)],
+        ]
+        let vm = PollListViewModel(voting: fake)
+
+        await vm.load(active: false)
+        XCTAssertEqual(vm.polls(active: false).map(\.id), ["oct"])
+        XCTAssertTrue(vm.hasMorePast)
+
+        await vm.loadMorePast()
+        XCTAssertEqual(vm.pastSections.map(\.id), ["2026-10", "2026-09"])
+        XCTAssertEqual(vm.polls(active: false).map(\.id), ["oct", "sep1", "sep2"])
+        XCTAssertFalse(vm.hasMorePast)
+
+        // 読み直しても、さかのぼった月は畳まない。
+        await vm.load(active: false)
+        XCTAssertEqual(vm.pastSections.map(\.id), ["2026-10", "2026-09"])
+        XCTAssertEqual(fake.pastPollMonthCalls, ["2026-10", "2026-09", "2026-10", "2026-09"])
+    }
+
     func testInsertCreatedPrependsActivePoll() async {
         let fake = FakeCommunityVoting()
         fake.pollsByStatus["active"] = [makePoll(id: "p1", active: true)]

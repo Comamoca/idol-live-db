@@ -1,5 +1,19 @@
 package com.fugaif.imaslivedb.ui.schedule
 
+import android.graphics.BitmapFactory
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.material.icons.filled.Image
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.runtime.rememberCoroutineScope
+import com.fugaif.imaslivedb.ui.share.ShareCardFiles
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import uniffi.imas_core.sharePayloadPlainText
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -123,7 +137,33 @@ private fun Header(date: LocalDate, digest: OnThisDayDigest?, onShift: (Long) ->
         }
         ImasIconButton(Icons.AutoMirrored.Filled.KeyboardArrowLeft, "前の日", { onShift(-1) }, size = ImasIconButtonSize.SMALL)
         ImasIconButton(Icons.AutoMirrored.Filled.KeyboardArrowRight, "次の日", { onShift(1) }, size = ImasIconButtonSize.SMALL)
-        digest?.day?.share?.let { SocialShareIconButton(it, contentDescription = "この日をシェア") }
+        digest?.day?.share?.let { share ->
+            val context = LocalContext.current
+            val scope = rememberCoroutineScope()
+            // ライブのキービジュアルなど、写真から選んだ画像を本文と一緒に共有する
+            // (X を選べば画像と本文の入った投稿画面になる)。
+            val picker = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+                if (uri == null) return@rememberLauncherForActivityResult
+                scope.launch {
+                    val bitmap = withContext(Dispatchers.IO) {
+                        runCatching {
+                            context.contentResolver.openInputStream(uri)?.use { BitmapFactory.decodeStream(it) }
+                        }.getOrNull()
+                    } ?: return@launch
+                    ShareCardFiles.share(context, bitmap, "on_this_day", sharePayloadPlainText(share))
+                }
+            }
+            SocialShareIconButton(share, contentDescription = "この日をシェア", leadingItems = { close ->
+                DropdownMenuItem(
+                    text = { Text("画像を付けてシェア") },
+                    leadingIcon = { Icon(Icons.Filled.Image, contentDescription = null) },
+                    onClick = {
+                        close()
+                        picker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                    }
+                )
+            })
+        }
     }
 }
 

@@ -1,0 +1,15 @@
+{
+ "title": "リスアニ！LIVE on TOKYO ANIME MUSIC HIGHLIGHTS の公演名をライブ名と揃える",
+ "author": "daily-health-check",
+ "source": "https://www.lisani.jp/live-tamh/",
+ "fixes": [
+  {
+   "table": "shows",
+   "id": "sh_e656e30e-e4a6-4f8e-84fe-ab83bc7f7eb8",
+   "fields": {
+    "name": "リスアニ！LIVE on TOKYO ANIME MUSIC HIGHLIGHTS"
+   },
+   "note": "公式は 2026-06-09 の 1 公演のみ (DAY 区分なし)。公演名が末尾の HIGHLIGHTS を落としていて、会場ページで副題がライブ名に含まれる形になっていた (web_export テストが検出)"
+  }
+ ]
+}

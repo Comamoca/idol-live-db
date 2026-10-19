@@ -32,7 +32,7 @@ import com.fugaif.imaslivedb.data.repository.UserMarkRepository
 import com.fugaif.imaslivedb.data.community.CommunityApi
 import com.fugaif.imaslivedb.data.community.DiscordLinkService
 import com.fugaif.imaslivedb.data.community.FavoriteAggregation
-import com.fugaif.imaslivedb.data.community.LocalContributionLog
+import com.fugaif.imaslivedb.data.community.BadgeService
 import com.fugaif.imaslivedb.data.community.LocalPollVoteLog
 import com.fugaif.imaslivedb.data.community.SetlistLikeService
 import com.fugaif.imaslivedb.data.community.SetlistPredictionService
@@ -155,6 +155,8 @@ class AppModule private constructor(context: Context) {
     val editApi: EditApi by lazy { EditApi(workerHttpClient, authService) }
     val setlistLikeService: SetlistLikeService by lazy { SetlistLikeService(workerHttpClient) }
     /** 手応え (Good の新着・セトリの閲覧数) と公演の奥付。 */
+    /** 自分の編集の件数と内訳 (マイ投稿)。値はサーバにだけある。 */
+    val badgeService: BadgeService by lazy { BadgeService(workerHttpClient, authService) }
     val contributionFeedbackService: com.fugaif.imaslivedb.data.community.ContributionFeedbackService by lazy {
         com.fugaif.imaslivedb.data.community.ContributionFeedbackService(appContext, workerHttpClient, authService)
     }
@@ -169,7 +171,6 @@ class AppModule private constructor(context: Context) {
     val editFeedRepository: EditFeedRepository by lazy { EditFeedRepository(snapshotStoreProvider) }
     val masterEditRepository: MasterEditRepository by lazy { MasterEditRepository(database, snapshotStoreProvider) }
     val syncEngine: CloudKitSyncEngine by lazy { CloudKitSyncEngine(appContext, database, scope = appScope) }
-    val localContributionLog: LocalContributionLog by lazy { LocalContributionLog(appContext) }
     val localPollVoteLog: LocalPollVoteLog by lazy { LocalPollVoteLog(appContext) }
     val gameProgressStore: GameProgressStore by lazy { GameProgressStore(appContext) }
     val quizResumeStore: QuizResumeStore by lazy { QuizResumeStore(appContext) }

@@ -11,8 +11,19 @@
 
 | ファイル | 中身 |
 |---|---|
-| `venue_overrides.json` | 機械分解では決まらない判断。改名・別表記・ホール正式名・都道府県の補完 |
-| `venue_capacity.json` | キャパ。**出典が取れたものだけ**書く。裏取りできていない施設は載せない (NULL のまま) |
+| `_venue_overrides.json` | 機械分解では決まらない判断。改名・別表記・ホール正式名・都道府県の補完 |
+| `_venue_capacity.json` | キャパ。**出典が取れたものだけ**書く。裏取りできていない施設は載せない (NULL のまま) |
+
+判断データの 2 つは先頭が `_` なので `apply_data.py` は読まない。
+
+## 新しい会場を足す
+
+`data/venues/<YYYYMMDD>_<topic>.json` に `venues[]` を書き、ほかの投稿と同じく
+`python3 tools/apply_data.py --only <file> --apply --push --production` で入れる
+（書き方は `_template.json`）。施設 (`venues`)・正式名 (`venue_names` の `<id>__<name>`)・
+ホール (`venue_halls` の `<id>__<ホール名>`) が一緒に入り、CloudKit へはその施設の行だけ押す。
+既にある施設と同じ名前（venues / venue_names）は弾く。公演への紐付けは `data/fixes/` の
+`shows`（`venue_id` と `hall`）で別に入れる。
 
 ## 方針
 

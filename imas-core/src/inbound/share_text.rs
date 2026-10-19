@@ -45,7 +45,19 @@ pub fn share_payload_x_post_url(payload: SharePayload) -> String {
     payload.x_post_url()
 }
 
+/// 「X にポスト」でまず試す X アプリの投稿画面 URL。開けなければ `share_payload_x_post_url` へ。
+#[uniffi::export]
+pub fn share_payload_x_app_post_url(payload: SharePayload) -> String {
+    payload.x_app_post_url()
+}
+
 // -- 画面ごとの共有文 --------------------------------------------------------
+
+/// みんなの投票の結果画像に添える本文。
+#[uniffi::export]
+pub fn share_poll_result_text(title: String) -> String {
+    share_text::poll_result_share_text(&title)
+}
 
 /// イベント詳細のシェア文 (イベント名 + Universal Link)。
 #[uniffi::export]

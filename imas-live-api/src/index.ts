@@ -182,6 +182,7 @@ async function handleRoot(ctx: RouteContext): Promise<Response | null> {
       "DELETE /edits/:batchId/good",
       "POST /edits/:batchId/revert",
       "GET /master/:recordType/:recordName/history",
+      "GET /users/me/badges",
       "GET /users/:user_id/badges",
       "POST /users/me/credit",
       "GET /me/feedback?since=",
