@@ -118,9 +118,7 @@ struct PollListView: View {
                         pollCards(section.polls)
                     }
                     if vm.hasMorePast {
-                        ProgressView()
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, DS.sp5)
+                        ImasInlineLoading()
                             .onAppear { Task { await vm.loadMorePast() } }
                     }
                 }
