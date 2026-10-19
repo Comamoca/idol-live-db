@@ -47,7 +47,7 @@ export async function handleSetlistPredictions(ctx: RouteContext): Promise<Respo
           ON sp.show_id = spv.show_id AND sp.song_id = spv.song_id
         WHERE spv.user_id = ?
         ORDER BY spv.voted_at DESC
-        LIMIT 2000
+        LIMIT 200
       `).bind(user.uid).all();
       return json(results.map((r: any) => ({ ...r, vote_count: r.vote_count ?? 1 })));
     }

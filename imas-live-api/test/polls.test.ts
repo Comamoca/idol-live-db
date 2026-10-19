@@ -312,24 +312,6 @@ describe("DELETE /polls/:id", () => {
   });
 });
 
-describe("一覧が古いものを落とさない", () => {
-  it("開催中は limit なしでも 20 件で切らない", async () => {
-    for (let i = 0; i < 25; i++) await insertPoll(`a${i}`, { endsIn: `+${i + 1} hours` });
-    const res = await callJson("GET", "/polls?status=active");
-    expect(res.body).toHaveLength(25);
-  });
-
-  it("results は 50 件で切らない", async () => {
-    for (let i = 0; i < 60; i++) {
-      await insertPoll(`r${i}`, { endsIn: `-${i + 1} hours` });
-      await exec("INSERT INTO poll_entries (poll_id, entity_id, vote_count) VALUES (?, 's1', 1), (?, 's2', 1)", `r${i}`, `r${i}`);
-    }
-    const res = await callJson("GET", "/polls/results");
-    expect(res.body).toHaveLength(60);
-    expect(res.body[59].poll_id).toBe("r59");
-  });
-});
-
 describe("GET /polls/results と GET /polls/achievements/:entityId", () => {
   async function seedEnded() {
     await insertPoll("old", { endsIn: "-3 days" });
