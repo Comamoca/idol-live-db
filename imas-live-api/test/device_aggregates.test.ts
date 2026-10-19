@@ -52,7 +52,7 @@ describe("GET /favorites/ranking", () => {
     await exec("INSERT INTO song_favorites (song_id, count) VALUES ('a', 1), ('b', 5), ('c', 3)");
     const res = await callJson("GET", "/favorites/ranking");
     expect(res.status).toBe(200);
-    expect(res.res.headers.get("Cache-Control")).toBe("public, max-age=300, stale-while-revalidate=600");
+    expect(res.res.headers.get("Cache-Control")).toBe("public, max-age=60, stale-while-revalidate=300");
     expect(res.body).toEqual([
       { song_id: "b", count: 5 },
       { song_id: "c", count: 3 },

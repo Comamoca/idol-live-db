@@ -144,10 +144,9 @@ export async function handleDeviceAggregates(ctx: RouteContext): Promise<Respons
         .all();
       // ランキングはコミュニティ集計 (song_id, count) のみでユーザー非依存。
       // 画面を開くたびに叩かれるが順位変動は緩やかなので、エッジで全ユーザ共有
-      // キャッシュ。既定を 1000 件に広げたぶん max-age を 60s → 300s に延ばし、
-      // D1 の読み取り行数 (index で count 順に limit 行) を 200 件・60s のときと同じ水準に保つ。
+      // キャッシュ (max-age 60s + SWR 300s)。集計なので多少の鮮度落ちは許容。
       return json(results, 200, {
-        "Cache-Control": "public, max-age=300, stale-while-revalidate=600",
+        "Cache-Control": "public, max-age=60, stale-while-revalidate=300",
       });
     }
 
